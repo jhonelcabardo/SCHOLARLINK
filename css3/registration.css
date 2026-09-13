@@ -1,0 +1,571 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.welcome-section {
+    width: 45%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #1e3a8a,
+            #4c1d95
+        );
+}
+
+.welcome-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,255,255,0.12),
+            transparent 30%
+        );
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+
+    padding: 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 70px;
+}
+
+.logo-circle {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+
+    color: white;
+    font-size: 25px;
+}
+
+.logo-container h1 {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo-container h1 span {
+    color: #c4b5fd;
+}
+
+.logo-container p {
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+}
+
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    color: white;
+
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.welcome-text h2 {
+    color: white;
+
+    font-size: clamp(35px, 4vw, 58px);
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.welcome-text h2 span {
+    color: #c4b5fd;
+}
+
+.welcome-text p {
+    max-width: 520px;
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 15px;
+    line-height: 1.8;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================
+   INFO LIST
+========================= */
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: white;
+}
+
+.info-item > i {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.12);
+
+    color: #ddd6fe;
+}
+
+.info-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item strong {
+    font-size: 13px;
+}
+
+.info-item span {
+    color: rgba(255,255,255,0.65);
+    font-size: 11px;
+}
+
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.form-section {
+    width: 55%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 550px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #64748b;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    margin-bottom: 30px;
+}
+
+.back-link:hover {
+    color: #4f46e5;
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 30px;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    display: none;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+.message.success {
+    display: block;
+
+    background: #dcfce7;
+    color: #166534;
+
+    border: 1px solid #bbf7d0;
+}
+
+.message.error {
+    display: block;
+
+    background: #fee2e2;
+    color: #991b1b;
+
+    border: 1px solid #fecaca;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #374151;
+
+    margin-bottom: 7px;
+}
+
+.optional {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper > i {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 48px;
+
+    border: 1px solid #dbe1ea;
+
+    border-radius: 10px;
+
+    padding: 0 45px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    background: white;
+
+    transition: 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99,102,241,0.1);
+}
+
+.input-wrapper input::placeholder {
+    color: #a1a1aa;
+}
+
+.input-group small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+
+.password-toggle {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    padding: 5px;
+}
+
+.password-toggle:hover {
+    color: #4f46e5;
+}
+
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+    margin: 20px 0;
+}
+
+.terms label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    cursor: pointer;
+}
+
+.terms input {
+    margin-top: 3px;
+}
+
+.terms a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.register-btn {
+    width: 100%;
+
+    height: 50px;
+
+    border: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transition: 0.2s;
+}
+
+.register-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 25px rgba(79,70,229,0.25);
+}
+
+.register-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.login-info {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.login-info span {
+    display: block;
+    color: #94a3b8;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .welcome-section {
+        display: none;
+    }
+
+    .form-section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 25px;
+    }
+
+    .mobile-logo {
+        width: 55px;
+        height: 55px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 16px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+        color: white;
+
+        font-size: 22px;
+
+        margin-bottom: 20px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .form-section {
+        padding: 20px 16px;
+    }
+
+    .form-header h2 {
+        font-size: 25px;
+    }
+
+    .back-link {
+        margin-bottom: 25px;
+    }
+
+}

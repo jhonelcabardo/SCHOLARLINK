@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>ScholarLink | Announcements</title>
+
+<link rel="stylesheet"
+      href="../css/announcements.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="../images/scholarlink-logo.png"
+alt="ScholarLink">
+
+<div>
+
+<h2>ScholarLink</h2>
+
+<span>Admin Portal</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="admin-dashboard.html">
+
+<i class="fas fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="applicants.html">
+
+<i class="fas fa-users"></i>
+
+Applicants
+
+</a>
+
+</li>
+
+<li>
+    <a href="applications.html">
+        <i class="fas fa-file-lines"></i>
+        Applications
+    </a>
+</li>
+
+<li>
+
+<a href="scholars.html">
+
+<i class="fas fa-user-graduate"></i>
+
+Scholars
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="requirements.html">
+
+<i class="fas fa-folder-open"></i>
+
+Requirements
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="announcements.html">
+
+<i class="fas fa-bullhorn"></i>
+
+Announcements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="notifications.html">
+
+<i class="fas fa-bell"></i>
+
+Notifications
+
+</a>
+
+</li>
+
+<li>
+
+<a href="monitoring-scholars.html">
+
+<i class="fas fa-chart-line"></i>
+
+Monitoring Scholars
+
+</a>
+
+</li>
+
+<li>
+
+<a href="qr-management.html">
+
+<i class="fas fa-qrcode"></i>
+
+QR Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="user-management.html">
+
+<i class="fas fa-users-cog"></i>
+
+User Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="document-verification.html">
+
+<i class="fas fa-file-circle-check"></i>
+
+Document Verification
+
+</a>
+
+</li>
+
+<li>
+
+<a href="grade-cor-verification.html">
+
+<i class="fas fa-award"></i>
+
+Grade & COR Verification
+
+</a>
+
+</li>
+
+
+<li class="logout">
+
+<a href="../index.html">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- =========================
+MAIN CONTENT
+========================= -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="top-left">
+
+<button id="menuToggle">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+<h2>
+
+Announcements Management
+
+</h2>
+
+</div>
+
+<div class="top-right">
+
+<button class="notification-btn">
+
+<i class="fas fa-bell"></i>
+
+<span class="badge">5</span>
+
+</button>
+
+<div class="profile-box">
+
+<img src="../images/admin.png"
+alt="Administrator">
+
+<div>
+
+<h4>Administrator</h4>
+
+<span>System Administrator</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- =========================
+HERO
+========================= -->
+
+
+
+<!-- =========================
+SUMMARY CARDS
+========================= -->
+
+<section class="summary-cards">
+
+<div class="summary-card">
+
+<h3>Total Announcements</h3>
+
+<h2>48</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Published</h3>
+
+<h2 class="published">40</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Draft</h3>
+
+<h2 class="draft">5</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Pinned</h3>
+
+<h2 class="pinned">3</h2>
+
+</div>
+
+</section>
+
+<!-- =========================
+SEARCH & FILTER
+========================= -->
+
+<section class="search-section">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+placeholder="Search announcement...">
+
+</div>
+
+<select>
+
+<option>All</option>
+
+<option>Published</option>
+
+<option>Draft</option>
+
+<option>Pinned</option>
+
+<option>Archived</option>
+
+</select>
+
+<button class="btn-create">
+
+<i class="fas fa-plus"></i>
+
+New Announcement
+
+</button>
+
+</section>
+
+<!-- Continue in Part 2 -->
+
+<section class="announcement-form">
+
+    <div class="form-card">
+
+    <h2>
+
+        <i class="fas fa-pen-to-square"></i>
+
+        Create Announcement
+
+    </h2>
+
+    <div class="form-grid">
+
+        <div class="form-group full">
+
+            <label>
+
+                Announcement Title
+
+            </label>
+
+            <input
+                type="text"
+                placeholder="Enter announcement title">
+
+        </div>
+
+        <div class="form-group full">
+
+            <label>
+
+                Announcement Content
+
+            </label>
+
+            <textarea
+                rows="8"
+                placeholder="Write your announcement here..."></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Publish Date
+
+            </label>
+
+            <input type="date">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Expiration Date
+
+            </label>
+
+            <input type="date">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Audience
+
+            </label>
+
+            <select>
+
+                <option>All Users</option>
+
+                <option>Applicants Only</option>
+
+                <option>Scholars Only</option>
+
+                <option>Administrators Only</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+
+                Priority
+
+            </label>
+
+            <select>
+
+                <option>Normal</option>
+
+                <option>Important</option>
+
+                <option>Urgent</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group full">
+
+            <label>
+
+                Upload Image (Optional)
+
+            </label>
+
+            <input type="file" accept="image/*">
+
+        </div>
+
+        <div class="form-group full">
+
+            <label class="checkbox">
+
+                <input type="checkbox">
+
+                Pin this announcement to the top
+
+            </label>
+
+        </div>
+
+    </div>
+
+    <div class="form-buttons">
+
+        <button class="btn-save">
+
+            <i class="fas fa-floppy-disk"></i>
+
+            Save Draft
+
+        </button>
+
+        <button class="btn-preview">
+
+            <i class="fas fa-eye"></i>
+
+            Preview
+
+        </button>
+
+        <button class="btn-publish">
+
+            <i class="fas fa-paper-plane"></i>
+
+            Publish
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- Continue in Part 3 -->
+
+<section class="announcement-list">
+
+    <div class="list-card">
+
+    <div class="section-header">
+
+        <h2>
+
+            <i class="fas fa-list"></i>
+
+            Published Announcements
+
+        </h2>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Title</th>
+
+                <th>Audience</th>
+
+                <th>Priority</th>
+
+                <th>Publish Date</th>
+
+                <th>Status</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>Scholarship Orientation Schedule</td>
+
+                <td>All Users</td>
+
+                <td>
+
+                    <span class="priority-normal">
+
+                        Normal
+
+                    </span>
+
+                </td>
+
+                <td>August 05, 2026</td>
+
+                <td>
+
+                    <span class="status-published">
+
+                        Published
+
+                    </span>
+
+                </td>
+
+                <td class="action-buttons">
+
+                    <button class="btn-view">
+
+                        <i class="fas fa-eye"></i>
+
+                    </button>
+
+                    <button class="btn-edit">
+
+                        <i class="fas fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-pin">
+
+                        <i class="fas fa-thumbtack"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Submission of Grades</td>
+
+                <td>Scholars Only</td>
+
+                <td>
+
+                    <span class="priority-important">
+
+                        Important
+
+                    </span>
+
+                </td>
+
+                <td>August 03, 2026</td>
+
+                <td>
+
+                    <span class="status-published">
+
+                        Published
+
+                    </span>
+
+                </td>
+
+                <td class="action-buttons">
+
+                    <button class="btn-view">
+
+                        <i class="fas fa-eye"></i>
+
+                    </button>
+
+                    <button class="btn-edit">
+
+                        <i class="fas fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-pin">
+
+                        <i class="fas fa-thumbtack"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Incomplete Requirements</td>
+
+                <td>Applicants Only</td>
+
+                <td>
+
+                    <span class="priority-urgent">
+
+                        Urgent
+
+                    </span>
+
+                </td>
+
+                <td>August 01, 2026</td>
+
+                <td>
+
+                    <span class="status-draft">
+
+                        Draft
+
+                    </span>
+
+                </td>
+
+                <td class="action-buttons">
+
+                    <button class="btn-view">
+
+                        <i class="fas fa-eye"></i>
+
+                    </button>
+
+                    <button class="btn-edit">
+
+                        <i class="fas fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-pin">
+
+                        <i class="fas fa-thumbtack"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Renewal of Scholarship</td>
+
+                <td>Scholars Only</td>
+
+                <td>
+
+                    <span class="priority-important">
+
+                        Important
+
+                    </span>
+
+                </td>
+
+                <td>July 28, 2026</td>
+
+                <td>
+
+                    <span class="status-published">
+
+                        Published
+
+                    </span>
+
+                </td>
+
+                <td class="action-buttons">
+
+                    <button class="btn-view">
+
+                        <i class="fas fa-eye"></i>
+
+                    </button>
+
+                    <button class="btn-edit">
+
+                        <i class="fas fa-pen"></i>
+
+                    </button>
+
+                    <button class="btn-pin">
+
+                        <i class="fas fa-thumbtack"></i>
+
+                    </button>
+
+                    <button class="btn-delete">
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        © 2026 ScholarLink | Scholarship Management System | Announcements
+
+    </p>
+
+</footer>
+
+</main>
+
+</div>
+
+<!-- JavaScript -->
+
+<script
+    type="module"
+    src="../js/announcements.js">
+</script>
+
+</body>
+
+</html>

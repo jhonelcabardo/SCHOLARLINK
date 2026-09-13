@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Home</title>
+
+    <link rel="stylesheet"
+          href="../css2/Home.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =====================================================
+         SIDEBAR - KEEP SAME DESIGN
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fas fa-graduation-cap"></i>
+
+            <div>
+
+                <h2>SCHOLARLINK</h2>
+
+                <p>Home</p>
+
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <li class="active">
+
+                <a href="Home.html">
+
+                    <i class="fas fa-house"></i>
+
+                    Home
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="profile.html">
+
+                    <i class="fas fa-user"></i>
+
+                    My Profile
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="scholarship-status.html">
+
+                    <i class="fas fa-award"></i>
+
+                    Scholarship Status
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="grades.html">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    Submit Grades
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="cor.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    Submit COR
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="schedule.html">
+
+                    <i class="fas fa-calendar-days"></i>
+
+                    Schedule
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Announcements
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    Notifications
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="qr-code.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    My QR Code
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="#"
+                   id="sidebarlogout">
+
+                    <i class="fas fa-sign-out-alt"></i>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+
+        <div class="bottom-menu"></div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Welcome, Scholar! 👋
+                </h1>
+
+                <p>
+                    Manage your scholarship requirements and stay updated.
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <img src="../images/user.png"
+                     id="profileAvatar"
+                     alt="Scholar">
+
+
+                <div>
+
+                    <h4 id="headerScholarId">
+                        Loading...
+                    </h4>
+
+                    <small id="headerProgram">
+                        Loading...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             STATISTICS
+        ====================================================== -->
+
+        <section class="cards">
+
+
+            <div class="card blue">
+
+                <i class="fas fa-award"></i>
+
+                <h3 id="scholarStatus">
+                    Loading...
+                </h3>
+
+                <p>
+                    Scholarship Status
+                </p>
+
+            </div>
+
+
+            <div class="card green">
+
+                <i class="fas fa-chart-line"></i>
+
+                <h3 id="latestGPA">
+                    —
+                </h3>
+
+                <p>
+                    Latest GPA
+                </p>
+
+            </div>
+
+
+            <div class="card orange">
+
+                <i class="fas fa-file-signature"></i>
+
+                <h3 id="gradesStatus">
+                    Loading...
+                </h3>
+
+                <p>
+                    Grades
+                </p>
+
+            </div>
+
+
+            <div class="card purple">
+
+                <i class="fas fa-file-circle-check"></i>
+
+                <h3 id="corStatus">
+                    Loading...
+                </h3>
+
+                <p>
+                    COR
+                </p>
+
+            </div>
+
+
+            <div class="card cyan">
+
+                <i class="fas fa-qrcode"></i>
+
+                <h3 id="qrStatus">
+                    Active
+                </h3>
+
+                <p>
+                    QR Login
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             NOTIFICATIONS / ANNOUNCEMENTS
+        ====================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- NOTIFICATIONS -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        <i class="fas fa-bell"></i>
+
+                        Notifications
+
+                    </h2>
+
+
+                    <a href="notifications.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div id="dashboardNotifications">
+
+                    <div class="notification-item">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        <div>
+
+                            <h4>
+                                Loading notifications...
+                            </h4>
+
+                            <p>
+                                Please wait.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ANNOUNCEMENTS -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        Announcements
+
+                    </h2>
+
+
+                    <a href="announcements.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div id="dashboardAnnouncements">
+
+                    <div class="announcement-item">
+
+                        <h4>
+                            Loading announcements...
+                        </h4>
+
+                        <p>
+                            Please wait.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SUBMISSION / SCHEDULE
+        ====================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SUBMIT GRADES -->
+
+            <div class="dashboard-card">
+
+                <h2>
+
+                    <i class="fas fa-file-signature"></i>
+
+                    Submit Grades
+
+                </h2>
+
+
+                <p class="card-description">
+
+                    Upload your official grades.
+
+                </p>
+
+
+                <input type="file"
+                       id="gradesFile"
+                       accept=".pdf,.jpg,.jpeg,.png">
+
+
+                <button class="upload-btn"
+                        id="uploadGradesBtn"
+                        type="button">
+
+                    <i class="fas fa-upload"></i>
+
+                    Upload Grades
+
+                </button>
+
+            </div>
+
+
+
+            <!-- SUBMIT COR -->
+
+            <div class="dashboard-card">
+
+                <h2>
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    Submit COR
+
+                </h2>
+
+
+                <p class="card-description">
+
+                    Upload your Certificate of Registration.
+
+                </p>
+
+
+                <input type="file"
+                       id="corFile"
+                       accept=".pdf,.jpg,.jpeg,.png">
+
+
+                <button class="upload-btn"
+                        id="uploadCORBtn"
+                        type="button">
+
+                    <i class="fas fa-upload"></i>
+
+                    Upload COR
+
+                </button>
+
+            </div>
+
+
+
+            <!-- SCHEDULE -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        <i class="fas fa-calendar-days"></i>
+
+                        Schedule
+
+                    </h2>
+
+
+                    <a href="schedule.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <ul class="schedule-list"
+                    id="dashboardSchedule">
+
+                    <li>
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        Loading schedule...
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             QR / SUBMISSION STATUS
+        ====================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- QR CODE -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        <i class="fas fa-qrcode"></i>
+
+                        My QR Code
+
+                    </h2>
+
+
+                    <a href="qr-code.html">
+                        View
+                    </a>
+
+                </div>
+
+
+                <div class="qr-container">
+
+                    <img src="../images/sample-qr.png"
+                         id="scholarQR"
+                         alt="Scholar QR"
+                         class="qr-image">
+
+
+                    <h3 id="qrScholarId">
+                        Loading...
+                    </h3>
+
+
+                    <p>
+                        Permanent QR Login
+                    </p>
+
+
+                    <div class="qr-buttons">
+
+                        <button class="view-btn"
+                                id="viewQRBtn"
+                                type="button">
+
+                            <i class="fas fa-eye"></i>
+
+                            View
+
+                        </button>
+
+
+                        <button class="download-btn"
+                                id="downloadQRBtn"
+                                type="button">
+
+                            <i class="fas fa-download"></i>
+
+                            Download
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SUBMISSION STATUS -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        <i class="fas fa-list-check"></i>
+
+                        Submission Status
+
+                    </h2>
+
+                </div>
+
+
+                <table class="status-table">
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Grades
+                            </td>
+
+                            <td>
+
+                                <span class="pending"
+                                      id="gradesStatusTable">
+
+                                    Loading...
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                COR
+                            </td>
+
+                            <td>
+
+                                <span class="pending"
+                                      id="corStatusTable">
+
+                                    Loading...
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Scholarship
+                            </td>
+
+                            <td>
+
+                                <span class="active-status"
+                                      id="scholarshipStatusTable">
+
+                                    Loading...
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             RECENT ACTIVITY
+        ====================================================== -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <h2>
+
+                    <i class="fas fa-clock"></i>
+
+                    Recent Activity
+
+                </h2>
+
+            </div>
+
+
+            <ul class="activity-list"
+                id="recentActivity">
+
+                <li>
+
+                    <i class="fas fa-spinner fa-spin"></i>
+
+                    Loading recent activity...
+
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             QUICK ACTIONS
+        ====================================================== -->
+
+        <section class="quick-actions">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+
+            <div class="action-grid">
+
+
+                <a href="grades.html"
+                   class="action-card">
+
+                    <i class="fas fa-upload"></i>
+
+                    <h4>
+                        Submit Grades
+                    </h4>
+
+                </a>
+
+
+                <a href="cor.html"
+                   class="action-card">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    <h4>
+                        Submit COR
+                    </h4>
+
+                </a>
+
+
+                <a href="qr-code.html"
+                   class="action-card">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    <h4>
+                        My QR Code
+                    </h4>
+
+                </a>
+
+
+                <a href="notifications.html"
+                   class="action-card">
+
+                    <i class="fas fa-bell"></i>
+
+                    <h4>
+                        Notifications
+                    </h4>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 ScholarLink | Scholar Dashboard
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOGOUT MODAL
+====================================================== -->
+
+<div class="logout-modal"
+     id="logoutModal">
+
+    <div class="logout-modal-box">
+
+        <div class="logout-icon">
+
+            <i class="fas fa-sign-out-alt"></i>
+
+        </div>
+
+
+        <h2>
+            Confirm Logout
+        </h2>
+
+
+        <p>
+            Are you sure you want to logout from your Scholar account?
+        </p>
+
+
+        <div class="logout-buttons">
+
+            <button class="cancel-btn"
+                    id="cancelLogout"
+                    type="button">
+
+                Cancel
+
+            </button>
+
+
+            <button class="confirm-logout-btn"
+                    id="confirmLogout"
+                    type="button">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<script type="module"
+        src="../js2/Home.js"></script>
+
+</body>
+
+</html>

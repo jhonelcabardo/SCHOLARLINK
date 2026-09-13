@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Admin Dashboard</title>
+
+
+    <!-- =========================
+         ADMIN DASHBOARD CSS
+    ========================== -->
+
+    <link rel="stylesheet"
+          href="../css/admin-dashboard.css">
+
+
+    <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =========================
+         FONT AWESOME
+    ========================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- =========================
+         LOGOUT MODAL STYLE
+    ========================== -->
+
+    <style>
+
+        .logout-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.50);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .logout-modal.active {
+            display: flex;
+        }
+
+
+        .logout-modal-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            animation: modalSlideUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.20);
+        }
+
+
+        .logout-icon {
+            width: 72px;
+            height: 72px;
+            background: #fee2e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #dc2626;
+        }
+
+
+        .logout-modal-box h2 {
+            font-size: 24px;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+        }
+
+
+        .logout-modal-box p {
+            color: #6b7280;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+
+        .logout-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+
+        .logout-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+
+        .cancel-btn {
+            background: #f3f4f6;
+            color: #1e1b4b;
+        }
+
+
+        .cancel-btn:hover {
+            background: #e5e7eb;
+        }
+
+
+        .confirm-logout-btn {
+            background: #dc2626;
+            color: #ffffff;
+        }
+
+
+        .confirm-logout-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+
+        .confirm-logout-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+
+        @keyframes modalSlideUp {
+
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           LOGOUT SIDEBAR
+        ========================== */
+
+        .logout {
+            margin-top: 20px;
+            padding-bottom: 25px;
+        }
+
+
+        .logout a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 16px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+
+        .logout a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+
+        .logout a i {
+            width: 22px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================== */
+
+        .dashboard-loading {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+
+        .dashboard-loading i {
+            margin-right: 8px;
+        }
+
+
+        /* =========================
+           EMPTY STATE
+        ========================== */
+
+        .dashboard-empty {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+
+        .dashboard-empty i {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           CARD VALUE
+        ========================== */
+
+        .card-info h2 {
+            transition: 0.3s ease;
+        }
+
+
+        /* =========================
+           NOTIFICATION BADGE
+        ========================== */
+
+        .notification-btn {
+            position: relative;
+        }
+
+
+        .notification-btn .badge {
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE TABLE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .table-section {
+                overflow-x: auto;
+            }
+
+            .table-section table {
+                min-width: 800px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- =========================
+             LOGO
+        ========================== -->
+
+        <div class="logo">
+
+            <img src="../images/scholarlink-logo.png"
+                 alt="ScholarLink">
+
+            <div>
+
+                <h2>ScholarLink</h2>
+
+                <span>Admin Portal</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <ul class="menu">
+
+
+            <!-- Dashboard -->
+
+            <li class="active">
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fas fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Applicants -->
+
+            <li>
+
+                <a href="applicants.html">
+
+                    <i class="fas fa-users"></i>
+
+                    <span>Applicants</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Applications -->
+
+            <li>
+
+                <a href="applications.html">
+
+                    <i class="fas fa-file-lines"></i>
+
+                    <span>Applications</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Scholars -->
+
+            <li>
+
+                <a href="scholars.html">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    <span>Scholars</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Requirements -->
+
+            <li>
+
+                <a href="requirements.html">
+
+                    <i class="fas fa-folder-open"></i>
+
+                    <span>Requirements</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Announcements -->
+
+            <li>
+
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    <span>Announcements</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Notifications -->
+
+            <li>
+
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span>Notifications</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Monitoring -->
+
+            <li>
+
+                <a href="monitoring-scholars.html">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    <span>Monitoring Scholars</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- QR Management -->
+
+            <li>
+
+                <a href="qr-management.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    <span>QR Management</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- User Management -->
+
+            <li>
+
+                <a href="user-management.html">
+
+                    <i class="fas fa-users-cog"></i>
+
+                    <span>User Management</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Document Verification -->
+
+            <li>
+
+                <a href="document-verification.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    <span>Document Verification</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Grade & COR -->
+
+            <li>
+
+                <a href="grade-cor-verification.html">
+
+                    <i class="fas fa-award"></i>
+
+                    <span>Grade & COR Verification</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Settings -->
+
+            <li>
+
+                <a href="settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- Logout -->
+
+            <li class="logout">
+
+                <a href="#"
+                   id="logoutLink">
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="top-left">
+
+
+                <button id="menuToggle"
+                        type="button"
+                        aria-label="Toggle menu">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+
+                <div>
+
+                    <h2>
+                        Administrator Dashboard
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="top-right">
+
+
+                <!-- Notification -->
+
+                <button class="notification-btn"
+                        type="button"
+                        id="notificationButton"
+                        title="Notifications">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="badge"
+                          id="notificationBadge">
+                        0
+                    </span>
+
+                </button>
+
+
+
+                <!-- Admin Profile -->
+
+                <div class="profile-box">
+
+                    <img src="../images/admin.png"
+                         alt="Administrator">
+
+                    <div>
+
+                        <h4>
+                            Administrator
+                        </h4>
+
+                        <span>
+                            System Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD STATISTICS
+        ================================================== -->
+
+        <section class="cards">
+
+
+            <!-- =================================================
+                 TOTAL APPLICANTS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon blue">
+
+                    <i class="fas fa-users"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Total Applicants
+                    </h3>
+
+                    <h2 id="totalApplicants">
+                        0
+                    </h2>
+
+                    <span>
+                        Registered applications
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TOTAL SCHOLARS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon green">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Total Scholars
+                    </h3>
+
+                    <h2 id="totalScholars">
+                        0
+                    </h2>
+
+                    <span>
+                        <strong id="activeScholars">0</strong>
+                        Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PENDING APPLICATIONS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon orange">
+
+                    <i class="fas fa-file-circle-question"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Pending Applications
+                    </h3>
+
+                    <h2 id="pendingApplications">
+                        0
+                    </h2>
+
+                    <span>
+                        Need Review
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 APPROVED
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon red">
+
+                    <i class="fas fa-circle-check"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Approved
+                    </h3>
+
+                    <h2 id="approvedApplications">
+                        0
+                    </h2>
+
+                    <span>
+                        This Academic Year
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ANNOUNCEMENTS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon purple">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Announcements
+                    </h3>
+
+                    <h2 id="totalAnnouncements">
+                        0
+                    </h2>
+
+                    <span>
+                        Published
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NOTIFICATIONS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon yellow">
+
+                    <i class="fas fa-bell"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Notifications
+                    </h3>
+
+                    <h2 id="unreadNotifications">
+                        0
+                    </h2>
+
+                    <span>
+                        Unread
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MONITORING
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon teal">
+
+                    <i class="fas fa-chart-line"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Monitoring
+                    </h3>
+
+                    <h2 id="atRiskScholars">
+                        0
+                    </h2>
+
+                    <span>
+                        At Risk Scholars
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DOCUMENTS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="card-icon dark">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                </div>
+
+
+                <div class="card-info">
+
+                    <h3>
+                        Documents
+                    </h3>
+
+                    <h2 id="pendingDocuments">
+                        0
+                    </h2>
+
+                    <span>
+                        Pending Verification
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT APPLICATIONS
+        ================================================== -->
+
+        <section class="table-section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    Recent Scholarship Applications
+                </h2>
+
+
+                <a href="applications.html">
+                    View All
+                </a>
+
+            </div>
+
+
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Applicant ID
+                            </th>
+
+                            <th>
+                                Applicant
+                            </th>
+
+                            <th>
+                                School
+                            </th>
+
+                            <th>
+                                Scholarship
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="recentApplicationsBody">
+
+                        <tr>
+
+                            <td colspan="6"
+                                class="dashboard-loading">
+
+                                <i class="fas fa-spinner fa-spin"></i>
+
+                                Loading applications...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="quick-actions">
+
+
+            <a href="applicants.html"
+               class="action-card">
+
+                <i class="fas fa-users"></i>
+
+                <h3>
+                    Applicants
+                </h3>
+
+            </a>
+
+
+
+            <a href="applications.html"
+               class="action-card">
+
+                <i class="fas fa-file-lines"></i>
+
+                <h3>
+                    Applications
+                </h3>
+
+            </a>
+
+
+
+            <a href="document-verification.html"
+               class="action-card">
+
+                <i class="fas fa-file-circle-check"></i>
+
+                <h3>
+                    Verify Documents
+                </h3>
+
+            </a>
+
+
+
+            <a href="grade-cor-verification.html"
+               class="action-card">
+
+                <i class="fas fa-award"></i>
+
+                <h3>
+                    Verify Grades & COR
+                </h3>
+
+            </a>
+
+
+
+            <a href="monitoring-scholars.html"
+               class="action-card">
+
+                <i class="fas fa-chart-line"></i>
+
+                <h3>
+                    Monitor Scholars
+                </h3>
+
+            </a>
+
+
+
+            <a href="reports.html"
+               class="action-card">
+
+                <i class="fas fa-chart-pie"></i>
+
+                <h3>
+                    Reports
+                </h3>
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOTIFICATIONS + ANNOUNCEMENTS
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- =================================================
+                 RECENT NOTIFICATIONS
+            ================================================== -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <h2>
+
+                        <i class="fas fa-bell"></i>
+
+                        Recent Notifications
+
+                    </h2>
+
+
+                    <a href="notifications.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+
+                <div class="notification-list"
+                     id="dashboardNotifications">
+
+
+                    <div class="notification-item">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+
+                        <div>
+
+                            <h4>
+                                Loading notifications...
+                            </h4>
+
+                            <p>
+                                Please wait.
+                            </p>
+
+                            <small>
+                                Loading...
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LATEST ANNOUNCEMENTS
+            ================================================== -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <h2>
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        Latest Announcements
+
+                    </h2>
+
+
+                    <a href="announcements.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+
+                <div class="announcement-list"
+                     id="dashboardAnnouncements">
+
+
+                    <div class="announcement-item">
+
+                        <h4>
+                            Loading announcements...
+                        </h4>
+
+                        <p>
+                            Please wait.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SYSTEM ACTIVITY
+        ================================================== -->
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <h2>
+
+                    <i class="fas fa-clock-rotate-left"></i>
+
+                    System Activity
+
+                </h2>
+
+            </div>
+
+
+
+            <ul class="activity-list"
+                id="dashboardActivity">
+
+
+                <li>
+
+                    <i class="fas fa-spinner fa-spin"></i>
+
+                    Loading system activity...
+
+                </li>
+
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+
+                © 2026 ScholarLink |
+                Scholarship Management System |
+                Administrator Panel
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOGOUT CONFIRMATION MODAL
+====================================================== -->
+
+<div class="logout-modal"
+     id="logoutModal">
+
+
+    <div class="logout-modal-box">
+
+
+        <div class="logout-icon">
+
+            <i class="fas fa-right-from-bracket"></i>
+
+        </div>
+
+
+        <h2>
+            Confirm Logout
+        </h2>
+
+
+        <p>
+            Are you sure you want to logout
+            from your Administrator account?
+        </p>
+
+
+        <div class="logout-buttons">
+
+
+            <button type="button"
+                    class="cancel-btn"
+                    id="cancelLogout">
+
+                Cancel
+
+            </button>
+
+
+            <button type="button"
+                    class="confirm-logout-btn"
+                    id="confirmLogout">
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE / DASHBOARD JAVASCRIPT
+====================================================== -->
+
+<script type="module"
+        src="../js/admin-dashboard.js"></script>
+
+
+</body>
+
+</html>

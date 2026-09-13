@@ -1,0 +1,536 @@
+/* =========================================================
+   SCHOLARLINK
+   ADMIN APPLICATIONS PAGE
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.applications-page {
+
+    padding: 30px;
+
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-header h1 {
+
+    margin: 0;
+
+    color: #172554;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+}
+
+
+.page-header p {
+
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+
+}
+
+
+.back-btn:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   SEARCH + FILTER
+========================================================= */
+
+.application-tools {
+
+    display: flex;
+
+    gap: 15px;
+
+    background: #ffffff;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+
+}
+
+
+.search-box {
+
+    position: relative;
+
+    flex: 1;
+
+}
+
+
+.search-box i {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 15px 12px 42px;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+
+}
+
+
+.search-box input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+
+}
+
+
+.status-filter {
+
+    width: 200px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.applications-table {
+
+    background: #ffffff;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+
+    overflow-x: auto;
+
+}
+
+
+.applications-table table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.applications-table th {
+
+    background: #eff6ff;
+
+    color: #172554;
+
+    padding: 15px;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.applications-table td {
+
+    padding: 15px;
+
+    border-bottom: 1px solid #eef2f7;
+
+    color: #334155;
+
+    font-size: 13px;
+
+}
+
+
+.applications-table tbody tr {
+
+    transition: 0.2s;
+
+}
+
+
+.applications-table tbody tr:hover {
+
+    background: #f8fbff;
+
+}
+
+
+.applications-table td strong {
+
+    color: #172554;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+/* PENDING */
+
+.status.submitted {
+
+    background: #fff7ed;
+
+    color: #ea580c;
+
+}
+
+
+/* APPROVED */
+
+.status.approved {
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+}
+
+
+/* REJECTED */
+
+.status.rejected {
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+}
+
+
+/* NEEDS CORRECTION */
+
+.status.needs_correction {
+
+    background: #fefce8;
+
+    color: #ca8a04;
+
+}
+
+
+/* =========================================================
+   VIEW BUTTON
+========================================================= */
+
+.view-btn {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+
+}
+
+
+.view-btn:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+}
+
+
+.view-btn i {
+
+    margin-right: 4px;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+    color: #64748b;
+
+}
+
+
+.loading i {
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #64748b;
+
+}
+
+
+.empty-state i {
+
+    display: block;
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+    color: #94a3b8;
+
+}
+
+
+.empty-state h3 {
+
+    margin: 0 0 8px;
+
+    color: #334155;
+
+}
+
+
+.empty-state p {
+
+    margin: 0;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-state {
+
+    color: #dc2626;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .applications-page {
+
+        padding: 20px;
+
+    }
+
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+
+    .page-header h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .application-tools {
+
+        flex-direction: column;
+
+    }
+
+
+    .status-filter {
+
+        width: 100%;
+
+    }
+
+
+    .applications-table {
+
+        padding: 10px;
+
+    }
+
+}

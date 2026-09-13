@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ScholarLink | Schedule</title>
+
+
+    <!-- ==========================================
+         GOOGLE FONT
+    =========================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ==========================================
+         FONT AWESOME
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    >
+
+
+    <!-- ==========================================
+         SCHEDULE CSS
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css2/schedule.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         MAIN CONTAINER
+    =========================================== -->
+
+    <div class="container">
+
+
+        <!-- ==========================================
+             SIDEBAR
+        =========================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <i class="fas fa-graduation-cap"></i>
+
+                <div>
+
+                    <h2>
+                        SCHOLARLINK
+                    </h2>
+
+                    <p>
+                        Scholar Dashboard
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ======================================
+                 MENU
+            ======================================= -->
+
+            <ul class="menu">
+
+
+                <!-- HOME -->
+
+                <li>
+
+                    <a href="Home.html">
+
+                        <i class="fas fa-house"></i>
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <!-- MY PROFILE -->
+
+                <li>
+
+                    <a href="profile.html">
+
+                        <i class="fas fa-user"></i>
+
+                        My Profile
+
+                    </a>
+
+                </li>
+
+
+                <!-- SCHOLARSHIP STATUS -->
+
+                <li>
+
+                    <a href="scholarship-status.html">
+
+                        <i class="fas fa-award"></i>
+
+                        Scholarship Status
+
+                    </a>
+
+                </li>
+
+
+                <!-- SUBMIT GRADES -->
+
+                <li>
+
+                    <a href="grades.html">
+
+                        <i class="fas fa-file-signature"></i>
+
+                        Submit Grades
+
+                    </a>
+
+                </li>
+
+
+                <!-- SUBMIT COR -->
+
+                <li>
+
+                    <a href="cor.html">
+
+                        <i class="fas fa-file-circle-check"></i>
+
+                        Submit COR
+
+                    </a>
+
+                </li>
+
+
+                <!-- SCHEDULE -->
+
+                <li class="active">
+
+                    <a href="schedule.html">
+
+                        <i class="fas fa-calendar-days"></i>
+
+                        Schedule
+
+                    </a>
+
+                </li>
+
+
+                <!-- ANNOUNCEMENTS -->
+
+                <li>
+
+                    <a href="announcements.html">
+
+                        <i class="fas fa-bullhorn"></i>
+
+                        Announcements
+
+                    </a>
+
+                </li>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <li>
+
+                    <a href="notifications.html">
+
+                        <i class="fas fa-bell"></i>
+
+                        Notifications
+
+                    </a>
+
+                </li>
+
+
+                <!-- QR CODE -->
+
+                <li>
+
+                    <a href="qr-code.html">
+
+                        <i class="fas fa-qrcode"></i>
+
+                        My QR Code
+
+                    </a>
+
+                </li>
+
+
+                <!-- SETTINGS -->
+
+                <li>
+
+                    <a href="settings.html">
+
+                        <i class="fas fa-gear"></i>
+
+                        Settings
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+
+            <!-- ======================================
+                 BOTTOM MENU
+            ======================================= -->
+
+            <div class="bottom-menu">
+
+                <!--
+                    IMPORTANT:
+                    Do NOT change this ID.
+
+                    schedule.js uses:
+                    #sidebarlogout
+                -->
+
+                <a
+                    href="#"
+                    id="sidebarlogout"
+                >
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- ==========================================
+             SIDEBAR OVERLAY
+        =========================================== -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+
+        <!-- ==========================================
+             MAIN CONTENT
+        =========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- ======================================
+                 TOPBAR
+            ======================================= -->
+
+            <header class="topbar">
+
+
+                <!-- MOBILE MENU -->
+
+                <button
+                    type="button"
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                    aria-label="Open menu"
+                >
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+
+                <!-- PAGE TITLE -->
+
+                <div>
+
+                    <h1>
+                        Scholarship Schedule
+                    </h1>
+
+                    <p>
+                        View your upcoming scholarship activities and deadlines.
+                    </p>
+
+                </div>
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-top">
+
+                    <img
+                        src="images/user.png"
+                        alt="Scholar"
+                    >
+
+                    <div>
+
+                        <h4>
+                            Juan Dela Cruz
+                        </h4>
+
+                        <small>
+                            SCH-2026-001
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- ======================================
+                 PAGE CONTENT
+            ======================================= -->
+
+            <section class="page-content">
+
+
+                <!-- ==================================
+                     SUMMARY CARDS
+                =================================== -->
+
+                <section class="summary-grid">
+
+
+                    <!-- UPCOMING EVENTS -->
+
+                    <div class="summary-card">
+
+                        <i class="fas fa-calendar-check"></i>
+
+                        <h4>
+                            Upcoming Events
+                        </h4>
+
+                        <h2>
+                            5
+                        </h2>
+
+                    </div>
+
+
+                    <!-- GRADES DEADLINE -->
+
+                    <div class="summary-card">
+
+                        <i class="fas fa-file-signature"></i>
+
+                        <h4>
+                            Grades Deadline
+                        </h4>
+
+                        <h2>
+                            Aug. 15
+                        </h2>
+
+                    </div>
+
+
+                    <!-- COR DEADLINE -->
+
+                    <div class="summary-card">
+
+                        <i class="fas fa-file-circle-check"></i>
+
+                        <h4>
+                            COR Deadline
+                        </h4>
+
+                        <h2>
+                            Aug. 15
+                        </h2>
+
+                    </div>
+
+
+                    <!-- REMINDERS -->
+
+                    <div class="summary-card">
+
+                        <i class="fas fa-bell"></i>
+
+                        <h4>
+                            Reminders
+                        </h4>
+
+                        <h2>
+                            3
+                        </h2>
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- ==================================
+                     UPCOMING EVENTS
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-calendar-week"></i>
+
+                        Upcoming Scholarship Events
+
+                    </h2>
+
+
+                    <table class="schedule-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Activity
+                                </th>
+
+                                <th>
+                                    Location
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- EVENT 1 -->
+
+                            <tr>
+
+                                <td>
+                                    August 10, 2026
+                                </td>
+
+                                <td>
+                                    Scholar Orientation
+                                </td>
+
+                                <td>
+                                    City Hall Session Hall
+                                </td>
+
+                                <td>
+
+                                    <span class="upcoming">
+                                        Upcoming
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- EVENT 2 -->
+
+                            <tr>
+
+                                <td>
+                                    August 15, 2026
+                                </td>
+
+                                <td>
+                                    Grades Submission Deadline
+                                </td>
+
+                                <td>
+                                    ScholarLink Portal
+                                </td>
+
+                                <td>
+
+                                    <span class="deadline">
+                                        Deadline
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- EVENT 3 -->
+
+                            <tr>
+
+                                <td>
+                                    August 15, 2026
+                                </td>
+
+                                <td>
+                                    COR Submission Deadline
+                                </td>
+
+                                <td>
+                                    ScholarLink Portal
+                                </td>
+
+                                <td>
+
+                                    <span class="deadline">
+                                        Deadline
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     MONTHLY CALENDAR
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-calendar-alt"></i>
+
+                        Monthly Calendar
+
+                    </h2>
+
+
+                    <div class="calendar-grid">
+
+
+                        <!-- DAYS -->
+
+                        <div class="calendar-day">
+                            Sun
+                        </div>
+
+                        <div class="calendar-day">
+                            Mon
+                        </div>
+
+                        <div class="calendar-day">
+                            Tue
+                        </div>
+
+                        <div class="calendar-day">
+                            Wed
+                        </div>
+
+                        <div class="calendar-day">
+                            Thu
+                        </div>
+
+                        <div class="calendar-day">
+                            Fri
+                        </div>
+
+                        <div class="calendar-day">
+                            Sat
+                        </div>
+
+
+                        <!-- EMPTY -->
+
+                        <div class="calendar-date empty"></div>
+
+                        <div class="calendar-date empty"></div>
+
+
+                        <!-- DATES -->
+
+                        <div class="calendar-date">
+                            1
+                        </div>
+
+                        <div class="calendar-date">
+                            2
+                        </div>
+
+                        <div class="calendar-date">
+                            3
+                        </div>
+
+                        <div class="calendar-date">
+                            4
+                        </div>
+
+                        <div class="calendar-date">
+                            5
+                        </div>
+
+
+                        <div class="calendar-date">
+                            6
+                        </div>
+
+                        <div class="calendar-date">
+                            7
+                        </div>
+
+                        <div class="calendar-date">
+                            8
+                        </div>
+
+                        <div class="calendar-date">
+                            9
+                        </div>
+
+
+                        <!-- ORIENTATION -->
+
+                        <div class="calendar-date event">
+
+                            10
+
+                            <small>
+                                Orientation
+                            </small>
+
+                        </div>
+
+
+                        <div class="calendar-date">
+                            11
+                        </div>
+
+                        <div class="calendar-date">
+                            12
+                        </div>
+
+                        <div class="calendar-date">
+                            13
+                        </div>
+
+                        <div class="calendar-date">
+                            14
+                        </div>
+
+
+                        <!-- GRADES -->
+
+                        <div class="calendar-date deadline">
+
+                            15
+
+                            <small>
+                                Grades
+                            </small>
+
+                        </div>
+
+
+                        <!-- COR -->
+
+                        <div class="calendar-date deadline">
+
+                            16
+
+                            <small>
+                                COR
+                            </small>
+
+                        </div>
+
+
+                        <div class="calendar-date">
+                            17
+                        </div>
+
+                        <div class="calendar-date">
+                            18
+                        </div>
+
+                        <div class="calendar-date">
+                            19
+                        </div>
+
+                        <div class="calendar-date">
+                            20
+                        </div>
+
+                        <div class="calendar-date">
+                            21
+                        </div>
+
+                        <div class="calendar-date">
+                            22
+                        </div>
+
+                        <div class="calendar-date">
+                            23
+                        </div>
+
+                        <div class="calendar-date">
+                            24
+                        </div>
+
+                        <div class="calendar-date">
+                            25
+                        </div>
+
+                        <div class="calendar-date">
+                            26
+                        </div>
+
+                        <div class="calendar-date">
+                            27
+                        </div>
+
+                        <div class="calendar-date">
+                            28
+                        </div>
+
+                        <div class="calendar-date">
+                            29
+                        </div>
+
+                        <div class="calendar-date">
+                            30
+                        </div>
+
+                        <div class="calendar-date">
+                            31
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     SCHOLARSHIP TIMELINE
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-clock"></i>
+
+                        Scholarship Timeline
+
+                    </h2>
+
+
+                    <div class="timeline">
+
+
+                        <!-- ORIENTATION -->
+
+                        <div class="timeline-item">
+
+                            <div class="circle"></div>
+
+                            <div>
+
+                                <h4>
+                                    Scholar Orientation
+                                </h4>
+
+                                <small>
+                                    August 10, 2026
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GRADES -->
+
+                        <div class="timeline-item">
+
+                            <div class="circle"></div>
+
+                            <div>
+
+                                <h4>
+                                    Grades Submission
+                                </h4>
+
+                                <small>
+                                    August 15, 2026
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COR -->
+
+                        <div class="timeline-item">
+
+                            <div class="circle"></div>
+
+                            <div>
+
+                                <h4>
+                                    COR Submission
+                                </h4>
+
+                                <small>
+                                    August 15, 2026
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ALLOWANCE -->
+
+                        <div class="timeline-item">
+
+                            <div class="circle active"></div>
+
+                            <div>
+
+                                <h4>
+                                    Allowance Processing
+                                </h4>
+
+                                <small>
+                                    August 25, 2026
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     UPCOMING REMINDERS
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-bell"></i>
+
+                        Upcoming Reminders
+
+                    </h2>
+
+
+                    <div class="reminder-list">
+
+
+                        <!-- REMINDER 1 -->
+
+                        <div class="reminder-item">
+
+                            <i class="fas fa-file-signature"></i>
+
+                            <div>
+
+                                <h4>
+                                    Submit Grades
+                                </h4>
+
+                                <p>
+                                    Deadline: August 15, 2026
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMINDER 2 -->
+
+                        <div class="reminder-item">
+
+                            <i class="fas fa-file-circle-check"></i>
+
+                            <div>
+
+                                <h4>
+                                    Submit COR
+                                </h4>
+
+                                <p>
+                                    Deadline: August 15, 2026
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMINDER 3 -->
+
+                        <div class="reminder-item">
+
+                            <i class="fas fa-users"></i>
+
+                            <div>
+
+                                <h4>
+                                    Scholar Meeting
+                                </h4>
+
+                                <p>
+                                    August 20, 2026
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     IMPORTANT NOTICE
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-circle-info"></i>
+
+                        Important Notice
+
+                    </h2>
+
+
+                    <div class="notice-box">
+
+                        <i class="fas fa-triangle-exclamation"></i>
+
+                        <div>
+
+                            <h3>
+                                Reminder
+                            </h3>
+
+                            <p>
+
+                                Please submit your Grades and Certificate
+                                of Registration (COR) before the deadline.
+                                Late submissions may affect your scholarship
+                                eligibility.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     ACTIVITY HISTORY
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-history"></i>
+
+                        Activity History
+
+                    </h2>
+
+
+                    <table class="history-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Activity
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- HISTORY 1 -->
+
+                            <tr>
+
+                                <td>
+                                    August 10, 2026
+                                </td>
+
+                                <td>
+                                    Scholar Orientation
+                                </td>
+
+                                <td>
+
+                                    <span class="completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- HISTORY 2 -->
+
+                            <tr>
+
+                                <td>
+                                    August 15, 2026
+                                </td>
+
+                                <td>
+                                    Grades Submitted
+                                </td>
+
+                                <td>
+
+                                    <span class="completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- HISTORY 3 -->
+
+                            <tr>
+
+                                <td>
+                                    August 15, 2026
+                                </td>
+
+                                <td>
+                                    COR Submitted
+                                </td>
+
+                                <td>
+
+                                    <span class="completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- HISTORY 4 -->
+
+                            <tr>
+
+                                <td>
+                                    August 25, 2026
+                                </td>
+
+                                <td>
+                                    Allowance Processing
+                                </td>
+
+                                <td>
+
+                                    <span class="upcoming">
+                                        Upcoming
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     SCHOLARSHIP COORDINATOR
+                =================================== -->
+
+                <section class="card">
+
+                    <h2>
+
+                        <i class="fas fa-user-tie"></i>
+
+                        Scholarship Coordinator
+
+                    </h2>
+
+
+                    <div class="coordinator">
+
+
+                        <img
+                            src="images/admin.png"
+                            alt="Coordinator"
+                        >
+
+
+                        <div>
+
+                            <h3>
+                                Scholarship Office
+                            </h3>
+
+                            <p>
+                                City Government of Naga
+                            </p>
+
+                            <p>
+                                📧 scholarship@naga.gov.ph
+                            </p>
+
+                            <p>
+                                ☎ +63 912 345 6789
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ==================================
+                     ACTION BUTTONS
+                =================================== -->
+
+                <section class="action-buttons">
+
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                    >
+
+                        <i class="fas fa-download"></i>
+
+                        Export Schedule
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn-success"
+                    >
+
+                        <i class="fas fa-print"></i>
+
+                        Print Schedule
+
+                    </button>
+
+
+                </section>
+
+
+
+            </section>
+
+
+
+            <!-- ======================================
+                 FOOTER
+            ======================================= -->
+
+            <footer class="footer">
+
+                <p>
+
+                    © 2026 ScholarLink |
+                    Scholarship Management System
+
+                </p>
+
+            </footer>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==========================================
+         LOGOUT MODAL
+    =========================================== -->
+
+    <div
+        class="logout-modal"
+        id="logoutModal"
+    >
+
+        <div class="logout-modal-box">
+
+
+            <!-- LOGOUT ICON -->
+
+            <div class="logout-icon">
+
+                <i class="fas fa-right-from-bracket"></i>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h2 id="logoutTitle">
+                Confirm Logout
+            </h2>
+
+
+            <!-- MESSAGE -->
+
+            <p id="logoutMessage">
+
+                Are you sure you want to logout from your
+                Scholar account?
+
+            </p>
+
+
+            <!-- BUTTONS -->
+
+            <div class="logout-buttons">
+
+
+                <!-- CANCEL -->
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelLogout"
+                >
+
+                    <i class="fas fa-xmark"></i>
+
+                    Cancel
+
+                </button>
+
+
+                <!-- CONFIRM -->
+
+                <button
+                    type="button"
+                    class="confirm-logout-btn"
+                    id="confirmLogout"
+                >
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         MOBILE MENU
+    =========================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                const mobileMenuBtn =
+                    document.getElementById(
+                        "mobileMenuBtn"
+                    );
+
+
+                const sidebar =
+                    document.getElementById(
+                        "sidebar"
+                    );
+
+
+                const sidebarOverlay =
+                    document.getElementById(
+                        "sidebarOverlay"
+                    );
+
+
+                if (
+                    mobileMenuBtn &&
+                    sidebar
+                ) {
+
+                    mobileMenuBtn.addEventListener(
+                        "click",
+                        function () {
+
+                            sidebar.classList.toggle(
+                                "open"
+                            );
+
+
+                            if (sidebarOverlay) {
+
+                                sidebarOverlay.classList.toggle(
+                                    "show"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                if (sidebarOverlay) {
+
+                    sidebarOverlay.addEventListener(
+                        "click",
+                        function () {
+
+                            sidebar.classList.remove(
+                                "open"
+                            );
+
+                            sidebarOverlay.classList.remove(
+                                "show"
+                            );
+
+                        }
+                    );
+
+                }
+
+
+            }
+        );
+
+    </script>
+
+
+
+    <!-- ==========================================
+         SCHEDULE JAVASCRIPT
+
+         IMPORTANT:
+         type="module" is required because
+         schedule.js imports Firebase auth.
+    =========================================== -->
+
+    <script
+        type="module"
+        src="../js2/schedule.js"
+    ></script>
+
+
+</body>
+
+</html>

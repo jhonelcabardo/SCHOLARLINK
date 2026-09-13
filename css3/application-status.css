@@ -1,0 +1,1025 @@
+/* =========================================================
+   SCHOLARLINK - APPLICATION STATUS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --success: #16a34a;
+    --success-light: #f0fdf4;
+
+    --warning: #f59e0b;
+    --warning-light: #fffbeb;
+
+    --danger: #dc2626;
+    --danger-light: #fef2f2;
+
+    --text: #172554;
+    --text-light: #64748b;
+
+    --border: #e2e8f0;
+    --background: #f8fafc;
+    --white: #ffffff;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.status-page {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.status-header {
+    height: 76px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 3%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 21px;
+}
+
+.brand-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.brand-text h1 span {
+    color: #2563eb;
+}
+
+.brand-text p {
+    font-size: 9px;
+    color: #64748b;
+}
+
+
+/* HEADER RIGHT */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.notification {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #475569;
+    font-size: 19px;
+
+    cursor: pointer;
+}
+
+.applicant-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info strong {
+    font-size: 13px;
+}
+
+.profile-info span {
+    font-size: 10px;
+    color: #64748b;
+}
+
+.profile-arrow {
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.status-container {
+    width: min(1100px, 94%);
+    margin: auto;
+
+    padding: 42px 0 60px;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 6px 11px;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.page-heading h2 {
+    margin-top: 10px;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    color: var(--text-light);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   CURRENT STATUS
+========================================================= */
+
+.current-status-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f8faff
+    );
+
+    border: 1px solid #dbe4ff;
+
+    border-radius: 13px;
+
+    padding: 22px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.current-status-icon {
+    width: 58px;
+    height: 58px;
+
+    min-width: 58px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+}
+
+.current-status-content {
+    flex: 1;
+}
+
+.current-status-content > span {
+    font-size: 10px;
+    color: #64748b;
+}
+
+.current-status-content h3 {
+    font-size: 19px;
+    color: #2563eb;
+    margin: 2px 0;
+}
+
+.current-status-content p {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.application-reference {
+    display: flex;
+    gap: 40px;
+}
+
+.application-reference div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.application-reference span {
+    color: #64748b;
+    font-size: 9px;
+}
+
+.application-reference strong {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PROCESS CARD
+========================================================= */
+
+.process-card,
+.information-card,
+.reminder-card,
+.help-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+
+    margin-bottom: 18px;
+}
+
+.process-header {
+    padding: 20px 25px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.process-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.process-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 11px;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+.process-title h3 {
+    font-size: 18px;
+}
+
+.process-title p {
+    font-size: 10px;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   PROCESS LIST
+========================================================= */
+
+.process-list {
+    padding: 8px 25px 18px;
+}
+
+.process-item {
+    display: flex;
+
+    min-height: 108px;
+}
+
+.step-left {
+    width: 55px;
+    min-width: 55px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #e2e8f0;
+    color: #64748b;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 15px;
+
+    z-index: 2;
+
+    font-size: 15px;
+}
+
+.step-line {
+    width: 2px;
+    flex: 1;
+
+    background: #e2e8f0;
+}
+
+
+/* COMPLETED */
+
+.process-item.completed .step-circle {
+    background: var(--success);
+    color: white;
+}
+
+.process-item.completed .step-line {
+    background: #86efac;
+}
+
+
+/* ACTIVE */
+
+.process-item.active .step-circle {
+    background: var(--primary);
+    color: white;
+
+    box-shadow: 0 0 0 5px #dbeafe;
+}
+
+.process-item.active .step-line {
+    background: #bfdbfe;
+}
+
+
+/* CONTENT */
+
+.step-content {
+    flex: 1;
+
+    padding: 15px 0 15px 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.process-item:last-child .step-content {
+    border-bottom: none;
+}
+
+.step-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.step-top h4 {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.step-top p {
+    color: #64748b;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.step-date {
+    color: #64748b;
+    font-size: 9px;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status-badge {
+    height: fit-content;
+
+    padding: 5px 13px;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.completed-badge {
+    color: #15803d;
+    border: 1px solid #86efac;
+    background: #f0fdf4;
+}
+
+.pending-badge {
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+}
+
+.scheduled-badge {
+    color: #1d4ed8;
+    border: 1px solid #93c5fd;
+    background: #eff6ff;
+}
+
+.passed-badge {
+    color: #15803d;
+    border: 1px solid #86efac;
+    background: #f0fdf4;
+}
+
+.failed-badge {
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+    background: #fef2f2;
+}
+
+
+/* =========================================================
+   EXAM DETAILS
+========================================================= */
+
+.exam-details {
+    display: none;
+
+    margin-top: 15px;
+
+    border: 1px solid #bfdbfe;
+
+    background: #f8fbff;
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+.exam-scheduled-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 7px 11px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    margin-bottom: 15px;
+}
+
+.exam-information {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.exam-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding-right: 10px;
+
+    border-right: 1px solid #dbe4ff;
+}
+
+.exam-info-item:last-child {
+    border-right: none;
+}
+
+.exam-info-item > i {
+    color: #2563eb;
+    font-size: 17px;
+    margin-top: 2px;
+}
+
+.exam-info-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.exam-info-item span {
+    color: #64748b;
+    font-size: 9px;
+}
+
+.exam-info-item strong {
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.exam-link-btn {
+    border: none;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 9px 14px;
+
+    border-radius: 6px;
+
+    margin-top: 15px;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.exam-link-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.information-card {
+    padding: 20px 25px;
+}
+
+.information-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #2563eb;
+
+    margin-bottom: 18px;
+}
+
+.information-header i {
+    font-size: 18px;
+}
+
+.information-header h3 {
+    font-size: 16px;
+}
+
+.information-content {
+    display: flex;
+    gap: 25px;
+}
+
+.information-avatar {
+    width: 115px;
+    height: 130px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #94a3b8;
+
+    font-size: 42px;
+
+    overflow: hidden;
+}
+
+.information-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.information-grid {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px 30px;
+}
+
+.info-row {
+    display: flex;
+    gap: 15px;
+}
+
+.info-row span {
+    width: 125px;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    flex-shrink: 0;
+}
+
+.info-row strong {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   REMINDERS
+========================================================= */
+
+.reminder-card {
+    display: flex;
+    gap: 14px;
+
+    padding: 18px 22px;
+
+    background: #f8fbff;
+
+    border-color: #bfdbfe;
+}
+
+.reminder-icon {
+    color: #2563eb;
+    font-size: 20px;
+}
+
+.reminder-card h3 {
+    font-size: 14px;
+    color: #1d4ed8;
+
+    margin-bottom: 7px;
+}
+
+.reminder-card ul {
+    padding-left: 17px;
+}
+
+.reminder-card li {
+    font-size: 10px;
+    color: #475569;
+
+    margin-bottom: 4px;
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+.help-card {
+    padding: 18px 22px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.help-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+.help-content {
+    flex: 1;
+}
+
+.help-content h3 {
+    font-size: 13px;
+}
+
+.help-content p {
+    font-size: 9px;
+    color: #64748b;
+}
+
+.help-contact {
+    display: flex;
+    gap: 25px;
+}
+
+.help-contact span {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.help-contact i {
+    color: #2563eb;
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   THANK YOU
+========================================================= */
+
+.thank-you {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+}
+
+.thank-you > i {
+    color: #16a34a;
+    font-size: 22px;
+}
+
+.thank-you strong {
+    font-size: 11px;
+    color: #166534;
+}
+
+.thank-you p {
+    font-size: 9px;
+    color: #4d7c0f;
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .current-status-card {
+        flex-wrap: wrap;
+    }
+
+    .application-reference {
+        width: 100%;
+        padding-left: 76px;
+    }
+
+    .exam-information {
+        grid-template-columns: 1fr;
+    }
+
+    .exam-info-item {
+        border-right: none;
+        border-bottom: 1px solid #dbe4ff;
+        padding-bottom: 10px;
+    }
+
+    .exam-info-item:last-child {
+        border-bottom: none;
+    }
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .help-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .help-contact {
+        width: 100%;
+        padding-left: 60px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .status-header {
+        height: 65px;
+        padding: 0 4%;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .brand-text h1 {
+        font-size: 16px;
+    }
+
+    .brand-text p {
+        display: none;
+    }
+
+    .profile-info,
+    .profile-arrow {
+        display: none;
+    }
+
+    .status-container {
+        width: 92%;
+        padding-top: 28px;
+    }
+
+    .page-heading h2 {
+        font-size: 24px;
+    }
+
+    .current-status-card {
+        padding: 18px;
+    }
+
+    .application-reference {
+        padding-left: 0;
+        gap: 25px;
+    }
+
+    .process-header,
+    .information-card {
+        padding: 17px;
+    }
+
+    .process-list {
+        padding: 5px 15px 15px;
+    }
+
+    .step-left {
+        width: 45px;
+        min-width: 45px;
+    }
+
+    .step-circle {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .step-top {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .step-content {
+        padding-left: 10px;
+    }
+
+    .information-content {
+        flex-direction: column;
+    }
+
+    .information-avatar {
+        width: 100px;
+        height: 110px;
+    }
+
+    .information-grid {
+        gap: 10px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .info-row span {
+        width: auto;
+    }
+
+    .help-contact {
+        flex-direction: column;
+        gap: 8px;
+        padding-left: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .current-status-content h3 {
+        font-size: 16px;
+    }
+
+    .application-reference {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .process-title h3 {
+        font-size: 15px;
+    }
+
+    .step-top h4 {
+        font-size: 13px;
+    }
+
+    .step-top p {
+        font-size: 9px;
+    }
+
+    .status-badge {
+        width: fit-content;
+    }
+}

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Applicants</title>
+
+    <!-- Applicants CSS -->
+    <link rel="stylesheet"
+          href="../css/applicants.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="../images/scholarlink-logo.png"
+                 alt="ScholarLink">
+
+            <div>
+                <h2>ScholarLink</h2>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="admin-dashboard.html">
+                    <i class="fas fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="applicants.html">
+                    <i class="fas fa-users"></i>
+                    Applicants
+                </a>
+            </li>
+
+            <li>
+                <a href="applications.html">
+                    <i class="fas fa-file-lines"></i>
+                    Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="scholars.html">
+                    <i class="fas fa-user-graduate"></i>
+                    Scholars
+                </a>
+            </li>
+
+            <li>
+                <a href="requirements.html">
+                    <i class="fas fa-folder-open"></i>
+                    Requirements
+                </a>
+            </li>
+
+            <li>
+                <a href="announcements.html">
+                    <i class="fas fa-bullhorn"></i>
+                    Announcements
+                </a>
+            </li>
+
+            <li>
+                <a href="notifications.html">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </a>
+            </li>
+
+            <li>
+                <a href="monitoring-scholars.html">
+                    <i class="fas fa-chart-line"></i>
+                    Monitoring Scholars
+                </a>
+            </li>
+
+            <li>
+                <a href="qr-management.html">
+                    <i class="fas fa-qrcode"></i>
+                    QR Management
+                </a>
+            </li>
+
+            <li>
+                <a href="user-management.html">
+                    <i class="fas fa-users-cog"></i>
+                    User Management
+                </a>
+            </li>
+
+            <li>
+                <a href="document-verification.html">
+                    <i class="fas fa-file-circle-check"></i>
+                    Document Verification
+                </a>
+            </li>
+
+            <li>
+                <a href="grade-cor-verification.html">
+                    <i class="fas fa-award"></i>
+                    Grade & COR Verification
+                </a>
+            </li>
+
+            <li class="logout">
+                <a href="../index.html">
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <button id="menuToggle"
+                        type="button"
+                        aria-label="Toggle menu">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+                <h2>Applicants</h2>
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="notification-btn"
+                        type="button"
+                        id="notificationBtn">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="badge"
+                          id="notificationBadge">
+                        0
+                    </span>
+
+                </button>
+
+
+                <div class="profile-box">
+
+                    <img src="../images/admin.png"
+                         alt="Administrator">
+
+                    <div>
+
+                        <h4>Administrator</h4>
+
+                        <span>System Administrator</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SEARCH / FILTER
+        ================================================== -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="text"
+                    id="applicantSearch"
+                    placeholder="Search applicant..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    All Status
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="under_review">
+                    Under Review
+                </option>
+
+                <option value="qualified">
+                    Qualified for Exam
+                </option>
+
+                <option value="exam_scheduled">
+                    Exam Scheduled
+                </option>
+
+                <option value="exam_taken">
+                    Exam Taken
+                </option>
+
+                <option value="passed">
+                    Passed
+                </option>
+
+                <option value="failed">
+                    Failed
+                </option>
+
+                <option value="rejected">
+                    Rejected
+                </option>
+
+                <option value="revision">
+                    Revision
+                </option>
+
+            </select>
+
+
+            <button class="add-btn"
+                    type="button"
+                    id="filterBtn">
+
+                <i class="fas fa-filter"></i>
+
+                Filter
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             APPLICANTS TABLE
+        ================================================== -->
+        <section class="table-section">
+
+            <div class="section-header">
+
+                <h2>
+                    Scholarship Applicants
+                </h2>
+
+                <a href="applications.html">
+                    View Applications
+                </a>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Applicant ID
+                            </th>
+
+                            <th>
+                                Full Name
+                            </th>
+
+                            <th>
+                                School
+                            </th>
+
+                            <th>
+                                Scholarship
+                            </th>
+
+                            <th>
+                                Date Applied
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <!--
+                        IMPORTANT:
+                        applicants.js will populate
+                        this tbody from Firestore.
+                    -->
+
+                    <tbody id="applicantsTableBody">
+
+                        <tr>
+
+                            <td colspan="7"
+                                style="text-align:center; padding:40px;">
+
+                                <i class="fas fa-spinner fa-spin"></i>
+
+                                Loading applicants...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+        <section class="summary-cards">
+
+
+            <!-- Pending -->
+            <div class="summary-card">
+
+                <i class="fas fa-clock"></i>
+
+                <h3>
+                    Pending Review
+                </h3>
+
+                <h2 id="pendingApplicants">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- Approved -->
+            <div class="summary-card">
+
+                <i class="fas fa-circle-check"></i>
+
+                <h3>
+                    Approved
+                </h3>
+
+                <h2 id="approvedApplicants">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- Rejected -->
+            <div class="summary-card">
+
+                <i class="fas fa-circle-xmark"></i>
+
+                <h3>
+                    Rejected
+                </h3>
+
+                <h2 id="rejectedApplicants">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- Revision -->
+            <div class="summary-card">
+
+                <i class="fas fa-rotate-left"></i>
+
+                <h3>
+                    Revision
+                </h3>
+
+                <h2 id="revisionApplicants">
+                    0
+                </h2>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT ACTIVITY + STATISTICS
+        ================================================== -->
+        <section class="dashboard-grid">
+
+
+            <!-- =================================================
+                 RECENT APPLICANT ACTIVITY
+            ================================================== -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+
+                        <i class="fas fa-clock-rotate-left"></i>
+
+                        Recent Applicant Activity
+
+                    </h2>
+
+                </div>
+
+
+                <div class="activity-list"
+                     id="applicantActivityList">
+
+                    <div class="activity-item">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        <div>
+
+                            <h4>
+                                Loading recent activity...
+                            </h4>
+
+                            <small>
+                                Please wait
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 APPLICANT STATISTICS
+            ================================================== -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+
+                        <i class="fas fa-chart-pie"></i>
+
+                        Applicant Statistics
+
+                    </h2>
+
+                </div>
+
+
+                <div class="stats-list">
+
+
+                    <!-- Total -->
+                    <div class="stat-item">
+
+                        <span>
+                            Total Applicants
+                        </span>
+
+                        <strong id="statsTotalApplicants">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Pending -->
+                    <div class="stat-item">
+
+                        <span>
+                            Pending Review
+                        </span>
+
+                        <strong id="statsPending">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Approved -->
+                    <div class="stat-item">
+
+                        <span>
+                            Approved
+                        </span>
+
+                        <strong id="statsApproved">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Rejected -->
+                    <div class="stat-item">
+
+                        <span>
+                            Rejected
+                        </span>
+
+                        <strong id="statsRejected">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Revision -->
+                    <div class="stat-item">
+
+                        <span>
+                            Need Revision
+                        </span>
+
+                        <strong id="statsRevision">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADMIN GUIDE
+        ================================================== -->
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <h2>
+
+                    <i class="fas fa-circle-info"></i>
+
+                    Applicant Review Guide
+
+                </h2>
+
+            </div>
+
+
+            <ul class="guide-list">
+
+                <li>
+                    ✔ Review the applicant's submitted application
+                    before making a decision.
+                </li>
+
+                <li>
+                    ✔ Verify the applicant information and
+                    scholarship requirements.
+                </li>
+
+                <li>
+                    ✔ Use <strong>Under Review</strong> while
+                    checking the application.
+                </li>
+
+                <li>
+                    ✔ Use <strong>Request Revision</strong> if
+                    information or requirements need correction.
+                </li>
+
+                <li>
+                    ✔ Use <strong>Qualified for Exam</strong> when
+                    the applicant passes the initial screening.
+                </li>
+
+                <li>
+                    ✔ Schedule the scholarship examination after
+                    the applicant is qualified.
+                </li>
+
+                <li>
+                    ✔ Applicants who pass the examination can
+                    proceed to Scholar Confirmation.
+                </li>
+
+                <li>
+                    ✔ Once the applicant is confirmed as a scholar,
+                    the system creates the scholar record automatically.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="dashboard-footer">
+
+            <p>
+
+                © 2026 ScholarLink |
+                Scholarship Management System |
+                Applicant Management
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE / APPLICANTS JAVASCRIPT
+     
+     IMPORTANT:
+     type="module" is required because applicants.js
+     imports Firebase modules.
+====================================================== -->
+
+<script type="module"
+        src="../js/applicants.js"></script>
+
+
+</body>
+
+</html>

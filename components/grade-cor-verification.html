@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ScholarLink | Grade & COR Verification</title>
+
+<link rel="stylesheet"
+href="../css/grade-cor-verification.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- ===========================
+SIDEBAR
+=========================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="../images/scholarlink-logo.png">
+
+<div>
+
+<h2>ScholarLink</h2>
+
+<span>Scholarship Management System</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="admin-dashboard.html">
+
+<i class="fas fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="applicants.html">
+
+<i class="fas fa-users"></i>
+
+Applicants
+
+</a>
+
+</li>
+
+
+<li>
+    <a href="applications.html">
+        <i class="fas fa-file-lines"></i>
+        Applications
+    </a>
+</li>
+
+
+<li>
+
+<a href="scholars.html">
+
+<i class="fas fa-user-graduate"></i>
+
+Scholars
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="requirements.html">
+
+<i class="fas fa-folder-open"></i>
+
+Requirements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="announcements.html">
+
+<i class="fas fa-bullhorn"></i>
+
+Announcements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="notifications.html">
+
+<i class="fas fa-paper-plane"></i>
+
+Notification Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="monitoring-scholars.html">
+
+<i class="fas fa-chart-line"></i>
+
+Monitoring Scholars
+
+</a>
+
+</li>
+
+<li>
+
+<a href="qr-management.html">
+
+<i class="fas fa-qrcode"></i>
+
+QR Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="user-management.html">
+
+<i class="fas fa-users-cog"></i>
+
+User Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="document-verification.html">
+
+<i class="fas fa-file-circle-check"></i>
+
+Document Verification
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="grade-cor-verification.html">
+
+<i class="fas fa-award"></i>
+
+Grade & COR Verification
+
+</a>
+
+</li>
+
+
+
+<li class="logout">
+
+<a href="../index.html">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- ===========================
+MAIN CONTENT
+=========================== -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="top-left">
+
+<button id="menuToggle">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+<h2>
+
+Grade & COR Verification
+
+</h2>
+
+</div>
+
+<div class="top-right">
+
+<button class="notification-btn">
+
+<i class="fas fa-bell"></i>
+
+<span class="badge">
+
+8
+
+</span>
+
+</button>
+
+<div class="profile-box">
+
+<img src="../images/admin.png">
+
+<div>
+
+<h4>
+
+Administrator
+
+</h4>
+
+<span>
+
+Scholarship Office
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ===========================
+HERO
+=========================== -->
+
+
+
+<!-- ===========================
+SUMMARY CARDS
+=========================== -->
+
+<section class="summary-cards">
+
+<div class="summary-card">
+
+<i class="fas fa-file-signature"></i>
+
+<h3>
+
+Pending Grade Verification
+
+</h3>
+
+<h2>
+
+48
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-file-circle-check"></i>
+
+<h3>
+
+Pending COR Verification
+
+</h3>
+
+<h2>
+
+35
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-circle-check"></i>
+
+<h3>
+
+Verified Scholars
+
+</h3>
+
+<h2 class="green">
+
+182
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-clock"></i>
+
+<h3>
+
+For Review
+
+</h3>
+
+<h2 class="orange">
+
+17
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-check"></i>
+
+<h3>
+
+Renewed Scholars
+
+</h3>
+
+<h2 class="blue">
+
+173
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-slash"></i>
+
+<h3>
+
+On Hold
+
+</h3>
+
+<h2 class="red">
+
+9
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-school"></i>
+
+<h3>
+
+Schools Submitted
+
+</h3>
+
+<h2>
+
+12
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-calendar-days"></i>
+
+<h3>
+
+Current Semester
+
+</h3>
+
+<h2>
+
+1st Sem AY 2026–2027
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- ===========================
+SEARCH & FILTER
+=========================== -->
+
+<section class="toolbar">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+placeholder="Search scholar by name, ID, school or course...">
+
+</div>
+
+<select>
+
+<option>All Scholars</option>
+
+<option>Pending</option>
+
+<option>Verified</option>
+
+<option>Renewed</option>
+
+<option>On Hold</option>
+
+<option>For Review</option>
+
+</select>
+
+<select>
+
+<option>All Schools</option>
+
+<option>Cebu Technological University</option>
+
+<option>University of Cebu</option>
+
+<option>Cebu Normal University</option>
+
+<option>University of San Carlos</option>
+
+</select>
+
+<select>
+
+<option>All Courses</option>
+
+<option>BS Information Technology</option>
+
+<option>BS Computer Science</option>
+
+<option>BS Education</option>
+
+<option>BS Accountancy</option>
+
+</select>
+
+<button class="btn-export">
+
+<i class="fas fa-download"></i>
+
+Export Report
+
+</button>
+
+</section>
+
+<!-- Continue in Part 2 -->
+
+<section class="verification-table">
+
+    <div class="table-card">
+
+<div class="table-header">
+
+<div>
+
+<h2>
+
+<i class="fas fa-user-graduate"></i>
+
+Scholar Renewal Verification
+
+</h2>
+
+<p>
+
+Review scholars' Grades and Certificate of Registration (COR) before approving their scholarship renewal.
+
+</p>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Scholar ID</th>
+
+<th>Scholar</th>
+
+<th>School</th>
+
+<th>Course</th>
+
+<th>GPA</th>
+
+<th>COR</th>
+
+<th>Grades</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<!-- SCHOLAR 1 -->
+
+<tr>
+
+<td>SCH-001</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student1.jpg">
+
+<div>
+
+<h4>Juan Dela Cruz</h4>
+
+<span>3rd Year</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>Cebu Technological University</td>
+
+<td>BS Information Technology</td>
+
+<td>
+
+<span class="gpa excellent">
+
+1.25
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-renewed">
+
+Ready for Renewal
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-grades">
+
+<i class="fas fa-file-lines"></i>
+
+</button>
+
+<button class="btn-cor">
+
+<i class="fas fa-file-circle-check"></i>
+
+</button>
+
+<button class="btn-renew">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- SCHOLAR 2 -->
+
+<tr>
+
+<td>SCH-002</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student2.jpg">
+
+<div>
+
+<h4>Maria Santos</h4>
+
+<span>2nd Year</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>University of Cebu</td>
+
+<td>BS Computer Science</td>
+
+<td>
+
+<span class="gpa good">
+
+1.75
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-review">
+
+For Review
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-grades">
+
+<i class="fas fa-file-lines"></i>
+
+</button>
+
+<button class="btn-cor">
+
+<i class="fas fa-file-circle-check"></i>
+
+</button>
+
+<button class="btn-renew">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- SCHOLAR 3 -->
+
+<tr>
+
+<td>SCH-003</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student3.jpg">
+
+<div>
+
+<h4>Carlo Mendoza</h4>
+
+<span>4th Year</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>Cebu Normal University</td>
+
+<td>BS Education</td>
+
+<td>
+
+<span class="gpa warning">
+
+2.75
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-hold">
+
+On Hold
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-grades">
+
+<i class="fas fa-file-lines"></i>
+
+</button>
+
+<button class="btn-cor">
+
+<i class="fas fa-file-circle-check"></i>
+
+</button>
+
+<button class="btn-hold">
+
+<i class="fas fa-ban"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- SCHOLAR 4 -->
+
+<tr>
+
+<td>SCH-004</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student4.jpg">
+
+<div>
+
+<h4>Sophia Garcia</h4>
+
+<span>1st Year</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>University of San Carlos</td>
+
+<td>BS Accountancy</td>
+
+<td>
+
+<span class="gpa excellent">
+
+1.40
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending Verification
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-grades">
+
+<i class="fas fa-file-lines"></i>
+
+</button>
+
+<button class="btn-cor">
+
+<i class="fas fa-file-circle-check"></i>
+
+</button>
+
+<button class="btn-renew">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- SCHOLAR 5 -->
+
+<tr>
+
+<td>SCH-005</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student5.jpg">
+
+<div>
+
+<h4>Angela Reyes</h4>
+
+<span>3rd Year</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>Cebu Technological University</td>
+
+<td>BS Information Technology</td>
+
+<td>
+
+<span class="gpa good">
+
+1.60
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-renewed">
+
+Renewed
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-grades">
+
+<i class="fas fa-file-lines"></i>
+
+</button>
+
+<button class="btn-cor">
+
+<i class="fas fa-file-circle-check"></i>
+
+</button>
+
+<button class="btn-renew">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Continue in Part 3 -->
+
+<section class="verification-details">
+
+    <div class="details-grid">
+
+<!-- =====================================
+SCHOLAR PROFILE
+===================================== -->
+
+<div class="profile-card">
+
+<img src="../images/student1.jpg" class="profile-image">
+
+<h2>Juan Dela Cruz</h2>
+
+<p class="scholar-id">
+
+Scholar ID : SCH-001
+
+</p>
+
+<div class="profile-info">
+
+<p><strong>School :</strong> Cebu Technological University</p>
+
+<p><strong>Course :</strong> BS Information Technology</p>
+
+<p><strong>Year Level :</strong> 3rd Year</p>
+
+<p><strong>Semester :</strong> 1st Semester AY 2026-2027</p>
+
+<p><strong>Contact :</strong> 09123456789</p>
+
+<p><strong>Email :</strong> juan@gmail.com</p>
+
+</div>
+
+</div>
+
+<!-- =====================================
+ACADEMIC PERFORMANCE
+===================================== -->
+
+<div class="academic-card">
+
+<h2>
+
+<i class="fas fa-chart-line"></i>
+
+Academic Performance
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Previous GPA</th>
+
+<td>1.35</td>
+
+</tr>
+
+<tr>
+
+<th>Current GPA</th>
+
+<td>1.25</td>
+
+</tr>
+
+<tr>
+
+<th>Units Enrolled</th>
+
+<td>24 Units</td>
+
+</tr>
+
+<tr>
+
+<th>Semester</th>
+
+<td>1st Semester</td>
+
+</tr>
+
+<tr>
+
+<th>Academic Year</th>
+
+<td>2026 - 2027</td>
+
+</tr>
+
+<tr>
+
+<th>Scholarship Status</th>
+
+<td>
+
+<span class="status-renewed">
+
+Qualified for Renewal
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- =====================================
+GRADES PREVIEW
+===================================== -->
+
+<div class="grades-card">
+
+<h2>
+
+<i class="fas fa-file-lines"></i>
+
+Grades Preview
+
+</h2>
+
+<div class="document-preview">
+
+<img src="../images/sample-grades.jpg">
+
+</div>
+
+<button class="btn-view-grades">
+
+<i class="fas fa-eye"></i>
+
+Open Grades
+
+</button>
+
+</div>
+
+<!-- =====================================
+COR PREVIEW
+===================================== -->
+
+<div class="cor-card">
+
+<h2>
+
+<i class="fas fa-file-circle-check"></i>
+
+Certificate of Registration
+
+</h2>
+
+<div class="document-preview">
+
+<img src="../images/sample-cor.jpg">
+
+</div>
+
+<button class="btn-view-cor">
+
+<i class="fas fa-eye"></i>
+
+Open COR
+
+</button>
+
+</div>
+
+<!-- =====================================
+VERIFICATION PANEL
+===================================== -->
+
+<div class="verification-card">
+
+<h2>
+
+<i class="fas fa-check-circle"></i>
+
+Verification Panel
+
+</h2>
+
+<label>Verification Result</label>
+
+<select>
+
+<option>Pending</option>
+
+<option>Verified</option>
+
+<option>Renew Scholarship</option>
+
+<option>On Hold</option>
+
+</select>
+
+<label>Administrator Remarks</label>
+
+<textarea
+rows="6"
+placeholder="Enter remarks..."></textarea>
+
+<div class="verification-buttons">
+
+<button class="btn-verify">
+
+<i class="fas fa-check"></i>
+
+Verify Grades
+
+</button>
+
+<button class="btn-cor-verify">
+
+<i class="fas fa-file-circle-check"></i>
+
+Verify COR
+
+</button>
+
+<button class="btn-renew">
+
+<i class="fas fa-award"></i>
+
+Approve Renewal
+
+</button>
+
+<button class="btn-hold">
+
+<i class="fas fa-ban"></i>
+
+Put On Hold
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =====================================
+RENEWAL HISTORY
+===================================== -->
+
+<div class="history-card">
+
+<h2>
+
+<i class="fas fa-clock-rotate-left"></i>
+
+Renewal History
+
+</h2>
+
+<ul>
+
+<li>
+
+<strong>1st Semester 2025-2026</strong>
+
+<br>
+
+<span>Renewed Successfully</span>
+
+</li>
+
+<li>
+
+<strong>2nd Semester 2025-2026</strong>
+
+<br>
+
+<span>Renewed Successfully</span>
+
+</li>
+
+<li>
+
+<strong>1st Semester 2026-2027</strong>
+
+<br>
+
+<span>Pending Verification</span>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- =====================================
+NOTIFICATION PREVIEW
+===================================== -->
+
+<div class="notification-card">
+
+<h2>
+
+<i class="fas fa-bell"></i>
+
+Notification Preview
+
+</h2>
+
+<textarea rows="8" readonly>
+
+Congratulations!
+
+Your Grades and Certificate of Registration have been verified.
+
+Your scholarship has been successfully renewed for this semester.
+
+ScholarLink Scholarship Office
+
+</textarea>
+
+<button class="btn-send">
+
+<i class="fas fa-paper-plane"></i>
+
+Send Notification
+
+</button>
+
+</div>
+
+<!-- =====================================
+QUICK ACTIONS
+===================================== -->
+
+<div class="action-card">
+
+<h2>
+
+<i class="fas fa-bolt"></i>
+
+Quick Actions
+
+</h2>
+
+<div class="action-buttons">
+
+<button class="btn-primary">
+
+<i class="fas fa-eye"></i>
+
+View Scholar Profile
+
+</button>
+
+<button class="btn-success">
+
+<i class="fas fa-check-circle"></i>
+
+Renew Scholarship
+
+</button>
+
+<button class="btn-warning">
+
+<i class="fas fa-bell"></i>
+
+Notify Scholar
+
+</button>
+
+<button class="btn-danger">
+
+<i class="fas fa-user-slash"></i>
+
+Put On Hold
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================
+FOOTER
+===================================== -->
+
+<footer class="dashboard-footer">
+
+<p>
+
+© 2026 ScholarLink | Scholarship Management System | Grade & COR Verification
+
+</p>
+
+</footer>
+
+</main>
+
+</div>
+
+<script src="../js/grade-cor-verification.js"></script>
+
+</body>
+
+</html>

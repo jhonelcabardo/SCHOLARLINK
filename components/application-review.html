@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Application Review</title>
+
+
+    <!-- GOOGLE FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- ADMIN DASHBOARD CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/admin-dashboard.css">
+
+
+    <!-- APPLICATION REVIEW CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/application-review.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img
+                src="../images/scholarlink-logo.png"
+                alt="ScholarLink">
+
+            <div>
+
+                <h2>ScholarLink</h2>
+
+                <span>Admin Portal</span>
+
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+
+            <li>
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fas fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="applicants.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Applicants
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="scholars.html">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    Scholars
+
+                </a>
+
+            </li>
+
+
+            <li class="active">
+
+                <a href="applications.html">
+
+                    <i class="fas fa-file-lines"></i>
+
+                    Applications
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="requirements.html">
+
+                    <i class="fas fa-folder-open"></i>
+
+                    Requirements
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Announcements
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    Notifications
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="monitoring-scholars.html">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    Monitoring Scholars
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="qr-management.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    QR Management
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="user-management.html">
+
+                    <i class="fas fa-users-cog"></i>
+
+                    User Management
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="document-verification.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    Document Verification
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="grade-cor-verification.html">
+
+                    <i class="fas fa-award"></i>
+
+                    Grade & COR Verification
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="backup.html">
+
+                    <i class="fas fa-database"></i>
+
+                    Backup & Recovery
+
+                </a>
+
+            </li>
+
+
+            <li class="logout">
+
+                <a
+                    href="#"
+                    id="logoutLink">
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <button id="menuToggle">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+
+                <h2>
+                    Application Review
+                </h2>
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button
+                    class="notification-btn"
+                    id="notificationBtn">
+
+                    <i class="fas fa-bell"></i>
+
+                </button>
+
+
+                <div class="profile-box">
+
+                    <img
+                        src="../images/admin.png"
+                        alt="Administrator">
+
+                    <div>
+
+                        <h4>Administrator</h4>
+
+                        <span>System Administrator</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             REVIEW CONTENT
+        ====================================================== -->
+
+        <section class="review-page">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="review-header">
+
+                <div>
+
+                    <a
+                        href="applications.html"
+                        class="back-link">
+
+                        <i class="fas fa-arrow-left"></i>
+
+                        Back to Applications
+
+                    </a>
+
+
+                    <h1>
+                        Application Review
+                    </h1>
+
+
+                    <p>
+                        Review the applicant's submitted information and requirements.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="applicationStatus"
+                    class="review-status pending">
+
+                    Pending Review
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loadingState"
+                class="loading-card">
+
+                <i class="fas fa-spinner fa-spin"></i>
+
+                <p>
+                    Loading application...
+                </p>
+
+            </div>
+
+
+
+            <!-- ERROR -->
+
+            <div
+                id="errorState"
+                class="error-card"
+                style="display:none;">
+
+                <i class="fas fa-triangle-exclamation"></i>
+
+                <h3>
+                    Unable to load application
+                </h3>
+
+                <p id="errorMessage"></p>
+
+                <a
+                    href="applications.html"
+                    class="back-btn">
+
+                    Back to Applications
+
+                </a>
+
+            </div>
+
+
+
+            <!-- APPLICATION CONTENT -->
+
+            <div
+                id="applicationContent"
+                style="display:none;">
+
+
+                <!-- =================================================
+                     APPLICATION SUMMARY
+                ================================================== -->
+
+                <section class="review-card summary-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-file-lines"></i>
+
+                        <div>
+
+                            <h2>
+                                Application Information
+                            </h2>
+
+                            <p>
+                                Application details
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-grid">
+
+                        <div>
+
+                            <span>Application ID</span>
+
+                            <strong id="applicationId">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Date Submitted</span>
+
+                            <strong id="dateSubmitted">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Status</span>
+
+                            <strong id="summaryStatus">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>Email</span>
+
+                            <strong id="applicantEmail">
+                                ---
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     APPLICANT INFORMATION
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-user"></i>
+
+                        <div>
+
+                            <h2>
+                                Applicant Information
+                            </h2>
+
+                            <p>
+                                Personal information submitted by the applicant
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="applicant-profile">
+
+
+                        <div class="photo-container">
+
+                            <img
+                                id="applicantPhoto"
+                                src=""
+                                alt="Applicant Photo"
+                                style="display:none;">
+
+                            <div
+                                id="photoPlaceholder"
+                                class="photo-placeholder">
+
+                                <i class="fas fa-user"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="information-grid">
+
+                            <div class="info-item">
+
+                                <span>Full Name</span>
+
+                                <strong id="fullName">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Date of Birth</span>
+
+                                <strong id="dateOfBirth">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Age</span>
+
+                                <strong id="age">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Sex</span>
+
+                                <strong id="sex">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Civil Status</span>
+
+                                <strong id="civilStatus">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Citizenship</span>
+
+                                <strong id="citizenship">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Birthplace</span>
+
+                                <strong id="birthplace">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span>Contact Number</span>
+
+                                <strong id="contactNumber">
+                                    ---
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-item full">
+
+                                <span>Complete Address</span>
+
+                                <strong id="completeAddress">
+                                    ---
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     EDUCATIONAL INFORMATION
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-graduation-cap"></i>
+
+                        <div>
+
+                            <h2>
+                                Educational Information
+                            </h2>
+
+                            <p>
+                                Academic information submitted by the applicant
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-grid">
+
+                        <div class="info-item">
+
+                            <span>School Name</span>
+
+                            <strong id="schoolName">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Student ID / LRN</span>
+
+                            <strong id="studentId">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>General Average / GPA</span>
+
+                            <strong id="generalAverage">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Expected Graduation Year</span>
+
+                            <strong id="graduationYear">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item full">
+
+                            <span>School Address</span>
+
+                            <strong id="schoolAddress">
+                                ---
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     FAMILY INFORMATION
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-people-group"></i>
+
+                        <div>
+
+                            <h2>
+                                Family Information
+                            </h2>
+
+                            <p>
+                                Family and guardian information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="family-grid">
+
+
+                        <!-- FATHER -->
+
+                        <div class="family-box">
+
+                            <h3>
+
+                                <i class="fas fa-user"></i>
+
+                                Father
+
+                            </h3>
+
+
+                            <p>
+                                <span>Name</span>
+                                <strong id="fatherName">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Occupation</span>
+                                <strong id="fatherOccupation">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Employer</span>
+                                <strong id="fatherEmployer">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Monthly Income</span>
+                                <strong id="fatherIncome">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Contact Number</span>
+                                <strong id="fatherContact">---</strong>
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- MOTHER -->
+
+                        <div class="family-box">
+
+                            <h3>
+
+                                <i class="fas fa-user"></i>
+
+                                Mother
+
+                            </h3>
+
+
+                            <p>
+                                <span>Name</span>
+                                <strong id="motherName">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Occupation</span>
+                                <strong id="motherOccupation">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Employer</span>
+                                <strong id="motherEmployer">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Monthly Income</span>
+                                <strong id="motherIncome">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Contact Number</span>
+                                <strong id="motherContact">---</strong>
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- GUARDIAN -->
+
+                        <div class="family-box">
+
+                            <h3>
+
+                                <i class="fas fa-user-shield"></i>
+
+                                Guardian
+
+                            </h3>
+
+
+                            <p>
+                                <span>Name</span>
+                                <strong id="guardianName">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Relationship</span>
+                                <strong id="guardianRelationship">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Occupation</span>
+                                <strong id="guardianOccupation">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Monthly Income</span>
+                                <strong id="guardianIncome">---</strong>
+                            </p>
+
+
+                            <p>
+                                <span>Contact Number</span>
+                                <strong id="guardianContact">---</strong>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     HOUSEHOLD INFORMATION
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-house"></i>
+
+                        <div>
+
+                            <h2>
+                                Household Information
+                            </h2>
+
+                            <p>
+                                Household and financial information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="information-grid">
+
+                        <div class="info-item">
+
+                            <span>Family Members</span>
+
+                            <strong id="familyMembers">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Siblings</span>
+
+                            <strong id="siblings">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Siblings Studying</span>
+
+                            <strong id="siblingsStudying">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Total Monthly Household Income</span>
+
+                            <strong id="householdIncome">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Housing Status</span>
+
+                            <strong id="housingStatus">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <span>Source of Family Income</span>
+
+                            <strong id="incomeSource">
+                                ---
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     REASON FOR APPLYING
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-comment-dots"></i>
+
+                        <div>
+
+                            <h2>
+                                Reason for Applying
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="reasonForApplying"
+                        class="reason-box">
+
+                        No reason provided.
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     REQUIREMENTS
+                ================================================== -->
+
+                <section class="review-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-folder-open"></i>
+
+                        <div>
+
+                            <h2>
+                                Submitted Requirements
+                            </h2>
+
+                            <p>
+                                Review the documents uploaded by the applicant
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="requirementsList"
+                        class="requirements-list">
+
+                        <div class="requirements-loading">
+
+                            <i class="fas fa-spinner fa-spin"></i>
+
+                            Loading requirements...
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     ADMIN ACTIONS
+                ================================================== -->
+
+                <section class="review-card action-card">
+
+                    <div class="card-title">
+
+                        <i class="fas fa-gavel"></i>
+
+                        <div>
+
+                            <h2>
+                                Application Decision
+                            </h2>
+
+                            <p>
+                                Follow the applicant's scholarship admission process.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INITIAL ACTIONS -->
+
+                    <div
+                        id="initialActions"
+                        class="decision-buttons">
+
+                        <button
+                            type="button"
+                            id="qualifyBtn"
+                            class="decision-btn qualify">
+
+                            <i class="fas fa-circle-check"></i>
+
+                            Qualify for Exam
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="correctionBtn"
+                            class="decision-btn correction">
+
+                            <i class="fas fa-pen-to-square"></i>
+
+                            Needs Correction
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="rejectBtn"
+                            class="decision-btn reject">
+
+                            <i class="fas fa-circle-xmark"></i>
+
+                            Reject Application
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- EXAM SCHEDULE -->
+
+                    <div
+                        id="examScheduleSection"
+                        class="exam-schedule-section"
+                        style="display:none;">
+
+                        <div class="schedule-header">
+
+                            <div>
+
+                                <h3>
+
+                                    <i class="fas fa-calendar-days"></i>
+
+                                    Schedule Examination
+
+                                </h3>
+
+                                <p>
+                                    Set the examination date, time, and venue.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="schedule-form">
+
+
+                            <div class="schedule-field">
+
+                                <label for="examDate">
+                                    Exam Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="examDate">
+
+                            </div>
+
+
+                            <div class="schedule-field">
+
+                                <label for="examTime">
+                                    Exam Time
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="examTime">
+
+                            </div>
+
+
+                            <div class="schedule-field full">
+
+                                <label for="examVenue">
+                                    Exam Venue
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="examVenue"
+                                    placeholder="Enter examination venue">
+
+                            </div>
+
+
+                            <div class="schedule-field full">
+
+                                <label for="examLink">
+
+                                    Exam Link
+                                    <span>(Optional)</span>
+
+                                </label>
+
+                                <input
+                                    type="url"
+                                    id="examLink"
+                                    placeholder="https://...">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="schedule-actions">
+
+                            <button
+                                type="button"
+                                id="scheduleExamBtn"
+                                class="decision-btn schedule">
+
+                                <i class="fas fa-calendar-check"></i>
+
+                                Schedule Exam
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="cancelScheduleBtn"
+                                class="decision-btn cancel">
+
+                                <i class="fas fa-xmark"></i>
+
+                                Cancel
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EXAM ACTIONS -->
+
+                    <div
+                        id="examActions"
+                        class="exam-actions"
+                        style="display:none;">
+
+                        <div class="exam-action-info">
+
+                            <i class="fas fa-clipboard-check"></i>
+
+                            <div>
+
+                                <h3>
+                                    Examination
+                                </h3>
+
+                                <p>
+                                    Record the examination status and result.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="exam-result-buttons">
+
+                            <button
+                                type="button"
+                                id="examTakenBtn"
+                                class="decision-btn exam-taken">
+
+                                <i class="fas fa-pen-to-square"></i>
+
+                                Mark Exam Taken
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="passedBtn"
+                                class="decision-btn passed">
+
+                                <i class="fas fa-circle-check"></i>
+
+                                Passed
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="failedBtn"
+                                class="decision-btn failed">
+
+                                <i class="fas fa-circle-xmark"></i>
+
+                                Failed
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CONFIRM SCHOLAR -->
+
+                    <div
+                        id="confirmScholarSection"
+                        class="confirm-scholar-section"
+                        style="display:none;">
+
+                        <div class="confirmation-box">
+
+                            <div class="confirmation-icon">
+
+                                <i class="fas fa-user-graduate"></i>
+
+                            </div>
+
+
+                            <div class="confirmation-content">
+
+                                <h3>
+                                    Applicant Passed the Examination
+                                </h3>
+
+                                <p>
+                                    Confirm this applicant as an official scholar
+                                    to activate the scholar account.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="confirmScholarBtn"
+                            class="decision-btn confirm-scholar">
+
+                            <i class="fas fa-user-check"></i>
+
+                            Confirm Scholar
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <p
+                        id="decisionMessage"
+                        class="decision-message">
+                    </p>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script
+    type="module"
+    src="../js/application-review.js">
+</script>
+
+</body>
+
+</html>

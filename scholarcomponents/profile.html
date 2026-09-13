@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | My Profile</title>
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+    <!-- Scholar Profile CSS -->
+    <link rel="stylesheet"
+          href="../css2/profile.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         LOADING
+    =========================================== -->
+
+    <div class="loading-overlay show" id="loadingOverlay">
+
+        <div class="loading-box">
+
+            <div class="spinner"></div>
+
+            <p>Loading scholar profile...</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         SAVE FEEDBACK
+    =========================================== -->
+
+    <div class="save-feedback"
+         id="saveFeedback">
+    </div>
+
+
+    <!-- ==========================================
+         MAIN CONTAINER
+    =========================================== -->
+
+    <div class="container">
+
+
+        <!-- ======================================
+             SIDEBAR
+        ======================================= -->
+
+        <aside class="sidebar">
+
+            <div>
+
+                <!-- LOGO -->
+                <div class="logo">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                    <div>
+
+                        <h2>SCHOLARLINK</h2>
+
+                        <p>Scholar Dashboard</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MENU -->
+                <ul class="menu">
+
+                    <li>
+
+                        <a href="Home.html">
+
+                            <i class="fas fa-house"></i>
+
+                            <span>Home</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="active">
+
+                        <a href="profile.html">
+
+                            <i class="fas fa-user"></i>
+
+                            <span>My Profile</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="scholarship-status.html">
+
+                            <i class="fas fa-award"></i>
+
+                            <span>Scholarship Status</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="grades.html">
+
+                            <i class="fas fa-file-signature"></i>
+
+                            <span>Submit Grades</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="cor.html">
+
+                            <i class="fas fa-file-circle-check"></i>
+
+                            <span>Submit COR</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="schedule.html">
+
+                            <i class="fas fa-calendar-days"></i>
+
+                            <span>Schedule</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="announcements.html">
+
+                            <i class="fas fa-bullhorn"></i>
+
+                            <span>Announcements</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="notifications.html">
+
+                            <i class="fas fa-bell"></i>
+
+                            <span>Notifications</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="qr-code.html">
+
+                            <i class="fas fa-qrcode"></i>
+
+                            <span>My QR Code</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#"
+                           id="logoutLink">
+
+                            <i class="fas fa-right-from-bracket"></i>
+
+                            <span>Logout</span>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ======================================
+             MAIN CONTENT
+        ======================================= -->
+
+        <main class="main-content">
+
+
+            <!-- ==================================
+                 TOPBAR
+            =================================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>My Profile</h1>
+
+                    <p>
+                        View and manage your scholar information.
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button class="notification-btn"
+                            type="button"
+                            onclick="window.location.href='notifications.html'">
+
+                        <i class="fas fa-bell"></i>
+
+                    </button>
+
+
+                    <div class="profile-top">
+
+                        <img src="../images/user.png"
+                             id="profileAvatar"
+                             alt="Scholar Profile">
+
+                        <div>
+
+                            <h4 id="displayName">
+                                Loading...
+                            </h4>
+
+                            <small id="displayScholarId">
+                                Loading...
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ==================================
+                 PROFILE HEADER
+            =================================== -->
+
+            <section class="profile-header">
+
+
+                <!-- PHOTO -->
+
+                <div class="profile-photo-container">
+
+                    <img src="../images/user.png"
+                         id="profileAvatarLarge"
+                         class="profile-photo"
+                         alt="Scholar Profile">
+
+                </div>
+
+
+                <!-- BASIC SCHOLAR INFORMATION -->
+
+                <div class="profile-header-info">
+
+                    <h2 id="profileFullName">
+                        Loading...
+                    </h2>
+
+                    <p id="profileScholarshipType">
+                        Loading scholarship information...
+                    </p>
+
+                    <span class="status-badge"
+                          id="profileStatus">
+
+                        ACTIVE SCHOLAR
+
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 SCHOLAR INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-id-card"></i>
+
+                    Scholar Information
+
+                </h2>
+
+
+                <div class="scholar-info">
+
+
+                    <div class="info-box">
+
+                        <h3>Scholar ID</h3>
+
+                        <p id="scholarIdDisplay">
+                            Loading...
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>Scholarship Program</h3>
+
+                        <p id="scholarshipProgramDisplay">
+                            Loading...
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>Scholar Status</h3>
+
+                        <p id="statusDisplay">
+                            Loading...
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <h3>School</h3>
+
+                        <p id="schoolDisplay">
+                            Loading...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 PERSONAL INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-user"></i>
+
+                    Personal Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>Full Name</label>
+
+                        <input type="text"
+                               id="fullName"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Date of Birth</label>
+
+                        <input type="text"
+                               id="birthDate"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Age</label>
+
+                        <input type="text"
+                               id="age"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Sex</label>
+
+                        <input type="text"
+                               id="gender"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Civil Status</label>
+
+                        <input type="text"
+                               id="civilStatus"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Citizenship</label>
+
+                        <input type="text"
+                               id="citizenship"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Birthplace</label>
+
+                        <input type="text"
+                               id="birthplace"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="editable-field">
+
+                        <label>Contact Number</label>
+
+                        <input type="text"
+                               id="contactNumber">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Email Address</label>
+
+                        <input type="email"
+                               id="email"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="editable-field">
+
+                        <label>Complete Address</label>
+
+                        <input type="text"
+                               id="address">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 EDUCATIONAL INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-school"></i>
+
+                    Educational Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>School Name</label>
+
+                        <input type="text"
+                               id="schoolName"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>School Address</label>
+
+                        <input type="text"
+                               id="schoolAddress"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Student ID / LRN</label>
+
+                        <input type="text"
+                               id="studentId"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Course / Program</label>
+
+                        <input type="text"
+                               id="course"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Year Level</label>
+
+                        <input type="text"
+                               id="yearLevel"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Semester</label>
+
+                        <input type="text"
+                               id="semester"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>General Average / GPA</label>
+
+                        <input type="text"
+                               id="gpa"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Expected Graduation Year</label>
+
+                        <input type="text"
+                               id="graduation"
+                               readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 SCHOLARSHIP INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-award"></i>
+
+                    Scholarship Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>Scholarship Program</label>
+
+                        <input type="text"
+                               id="scholarshipProgram"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Scholarship Type</label>
+
+                        <input type="text"
+                               id="scholarshipType"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Benefactor</label>
+
+                        <input type="text"
+                               id="benefactor"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Date Approved</label>
+
+                        <input type="text"
+                               id="dateApproved"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Scholarship Status</label>
+
+                        <input type="text"
+                               id="scholarshipStatus"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>School Year</label>
+
+                        <input type="text"
+                               id="schoolYear"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Start Date</label>
+
+                        <input type="text"
+                               id="startDate"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Remarks</label>
+
+                        <input type="text"
+                               id="remarks"
+                               readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 FAMILY INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-users"></i>
+
+                    Family Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>Father's Name</label>
+
+                        <input type="text"
+                               id="fatherName"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Father's Occupation</label>
+
+                        <input type="text"
+                               id="fatherOccupation"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Father's Employer</label>
+
+                        <input type="text"
+                               id="fatherEmployer"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Father's Monthly Income</label>
+
+                        <input type="text"
+                               id="fatherIncome"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Mother's Name</label>
+
+                        <input type="text"
+                               id="motherName"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Mother's Occupation</label>
+
+                        <input type="text"
+                               id="motherOccupation"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Mother's Employer</label>
+
+                        <input type="text"
+                               id="motherEmployer"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Mother's Monthly Income</label>
+
+                        <input type="text"
+                               id="motherIncome"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Guardian</label>
+
+                        <input type="text"
+                               id="guardian"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Relationship</label>
+
+                        <input type="text"
+                               id="guardianRelationship"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Guardian Occupation</label>
+
+                        <input type="text"
+                               id="guardianOccupation"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Guardian Monthly Income</label>
+
+                        <input type="text"
+                               id="guardianIncome"
+                               readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 HOUSEHOLD INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-house-user"></i>
+
+                    Household Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>Number of Family Members</label>
+
+                        <input type="text"
+                               id="familyMembers"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Number of Siblings</label>
+
+                        <input type="text"
+                               id="siblings"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Siblings Currently Studying</label>
+
+                        <input type="text"
+                               id="siblingsStudying"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Total Monthly Household Income</label>
+
+                        <input type="text"
+                               id="householdIncome"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Housing Status</label>
+
+                        <input type="text"
+                               id="housingStatus"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Source of Family Income</label>
+
+                        <input type="text"
+                               id="incomeSource"
+                               readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 EMERGENCY CONTACT
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-phone"></i>
+
+                    Emergency Contact
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div class="editable-field">
+
+                        <label>Contact Person</label>
+
+                        <input type="text"
+                               id="emergencyContact">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+
+                    <div class="editable-field">
+
+                        <label>Relationship</label>
+
+                        <input type="text"
+                               id="emergencyRelationship">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+
+                    <div class="editable-field">
+
+                        <label>Contact Number</label>
+
+                        <input type="text"
+                               id="emergencyNumber">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+
+                    <div class="editable-field">
+
+                        <label>Address</label>
+
+                        <input type="text"
+                               id="emergencyAddress">
+
+                        <span class="edit-hint">
+                            Editable
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 PERMANENT QR CODE
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-qrcode"></i>
+
+                    My QR Code
+
+                </h2>
+
+
+                <div class="qr-content">
+
+
+                    <div class="qr-image-container">
+
+                        <img src="../images/sample-qr.png"
+                             id="scholarQR"
+                             class="qr-image"
+                             alt="Scholar QR Code">
+
+                    </div>
+
+
+                    <div class="qr-info">
+
+                        <h3>Permanent Scholar QR Code</h3>
+
+                        <p>
+                            This QR code is permanently assigned
+                            to your ScholarLink account and may be
+                            used for scholar identification and
+                            scholar login.
+                        </p>
+
+
+                        <strong id="qrScholarId">
+                            Loading...
+                        </strong>
+
+
+                        <div class="qr-buttons">
+
+                            <button class="btn-primary"
+                                    type="button"
+                                    onclick="viewQR()">
+
+                                <i class="fas fa-eye"></i>
+
+                                View QR
+
+                            </button>
+
+
+                            <button class="btn-success"
+                                    type="button"
+                                    onclick="downloadQR()">
+
+                                <i class="fas fa-download"></i>
+
+                                Download QR
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 UPLOADED DOCUMENTS
+            =================================== -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fas fa-folder-open"></i>
+
+                            Uploaded Documents
+
+                        </h2>
+
+                        <p>
+                            Requirements submitted during
+                            your scholarship application.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="document-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Document</th>
+
+                                <th>Date Submitted</th>
+
+                                <th>Status</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="documentsBody">
+
+                            <tr>
+
+                                <td colspan="4"
+                                    style="text-align:center;">
+
+                                    Loading documents...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 ACCOUNT INFORMATION
+            =================================== -->
+
+            <section class="card">
+
+                <h2>
+
+                    <i class="fas fa-user-lock"></i>
+
+                    Account Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div>
+
+                        <label>Username</label>
+
+                        <input type="text"
+                               id="username"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Email Address</label>
+
+                        <input type="email"
+                               id="accountEmail"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Last Login</label>
+
+                        <input type="text"
+                               id="lastLogin"
+                               readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>Account Status</label>
+
+                        <input type="text"
+                               id="accountStatus"
+                               readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 ACTION BUTTONS
+            =================================== -->
+
+            <section class="action-buttons">
+
+
+                <button class="btn-primary"
+                        type="button"
+                        id="saveProfileBtn">
+
+                    <i class="fas fa-save"></i>
+
+                    Save Changes
+
+                </button>
+
+
+                <button class="btn-warning"
+                        type="button"
+                        onclick="changePassword()">
+
+                    <i class="fas fa-key"></i>
+
+                    Change Password
+
+                </button>
+
+
+                <button class="btn-secondary"
+                        type="button"
+                        onclick="printProfile()">
+
+                    <i class="fas fa-print"></i>
+
+                    Print Profile
+
+                </button>
+
+            </section>
+
+
+            <!-- ==================================
+                 FOOTER
+            =================================== -->
+
+            <footer class="footer">
+
+                <p>
+                    © 2026 ScholarLink | Scholar Profile
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================
+         SCHOLAR PROFILE JAVASCRIPT
+         
+         IMPORTANT:
+         If your JS is inside js3 folder:
+         ../js3/scholar-profile.js
+         
+         If inside js folder:
+         ../js/scholar-profile.js
+    =========================================== -->
+
+    <script type="module"
+            src="../js2/profile.js">
+    </script>
+
+</body>
+
+</html>

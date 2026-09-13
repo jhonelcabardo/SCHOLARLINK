@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Application Status | SCHOLARLINK</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- Status CSS -->
+    <link rel="stylesheet" href="../css3/application-status.css">
+</head>
+
+<body>
+
+<div class="status-page">
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+    <header class="status-header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div class="brand-text">
+                <h1>SCHOLAR<span>LINK</span></h1>
+                <p>Scholarship Management System</p>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <div class="notification">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+
+            <div class="applicant-profile">
+
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="profile-info">
+                    <strong id="headerName">Applicant</strong>
+                    <span>Applicant</span>
+                </div>
+
+                <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+    <main class="status-container">
+
+        <!-- =========================================
+             PAGE HEADER
+        ========================================== -->
+        <div class="page-heading">
+
+            <div>
+
+                <span class="page-badge">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Scholarship Application
+                </span>
+
+                <h2>Application Status</h2>
+
+                <p>
+                    Track the progress of your scholarship application.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             CURRENT STATUS CARD
+        ========================================== -->
+        <section class="current-status-card">
+
+            <div class="current-status-icon">
+                <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+
+            <div class="current-status-content">
+
+                <span>Your Current Status</span>
+
+                <h3 id="currentStatus">
+                    PENDING REVIEW
+                </h3>
+
+                <p id="statusDescription">
+                    Your application is waiting for administrator review.
+                </p>
+
+            </div>
+
+            <div class="application-reference">
+
+                <div>
+                    <span>Application ID</span>
+                    <strong id="applicationId">---</strong>
+                </div>
+
+                <div>
+                    <span>Date Submitted</span>
+                    <strong id="dateSubmitted">---</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             APPLICANT INFORMATION
+        ========================================== -->
+        <section class="information-card">
+
+            <div class="information-header">
+
+                <i class="fa-solid fa-user"></i>
+
+                <h3>Applicant Information</h3>
+
+            </div>
+
+
+            <div class="information-content">
+
+                <!-- Applicant Photo -->
+                <div class="information-avatar">
+
+                    <img
+                        id="applicantPhoto"
+                        src=""
+                        alt="Applicant Photo"
+                        style="display: none;"
+                    >
+
+                    <i
+                        id="defaultApplicantIcon"
+                        class="fa-solid fa-user"
+                    ></i>
+
+                </div>
+
+
+                <!-- Applicant Information -->
+                <div class="information-grid">
+
+                    <div class="info-row">
+
+                        <span>Full Name</span>
+
+                        <strong id="fullName">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>Email</span>
+
+                        <strong id="email">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>School</span>
+
+                        <strong id="schoolName">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>Student ID / LRN</span>
+
+                        <strong id="studentId">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>Year Graduated</span>
+
+                        <strong id="graduationYear">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>Address</span>
+
+                        <strong id="address">
+                            ---
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ADMISSION PROCESS
+        ========================================== -->
+        <section class="process-card">
+
+            <div class="process-header">
+
+                <div class="process-title">
+
+                    <div class="process-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Admission Process</h3>
+
+                        <p>
+                            Follow your scholarship application progress.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROCESS LIST -->
+            <div class="process-list">
+
+
+                <!-- =================================
+                     1. APPLICATION
+                ================================== -->
+                <div
+                    class="process-item completed"
+                    id="stepApplication"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>1. Application</h4>
+
+                                <p>
+                                    Your scholarship application has been
+                                    submitted successfully.
+                                </p>
+
+                            </div>
+
+                            <span class="status-badge completed-badge">
+                                COMPLETED
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="step-date"
+                            id="applicationDate"
+                        >
+                            --
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     2. SCREENING
+                ================================== -->
+                <div
+                    class="process-item active"
+                    id="stepScreening"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>2. Screening / Review</h4>
+
+                                <p id="screeningDescription">
+                                    Your application is waiting for
+                                    administrator review.
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="status-badge pending-badge"
+                                id="screeningBadge"
+                            >
+                                PENDING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     3. EXAM
+                ================================== -->
+                <div
+                    class="process-item"
+                    id="stepExam"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>3. Exam</h4>
+
+                                <p id="examDescription">
+                                    The examination will be available
+                                    if you qualify.
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="status-badge pending-badge"
+                                id="examBadge"
+                            >
+                                PENDING
+                            </span>
+
+                        </div>
+
+
+                        <!-- EXAM DETAILS -->
+                        <div
+                            class="exam-details"
+                            id="examDetails"
+                        >
+
+                            <div class="exam-scheduled-label">
+
+                                <i class="fa-solid fa-calendar-check"></i>
+
+                                <strong id="examScheduledText">
+                                    Exam Schedule
+                                </strong>
+
+                            </div>
+
+
+                            <div class="exam-information">
+
+                                <div class="exam-info-item">
+
+                                    <i class="fa-regular fa-calendar"></i>
+
+                                    <div>
+
+                                        <span>Date</span>
+
+                                        <strong id="examDate">
+                                            ---
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="exam-info-item">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <div>
+
+                                        <span>Time</span>
+
+                                        <strong id="examTime">
+                                            ---
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="exam-info-item">
+
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                    <div>
+
+                                        <span>Venue</span>
+
+                                        <strong id="examVenue">
+                                            ---
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="exam-link-btn"
+                                id="examLinkBtn"
+                                style="display:none;"
+                            >
+
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                View Exam Details
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     4. EXAM RESULT
+                ================================== -->
+                <div
+                    class="process-item"
+                    id="stepResult"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>4. Exam Result</h4>
+
+                                <p id="resultDescription">
+                                    Your exam result will appear here
+                                    after evaluation.
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="status-badge pending-badge"
+                                id="resultBadge"
+                            >
+                                PENDING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     5. SCHOLAR CONFIRMATION
+                ================================== -->
+                <div
+                    class="process-item"
+                    id="stepConfirmation"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+
+                        <div class="step-line"></div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>5. Scholar Confirmation</h4>
+
+                                <p id="confirmationDescription">
+                                    Scholar confirmation will be completed
+                                    after you pass the examination.
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="status-badge pending-badge"
+                                id="confirmationBadge"
+                            >
+                                PENDING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     6. SCHOLAR ACCOUNT
+                ================================== -->
+                <div
+                    class="process-item"
+                    id="stepScholarAccount"
+                >
+
+                    <div class="step-left">
+
+                        <div class="step-circle">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="step-content">
+
+                        <div class="step-top">
+
+                            <div>
+
+                                <h4>6. Scholar Account</h4>
+
+                                <p id="accountDescription">
+                                    Your scholar account will be activated
+                                    once you are confirmed.
+                                </p>
+
+                            </div>
+
+                            <span
+                                class="status-badge pending-badge"
+                                id="accountBadge"
+                            >
+                                PENDING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             IMPORTANT REMINDERS
+        ========================================== -->
+        <section class="reminder-card">
+
+            <div class="reminder-icon">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+
+            <div>
+
+                <h3>Important Reminders</h3>
+
+                <ul>
+
+                    <li>
+                        Please regularly check your application status.
+                    </li>
+
+                    <li>
+                        Make sure your contact information is correct.
+                    </li>
+
+                    <li>
+                        Wait for the administrator's decision regarding
+                        your application.
+                    </li>
+
+                    <li>
+                        If you qualify for the examination, the schedule
+                        will appear on this page.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HELP
+        ========================================== -->
+        <section class="help-card">
+
+            <div class="help-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <div class="help-content">
+
+                <h3>Need Help?</h3>
+
+                <p>
+                    Contact the scholarship office if you have questions
+                    about your application.
+                </p>
+
+            </div>
+
+            <div class="help-contact">
+
+                <span>
+                    <i class="fa-solid fa-phone"></i>
+                    (032) 123-4567
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-envelope"></i>
+                    scholarlink138@ctu.edu.ph
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER MESSAGE
+        ========================================== -->
+        <div class="thank-you">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+            <div>
+
+                <strong>Thank you for your patience!</strong>
+
+                <p>
+                    We appreciate your interest in the SCHOLARLINK
+                    Scholarship Program.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- Firebase status JavaScript -->
+<script
+    type="module"
+    src="../js3/application-status.js"
+></script>
+
+</body>
+</html>

@@ -1,0 +1,1494 @@
+/* =========================================================
+   SCHOLARLINK
+   APPLICATION REVIEW
+========================================================= */
+
+.review-page {
+
+    padding: 30px;
+
+    max-width: 1500px;
+
+    margin: auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.review-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.back-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+
+}
+
+
+.back-link:hover {
+
+    text-decoration: underline;
+
+}
+
+
+.review-header h1 {
+
+    margin: 0;
+
+    color: #172554;
+
+    font-size: 30px;
+
+}
+
+
+.review-header p {
+
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.review-status {
+
+    padding: 9px 18px;
+
+    border-radius: 25px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+/* STATUS COLORS */
+
+.review-status.pending,
+.review-status.submitted {
+
+    background: #fff7ed;
+
+    color: #ea580c;
+
+}
+
+
+.review-status.qualified,
+.review-status.exam_qualified {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+.review-status.exam_scheduled {
+
+    background: #f5f3ff;
+
+    color: #7c3aed;
+
+}
+
+
+.review-status.exam_taken {
+
+    background: #f0fdf4;
+
+    color: #16a34a;
+
+}
+
+
+.review-status.passed,
+.review-status.passed_for_confirmation {
+
+    background: #ecfdf5;
+
+    color: #059669;
+
+}
+
+
+.review-status.scholar_confirmed,
+.review-status.active {
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+}
+
+
+.review-status.failed,
+.review-status.rejected {
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+}
+
+
+.review-status.needs_correction {
+
+    background: #fefce8;
+
+    color: #ca8a04;
+
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.review-card {
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.05);
+
+}
+
+
+.action-card {
+
+    border: 2px solid #e2e8f0;
+
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.card-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.card-title > i {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 19px;
+
+}
+
+
+.card-title h2 {
+
+    margin: 0;
+
+    color: #172554;
+
+    font-size: 19px;
+
+}
+
+
+.card-title p {
+
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.summary-grid > div {
+
+    padding: 17px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+}
+
+
+.summary-grid span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.summary-grid strong {
+
+    color: #172554;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   APPLICANT PROFILE
+========================================================= */
+
+.applicant-profile {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+
+.photo-container {
+
+    width: 160px;
+
+    min-width: 160px;
+
+    height: 190px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #eff6ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.photo-container img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.photo-placeholder {
+
+    color: #93c5fd;
+
+    font-size: 60px;
+
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.information-grid {
+
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px 25px;
+
+}
+
+
+.info-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.info-item.full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+.info-item span {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+.info-item strong {
+
+    color: #172554;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    word-break: break-word;
+
+}
+
+
+/* =========================================================
+   FAMILY
+========================================================= */
+
+.family-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.family-box {
+
+    background: #f8fafc;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+}
+
+
+.family-box h3 {
+
+    margin: 0 0 18px;
+
+    color: #172554;
+
+    font-size: 15px;
+
+}
+
+
+.family-box h3 i {
+
+    margin-right: 7px;
+
+    color: #2563eb;
+
+}
+
+
+.family-box p {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    margin: 12px 0;
+
+}
+
+
+.family-box p span {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+.family-box p strong {
+
+    color: #334155;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   REASON
+========================================================= */
+
+.reason-box {
+
+    background: #f8fafc;
+
+    border-left: 4px solid #2563eb;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+}
+
+
+/* =========================================================
+   REQUIREMENTS
+========================================================= */
+
+.requirements-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.requirement-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+}
+
+
+.requirement-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 0;
+
+}
+
+
+.requirement-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    flex-shrink: 0;
+
+}
+
+
+.requirement-name {
+
+    color: #172554;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.requirement-file {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+
+    word-break: break-all;
+
+}
+
+
+.requirement-action {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+}
+
+
+.view-file-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 13px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+}
+
+
+.view-file-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+.no-requirements {
+
+    text-align: center;
+
+    padding: 35px;
+
+    color: #64748b;
+
+}
+
+
+.no-requirements i {
+
+    display: block;
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+
+    color: #94a3b8;
+
+}
+
+
+/* =========================================================
+   DECISION BUTTONS
+========================================================= */
+
+.decision-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.decision-btn {
+
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.decision-btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+.decision-btn:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/* QUALIFY */
+
+.decision-btn.qualify {
+
+    background: #059669;
+
+}
+
+
+.decision-btn.qualify:hover {
+
+    background: #047857;
+
+}
+
+
+/* CORRECTION */
+
+.decision-btn.correction {
+
+    background: #d97706;
+
+}
+
+
+.decision-btn.correction:hover {
+
+    background: #b45309;
+
+}
+
+
+/* REJECT */
+
+.decision-btn.reject {
+
+    background: #dc2626;
+
+}
+
+
+.decision-btn.reject:hover {
+
+    background: #b91c1c;
+
+}
+
+
+/* =========================================================
+   EXAM SCHEDULE
+========================================================= */
+
+.exam-schedule-section {
+
+    margin-top: 20px;
+
+    padding: 24px;
+
+    border-radius: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #dbeafe;
+
+}
+
+
+.schedule-header {
+
+    margin-bottom: 22px;
+
+}
+
+
+.schedule-header h3 {
+
+    margin: 0;
+
+    color: #172554;
+
+    font-size: 17px;
+
+}
+
+
+.schedule-header h3 i {
+
+    color: #2563eb;
+
+    margin-right: 8px;
+
+}
+
+
+.schedule-header p {
+
+    margin: 5px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+.schedule-form {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.schedule-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.schedule-field.full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+.schedule-field label {
+
+    color: #334155;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.schedule-field label span {
+
+    color: #94a3b8;
+
+    font-weight: 400;
+
+}
+
+
+.schedule-field input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #172554;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+.schedule-field input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,0.10);
+
+}
+
+
+.schedule-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+/* SCHEDULE */
+
+.decision-btn.schedule {
+
+    background: #2563eb;
+
+}
+
+
+.decision-btn.schedule:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+/* CANCEL */
+
+.decision-btn.cancel {
+
+    background: #64748b;
+
+}
+
+
+.decision-btn.cancel:hover {
+
+    background: #475569;
+
+}
+
+
+/* =========================================================
+   EXAM ACTIONS
+========================================================= */
+
+.exam-actions {
+
+    margin-top: 20px;
+
+    padding: 22px;
+
+    border-radius: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+}
+
+
+.exam-action-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.exam-action-info > i {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 18px;
+
+}
+
+
+.exam-action-info h3 {
+
+    margin: 0;
+
+    color: #172554;
+
+    font-size: 16px;
+
+}
+
+
+.exam-action-info p {
+
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+.exam-result-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* EXAM TAKEN */
+
+.decision-btn.exam-taken {
+
+    background: #7c3aed;
+
+}
+
+
+.decision-btn.exam-taken:hover {
+
+    background: #6d28d9;
+
+}
+
+
+/* PASSED */
+
+.decision-btn.passed {
+
+    background: #059669;
+
+}
+
+
+.decision-btn.passed:hover {
+
+    background: #047857;
+
+}
+
+
+/* FAILED */
+
+.decision-btn.failed {
+
+    background: #dc2626;
+
+}
+
+
+.decision-btn.failed:hover {
+
+    background: #b91c1c;
+
+}
+
+
+/* =========================================================
+   CONFIRM SCHOLAR
+========================================================= */
+
+.confirm-scholar-section {
+
+    margin-top: 20px;
+
+    padding: 24px;
+
+    border-radius: 15px;
+
+    background: #ecfdf5;
+
+    border: 1px solid #a7f3d0;
+
+}
+
+
+.confirmation-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.confirmation-icon {
+
+    width: 55px;
+
+    min-width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #d1fae5;
+
+    color: #059669;
+
+    font-size: 22px;
+
+}
+
+
+.confirmation-content h3 {
+
+    margin: 0;
+
+    color: #065f46;
+
+    font-size: 16px;
+
+}
+
+
+.confirmation-content p {
+
+    margin: 5px 0 0;
+
+    color: #047857;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+.decision-btn.confirm-scholar {
+
+    background: #059669;
+
+}
+
+
+.decision-btn.confirm-scholar:hover {
+
+    background: #047857;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.decision-message {
+
+    margin: 15px 0 0;
+
+    font-size: 13px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-card {
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+
+}
+
+
+.loading-card i {
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-card {
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: #dc2626;
+
+}
+
+
+.error-card > i {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.error-card h3 {
+
+    color: #334155;
+
+    margin: 0 0 8px;
+
+}
+
+
+.error-card p {
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.back-btn {
+
+    display: inline-flex;
+
+    padding: 10px 18px;
+
+    background: #2563eb;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .summary-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .family-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .review-page {
+
+        padding: 20px;
+
+    }
+
+
+    .review-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .review-header h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .applicant-profile {
+
+        flex-direction: column;
+
+    }
+
+
+    .photo-container {
+
+        width: 140px;
+
+        height: 170px;
+
+    }
+
+
+    .information-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .info-item.full {
+
+        grid-column: auto;
+
+    }
+
+
+    .summary-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .requirement-item {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .requirement-action {
+
+        width: 100%;
+
+    }
+
+
+    .view-file-btn {
+
+        justify-content: center;
+
+        width: 100%;
+
+    }
+
+
+    .decision-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .decision-btn {
+
+        width: 100%;
+
+    }
+
+
+    .schedule-form {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .schedule-field.full {
+
+        grid-column: auto;
+
+    }
+
+
+    .schedule-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .exam-result-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .confirmation-box {
+
+        align-items: flex-start;
+
+    }
+
+}

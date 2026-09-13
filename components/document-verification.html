@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ScholarLink | Document Verification</title>
+
+<link rel="stylesheet"
+href="../css/document-verification.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- =====================================
+SIDEBAR
+===================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="../images/scholarlink-logo.png">
+
+<div>
+
+<h2>ScholarLink</h2>
+
+<span>Scholarship Management System</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="admin-dashboard.html">
+
+<i class="fas fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="applicants.html">
+
+<i class="fas fa-users"></i>
+
+Applicants
+
+</a>
+
+</li>
+
+<li>
+    <a href="applications.html">
+        <i class="fas fa-file-lines"></i>
+        Applications
+    </a>
+</li>
+
+
+<li>
+
+<a href="scholars.html">
+
+<i class="fas fa-user-graduate"></i>
+
+Scholars
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="requirements.html">
+
+<i class="fas fa-folder-open"></i>
+
+Requirements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="announcements.html">
+
+<i class="fas fa-bullhorn"></i>
+
+Announcements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="notifications.html">
+
+<i class="fas fa-paper-plane"></i>
+
+Notification Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="monitoring-scholars.html">
+
+<i class="fas fa-chart-line"></i>
+
+Monitoring Scholars
+
+</a>
+
+</li>
+
+<li>
+
+<a href="qr-management.html">
+
+<i class="fas fa-qrcode"></i>
+
+QR Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="user-management.html">
+
+<i class="fas fa-users-cog"></i>
+
+User Management
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="document-verification.html">
+
+<i class="fas fa-file-circle-check"></i>
+
+Document Verification
+
+</a>
+
+</li>
+
+<li>
+
+<a href="grade-cor-verification.html">
+
+<i class="fas fa-award"></i>
+
+Grade & COR Verification
+
+</a>
+
+</li>
+
+
+
+<li class="logout">
+
+<a href="../index.html">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- =====================================
+MAIN CONTENT
+===================================== -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="top-left">
+
+<button id="menuToggle">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+<h2>
+
+Document Verification
+
+</h2>
+
+</div>
+
+<div class="top-right">
+
+<button class="notification-btn">
+
+<i class="fas fa-bell"></i>
+
+<span class="badge">
+
+12
+
+</span>
+
+</button>
+
+<div class="profile-box">
+
+<img src="../images/admin.png">
+
+<div>
+
+<h4>
+
+Administrator
+
+</h4>
+
+<span>
+
+Scholarship Office
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- =====================================
+HERO
+===================================== -->
+
+
+
+<!-- =====================================
+SUMMARY CARDS
+===================================== -->
+
+<section class="summary-cards">
+
+<div class="summary-card">
+
+<i class="fas fa-folder-open"></i>
+
+<h3>
+
+Pending Verification
+
+</h3>
+
+<h2>
+
+156
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-circle-check"></i>
+
+<h3>
+
+Verified Documents
+
+</h3>
+
+<h2 class="green">
+
+430
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-circle-xmark"></i>
+
+<h3>
+
+Rejected Documents
+
+</h3>
+
+<h2 class="red">
+
+18
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-rotate"></i>
+
+<h3>
+
+Need Resubmission
+
+</h3>
+
+<h2 class="orange">
+
+12
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-calendar-check"></i>
+
+<h3>
+
+Verified Today
+
+</h3>
+
+<h2 class="blue">
+
+25
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-clock"></i>
+
+<h3>
+
+Pending Today
+
+</h3>
+
+<h2>
+
+7
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-graduate"></i>
+
+<h3>
+
+Scholar Documents
+
+</h3>
+
+<h2>
+
+268
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-edit"></i>
+
+<h3>
+
+Applicant Documents
+
+</h3>
+
+<h2>
+
+380
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- =====================================
+SEARCH & FILTER
+===================================== -->
+
+<section class="toolbar">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+placeholder="Search by user, ID or document...">
+
+</div>
+
+<select>
+
+<option>All Users</option>
+
+<option>Applicants</option>
+
+<option>Scholars</option>
+
+</select>
+
+<select>
+
+<option>All Documents</option>
+
+<option>PSA Birth Certificate</option>
+
+<option>Barangay Clearance</option>
+
+<option>Certificate of Residency</option>
+
+<option>Report Card</option>
+
+<option>Good Moral Certificate</option>
+
+<option>Income Tax Return</option>
+
+<option>Certificate of Registration</option>
+
+<option>Grades</option>
+
+<option>Certificate of Enrollment</option>
+
+</select>
+
+<select>
+
+<option>All Status</option>
+
+<option>Pending</option>
+
+<option>Verified</option>
+
+<option>Rejected</option>
+
+<option>Need Resubmission</option>
+
+</select>
+
+<button class="btn-export">
+
+<i class="fas fa-download"></i>
+
+Export Report
+
+</button>
+
+</section>
+
+<!-- Continue in Part 2 -->
+
+<section class="verification-table">
+
+    <div class="table-card">
+
+<div class="table-header">
+
+<div>
+
+<h2>
+
+<i class="fas fa-file-circle-check"></i>
+
+Uploaded Documents
+
+</h2>
+
+<p>
+
+Review and verify all uploaded scholarship requirements.
+
+</p>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Document ID</th>
+
+<th>User</th>
+
+<th>User Type</th>
+
+<th>Document</th>
+
+<th>Uploaded</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<!-- DOCUMENT 1 -->
+
+<tr>
+
+<td>DOC-0001</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student1.jpg">
+
+<div>
+
+<h4>Juan Dela Cruz</h4>
+
+<span>APP-201</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span class="role-applicant">
+
+Applicant
+
+</span>
+
+</td>
+
+<td>
+
+PSA Birth Certificate
+
+</td>
+
+<td>
+
+Aug 05, 2026
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+</button>
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- DOCUMENT 2 -->
+
+<tr>
+
+<td>DOC-0002</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student2.jpg">
+
+<div>
+
+<h4>Maria Santos</h4>
+
+<span>SCH-145</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span class="role-scholar">
+
+Scholar
+
+</span>
+
+</td>
+
+<td>
+
+Certificate of Registration (COR)
+
+</td>
+
+<td>
+
+Aug 04, 2026
+
+</td>
+
+<td>
+
+<span class="status-approved">
+
+Verified
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+</button>
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- DOCUMENT 3 -->
+
+<tr>
+
+<td>DOC-0003</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student3.jpg">
+
+<div>
+
+<h4>Carlo Mendoza</h4>
+
+<span>SCH-188</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span class="role-scholar">
+
+Scholar
+
+</span>
+
+</td>
+
+<td>
+
+Grades
+
+</td>
+
+<td>
+
+Aug 03, 2026
+
+</td>
+
+<td>
+
+<span class="status-rejected">
+
+Rejected
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+</button>
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- DOCUMENT 4 -->
+
+<tr>
+
+<td>DOC-0004</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student4.jpg">
+
+<div>
+
+<h4>Sophia Garcia</h4>
+
+<span>APP-245</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span class="role-applicant">
+
+Applicant
+
+</span>
+
+</td>
+
+<td>
+
+Good Moral Certificate
+
+</td>
+
+<td>
+
+Aug 02, 2026
+
+</td>
+
+<td>
+
+<span class="status-resubmit">
+
+Need Resubmission
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+</button>
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- DOCUMENT 5 -->
+
+<tr>
+
+<td>DOC-0005</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student5.jpg">
+
+<div>
+
+<h4>Angela Reyes</h4>
+
+<span>SCH-205</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+<span class="role-scholar">
+
+Scholar
+
+</span>
+
+</td>
+
+<td>
+
+Certificate of Enrollment
+
+</td>
+
+<td>
+
+Aug 01, 2026
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+</button>
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+</button>
+
+<button class="btn-notify">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Continue in Part 3 -->
+
+<section class="verification-details">
+
+    <div class="details-grid">
+
+<!-- =====================================
+DOCUMENT PREVIEW
+===================================== -->
+
+<div class="preview-card">
+
+<h2>
+
+<i class="fas fa-file-image"></i>
+
+Document Preview
+
+</h2>
+
+<div class="document-preview">
+
+<img src="../images/sample-document.jpg" alt="Document Preview">
+
+</div>
+
+<div class="preview-actions">
+
+<button class="btn-zoom-in">
+
+<i class="fas fa-magnifying-glass-plus"></i>
+
+Zoom In
+
+</button>
+
+<button class="btn-zoom-out">
+
+<i class="fas fa-magnifying-glass-minus"></i>
+
+Zoom Out
+
+</button>
+
+<button class="btn-rotate">
+
+<i class="fas fa-rotate-right"></i>
+
+Rotate
+
+</button>
+
+<button class="btn-download">
+
+<i class="fas fa-download"></i>
+
+Download
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =====================================
+DOCUMENT INFORMATION
+===================================== -->
+
+<div class="document-info-card">
+
+<h2>
+
+<i class="fas fa-circle-info"></i>
+
+Document Information
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Document ID</th>
+
+<td>DOC-0001</td>
+
+</tr>
+
+<tr>
+
+<th>Applicant</th>
+
+<td>Juan Dela Cruz</td>
+
+</tr>
+
+<tr>
+
+<th>User Type</th>
+
+<td>Applicant</td>
+
+</tr>
+
+<tr>
+
+<th>Document</th>
+
+<td>PSA Birth Certificate</td>
+
+</tr>
+
+<tr>
+
+<th>Date Uploaded</th>
+
+<td>August 05, 2026</td>
+
+</tr>
+
+<tr>
+
+<th>Status</th>
+
+<td>
+
+<span class="status-pending">
+
+Pending Verification
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- =====================================
+VERIFICATION PANEL
+===================================== -->
+
+<div class="verification-card">
+
+<h2>
+
+<i class="fas fa-file-circle-check"></i>
+
+Verification Panel
+
+</h2>
+
+<label>Verification Result</label>
+
+<select>
+
+<option>Pending</option>
+
+<option>Verified</option>
+
+<option>Rejected</option>
+
+<option>Need Resubmission</option>
+
+</select>
+
+<label>Administrator Remarks</label>
+
+<textarea
+rows="6"
+placeholder="Enter remarks or reason..."></textarea>
+
+<div class="verification-buttons">
+
+<button class="btn-approve">
+
+<i class="fas fa-check"></i>
+
+Verify
+
+</button>
+
+<button class="btn-reject">
+
+<i class="fas fa-xmark"></i>
+
+Reject
+
+</button>
+
+<button class="btn-resubmit">
+
+<i class="fas fa-rotate"></i>
+
+Request Resubmission
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =====================================
+VERIFICATION HISTORY
+===================================== -->
+
+<div class="history-card">
+
+<h2>
+
+<i class="fas fa-clock-rotate-left"></i>
+
+Verification History
+
+</h2>
+
+<ul>
+
+<li>
+
+<strong>Aug 05, 2026</strong>
+
+Verified PSA Birth Certificate
+
+<br>
+
+<span>By Administrator</span>
+
+</li>
+
+<li>
+
+<strong>Aug 04, 2026</strong>
+
+Rejected Report Card
+
+<br>
+
+<span>Reason: Blurred copy.</span>
+
+</li>
+
+<li>
+
+<strong>Aug 03, 2026</strong>
+
+Requested COR Resubmission
+
+<br>
+
+<span>Reason: Missing signature.</span>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- =====================================
+AUTO NOTIFICATION
+===================================== -->
+
+<div class="notification-card">
+
+<h2>
+
+<i class="fas fa-bell"></i>
+
+Automatic Notification Preview
+
+</h2>
+
+<textarea rows="8" readonly>
+
+Hello Juan Dela Cruz,
+
+Your PSA Birth Certificate has been VERIFIED successfully.
+
+You may now proceed with the next step of your scholarship application.
+
+Thank you.
+
+ScholarLink Scholarship Office
+
+</textarea>
+
+<button class="btn-send-notification">
+
+<i class="fas fa-paper-plane"></i>
+
+Send Notification
+
+</button>
+
+</div>
+
+<!-- =====================================
+REQUIRED DOCUMENTS
+===================================== -->
+
+<div class="requirements-card">
+
+<h2>
+
+<i class="fas fa-folder-open"></i>
+
+Required Documents Checklist
+
+</h2>
+
+<ul>
+
+<li>✅ PSA Birth Certificate</li>
+
+<li>✅ Barangay Clearance</li>
+
+<li>✅ Certificate of Residency</li>
+
+<li>❌ Good Moral Certificate</li>
+
+<li>✅ Report Card</li>
+
+<li>❌ Income Tax Return</li>
+
+<li>✅ 2x2 Picture</li>
+
+</ul>
+
+</div>
+
+<!-- =====================================
+QUICK ACTIONS
+===================================== -->
+
+<div class="action-card">
+
+<h2>
+
+<i class="fas fa-bolt"></i>
+
+Quick Actions
+
+</h2>
+
+<div class="action-buttons">
+
+<button class="btn-primary">
+
+<i class="fas fa-eye"></i>
+
+Open Full Document
+
+</button>
+
+<button class="btn-success">
+
+<i class="fas fa-check-circle"></i>
+
+Verify All Documents
+
+</button>
+
+<button class="btn-warning">
+
+<i class="fas fa-paper-plane"></i>
+
+Notify User
+
+</button>
+
+<button class="btn-danger">
+
+<i class="fas fa-xmark-circle"></i>
+
+Reject Selected
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================
+FOOTER
+===================================== -->
+
+<footer class="dashboard-footer">
+
+<p>
+
+© 2026 ScholarLink | Scholarship Management System | Document Verification
+
+</p>
+
+</footer>
+
+</main>
+
+</div>
+
+<script src="../js/document-verification.js"></script>
+
+</body>
+
+</html>

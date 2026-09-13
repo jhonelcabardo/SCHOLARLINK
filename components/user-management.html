@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ScholarLink | User Management</title>
+
+<link rel="stylesheet"
+href="../css/user-management.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- =====================================
+SIDEBAR
+===================================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="../images/scholarlink-logo.png">
+
+<div>
+
+<h2>ScholarLink</h2>
+
+<span>Scholarship Management System</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="admin-dashboard.html">
+
+<i class="fas fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="applicants.html">
+
+<i class="fas fa-users"></i>
+
+Applicants
+
+</a>
+
+</li>
+
+<li>
+    <a href="applications.html">
+        <i class="fas fa-file-lines"></i>
+        Applications
+    </a>
+</li>
+
+
+<li>
+
+<a href="scholars.html">
+
+<i class="fas fa-user-graduate"></i>
+
+Scholars
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="requirements.html">
+
+<i class="fas fa-folder-open"></i>
+
+Requirements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="announcements.html">
+
+<i class="fas fa-bullhorn"></i>
+
+Announcements
+
+</a>
+
+</li>
+
+<li>
+
+<a href="notifications.html">
+
+<i class="fas fa-paper-plane"></i>
+
+Notification Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="monitoring-scholars.html">
+
+<i class="fas fa-chart-line"></i>
+
+Monitoring Scholars
+
+</a>
+
+</li>
+
+<li>
+
+<a href="qr-management.html">
+
+<i class="fas fa-qrcode"></i>
+
+QR Management
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="user-management.html">
+
+<i class="fas fa-users-cog"></i>
+
+User Management
+
+</a>
+
+</li>
+
+<li>
+
+<a href="document-verification.html">
+
+<i class="fas fa-file-circle-check"></i>
+
+Document Verification
+
+</a>
+
+</li>
+
+<li>
+
+<a href="grade-cor-verification.html">
+
+<i class="fas fa-award"></i>
+
+Grade & COR Verification
+
+</a>
+
+</li>
+
+
+<li class="logout">
+
+<a href="../index.html">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- =====================================
+MAIN CONTENT
+===================================== -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="top-left">
+
+<button id="menuToggle">
+
+<i class="fas fa-bars"></i>
+
+</button>
+
+<h2>
+
+User Management
+
+</h2>
+
+</div>
+
+<div class="top-right">
+
+<button class="notification-btn">
+
+<i class="fas fa-bell"></i>
+
+<span class="badge">
+
+6
+
+</span>
+
+</button>
+
+<div class="profile-box">
+
+<img src="../images/admin.png">
+
+<div>
+
+<h4>
+
+Administrator
+
+</h4>
+
+<span>
+
+System Administrator
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- =====================================
+HERO
+===================================== -->
+
+
+
+<!-- =====================================
+SUMMARY CARDS
+===================================== -->
+
+<section class="summary-cards">
+
+<div class="summary-card">
+
+<i class="fas fa-users"></i>
+
+<h3>Total Users</h3>
+
+<h2>420</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-shield"></i>
+
+<h3>Administrators</h3>
+
+<h2 class="blue">
+
+5
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-edit"></i>
+
+<h3>Applicants</h3>
+
+<h2 class="orange">
+
+210
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-graduate"></i>
+
+<h3>Scholars</h3>
+
+<h2 class="green">
+
+205
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-circle-check"></i>
+
+<h3>Active Users</h3>
+
+<h2 class="green">
+
+398
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-clock"></i>
+
+<h3>Inactive Users</h3>
+
+<h2 class="gray">
+
+18
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-user-slash"></i>
+
+<h3>Suspended</h3>
+
+<h2 class="red">
+
+4
+
+</h2>
+
+</div>
+
+<div class="summary-card">
+
+<i class="fas fa-right-to-bracket"></i>
+
+<h3>Today's Logins</h3>
+
+<h2>
+
+96
+
+</h2>
+
+</div>
+
+</section>
+
+<!-- =====================================
+SEARCH & FILTER
+===================================== -->
+
+<section class="toolbar">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+placeholder="Search user by name, ID or email...">
+
+</div>
+
+<select>
+
+<option>All Roles</option>
+
+<option>Administrator</option>
+
+<option>Applicant</option>
+
+<option>Scholar</option>
+
+</select>
+
+<select>
+
+<option>All Status</option>
+
+<option>Active</option>
+
+<option>Inactive</option>
+
+<option>Suspended</option>
+
+<option>Pending Verification</option>
+
+</select>
+
+<button class="btn-add-user">
+
+<i class="fas fa-user-plus"></i>
+
+Add User
+
+</button>
+
+<button class="btn-export">
+
+<i class="fas fa-download"></i>
+
+Export Users
+
+</button>
+
+</section>
+
+<!-- Continue in Part 2 -->
+
+<section class="user-table">
+
+    <div class="table-card">
+
+<div class="table-header">
+
+<div>
+
+<h2>
+
+<i class="fas fa-users-cog"></i>
+
+System Users
+
+</h2>
+
+<p>
+
+Manage all Administrator, Applicant, and Scholar accounts.
+
+</p>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>User ID</th>
+
+<th>User</th>
+
+<th>Email</th>
+
+<th>Role</th>
+
+<th>Status</th>
+
+<th>Login Method</th>
+
+<th>Last Login</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<!-- USER 1 -->
+
+<tr>
+
+<td>ADM-001</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/admin.png">
+
+<div>
+
+<h4>John Administrator</h4>
+
+<span>System Administrator</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>admin@scholarlink.com</td>
+
+<td>
+
+<span class="role-admin">
+
+Administrator
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-active">
+
+Active
+
+</span>
+
+</td>
+
+<td>
+
+Password
+
+</td>
+
+<td>
+
+Today
+
+8:15 AM
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-edit">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button class="btn-reset">
+
+<i class="fas fa-key"></i>
+
+</button>
+
+<button class="btn-disable">
+
+<i class="fas fa-lock"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- USER 2 -->
+
+<tr>
+
+<td>APP-201</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student1.jpg">
+
+<div>
+
+<h4>Juan Dela Cruz</h4>
+
+<span>Applicant</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>juan@gmail.com</td>
+
+<td>
+
+<span class="role-applicant">
+
+Applicant
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-active">
+
+Active
+
+</span>
+
+</td>
+
+<td>
+
+Email Login
+
+</td>
+
+<td>
+
+Yesterday
+
+2:35 PM
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-edit">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button class="btn-reset">
+
+<i class="fas fa-key"></i>
+
+</button>
+
+<button class="btn-disable">
+
+<i class="fas fa-lock"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- USER 3 -->
+
+<tr>
+
+<td>SCH-145</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student2.jpg">
+
+<div>
+
+<h4>Maria Santos</h4>
+
+<span>Scholar</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>maria@gmail.com</td>
+
+<td>
+
+<span class="role-scholar">
+
+Scholar
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-active">
+
+Active
+
+</span>
+
+</td>
+
+<td>
+
+QR Login
+
+</td>
+
+<td>
+
+Today
+
+9:10 AM
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-edit">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button class="btn-reset">
+
+<i class="fas fa-key"></i>
+
+</button>
+
+<button class="btn-disable">
+
+<i class="fas fa-lock"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- USER 4 -->
+
+<tr>
+
+<td>SCH-188</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student3.jpg">
+
+<div>
+
+<h4>Carlo Mendoza</h4>
+
+<span>Scholar</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>carlo@gmail.com</td>
+
+<td>
+
+<span class="role-scholar">
+
+Scholar
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-suspended">
+
+Suspended
+
+</span>
+
+</td>
+
+<td>
+
+QR Login
+
+</td>
+
+<td>
+
+Aug 03
+
+10:15 AM
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-edit">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button class="btn-reset">
+
+<i class="fas fa-key"></i>
+
+</button>
+
+<button class="btn-enable">
+
+<i class="fas fa-lock-open"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+<!-- USER 5 -->
+
+<tr>
+
+<td>APP-245</td>
+
+<td>
+
+<div class="user-info">
+
+<img src="../images/student4.jpg">
+
+<div>
+
+<h4>Sophia Garcia</h4>
+
+<span>Applicant</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>sophia@gmail.com</td>
+
+<td>
+
+<span class="role-applicant">
+
+Applicant
+
+</span>
+
+</td>
+
+<td>
+
+<span class="status-pending">
+
+Pending
+
+</span>
+
+</td>
+
+<td>
+
+Email Login
+
+</td>
+
+<td>
+
+Never
+
+</td>
+
+<td>
+
+<button class="btn-view">
+
+<i class="fas fa-eye"></i>
+
+</button>
+
+<button class="btn-edit">
+
+<i class="fas fa-pen"></i>
+
+</button>
+
+<button class="btn-reset">
+
+<i class="fas fa-key"></i>
+
+</button>
+
+<button class="btn-disable">
+
+<i class="fas fa-lock"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Continue in Part 3 -->
+
+<section class="user-details">
+
+    <div class="details-grid">
+
+<!-- =====================================
+USER PROFILE
+===================================== -->
+
+<div class="profile-card">
+
+<img src="../images/admin.png" class="profile-image">
+
+<h2>John Administrator</h2>
+
+<p class="user-id">
+
+User ID : ADM-001
+
+</p>
+
+<div class="profile-info">
+
+<p><strong>Full Name :</strong> John Administrator</p>
+
+<p><strong>Email :</strong> admin@scholarlink.com</p>
+
+<p><strong>Contact :</strong> 09123456789</p>
+
+<p><strong>Address :</strong> Naga City, Cebu</p>
+
+<p><strong>Role :</strong>
+
+<span class="role-admin">
+
+Administrator
+
+</span>
+
+</p>
+
+<p><strong>Status :</strong>
+
+<span class="status-active">
+
+Active
+
+</span>
+
+</p>
+
+<p><strong>Account Created :</strong> January 10, 2026</p>
+
+</div>
+
+</div>
+
+<!-- =====================================
+ACCOUNT INFORMATION
+===================================== -->
+
+<div class="account-card">
+
+<h2>
+
+<i class="fas fa-user-lock"></i>
+
+Account Information
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Username</th>
+
+<td>administrator</td>
+
+</tr>
+
+<tr>
+
+<th>Email</th>
+
+<td>admin@scholarlink.com</td>
+
+</tr>
+
+<tr>
+
+<th>Role</th>
+
+<td>Administrator</td>
+
+</tr>
+
+<tr>
+
+<th>Account Status</th>
+
+<td>
+
+<span class="status-active">
+
+Active
+
+</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Last Password Change</th>
+
+<td>July 15, 2026</td>
+
+</tr>
+
+<tr>
+
+<th>Two-Factor Authentication</th>
+
+<td>Enabled</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- =====================================
+LOGIN HISTORY
+===================================== -->
+
+<div class="login-history-card">
+
+<h2>
+
+<i class="fas fa-clock-rotate-left"></i>
+
+Recent Login History
+
+</h2>
+
+<table>
+
+<tr>
+
+<th>Date</th>
+
+<th>Method</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>Aug 05, 2026 - 8:15 AM</td>
+
+<td>Password</td>
+
+<td><span class="badge-success">Success</span></td>
+
+</tr>
+
+<tr>
+
+<td>Aug 04, 2026 - 9:20 AM</td>
+
+<td>Password</td>
+
+<td><span class="badge-success">Success</span></td>
+
+</tr>
+
+<tr>
+
+<td>Aug 03, 2026 - 10:00 AM</td>
+
+<td>Password</td>
+
+<td><span class="badge-warning">Failed Attempt</span></td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- =====================================
+ROLE PERMISSIONS
+===================================== -->
+
+<div class="permissions-card">
+
+<h2>
+
+<i class="fas fa-user-shield"></i>
+
+Role Permissions
+
+</h2>
+
+<ul>
+
+<li>✅ Dashboard Access</li>
+
+<li>✅ Applications</li>
+
+<li>✅ Requirements</li>
+
+<li>✅ Announcements</li>
+
+<li>✅ Notification Management</li>
+
+<li>✅ Monitoring Scholars</li>
+
+<li>✅ User Management</li>
+
+<li>✅ Document Verification</li>
+
+<li>✅ Grade & COR Verification</li>
+
+<li>✅ Reports</li>
+
+<li>✅ Settings</li>
+
+</ul>
+
+</div>
+
+<!-- =====================================
+QR LOGIN
+===================================== -->
+
+<div class="qr-card">
+
+<h2>
+
+<i class="fas fa-qrcode"></i>
+
+QR Login Information
+
+</h2>
+
+<p>
+
+QR Status
+
+<strong>
+
+Active
+
+</strong>
+
+</p>
+
+<p>
+
+Last QR Login
+
+<strong>
+
+August 04, 2026
+
+9:05 AM
+
+</strong>
+
+</p>
+
+<p>
+
+Total QR Logins
+
+<strong>
+
+124
+
+</strong>
+
+</p>
+
+</div>
+
+<!-- =====================================
+ACCOUNT ACTIVITY
+===================================== -->
+
+<div class="activity-card">
+
+<h2>
+
+<i class="fas fa-chart-line"></i>
+
+User Activity
+
+</h2>
+
+<ul>
+
+<li>✔ Logged in successfully</li>
+
+<li>✔ Updated profile</li>
+
+<li>✔ Submitted application</li>
+
+<li>✔ Uploaded requirements</li>
+
+<li>✔ Read notifications</li>
+
+<li>✔ Viewed announcements</li>
+
+</ul>
+
+</div>
+
+<!-- =====================================
+RESET PASSWORD
+===================================== -->
+
+<div class="password-card">
+
+<h2>
+
+<i class="fas fa-key"></i>
+
+Reset Password
+
+</h2>
+
+<input
+type="password"
+placeholder="New Password">
+
+<input
+type="password"
+placeholder="Password">
+
+<button class="btn-reset-password">
+
+<i class="fas fa-key"></i>
+
+Reset Password
+
+</button>
+
+</div>
+
+<!-- =====================================
+ADMIN NOTES
+===================================== -->
+
+<div class="remarks-card">
+
+<h2>
+
+<i class="fas fa-note-sticky"></i>
+
+Administrator Notes
+
+</h2>
+
+<textarea
+rows="6"
+placeholder="Write remarks about this user..."></textarea>
+
+<button class="btn-save">
+
+<i class="fas fa-floppy-disk"></i>
+
+Save Notes
+
+</button>
+
+</div>
+
+<!-- =====================================
+QUICK ACTIONS
+===================================== -->
+
+<div class="action-card">
+
+<h2>
+
+<i class="fas fa-bolt"></i>
+
+Quick Actions
+
+</h2>
+
+<div class="action-buttons">
+
+<button class="btn-primary">
+
+<i class="fas fa-envelope"></i>
+
+Send Notification
+
+</button>
+
+<button class="btn-success">
+
+<i class="fas fa-lock-open"></i>
+
+Activate Account
+
+</button>
+
+<button class="btn-warning">
+
+<i class="fas fa-user-pen"></i>
+
+Edit User
+
+</button>
+
+<button class="btn-danger">
+
+<i class="fas fa-user-slash"></i>
+
+Suspend Account
+
+</button>
+
+<button class="btn-delete">
+
+<i class="fas fa-trash"></i>
+
+Delete User
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================
+FOOTER
+===================================== -->
+
+<footer class="dashboard-footer">
+
+<p>
+
+© 2026 ScholarLink | Scholarship Management System | User Management
+
+</p>
+
+</footer>
+
+</main>
+
+</div>
+
+<script src="../js/user-management.js"></script>
+
+</body>
+
+</html>

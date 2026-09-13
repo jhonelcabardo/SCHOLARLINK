@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Scholars</title>
+
+    <!-- =========================
+         CSS
+    ========================== -->
+
+    <link rel="stylesheet"
+          href="../css/scholars.css">
+
+
+    <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================
+         FONT AWESOME
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- =========================
+             LOGO
+        ========================== -->
+
+        <div class="logo">
+
+            <img
+                src="../images/scholarlink-logo.png"
+                alt="ScholarLink Logo"
+            >
+
+            <div>
+
+                <h2>
+                    ScholarLink
+                </h2>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             SIDEBAR MENU
+        ========================== -->
+
+        <ul class="menu">
+
+
+            <!-- DASHBOARD -->
+
+            <li>
+
+                <a href="admin-dashboard.html">
+
+                    <i class="fas fa-house"></i>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- APPLICANTS -->
+
+            <li>
+
+                <a href="applicants.html">
+
+                    <i class="fas fa-users"></i>
+
+                    <span>
+                        Applicants
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- APPLICATIONS -->
+
+            <li>
+
+                <a href="applications.html">
+
+                    <i class="fas fa-file-lines"></i>
+
+                    <span>
+                        Applications
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- SCHOLARS -->
+
+            <li class="active">
+
+                <a href="scholars.html">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    <span>
+                        Scholars
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- REQUIREMENTS -->
+
+            <li>
+
+                <a href="requirements.html">
+
+                    <i class="fas fa-folder-open"></i>
+
+                    <span>
+                        Requirements
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ANNOUNCEMENTS -->
+
+            <li>
+
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    <span>
+                        Announcements
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <li>
+
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span>
+                        Notifications
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- MONITORING SCHOLARS -->
+
+            <li>
+
+                <a href="monitoring-scholars.html">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    <span>
+                        Monitoring Scholars
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- QR MANAGEMENT -->
+
+            <li>
+
+                <a href="qr-management.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    <span>
+                        QR Management
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- USER MANAGEMENT -->
+
+            <li>
+
+                <a href="user-management.html">
+
+                    <i class="fas fa-users-cog"></i>
+
+                    <span>
+                        User Management
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- DOCUMENT VERIFICATION -->
+
+            <li>
+
+                <a href="document-verification.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    <span>
+                        Document Verification
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- GRADE & COR VERIFICATION -->
+
+            <li>
+
+                <a href="grade-cor-verification.html">
+
+                    <i class="fas fa-award"></i>
+
+                    <span>
+                        Grade &amp; COR Verification
+                    </span>
+
+                </a>
+
+            </li>
+
+
+            <!-- LOGOUT -->
+
+            <li class="logout">
+
+                <a href="../index.html">
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <!-- =========================
+                 TOP LEFT
+            ========================== -->
+
+            <div class="top-left">
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Toggle Menu"
+                >
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+
+                <h2>
+                    Scholars
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 TOP RIGHT
+            ========================== -->
+
+            <div class="top-right">
+
+
+                <!-- NOTIFICATIONS -->
+
+                <button
+                    class="notification-btn"
+                    type="button"
+                    title="Notifications"
+                >
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="badge">
+                        5
+                    </span>
+
+                </button>
+
+
+
+                <!-- ADMIN PROFILE -->
+
+                <div class="profile-box">
+
+
+                    <img
+                        src="../images/admin.png"
+                        alt="Administrator"
+                    >
+
+
+                    <div>
+
+                        <h4>
+                            Administrator
+                        </h4>
+
+                        <span>
+                            System Administrator
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             SEARCH & FILTER SECTION
+        ================================================== -->
+
+        <section class="search-section">
+
+
+            <!-- =========================
+                 SEARCH BOX
+            ========================== -->
+
+            <div class="search-box">
+
+
+                <i class="fas fa-search"></i>
+
+
+                <input
+                    type="text"
+                    id="scholarSearch"
+                    placeholder="Search scholar..."
+                    autocomplete="off"
+                >
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 STATUS FILTER
+            ========================== -->
+
+            <select
+                id="statusFilter"
+                aria-label="Filter scholar status"
+            >
+
+                <option value="all status">
+                    All Status
+                </option>
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="at_risk">
+                    At Risk
+                </option>
+
+                <option value="graduated">
+                    Graduated
+                </option>
+
+                <option value="suspended">
+                    Suspended
+                </option>
+
+            </select>
+
+
+
+            <!-- =========================
+                 FILTER BUTTON
+            ========================== -->
+
+            <button
+                class="add-btn"
+                id="filterBtn"
+                type="button"
+            >
+
+                <i class="fas fa-filter"></i>
+
+                Filter
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             APPROVED SCHOLARS TABLE
+        ================================================== -->
+
+        <section class="table-section">
+
+
+            <!-- =========================
+                 SECTION HEADER
+            ========================== -->
+
+            <div class="section-header">
+
+
+                <h2>
+                    Approved Scholars
+                </h2>
+
+
+                <a href="monitoring-scholars.html">
+                    View Monitoring
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 SCHOLARS TABLE
+            ========================== -->
+
+            <table>
+
+
+                <!-- TABLE HEADER -->
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Scholar ID
+                        </th>
+
+                        <th>
+                            Full Name
+                        </th>
+
+                        <th>
+                            School
+                        </th>
+
+                        <th>
+                            Course
+                        </th>
+
+                        <th>
+                            Year Level
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <!-- =================================================
+                     TABLE BODY
+
+                     IMPORTANT:
+                     DO NOT PUT DUMMY SCHOLARS HERE.
+
+                     scholars.js will automatically load the
+                     confirmed scholars from Firestore.
+                ================================================== -->
+
+                <tbody id="scholarsTableBody">
+
+
+                    <!-- LOADING -->
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="loading-row"
+                        >
+
+                            <i
+                                class="fas fa-spinner fa-spin"
+                            ></i>
+
+                            Loading scholars...
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <section class="summary-cards">
+
+
+            <!-- =========================
+                 TOTAL SCHOLARS
+            ========================== -->
+
+            <div class="summary-card">
+
+
+                <i class="fas fa-user-graduate"></i>
+
+
+                <h3>
+                    Total Scholars
+                </h3>
+
+
+                <h2 id="totalScholars">
+                    0
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 ACTIVE
+            ========================== -->
+
+            <div class="summary-card">
+
+
+                <i class="fas fa-circle-check"></i>
+
+
+                <h3>
+                    Active
+                </h3>
+
+
+                <h2 id="activeScholars">
+                    0
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 AT RISK
+            ========================== -->
+
+            <div class="summary-card">
+
+
+                <i class="fas fa-triangle-exclamation"></i>
+
+
+                <h3>
+                    At Risk
+                </h3>
+
+
+                <h2 id="atRiskScholars">
+                    0
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 SUSPENDED
+            ========================== -->
+
+            <div class="summary-card">
+
+
+                <i class="fas fa-user-slash"></i>
+
+
+                <h3>
+                    Suspended
+                </h3>
+
+
+                <h2 id="suspendedScholars">
+                    0
+                </h2>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DASHBOARD GRID
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- =================================================
+                 RECENT SCHOLAR ACTIVITY
+            ================================================== -->
+
+            <div class="panel">
+
+
+                <!-- PANEL HEADER -->
+
+                <div class="panel-header">
+
+
+                    <h2>
+
+                        <i
+                            class="fas fa-clock-rotate-left"
+                        ></i>
+
+                        Recent Scholar Activity
+
+                    </h2>
+
+
+                </div>
+
+
+
+                <!-- ACTIVITY LIST -->
+
+                <div
+                    class="activity-list"
+                    id="activityList"
+                >
+
+
+                    <!-- DEFAULT ACTIVITY -->
+
+                    <div class="activity-item">
+
+
+                        <i
+                            class="fas fa-user-graduate"
+                        ></i>
+
+
+                        <div>
+
+
+                            <h4>
+                                Scholar activity will appear here.
+                            </h4>
+
+
+                            <small>
+                                Connected to ScholarLink
+                            </small>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SCHOLAR STATISTICS
+            ================================================== -->
+
+            <div class="panel">
+
+
+                <!-- PANEL HEADER -->
+
+                <div class="panel-header">
+
+
+                    <h2>
+
+                        <i
+                            class="fas fa-chart-pie"
+                        ></i>
+
+                        Scholar Statistics
+
+                    </h2>
+
+
+                </div>
+
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-list">
+
+
+                    <!-- TOTAL -->
+
+                    <div class="stat-item">
+
+
+                        <span>
+                            Total Scholars
+                        </span>
+
+
+                        <strong id="statsTotal">
+                            0
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- ACTIVE -->
+
+                    <div class="stat-item">
+
+
+                        <span>
+                            Active
+                        </span>
+
+
+                        <strong id="statsActive">
+                            0
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- AT RISK -->
+
+                    <div class="stat-item">
+
+
+                        <span>
+                            At Risk
+                        </span>
+
+
+                        <strong id="statsAtRisk">
+                            0
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- SUSPENDED -->
+
+                    <div class="stat-item">
+
+
+                        <span>
+                            Suspended
+                        </span>
+
+
+                        <strong id="statsSuspended">
+                            0
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- GRADUATED -->
+
+                    <div class="stat-item">
+
+
+                        <span>
+                            Graduated
+                        </span>
+
+
+                        <strong id="statsGraduated">
+                            0
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SCHOLAR MANAGEMENT GUIDE
+        ================================================== -->
+
+        <section class="panel">
+
+
+            <!-- PANEL HEADER -->
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    <i
+                        class="fas fa-circle-info"
+                    ></i>
+
+                    Scholar Management Guide
+
+                </h2>
+
+
+            </div>
+
+
+
+            <!-- GUIDE LIST -->
+
+            <ul class="guide-list">
+
+
+                <li>
+
+                    ✔ Review submitted Grades every semester.
+
+                </li>
+
+
+                <li>
+
+                    ✔ Verify the Certificate of Registration (COR).
+
+                </li>
+
+
+                <li>
+
+                    ✔ Monitor scholar academic performance regularly.
+
+                </li>
+
+
+                <li>
+
+                    ✔ Update scholar status when necessary.
+
+                </li>
+
+
+                <li>
+
+                    ✔ Suspend scholars who fail to meet scholarship requirements.
+
+                </li>
+
+
+                <li>
+
+                    ✔ Mark scholars as Graduated after program completion.
+
+                </li>
+
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+
+            <p>
+
+                © 2026 ScholarLink |
+                Scholarship Management System |
+                Scholar Management
+
+            </p>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+
+     IMPORTANT:
+     type="module" is REQUIRED because scholars.js
+     imports Firebase modules.
+====================================================== -->
+
+<script
+    type="module"
+    src="../js/scholars.js"
+></script>
+
+
+</body>
+
+</html>

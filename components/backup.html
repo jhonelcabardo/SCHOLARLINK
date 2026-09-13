@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink - Backup & Recovery</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        #backupBtn {
+            background: #2563eb;
+            color: white;
+        }
+
+        #backupBtn:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔐 Backup & Recovery</h1>
+
+    <p>
+        Create a backup of important SCHOLARLINK Firestore data.
+    </p>
+
+    <p>
+        Only authorized administrators can create backups.
+    </p>
+
+    <button id="backupBtn">
+        Create Backup
+    </button>
+
+    <div id="status">
+        Ready to create backup.
+    </div>
+
+</div>
+
+
+<script type="module" src="../js/backup.js"></script>
+
+</body>
+</html>

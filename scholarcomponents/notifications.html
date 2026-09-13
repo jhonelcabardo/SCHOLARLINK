@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Notifications</title>
+
+    <!-- Notifications CSS -->
+    <link rel="stylesheet"
+          href="../css2/notifications.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+
+    <!-- =========================================
+         LOGOUT MODAL CSS
+    ========================================== -->
+
+    <style>
+
+        /* =========================================
+           LOGOUT MODAL
+        ========================================== */
+
+        .logout-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(15, 23, 42, 0.65);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+
+            z-index: 99999;
+
+        }
+
+
+        .logout-modal.active {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+        }
+
+
+        /* =========================================
+           MODAL CONTENT
+        ========================================== */
+
+        .logout-modal-content {
+
+            width: 420px;
+
+            max-width: calc(100% - 40px);
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.25);
+
+            transform: scale(0.85)
+                       translateY(20px);
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        .logout-modal.active
+        .logout-modal-content {
+
+            transform: scale(1)
+                       translateY(0);
+
+        }
+
+
+        /* =========================================
+           LOGOUT ICON
+        ========================================== */
+
+        .logout-icon {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            font-size: 30px;
+
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================== */
+
+        .logout-modal-content h2 {
+
+            margin: 0 0 10px;
+
+            color: #1e293b;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================== */
+
+        .logout-modal-content p {
+
+            margin: 0 auto 28px;
+
+            max-width: 330px;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================
+           BUTTON CONTAINER
+        ========================================== */
+
+        .logout-buttons {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+        }
+
+
+        /* =========================================
+           BOTH BUTTONS
+        ========================================== */
+
+        .logout-buttons button {
+
+            min-width: 120px;
+
+            padding: 12px 22px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+
+        }
+
+
+        /* =========================================
+           CANCEL BUTTON
+        ========================================== */
+
+        .cancel-btn {
+
+            background: #f1f5f9;
+
+            color: #334155;
+
+        }
+
+
+        .cancel-btn:hover {
+
+            background: #e2e8f0;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================================
+           CONFIRM LOGOUT BUTTON
+        ========================================== */
+
+        .confirm-logout-btn {
+
+            background: #ef4444;
+
+            color: #ffffff;
+
+        }
+
+
+        .confirm-logout-btn:hover {
+
+            background: #dc2626;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .confirm-logout-btn:disabled {
+
+            opacity: 0.7;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 480px) {
+
+            .logout-modal-content {
+
+                width: calc(100% - 30px);
+
+                padding: 30px 20px;
+
+                border-radius: 18px;
+
+            }
+
+
+            .logout-buttons {
+
+                flex-direction: column;
+
+                width: 100%;
+
+            }
+
+
+            .logout-buttons button {
+
+                width: 100%;
+
+            }
+
+
+            .logout-icon {
+
+                width: 65px;
+
+                height: 65px;
+
+                font-size: 26px;
+
+            }
+
+
+            .logout-modal-content h2 {
+
+                font-size: 21px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <i class="fas fa-graduation-cap"></i>
+
+            <div>
+
+                <h2>SCHOLARLINK</h2>
+
+                <p>Scholar Dashboard</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             MENU
+        ====================================== -->
+
+        <ul class="menu">
+
+
+            <!-- HOME -->
+
+            <li>
+
+                <a href="Home.html">
+
+                    <i class="fas fa-house"></i>
+
+                    Home
+
+                </a>
+
+            </li>
+
+
+            <!-- PROFILE -->
+
+            <li>
+
+                <a href="profile.html">
+
+                    <i class="fas fa-user"></i>
+
+                    My Profile
+
+                </a>
+
+            </li>
+
+
+            <!-- SCHOLARSHIP STATUS -->
+
+            <li>
+
+                <a href="scholarship-status.html">
+
+                    <i class="fas fa-award"></i>
+
+                    Scholarship Status
+
+                </a>
+
+            </li>
+
+
+            <!-- GRADES -->
+
+            <li>
+
+                <a href="grades.html">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    Submit Grades
+
+                </a>
+
+            </li>
+
+
+            <!-- COR -->
+
+            <li>
+
+                <a href="cor.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    Submit COR
+
+                </a>
+
+            </li>
+
+
+            <!-- SCHEDULE -->
+
+            <li>
+
+                <a href="schedule.html">
+
+                    <i class="fas fa-calendar-days"></i>
+
+                    Schedule
+
+                </a>
+
+            </li>
+
+
+            <!-- ANNOUNCEMENTS -->
+
+            <li>
+
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    Announcements
+
+                </a>
+
+            </li>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <li class="active">
+
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    Notifications
+
+                </a>
+
+            </li>
+
+
+            <!-- QR CODE -->
+
+            <li>
+
+                <a href="qr-code.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    My QR Code
+
+                </a>
+
+            </li>
+
+
+            <!-- SETTINGS -->
+
+            <li>
+
+                <a href="settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+        <!-- =====================================
+             LOGOUT
+        ====================================== -->
+
+        <div class="bottom-menu">
+
+            <a href="#"
+               id="sidebarlogout">
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================
+             TOPBAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Notifications
+                </h1>
+
+                <p>
+                    Stay informed about your scholarship updates.
+                </p>
+
+            </div>
+
+
+            <!-- TOP PROFILE -->
+
+            <div class="profile-top">
+
+                <img src="images/user.png"
+                     alt="Scholar">
+
+                <div>
+
+                    <h4>
+                        Juan Dela Cruz
+                    </h4>
+
+                    <small>
+                        SCH-2026-001
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             SUMMARY CARDS
+        ========================================== -->
+
+        <section class="summary-grid">
+
+
+            <!-- TOTAL -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-bell"></i>
+
+                <h4>
+                    Total Notifications
+                </h4>
+
+                <h2>
+                    18
+                </h2>
+
+            </div>
+
+
+            <!-- UNREAD -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-envelope"></i>
+
+                <h4>
+                    Unread
+                </h4>
+
+                <h2>
+                    5
+                </h2>
+
+            </div>
+
+
+            <!-- READ -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-envelope-open"></i>
+
+                <h4>
+                    Read
+                </h4>
+
+                <h2>
+                    13
+                </h2>
+
+            </div>
+
+
+            <!-- IMPORTANT -->
+
+            <div class="summary-card">
+
+                <i class="fas fa-circle-exclamation"></i>
+
+                <h4>
+                    Important
+                </h4>
+
+                <h2>
+                    2
+                </h2>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             SEARCH
+        ========================================== -->
+
+        <section class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search notifications...">
+
+            <button type="button">
+
+                <i class="fas fa-search"></i>
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             FILTER BUTTONS
+        ========================================== -->
+
+        <section class="filter-buttons">
+
+
+            <button
+                type="button"
+                class="active-filter">
+
+                All
+
+            </button>
+
+
+            <button type="button">
+
+                Unread
+
+            </button>
+
+
+            <button type="button">
+
+                Announcements
+
+            </button>
+
+
+            <button type="button">
+
+                Grades
+
+            </button>
+
+
+            <button type="button">
+
+                COR
+
+            </button>
+
+
+            <button type="button">
+
+                Schedule
+
+            </button>
+
+
+        </section>
+
+
+        <!-- =========================================
+             NOTIFICATION LIST
+        ========================================== -->
+
+        <section class="notification-list">
+
+
+            <!-- =====================================
+                 NOTIFICATION 1
+            ====================================== -->
+
+            <div class="notification-card unread">
+
+
+                <div class="notification-icon announcement">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                </div>
+
+
+                <div class="notification-content">
+
+
+                    <div class="notification-header">
+
+                        <h3>
+                            New Scholarship Announcement
+                        </h3>
+
+                        <small>
+                            Today • 8:30 AM
+                        </small>
+
+                    </div>
+
+
+                    <p>
+
+                        A new orientation schedule has been posted.
+                        Please check the announcement page for complete details.
+
+                    </p>
+
+
+                    <div class="notification-footer">
+
+
+                        <button
+                            class="view-btn"
+                            type="button">
+
+                            <i class="fas fa-eye"></i>
+
+                            View
+
+                        </button>
+
+
+                        <button
+                            class="read-btn"
+                            type="button">
+
+                            <i class="fas fa-check"></i>
+
+                            Mark as Read
+
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            type="button">
+
+                            <i class="fas fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 NOTIFICATION 2
+            ====================================== -->
+
+            <div class="notification-card">
+
+
+                <div class="notification-icon grades">
+
+                    <i class="fas fa-file-signature"></i>
+
+                </div>
+
+
+                <div class="notification-content">
+
+
+                    <div class="notification-header">
+
+                        <h3>
+                            Grades Verified
+                        </h3>
+
+                        <small>
+                            Yesterday • 2:10 PM
+                        </small>
+
+                    </div>
+
+
+                    <p>
+
+                        Your submitted grades have been successfully
+                        verified by the Scholarship Office.
+
+                    </p>
+
+
+                    <div class="notification-footer">
+
+
+                        <button
+                            class="view-btn"
+                            type="button">
+
+                            <i class="fas fa-eye"></i>
+
+                            View
+
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            type="button">
+
+                            <i class="fas fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 NOTIFICATION 3
+            ====================================== -->
+
+            <div class="notification-card">
+
+
+                <div class="notification-icon cor">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                </div>
+
+
+                <div class="notification-content">
+
+
+                    <div class="notification-header">
+
+                        <h3>
+                            COR Approved
+                        </h3>
+
+                        <small>
+                            July 30 • 11:20 AM
+                        </small>
+
+                    </div>
+
+
+                    <p>
+
+                        Your Certificate of Registration has been
+                        approved and verified successfully.
+
+                    </p>
+
+
+                    <div class="notification-footer">
+
+
+                        <button
+                            class="view-btn"
+                            type="button">
+
+                            <i class="fas fa-eye"></i>
+
+                            View
+
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            type="button">
+
+                            <i class="fas fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 NOTIFICATION 4
+            ====================================== -->
+
+            <div class="notification-card important">
+
+
+                <div class="notification-icon reminder">
+
+                    <i class="fas fa-clock"></i>
+
+                </div>
+
+
+                <div class="notification-content">
+
+
+                    <div class="notification-header">
+
+                        <h3>
+                            Submission Deadline Reminder
+                        </h3>
+
+                        <small>
+                            July 29 • 9:00 AM
+                        </small>
+
+                    </div>
+
+
+                    <p>
+
+                        Submit your Grades and Certificate of
+                        Registration before August 15, 2026
+                        to maintain your scholarship status.
+
+                    </p>
+
+
+                    <div class="notification-footer">
+
+
+                        <button
+                            class="view-btn"
+                            type="button">
+
+                            <i class="fas fa-eye"></i>
+
+                            View
+
+                        </button>
+
+
+                        <button
+                            class="read-btn"
+                            type="button">
+
+                            <i class="fas fa-check"></i>
+
+                            Mark as Read
+
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            type="button">
+
+                            <i class="fas fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             IMPORTANT NOTICE
+        ========================================== -->
+
+        <section class="card">
+
+
+            <h2>
+
+                <i class="fas fa-circle-info"></i>
+
+                Notification Information
+
+            </h2>
+
+
+            <div class="notice-box">
+
+
+                <i class="fas fa-bell"></i>
+
+
+                <div>
+
+
+                    <h3>
+                        Stay Updated
+                    </h3>
+
+
+                    <p>
+
+                        Notifications from the Scholarship Office
+                        include announcements, document verification,
+                        scholarship status updates, schedules, and
+                        important reminders. Check this page regularly
+                        to avoid missing deadlines and official notices.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             NOTIFICATION HISTORY
+        ========================================== -->
+
+        <section class="card">
+
+
+            <h2>
+
+                <i class="fas fa-history"></i>
+
+                Notification History
+
+            </h2>
+
+
+            <table class="history-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Notification
+                        </th>
+
+                        <th>
+                            Category
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- HISTORY 1 -->
+
+                    <tr>
+
+                        <td>
+                            August 04, 2026
+                        </td>
+
+                        <td>
+                            Orientation Schedule Posted
+                        </td>
+
+                        <td>
+                            Announcement
+                        </td>
+
+                        <td>
+
+                            <span class="unread-status">
+                                Unread
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- HISTORY 2 -->
+
+                    <tr>
+
+                        <td>
+                            August 03, 2026
+                        </td>
+
+                        <td>
+                            Grades Verified
+                        </td>
+
+                        <td>
+                            Grades
+                        </td>
+
+                        <td>
+
+                            <span class="read-status">
+                                Read
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- HISTORY 3 -->
+
+                    <tr>
+
+                        <td>
+                            July 30, 2026
+                        </td>
+
+                        <td>
+                            COR Approved
+                        </td>
+
+                        <td>
+                            COR
+                        </td>
+
+                        <td>
+
+                            <span class="read-status">
+                                Read
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- HISTORY 4 -->
+
+                    <tr>
+
+                        <td>
+                            July 29, 2026
+                        </td>
+
+                        <td>
+                            Submission Deadline Reminder
+                        </td>
+
+                        <td>
+                            Reminder
+                        </td>
+
+                        <td>
+
+                            <span class="read-status">
+                                Read
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </section>
+
+
+        <!-- =========================================
+             NOTIFICATION SETTINGS
+        ========================================== -->
+
+        <section class="card">
+
+
+            <h2>
+
+                <i class="fas fa-sliders-h"></i>
+
+                Notification Settings
+
+            </h2>
+
+
+            <div class="settings-grid">
+
+
+                <div class="setting-item">
+
+                    <label>
+                        Email Notifications
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <label>
+                        Announcement Alerts
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <label>
+                        Grades Verification Alerts
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <label>
+                        COR Verification Alerts
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <label>
+                        Schedule Reminders
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        checked>
+
+                </div>
+
+
+                <div class="setting-item">
+
+                    <label>
+                        System Notifications
+                    </label>
+
+                    <input
+                        type="checkbox">
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             ACTION BUTTONS
+        ========================================== -->
+
+        <section class="action-buttons">
+
+
+            <button
+                class="btn-primary"
+                type="button">
+
+                <i class="fas fa-check-double"></i>
+
+                Mark All as Read
+
+            </button>
+
+
+            <button
+                class="btn-danger"
+                type="button">
+
+                <i class="fas fa-trash"></i>
+
+                Delete All Notifications
+
+            </button>
+
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer class="footer">
+
+            <p>
+
+                © 2026 ScholarLink |
+                Scholarship Management System
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =========================================
+     LOGOUT CONFIRMATION MODAL
+========================================= -->
+
+<div
+    class="logout-modal"
+    id="logoutModal">
+
+
+    <div class="logout-modal-content">
+
+
+        <!-- ICON -->
+
+        <div class="logout-icon">
+
+            <i class="fas fa-right-from-bracket"></i>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h2>
+            Confirm Logout
+        </h2>
+
+
+        <!-- MESSAGE -->
+
+        <p>
+            Are you sure you want to logout
+            from your Scholar account?
+        </p>
+
+
+        <!-- BUTTONS -->
+
+        <div class="logout-buttons">
+
+
+            <button
+                class="cancel-btn"
+                id="cancelLogout"
+                type="button">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="confirm-logout-btn"
+                id="confirmLogout"
+                type="button">
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     NOTIFICATIONS JAVASCRIPT
+========================================= -->
+
+<script
+    type="module"
+    src="../js2/notifications.js">
+</script>
+
+
+</body>
+
+</html>

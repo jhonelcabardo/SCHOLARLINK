@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ScholarLink | Submit COR</title>
+
+<link rel="stylesheet"
+href="../css2/cor.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+<!-- ===================================
+     LOGOUT MODAL STYLE
+=================================== -->
+
+<style>
+
+.logout-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 99999;
+
+}
+
+
+.logout-modal.active {
+
+    display: flex;
+
+}
+
+
+/* ===================================
+   OVERLAY
+=================================== */
+
+.logout-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(25, 32, 50, 0.55);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+}
+
+
+/* ===================================
+   MODAL CONTENT
+=================================== */
+
+.logout-modal-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 460px;
+
+    max-width: calc(100% - 40px);
+
+    padding: 38px 34px 36px;
+
+    background: #ffffff;
+
+    border-radius: 26px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+
+    animation:
+        logoutModalShow 0.25s ease;
+
+}
+
+
+/* ===================================
+   MODAL ANIMATION
+=================================== */
+
+@keyframes logoutModalShow {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.92)
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+/* ===================================
+   LOGOUT ICON
+=================================== */
+
+.logout-icon {
+
+    width: 80px;
+
+    height: 80px;
+
+    margin:
+        0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffe1e1;
+
+}
+
+
+.logout-icon i {
+
+    font-size: 34px;
+
+    color: #e52525;
+
+}
+
+
+/* ===================================
+   TITLE
+=================================== */
+
+.logout-modal-content h2 {
+
+    margin:
+        0 0 12px;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #202050;
+
+}
+
+
+/* ===================================
+   MESSAGE
+=================================== */
+
+.logout-modal-content p {
+
+    margin:
+        0 auto 28px;
+
+    max-width: 360px;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #747b8c;
+
+}
+
+
+/* ===================================
+   BUTTONS
+=================================== */
+
+.logout-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    width: 100%;
+
+}
+
+
+.cancel-btn,
+
+.confirm-logout-btn {
+
+    flex: 1;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* ===================================
+   CANCEL
+=================================== */
+
+.cancel-btn {
+
+    background: #f1f2f5;
+
+    color: #34374a;
+
+}
+
+
+.cancel-btn:hover {
+
+    background: #e7e8ec;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* ===================================
+   CONFIRM LOGOUT
+=================================== */
+
+.confirm-logout-btn {
+
+    background: #e52525;
+
+    color: #ffffff;
+
+}
+
+
+.confirm-logout-btn:hover {
+
+    background: #cf1d1d;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(229, 37, 37, 0.25);
+
+}
+
+
+/* ===================================
+   CLICK EFFECT
+=================================== */
+
+.cancel-btn:active,
+
+.confirm-logout-btn:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* ===================================
+   LOADING
+=================================== */
+
+.confirm-logout-btn.loading {
+
+    pointer-events: none;
+
+    opacity: 0.75;
+
+}
+
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width: 600px) {
+
+    .logout-modal-content {
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            32px 22px 28px;
+
+        border-radius: 22px;
+
+    }
+
+
+    .logout-icon {
+
+        width: 70px;
+
+        height: 70px;
+
+    }
+
+
+    .logout-icon i {
+
+        font-size: 29px;
+
+    }
+
+
+    .logout-modal-content h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .logout-modal-content p {
+
+        font-size: 14px;
+
+    }
+
+
+    .logout-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .cancel-btn,
+
+    .confirm-logout-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- ==========================
+SIDEBAR
+========================== -->
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<i class="fas fa-graduation-cap"></i>
+
+<div>
+
+<h2>SCHOLARLINK</h2>
+
+<p>Scholar Dashboard</p>
+
+</div>
+
+</div>
+
+
+<ul class="menu">
+
+
+<li>
+
+<a href="Home.html">
+
+<i class="fas fa-house"></i>
+
+Home
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="profile.html">
+
+<i class="fas fa-user"></i>
+
+My Profile
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="scholarship-status.html">
+
+<i class="fas fa-award"></i>
+
+Scholarship Status
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="grades.html">
+
+<i class="fas fa-file-signature"></i>
+
+Submit Grades
+
+</a>
+
+</li>
+
+
+<li class="active">
+
+<a href="cor.html">
+
+<i class="fas fa-file-circle-check"></i>
+
+Submit COR
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="schedule.html">
+
+<i class="fas fa-calendar-days"></i>
+
+Schedule
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="announcements.html">
+
+<i class="fas fa-bullhorn"></i>
+
+Announcements
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="notifications.html">
+
+<i class="fas fa-bell"></i>
+
+Notifications
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="qr-code.html">
+
+<i class="fas fa-qrcode"></i>
+
+My QR Code
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="settings.html">
+
+<i class="fas fa-gear"></i>
+
+Settings
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+<!-- ==========================
+LOGOUT
+========================== -->
+
+<div class="bottom-menu">
+
+<a href="#"
+id="logoutLink">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+
+</aside>
+
+
+<!-- ==========================
+MAIN CONTENT
+========================== -->
+
+<main class="main-content">
+
+
+<header class="topbar">
+
+
+<div>
+
+<h1>
+
+Submit Certificate of Registration
+
+</h1>
+
+
+<p>
+
+Upload your current semester Certificate of Registration (COR).
+
+</p>
+
+</div>
+
+
+<div class="profile-top">
+
+<img
+src="images/user.png"
+alt="Scholar">
+
+
+<div>
+
+<h4>
+Juan Dela Cruz
+</h4>
+
+
+<small>
+SCH-2026-001
+</small>
+
+</div>
+
+</div>
+
+
+</header>
+
+
+<!-- ==========================
+SUMMARY CARDS
+========================== -->
+
+<section class="summary-grid">
+
+
+<div class="summary-card">
+
+<i class="fas fa-file-circle-check"></i>
+
+<h4>
+Submission Status
+</h4>
+
+<h2>
+Pending
+</h2>
+
+</div>
+
+
+<div class="summary-card">
+
+<i class="fas fa-calendar"></i>
+
+<h4>
+Deadline
+</h4>
+
+<h2>
+Aug. 15
+</h2>
+
+</div>
+
+
+<div class="summary-card">
+
+<i class="fas fa-school"></i>
+
+<h4>
+Semester
+</h4>
+
+<h2>
+1st Semester
+</h2>
+
+</div>
+
+
+<div class="summary-card">
+
+<i class="fas fa-circle-check"></i>
+
+<h4>
+Verification
+</h4>
+
+<h2>
+Waiting
+</h2>
+
+</div>
+
+
+</section>
+
+
+<!-- ==========================
+UPLOAD COR
+========================== -->
+
+<section class="upload-card">
+
+
+<h2>
+
+<i class="fas fa-upload"></i>
+
+Upload Certificate of Registration
+
+</h2>
+
+
+<div class="upload-area">
+
+
+<i class="fas fa-cloud-upload-alt"></i>
+
+
+<h3>
+
+Drag & Drop COR PDF Here
+
+</h3>
+
+
+<p>
+
+or
+
+</p>
+
+
+<input
+type="file"
+accept=".pdf">
+
+
+<button class="upload-btn">
+
+Upload COR
+
+</button>
+
+
+<small>
+
+Accepted Format: PDF
+
+Maximum Size: 10MB
+
+</small>
+
+
+</div>
+
+</section>
+
+
+<!-- ===================================
+COR SUBMISSION HISTORY
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-history"></i>
+
+COR Submission History
+
+</h2>
+
+
+<table class="history-table">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Date Submitted
+</th>
+
+
+<th>
+Semester
+</th>
+
+
+<th>
+School Year
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Action
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+<tbody>
+
+
+<tr>
+
+
+<td>
+August 10, 2026
+</td>
+
+
+<td>
+1st Semester
+</td>
+
+
+<td>
+2026 - 2027
+</td>
+
+
+<td>
+
+<span class="verified">
+
+Verified
+
+</span>
+
+</td>
+
+
+<td>
+
+<button class="view-btn">
+
+<i class="fas fa-eye"></i>
+
+View PDF
+
+</button>
+
+</td>
+
+
+</tr>
+
+
+<tr>
+
+
+<td>
+January 15, 2026
+</td>
+
+
+<td>
+2nd Semester
+</td>
+
+
+<td>
+2025 - 2026
+</td>
+
+
+<td>
+
+<span class="verified">
+
+Verified
+
+</span>
+
+</td>
+
+
+<td>
+
+<button class="view-btn">
+
+<i class="fas fa-eye"></i>
+
+View PDF
+
+</button>
+
+</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+
+</section>
+
+
+<!-- ===================================
+CURRENT REGISTRATION
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-school"></i>
+
+Current Registration Information
+
+</h2>
+
+
+<div class="info-grid">
+
+
+<div>
+
+<label>
+School Name
+</label>
+
+
+<input
+type="text"
+value="Naga College Foundation"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Student ID
+</label>
+
+
+<input
+type="text"
+value="2026-10234"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Course
+</label>
+
+
+<input
+type="text"
+value="Bachelor of Science in Information Technology"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Year Level
+</label>
+
+
+<input
+type="text"
+value="2nd Year"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Semester
+</label>
+
+
+<input
+type="text"
+value="1st Semester"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+School Year
+</label>
+
+
+<input
+type="text"
+value="2026 - 2027"
+readonly>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ===================================
+ADMINISTRATOR REMARKS
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-comments"></i>
+
+Administrator Remarks
+
+</h2>
+
+
+<div class="remarks-box">
+
+
+<i class="fas fa-circle-check"></i>
+
+
+<div>
+
+
+<h3>
+
+COR Verified
+
+</h3>
+
+
+<p>
+
+Your Certificate of Registration has
+been successfully verified.
+
+You may now proceed with your
+scholarship requirements.
+
+</p>
+
+
+<small>
+
+Verified by Scholarship Office
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ===================================
+VERIFICATION TIMELINE
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-clock"></i>
+
+Verification Timeline
+
+</h2>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+
+<div class="circle"></div>
+
+
+<div>
+
+
+<h4>
+
+COR Uploaded
+
+</h4>
+
+
+<small>
+
+August 10, 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+<div class="timeline-item">
+
+
+<div class="circle"></div>
+
+
+<div>
+
+
+<h4>
+
+Under Verification
+
+</h4>
+
+
+<small>
+
+August 11, 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+<div class="timeline-item">
+
+
+<div class="circle active"></div>
+
+
+<div>
+
+
+<h4>
+
+Verified
+
+</h4>
+
+
+<small>
+
+August 12, 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ===================================
+UPLOADED COR FILE
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-file-pdf"></i>
+
+Uploaded Certificate of Registration
+
+</h2>
+
+
+<div class="file-details">
+
+
+<div class="file-icon">
+
+<i class="fas fa-file-pdf"></i>
+
+</div>
+
+
+<div class="file-info">
+
+
+<h3>
+
+Certificate_of_Registration.pdf
+
+</h3>
+
+
+<p>
+
+Uploaded:
+August 10, 2026
+
+</p>
+
+
+<p>
+
+File Size:
+1.82 MB
+
+</p>
+
+
+<span class="verified">
+
+VERIFIED
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ===================================
+FILE ACTIONS
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-folder-open"></i>
+
+File Actions
+
+</h2>
+
+
+<div class="button-group">
+
+
+<button class="btn-primary">
+
+<i class="fas fa-download"></i>
+
+Download COR
+
+</button>
+
+
+<button class="btn-warning">
+
+<i class="fas fa-upload"></i>
+
+Replace COR
+
+</button>
+
+
+<button class="btn-danger">
+
+<i class="fas fa-trash"></i>
+
+Delete COR
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ===================================
+SUBMISSION DETAILS
+=================================== -->
+
+<section class="card">
+
+
+<h2>
+
+<i class="fas fa-circle-info"></i>
+
+Submission Details
+
+</h2>
+
+
+<div class="info-grid">
+
+
+<div>
+
+<label>
+Scholar ID
+</label>
+
+
+<input
+type="text"
+value="SCH-2026-001"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Scholar Name
+</label>
+
+
+<input
+type="text"
+value="Juan Dela Cruz"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Submission Date
+</label>
+
+
+<input
+type="text"
+value="August 10, 2026"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Verification Date
+</label>
+
+
+<input
+type="text"
+value="August 12, 2026"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Verified By
+</label>
+
+
+<input
+type="text"
+value="Scholarship Administrator"
+readonly>
+
+</div>
+
+
+<div>
+
+<label>
+Status
+</label>
+
+
+<input
+type="text"
+value="Verified"
+readonly>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- ===================================
+ACTION BUTTONS
+=================================== -->
+
+<section class="action-buttons">
+
+
+<button class="btn-success">
+
+<i class="fas fa-print"></i>
+
+Print Receipt
+
+</button>
+
+
+<button class="btn-primary">
+
+<i class="fas fa-download"></i>
+
+Download Copy
+
+</button>
+
+
+</section>
+
+
+<!-- ===================================
+FOOTER
+=================================== -->
+
+<footer class="footer">
+
+
+<p>
+
+© 2026 ScholarLink |
+Scholarship Management System
+
+</p>
+
+
+</footer>
+
+
+</main>
+
+</div>
+
+
+<!-- ===================================
+LOGOUT CONFIRMATION MODAL
+=================================== -->
+
+<div
+class="logout-modal"
+id="logoutModal">
+
+
+<div class="logout-overlay"></div>
+
+
+<div class="logout-modal-content">
+
+
+<div class="logout-icon">
+
+<i class="fas fa-right-from-bracket"></i>
+
+</div>
+
+
+<h2>
+Confirm Logout
+</h2>
+
+
+<p>
+Are you sure you want to logout from your Scholar account?
+</p>
+
+
+<div class="logout-buttons">
+
+
+<button
+type="button"
+class="cancel-btn"
+id="cancelLogout">
+
+Cancel
+
+</button>
+
+
+<button
+type="button"
+class="confirm-logout-btn"
+id="confirmLogout">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ===================================
+JAVASCRIPT
+=================================== -->
+
+<script
+type="module"
+src="../js2/cor.js">
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Applicant Registration | SCHOLARLINK</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="../css3/registration.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <!-- LEFT SIDE -->
+    <div class="welcome-section">
+
+        <div class="welcome-overlay"></div>
+
+        <div class="welcome-content">
+
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                    <h1>SCHOLAR<span>LINK</span></h1>
+                    <p> A Portal For Scholarship Management System</p>
+                </div>
+            </div>
+
+            <div class="welcome-text">
+
+                <span class="badge">
+                    <i class="fa-solid fa-award"></i>
+                    Scholarship Application
+                </span>
+
+                <h2>
+                    Start Your<br>
+                    <span>Scholarship Journey</span>
+                </h2>
+
+                <p>
+                    Create your applicant account and begin your
+                    scholarship application with SCHOLARLINK.
+                </p>
+
+            </div>
+
+            <div class="info-list">
+
+                <div class="info-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <div>
+                        <strong>Submit</strong>
+                        <span>Register as a scholarship applicant</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <div>
+                        <strong>Complete Application</strong>
+                        <span>Provide your scholarship information</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <div>
+                        <strong>Upload Requirements</strong>
+                        <span>Submit your required documents</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="form-section">
+
+        <div class="form-container">
+
+            <a href="../index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <div class="form-header">
+
+                <div class="mobile-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h2>Create Applicant Account</h2>
+
+                <p>
+                    Register first to start your scholarship application.
+                </p>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+            <div id="message" class="message"></div>
+
+
+            <!-- REGISTRATION FORM -->
+            <form id="registrationForm">
+
+                <!-- FIRST NAME -->
+                <div class="input-group">
+
+                    <label for="firstName">
+                        First Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="Enter your first name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- MIDDLE NAME -->
+                <div class="input-group">
+
+                    <label for="middleName">
+                        Middle Name
+                        <span class="optional">(Optional)</span>
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="middleName"
+                            name="middleName"
+                            placeholder="Enter your middle name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- LAST NAME -->
+                <div class="input-group">
+
+                    <label for="lastName">
+                        Last Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Enter your last name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                    <small>
+                        Password must contain at least 8 characters.
+                    </small>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirm your password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="toggleConfirmPassword"
+                        >
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+                <div class="terms">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the
+                            <a href="#">Terms and Conditions</a>
+                            and confirm that the information I provide
+                            is accurate.
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- BUTTON -->
+                <button
+                    type="submit"
+                    class="register-btn"
+                    id="registerBtn"
+                >
+
+                    <span id="buttonText">
+                        Submit
+                    </span>
+
+                    <i
+                        id="buttonIcon"
+                        class="fa-solid fa-arrow-right"
+                    ></i>
+
+                </button>
+
+            </form>
+
+
+            <div class="login-info">
+
+                Already have an account?
+
+                <span>
+                    You can continue your application using your
+                    applicant account.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="../js3/registration.js"></script>
+
+</body>
+</html>

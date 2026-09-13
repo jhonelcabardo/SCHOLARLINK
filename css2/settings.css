@@ -1,0 +1,768 @@
+/* ==========================================
+   SCHOLARLINK
+   SETTINGS
+   CSS PART 1
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#F4F7FB;
+    color:#333;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/*==========================
+SIDEBAR
+==========================*/
+
+.sidebar{
+    width:270px;
+    background:linear-gradient(180deg,#0B1E63,#1E4DB7);
+    color:#fff;
+    position:fixed;
+    left:0;
+    top:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:25px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.logo i{
+    font-size:42px;
+    color:#FFD54F;
+}
+
+.logo h2{
+    font-size:24px;
+}
+
+.logo p{
+    font-size:13px;
+    color:#ddd;
+}
+
+.menu{
+    list-style:none;
+    padding:20px 15px;
+}
+
+.menu li{
+    margin-bottom:8px;
+}
+
+.menu li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.menu li a:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.menu li.active a{
+    background:#2F80ED;
+}
+
+.bottom-menu{
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,.15);
+}
+
+.bottom-menu a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+}
+
+.bottom-menu a:hover{
+    background:rgba(255,255,255,.15);
+}
+
+/*==========================
+MAIN CONTENT
+==========================*/
+
+.main-content{
+    margin-left:270px;
+    width:calc(100% - 270px);
+    padding:35px;
+}
+
+/*==========================
+TOPBAR
+==========================*/
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.topbar h1{
+    font-size:34px;
+    color:#1D275D;
+}
+
+.topbar p{
+    color:#666;
+    margin-top:8px;
+}
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    padding:12px 20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
+}
+
+.profile-top img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #2F80ED;
+}
+
+/*==========================
+COMMON CARD
+==========================*/
+
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#1D275D;
+    margin-bottom:25px;
+}
+
+.card h2 i{
+    color:#2F80ED;
+}
+
+/*==========================
+FORM GRID
+==========================*/
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.settings-grid div{
+    display:flex;
+    flex-direction:column;
+}
+
+.settings-grid label{
+    margin-bottom:8px;
+    color:#555;
+    font-weight:500;
+}
+
+.settings-grid input,
+.settings-grid select{
+    padding:14px;
+    border:1px solid #DCE7F5;
+    border-radius:12px;
+    background:#F8FBFF;
+    font-size:15px;
+    transition:.3s;
+}
+
+.settings-grid input:focus,
+.settings-grid select:focus{
+    outline:none;
+    border-color:#2F80ED;
+    background:#fff;
+}
+
+/* ==========================================
+   SETTINGS
+   CSS PART 2
+========================================== */
+
+/*==========================
+SETTINGS OPTIONS
+==========================*/
+
+.settings-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.option-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 20px;
+
+    background:#F8FBFF;
+
+    border:1px solid #E6EEF8;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+.option-item:hover{
+
+    background:#EEF5FF;
+
+    transform:translateX(5px);
+
+}
+
+.option-item label{
+
+    color:#1D275D;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+/*==========================
+CHECKBOX
+==========================*/
+
+.option-item input[type="checkbox"]{
+
+    width:22px;
+
+    height:22px;
+
+    cursor:pointer;
+
+    accent-color:#2F80ED;
+
+}
+
+/*==========================
+SELECT BOX
+==========================*/
+
+.settings-grid select{
+
+    cursor:pointer;
+
+}
+
+/*==========================
+INPUT EFFECT
+==========================*/
+
+.settings-grid input:hover,
+.settings-grid select:hover{
+
+    border-color:#2F80ED;
+
+}
+
+/*==========================
+SECTION TITLE
+==========================*/
+
+.card h2{
+
+    border-bottom:1px solid #EEF2F7;
+
+    padding-bottom:15px;
+
+}
+
+/*==========================
+INFO BOX
+==========================*/
+
+.info-box{
+
+    background:#F8FBFF;
+
+    border-left:5px solid #2F80ED;
+
+    padding:20px;
+
+    border-radius:15px;
+
+}
+
+.info-box p{
+
+    margin-bottom:12px;
+
+    color:#555;
+
+    font-size:15px;
+
+}
+
+.info-box p:last-child{
+
+    margin-bottom:0;
+
+}
+
+/*==========================
+STATUS BADGES
+==========================*/
+
+.status{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.active{
+
+    background:#DFF8E8;
+
+    color:#27AE60;
+
+}
+
+.status.verified{
+
+    background:#E8F1FF;
+
+    color:#2F80ED;
+
+}
+
+/*==========================
+OFFICE CARD
+==========================*/
+
+.office-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:25px;
+
+    background:#F8FBFF;
+
+    border-radius:20px;
+
+    transition:.3s;
+
+}
+
+.office-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.office-card img{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #2F80ED;
+
+}
+
+.office-card h3{
+
+    color:#1D275D;
+
+    margin-bottom:10px;
+
+}
+
+.office-card p{
+
+    color:#666;
+
+    margin-bottom:6px;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+   SETTINGS
+   CSS PART 3
+========================================== */
+
+/*==========================
+ACTION BUTTONS
+==========================*/
+
+.action-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin:35px 0;
+
+}
+
+.btn-primary,
+.btn-warning,
+.btn-danger{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:14px 30px;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:#2F80ED;
+
+}
+
+.btn-warning{
+
+    background:#F39C12;
+
+}
+
+.btn-danger{
+
+    background:#E53935;
+
+}
+
+.btn-primary:hover{
+
+    background:#1D6FDE;
+
+    transform:translateY(-3px);
+
+}
+
+.btn-warning:hover{
+
+    background:#D68910;
+
+    transform:translateY(-3px);
+
+}
+
+.btn-danger:hover{
+
+    background:#C62828;
+
+    transform:translateY(-3px);
+
+}
+
+/*==========================
+FOOTER
+==========================*/
+
+.footer{
+
+    margin-top:35px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#777;
+
+    border-top:1px solid #EAEAEA;
+
+}
+
+/*==========================
+ANIMATION
+==========================*/
+
+.card,
+.office-card,
+.option-item,
+.info-box{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================
+RESPONSIVE
+==========================*/
+
+@media(max-width:1200px){
+
+.settings-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:992px){
+
+.sidebar{
+
+width:90px;
+
+}
+
+.logo h2,
+.logo p{
+
+display:none;
+
+}
+
+.menu a{
+
+font-size:0;
+
+}
+
+.menu a i{
+
+margin:auto;
+
+font-size:20px;
+
+}
+
+.main-content{
+
+margin-left:90px;
+
+width:calc(100% - 90px);
+
+}
+
+.office-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+
+display:none;
+
+}
+
+.main-content{
+
+margin-left:0;
+
+width:100%;
+
+padding:20px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.settings-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.option-item{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:12px;
+
+}
+
+.option-item input[type="checkbox"]{
+
+align-self:flex-end;
+
+}
+
+.action-buttons{
+
+flex-direction:column;
+
+}
+
+.btn-primary,
+.btn-warning,
+.btn-danger{
+
+width:100%;
+
+}
+
+.office-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.office-card img{
+
+margin-bottom:15px;
+
+}
+
+}
+
+/*==========================
+CUSTOM SCROLLBAR
+==========================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EEF5FF;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2F80ED;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1D6FDE;
+
+}
+

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | My QR Code</title>
+
+
+    <!-- Poppins -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+
+    <!-- QR Code CSS -->
+    <link rel="stylesheet"
+          href="../css2/qr-code.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fas fa-graduation-cap"></i>
+
+            <div>
+
+                <h2>SCHOLARLINK</h2>
+
+                <p>Scholar Dashboard</p>
+
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <li>
+                <a href="Home.html">
+
+                    <i class="fas fa-house"></i>
+
+                    <span>Home</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="profile.html">
+
+                    <i class="fas fa-user"></i>
+
+                    <span>My Profile</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="scholarship-status.html">
+
+                    <i class="fas fa-award"></i>
+
+                    <span>Scholarship Status</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="grades.html">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    <span>Submit Grades</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="cor.html">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    <span>Submit COR</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="schedule.html">
+
+                    <i class="fas fa-calendar-days"></i>
+
+                    <span>Schedule</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="announcements.html">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    <span>Announcements</span>
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="notifications.html">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span>Notifications</span>
+
+                </a>
+            </li>
+
+
+            <li class="active">
+
+                <a href="qr-code.html">
+
+                    <i class="fas fa-qrcode"></i>
+
+                    <span>My QR Code</span>
+
+                </a>
+
+            </li>
+
+
+            <li>
+                <a href="settings.html">
+
+                    <i class="fas fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </a>
+            </li>
+
+
+        </ul>
+
+
+        <!-- LOGOUT -->
+
+        <div class="bottom-menu">
+
+            <a href="#"
+               id="sidebarlogout">
+
+                <i class="fas fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>My QR Code</h1>
+
+                <p>
+                    Use your permanent QR Code for ScholarLink login.
+                </p>
+
+            </div>
+
+
+            <div class="profile-top">
+
+                <img src="../images/user.png"
+                     id="headerPhoto"
+                     alt="Scholar">
+
+                <div>
+
+                    <h4 id="headerName">
+                        Loading...
+                    </h4>
+
+                    <small id="headerScholarId">
+                        Loading...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             LOADING
+        ====================================================== -->
+
+        <div class="page-loading"
+             id="pageLoading">
+
+            <div class="loading-spinner"></div>
+
+            <h3>Loading your QR Code...</h3>
+
+            <p>
+                Please wait while we retrieve your ScholarLink account.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ERROR
+        ====================================================== -->
+
+        <div class="page-error"
+             id="pageError"
+             style="display:none;">
+
+            <i class="fas fa-circle-exclamation"></i>
+
+            <h2 id="errorTitle">
+                QR Code Unavailable
+            </h2>
+
+            <p id="errorMessage">
+                Your Scholar QR Code could not be loaded.
+            </p>
+
+            <button type="button"
+                    onclick="window.location.reload()"
+                    class="retry-btn">
+
+                <i class="fas fa-rotate-right"></i>
+
+                Try Again
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ACTUAL QR CONTENT
+        ====================================================== -->
+
+        <div id="qrPageContent"
+             style="display:none;">
+
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+            ================================================== -->
+
+            <section class="summary-grid">
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+
+                    <h4>QR Status</h4>
+
+                    <h2 id="qrStatus">
+                        --
+                    </h2>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+
+                    <h4>Scholar ID</h4>
+
+                    <h2 id="summaryScholarId">
+                        --
+                    </h2>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+
+                    <h4>Date Issued</h4>
+
+                    <h2 id="dateIssued">
+                        --
+                    </h2>
+
+                </div>
+
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+
+                    <h4>Security</h4>
+
+                    <h2 id="securityStatus">
+                        --
+                    </h2>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 QR CARD
+            ================================================== -->
+
+            <section class="qr-card">
+
+
+                <div class="qr-card-header">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fas fa-qrcode"></i>
+
+                            Scholar Login QR Code
+
+                        </h2>
+
+                        <p>
+                            This QR Code is permanently assigned
+                            to your ScholarLink account.
+                        </p>
+
+                    </div>
+
+
+                    <span class="permanent-badge">
+
+                        <i class="fas fa-lock"></i>
+
+                        Permanent
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="qr-main">
+
+
+                    <!-- QR -->
+
+                    <div class="qr-display">
+
+                        <div class="qr-frame">
+
+                            <!-- QR generated here -->
+                            <div id="scholarQR"></div>
+
+                        </div>
+
+
+                        <div class="qr-scan-note">
+
+                            <i class="fas fa-camera"></i>
+
+                            Scan this QR Code to access
+                            ScholarLink QR Login.
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- SCHOLAR DETAILS -->
+
+                    <div class="qr-details">
+
+
+                        <div class="scholar-photo">
+
+                            <img src="../images/user.png"
+                                 id="scholarPhoto"
+                                 alt="Scholar Photo">
+
+                        </div>
+
+
+                        <h2 id="scholarName">
+                            Loading...
+                        </h2>
+
+
+                        <div class="scholar-id-display">
+
+                            <span>Scholar ID</span>
+
+                            <strong id="mainScholarId">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-school"></i>
+
+                            <div>
+
+                                <span>School</span>
+
+                                <strong id="schoolName">
+                                    --
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-book-open"></i>
+
+                            <div>
+
+                                <span>Course / Program</span>
+
+                                <strong id="course">
+                                    --
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-layer-group"></i>
+
+                            <div>
+
+                                <span>Year Level</span>
+
+                                <strong id="yearLevel">
+                                    --
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail-item">
+
+                            <i class="fas fa-circle-check"></i>
+
+                            <div>
+
+                                <span>Account Status</span>
+
+                                <strong id="accountStatus"
+                                        class="active-text">
+
+                                    --
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="qr-actions">
+
+
+                    <button type="button"
+                            class="btn-primary"
+                            id="viewQRBtn">
+
+                        <i class="fas fa-expand"></i>
+
+                        View QR
+
+                    </button>
+
+
+                    <button type="button"
+                            class="btn-success"
+                            id="downloadQRBtn">
+
+                        <i class="fas fa-download"></i>
+
+                        Download QR
+
+                    </button>
+
+
+                    <button type="button"
+                            class="btn-secondary"
+                            id="printQRBtn">
+
+                        <i class="fas fa-print"></i>
+
+                        Print QR
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SCHOLAR INFORMATION
+            ================================================== -->
+
+            <section class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    Scholar Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <label>Scholar ID</label>
+
+                        <input type="text"
+                               id="infoScholarId"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Full Name</label>
+
+                        <input type="text"
+                               id="infoFullName"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>School</label>
+
+                        <input type="text"
+                               id="infoSchool"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Course / Program</label>
+
+                        <input type="text"
+                               id="infoCourse"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Year Level</label>
+
+                        <input type="text"
+                               id="infoYearLevel"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>QR Status</label>
+
+                        <input type="text"
+                               id="infoQRStatus"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Date Issued</label>
+
+                        <input type="text"
+                               id="infoDateIssued"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Security</label>
+
+                        <input type="text"
+                               id="infoSecurity"
+                               readonly>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 HOW TO USE
+            ================================================== -->
+
+            <section class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                    How to Use Your QR Code
+
+                </h2>
+
+
+                <div class="instruction-list">
+
+
+                    <div class="instruction-item">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Open ScholarLink Login
+                            </h3>
+
+                            <p>
+                                Go to the official ScholarLink login page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="instruction-item">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Select QR Code Login
+                            </h3>
+
+                            <p>
+                                Choose the QR Code Login option.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="instruction-item">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Scan Your QR Code
+                            </h3>
+
+                            <p>
+                                Present this QR Code to the scanner.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="instruction-item">
+
+                        <div class="step-number">
+                            4
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Verify Your Scholar Account
+                            </h3>
+
+                            <p>
+                                The system verifies your permanent QR token
+                                and active Scholar account.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="instruction-item">
+
+                        <div class="step-number">
+                            5
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Access Your Dashboard
+                            </h3>
+
+                            <p>
+                                After successful verification, you can
+                                access your Scholar Dashboard.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECURITY
+            ================================================== -->
+
+            <section class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    Security Reminder
+
+                </h2>
+
+
+                <div class="security-box">
+
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+
+                    <div>
+
+                        <h3>
+                            Keep Your QR Code Secure
+                        </h3>
+
+                        <p>
+
+                            Your QR Code contains a unique token
+                            assigned to your ScholarLink account.
+                            Do not share screenshots or copies of
+                            your QR Code with other people.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 QR INFORMATION
+            ================================================== -->
+
+            <section class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-circle-info"></i>
+
+                    QR Code Information
+
+                </h2>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-box">
+
+                        <label>QR Code Type</label>
+
+                        <input type="text"
+                               value="Permanent Scholar Login QR"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Expiration</label>
+
+                        <input type="text"
+                               value="No Expiration"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Assignment</label>
+
+                        <input type="text"
+                               value="One QR Code per Scholar"
+                               readonly>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <label>Verification</label>
+
+                        <input type="text"
+                               id="infoVerification"
+                               readonly>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+
+                © 2026 ScholarLink |
+
+                Scholarship Management System
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     VIEW QR MODAL
+====================================================== -->
+
+<div class="qr-modal"
+     id="qrModal">
+
+    <div class="qr-modal-box">
+
+
+        <button type="button"
+                class="modal-close"
+                id="closeQRModal">
+
+            <i class="fas fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+
+            <i class="fas fa-qrcode"></i>
+
+            Scholar QR Code
+
+        </h2>
+
+
+        <div class="modal-qr-frame">
+
+            <div id="modalQRCode"></div>
+
+        </div>
+
+
+        <h3 id="modalScholarName">
+            --
+        </h3>
+
+
+        <p id="modalScholarId">
+            --
+        </p>
+
+
+        <span class="modal-status">
+
+            <i class="fas fa-circle-check"></i>
+
+            Permanent QR Code
+
+        </span>
+
+
+        <button type="button"
+                class="btn-success modal-download"
+                id="modalDownloadBtn">
+
+            <i class="fas fa-download"></i>
+
+            Download QR
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOGOUT MODAL
+====================================================== -->
+
+<div class="logout-modal"
+     id="logoutModal">
+
+
+    <div class="logout-modal-box">
+
+
+        <div class="logout-icon">
+
+            <i class="fas fa-right-from-bracket"></i>
+
+        </div>
+
+
+        <h2>
+            Confirm Logout
+        </h2>
+
+
+        <p>
+            Are you sure you want to logout from your Scholar account?
+        </p>
+
+
+        <div class="logout-buttons">
+
+
+            <button type="button"
+                    class="cancel-btn"
+                    id="cancelLogout">
+
+                Cancel
+
+            </button>
+
+
+            <button type="button"
+                    class="confirm-logout-btn"
+                    id="confirmLogout">
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script type="module"
+        src="../js2/qr-code.js"></script>
+
+
+</body>
+
+</html>

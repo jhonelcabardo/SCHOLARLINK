@@ -1,0 +1,23 @@
+SCHOLARLINK - SECURITY SOFTWARE UPDATE RECORD
+
+Date: September 7, 2026
+
+Software/Dependencies Reviewed:
+1. Firebase JavaScript SDK - Version 10.7.1
+2. Supabase JavaScript SDK - Version 2
+3. Font Awesome - Version 6.6.0
+4. Google Fonts - Poppins
+
+Security Update Procedure:
+1. Review the versions of all external libraries.
+2. Check official sources for available updates.
+3. Update dependencies only after checking compatibility.
+4. Test authentication, database, file upload, dashboard, and other system functions.
+5. Verify that no errors occur after updating.
+6. Keep the system dependencies maintained and updated.
+
+Security Control:
+Security software and regular updates.
+
+Status:
+Dependencies reviewed and update procedure established.
