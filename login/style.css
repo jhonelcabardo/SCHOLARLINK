@@ -1,6 +1,14 @@
 /* =========================================================
    SCHOLARLINK LOGIN PAGE
-   MATCHED TO REFERENCE DESIGN
+   PREMIUM ENHANCED DESIGN
+   ORIGINAL FORMATION PRESERVED
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   GLOBAL RESET
 ========================================================= */
 
 * {
@@ -15,10 +23,15 @@ body {
     height: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     overflow: hidden;
     background: #06183b;
+    color: #ffffff;
 }
 
 
@@ -28,10 +41,13 @@ body {
 
 .page {
     width: 100%;
-    height: calc(100vh - 72px);
-    min-height: 700px;
+    height: calc(100vh - 55px);
+    min-height: 650px;
+
     display: flex;
     overflow: hidden;
+
+    position: relative;
 }
 
 
@@ -41,9 +57,13 @@ body {
 
 .left-side {
     position: relative;
+
     width: 55%;
     height: 100%;
+
     overflow: hidden;
+
+    background: #071b40;
 }
 
 
@@ -54,39 +74,109 @@ body {
 .cityhall {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
 
     object-fit: cover;
 
-    /*
-       Adjust this if your City Hall image
-       needs a slightly different crop.
-    */
-    object-position: center center;
+    /* Move City Hall sign away from the ScholarLink title */
+    object-position: 10% center;
 
     z-index: 1;
+
+    filter:
+        saturate(1.08)
+        contrast(1.04)
+        brightness(.96);
+
+    transition:
+        transform 1.2s ease,
+        filter 1.2s ease;
 }
 
-
 /* =========================================================
-   DARK OVERLAY
+   PREMIUM CITY HALL OVERLAY
 ========================================================= */
 
 .dark-overlay {
     position: absolute;
     inset: 0;
+    z-index: 2;
 
     background:
         linear-gradient(
             90deg,
-            rgba(3, 15, 38, 0.88) 0%,
-            rgba(5, 20, 47, 0.76) 48%,
-            rgba(4, 16, 38, 0.50) 100%
+            rgba(3, 15, 38, .72) 0%,
+            rgba(5, 20, 47, .48) 40%,
+            rgba(5, 20, 47, .28) 70%,
+            rgba(4, 16, 38, .18) 100%
         );
 
+    pointer-events: none;
+}
+/* =========================================================
+   BLUE ATMOSPHERIC GLOW
+========================================================= */
+
+.left-side::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: -250px;
+    bottom: -270px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(52, 113, 255, .55) 0%,
+            rgba(66, 57, 255, .20) 42%,
+            transparent 72%
+        );
+
+    filter: blur(15px);
+
     z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PURPLE ATMOSPHERIC GLOW
+========================================================= */
+
+.left-side::after {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    right: -260px;
+    top: -220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(138, 64, 255, .28) 0%,
+            rgba(72, 71, 255, .12) 40%,
+            transparent 72%
+        );
+
+    filter: blur(25px);
+
+    z-index: 2;
+
+    pointer-events: none;
 }
 
 
@@ -101,7 +191,7 @@ body {
     height: 100%;
 
     padding:
-        38px 50px 26px;
+        30px 48px 20px;
 
     z-index: 3;
 
@@ -116,45 +206,62 @@ body {
    LOGOS
 ========================================================= */
 
-
 .logos {
     display: flex;
-    align-items: center;
-    gap: 20px;
 
-    height: 115px;
+    align-items: center;
+
+    gap: 18px;
+
+    height: 105px;
+
+    animation:
+        fadeDown .8s ease both;
 }
 
 
-/* NAGA LOGO */
+/* =========================================================
+   NAGA LOGO
+========================================================= */
 
 .naga-logo {
-    width: 115px;
-    height: 115px;
+    width: 108px;
+    height: 108px;
 
     object-fit: contain;
 
     filter:
-        drop-shadow(
-            0 5px 10px rgba(0,0,0,.25)
-        );
+        drop-shadow(0 8px 18px rgba(0,0,0,.35))
+        drop-shadow(0 0 14px rgba(255,255,255,.08));
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
+}
+
+.naga-logo:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    filter:
+        drop-shadow(0 12px 22px rgba(0,0,0,.40))
+        drop-shadow(0 0 18px rgba(255,255,255,.14));
 }
 
 
-/* SCHOLARLINK LOGO */
+/* =========================================================
+   SCHOLARLINK LOGO
+========================================================= */
 
 .scholar-logo {
-    width: 185px;
+    width: 180px;
     height: auto;
 
     object-fit: contain;
 
-    /*
-       If scholarlink.jpg contains white background,
-       use a transparent PNG version instead.
-    */
-
     mix-blend-mode: normal;
+
+    filter:
+        drop-shadow(0 7px 15px rgba(0,0,0,.25));
 }
 
 
@@ -165,20 +272,30 @@ body {
 .hero-content {
     max-width: 610px;
 
-    margin-top: -10px;
+    margin-top: -6px;
+
+    animation:
+        fadeUp .9s .1s ease both;
 }
 
+
+/* =========================================================
+   WELCOME
+========================================================= */
 
 .welcome {
     color: #ffffff;
 
-    font-size: 34px;
+    font-size: 31px;
 
     line-height: 1.15;
 
     font-weight: 600;
 
-    margin-bottom: 2px;
+    margin-bottom: 3px;
+
+    text-shadow:
+        0 3px 14px rgba(0,0,0,.28);
 }
 
 
@@ -189,7 +306,7 @@ body {
 .hero-content h1 {
     color: #ffffff;
 
-    font-size: clamp(65px, 5.8vw, 88px);
+    font-size: clamp(60px, 5.5vw, 84px);
 
     line-height: .98;
 
@@ -197,22 +314,34 @@ body {
 
     letter-spacing: -4px;
 
-    margin: 0 0 12px;
+    margin:
+        0 0 12px;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,.25);
 }
 
+
+/* =========================================================
+   GRADIENT LINK
+========================================================= */
 
 .hero-content h1 span {
     background:
         linear-gradient(
             90deg,
-            #713cff,
-            #a34eff
+            #713cff 0%,
+            #8c42ff 40%,
+            #b04eff 100%
         );
 
     -webkit-background-clip: text;
     background-clip: text;
 
     color: transparent;
+
+    filter:
+        drop-shadow(0 5px 18px rgba(120,60,255,.20));
 }
 
 
@@ -221,15 +350,18 @@ body {
 ========================================================= */
 
 .hero-content h2 {
-    color: #ffffff;
+    color: rgba(255,255,255,.96);
 
-    font-size: 24px;
+    font-size: 23px;
 
     font-weight: 400;
 
     line-height: 1.4;
 
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.25);
 }
 
 
@@ -238,20 +370,25 @@ body {
 ========================================================= */
 
 .purple-line {
-    width: 510px;
-
+    width: 505px;
     max-width: 100%;
 
-    height: 3px;
+    height: 4px;
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
             90deg,
-            #873cff,
-            #6730ff
+            #13b8ff 0%,
+            #6366ff 48%,
+            #a33fff 100%
         );
 
-    margin-bottom: 26px;
+    margin-bottom: 23px;
+
+    box-shadow:
+        0 0 15px rgba(77,90,255,.32);
 }
 
 
@@ -264,9 +401,9 @@ body {
 
     max-width: 575px;
 
-    font-size: 17px;
+    font-size: 16px;
 
-    line-height: 1.8;
+    line-height: 1.75;
 
     font-weight: 400;
 }
@@ -278,6 +415,7 @@ body {
 
 .features {
     width: 100%;
+
     max-width: 615px;
 
     display: grid;
@@ -285,9 +423,12 @@ body {
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 18px;
+    gap: 16px;
 
-    margin-top: 15px;
+    margin-top: 12px;
+
+    animation:
+        fadeUp 1s .2s ease both;
 }
 
 
@@ -296,30 +437,30 @@ body {
 ========================================================= */
 
 .feature-card {
-    height: 160px;
+    height: 155px;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
     border:
         1px solid
-        rgba(142, 148, 255, .42);
+        rgba(135, 159, 255, .38);
 
     background:
         linear-gradient(
             145deg,
-            rgba(17, 39, 81, .80),
-            rgba(30, 35, 77, .58)
+            rgba(18, 45, 96, .76),
+            rgba(25, 35, 79, .58)
         );
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,.08),
+        rgba(255,255,255,.12),
 
-        0 10px 30px
-        rgba(0,0,0,.20);
+        0 15px 35px
+        rgba(0,0,0,.25);
 
     display: flex;
 
@@ -330,6 +471,74 @@ body {
     justify-content: center;
 
     text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+
+/* =========================================================
+   FEATURE CARD LIGHT
+========================================================= */
+
+.feature-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    top: -55px;
+    right: -45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,105,255,.28),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FEATURE CARD HOVER
+========================================================= */
+
+.feature-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(140,160,255,.70);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(23,53,112,.86),
+            rgba(38,42,91,.70)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.16),
+
+        0 20px 45px
+        rgba(0,0,0,.32),
+
+        0 0 25px
+        rgba(88,85,255,.15);
 }
 
 
@@ -338,8 +547,8 @@ body {
 ========================================================= */
 
 .feature-icon {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
 
     border-radius: 50%;
 
@@ -348,33 +557,83 @@ body {
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
-    font-size: 25px;
+    font-size: 24px;
 
     background:
-        rgba(31, 48, 94, .80);
+        rgba(30,50,102,.85);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
 
     box-shadow:
         0 0 25px
-        rgba(81, 80, 255, .15);
+        rgba(81,80,255,.18);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+
+    box-shadow:
+        0 0 30px
+        rgba(90,100,255,.30);
 }
 
 
+/* =========================================================
+   FEATURE ICON COLORS
+========================================================= */
+
 .feature-icon.blue {
-    color: #64a4ff;
+    color: #69b4ff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31,104,190,.38),
+            rgba(32,56,115,.75)
+        );
 }
 
 .feature-icon.cyan {
     color: #38e2e1;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,145,160,.38),
+            rgba(25,63,111,.75)
+        );
 }
 
 .feature-icon.purple {
     color: #9a6fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(103,53,205,.40),
+            rgba(43,48,113,.75)
+        );
 }
 
 .feature-icon.violet {
-    color: #836bff;
+    color: #a078ff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(120,70,215,.42),
+            rgba(48,45,113,.75)
+        );
 }
 
 
@@ -383,23 +642,29 @@ body {
 ========================================================= */
 
 .feature-card h3 {
-    color: white;
+    color: #ffffff;
 
-    font-size: 16px;
+    font-size: 15px;
 
-    font-weight: 500;
+    font-weight: 600;
 
     line-height: 1.35;
+
+    position: relative;
+    z-index: 2;
 }
 
 .feature-card p {
-    color: white;
+    color: rgba(255,255,255,.92);
 
-    font-size: 16px;
+    font-size: 14px;
 
     font-weight: 400;
 
     line-height: 1.3;
+
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -414,43 +679,56 @@ body {
 
     align-items: center;
 
-    gap: 17px;
+    gap: 15px;
 
-    padding-top: 17px;
+    padding-top: 14px;
 
     border-top:
         1px solid
-        rgba(255,255,255,.27);
+        rgba(255,255,255,.24);
 
-    color: white;
+    color: rgba(255,255,255,.94);
 
-    font-size: 13px;
+    font-size: 12px;
+
+    animation:
+        fadeUp 1s .35s ease both;
 }
 
+
+/* =========================================================
+   BOTTOM ITEM
+========================================================= */
 
 .bottom-item {
     display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 }
-
 
 .bottom-item i {
-    color: #9b8cff;
+    color: #9c8cff;
 
-    font-size: 17px;
+    font-size: 16px;
+
+    filter:
+        drop-shadow(0 0 7px rgba(130,110,255,.35));
 }
 
+
+/* =========================================================
+   BOTTOM DIVIDER
+========================================================= */
 
 .bottom-divider {
     width: 1px;
 
-    height: 25px;
+    height: 23px;
 
     background:
-        rgba(255,255,255,.35);
+        rgba(255,255,255,.32);
 }
 
 
@@ -464,7 +742,7 @@ body {
     width: 45%;
     height: 100%;
 
-    padding: 22px 50px;
+    padding: 20px 45px;
 
     display: flex;
 
@@ -474,9 +752,71 @@ body {
     background:
         linear-gradient(
             135deg,
-            rgba(224,232,247,.28),
-            rgba(216,224,242,.16)
+            rgba(231,237,250,.90),
+            rgba(211,220,239,.78)
         );
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RIGHT SIDE GLOW
+========================================================= */
+
+.right-side::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -220px;
+    right: -160px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(132,79,255,.20),
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   RIGHT SIDE BLUE GLOW
+========================================================= */
+
+.right-side::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    bottom: -220px;
+    left: -170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(39,146,255,.16),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+
+    pointer-events: none;
 }
 
 
@@ -490,33 +830,70 @@ body {
     max-width: 640px;
 
     padding:
-        48px 70px 40px;
+        35px 60px 30px;
 
-    border-radius: 24px;
+    border-radius: 25px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(248,250,255,.93),
-            rgba(232,237,248,.84)
+            rgba(250,252,255,.93),
+            rgba(228,235,249,.82)
         );
 
     border:
         1px solid
-        rgba(255,255,255,.85);
+        rgba(255,255,255,.95);
 
     box-shadow:
         0 25px 70px
-        rgba(11, 28, 68, .30),
+        rgba(11,28,68,.27),
 
         inset 0 1px 0
-        rgba(255,255,255,.9);
+        rgba(255,255,255,.95),
+
+        0 0 35px
+        rgba(91,91,230,.08);
 
     backdrop-filter:
-        blur(20px);
+        blur(22px);
 
     -webkit-backdrop-filter:
-        blur(20px);
+        blur(22px);
+
+    position: relative;
+
+    z-index: 5;
+
+    animation:
+        loginCardIn .8s ease both;
+}
+
+
+/* =========================================================
+   LOGIN CARD TOP LIGHT
+========================================================= */
+
+.login-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.95),
+            transparent
+        );
+
+    pointer-events: none;
 }
 
 
@@ -551,8 +928,9 @@ body {
 
     box-shadow:
         0 7px 20px
-        rgba(91, 70, 230, .28);
+        rgba(91,70,230,.28);
 }
+
 
 /* =========================================================
    SCHOLARLINK LOGO - RIGHT SIDE
@@ -567,11 +945,12 @@ body {
 
     justify-content: center;
 
-    margin: 0 auto 12px;
+    margin:
+        0 auto 8px;
 }
 
 .login-logo img {
-    width: 145px;
+    width: 125px;
 
     height: auto;
 
@@ -580,6 +959,45 @@ body {
     object-fit: contain;
 
     display: block;
+
+    filter:
+        drop-shadow(
+            0 7px 12px
+            rgba(40,55,110,.14)
+        );
+
+    transition:
+        transform .3s ease;
+}
+
+.login-logo img:hover {
+    transform:
+        translateY(-2px)
+        scale(1.02);
+}
+
+
+/* =========================================================
+   LOGIN TITLE
+========================================================= */
+
+.login-card > h1 {
+    color: #101b43;
+
+    text-align: center;
+
+    font-size: 29px;
+
+    line-height: 1.25;
+
+    font-weight: 700;
+
+    margin:
+        0 0 8px;
+}
+
+.login-card > h1 span {
+    color: #6335e9;
 }
 
 
@@ -592,11 +1010,11 @@ body {
 
     text-align: center;
 
-    font-size: 16px;
+    font-size: 14px;
 
-    line-height: 1.6;
+    line-height: 1.55;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -605,20 +1023,24 @@ body {
 ========================================================= */
 
 .field-group {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
+
+/* =========================================================
+   FIELD LABEL
+========================================================= */
 
 .field-group label {
     display: block;
 
     color: #111b43;
 
-    font-size: 16px;
+    font-size: 14px;
 
     font-weight: 600;
 
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 }
 
 
@@ -630,47 +1052,86 @@ body {
     position: relative;
 
     width: 100%;
-    height: 59px;
+    height: 56px;
 
     display: flex;
 
     align-items: center;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background:
-        rgba(255,255,255,.73);
+        rgba(255,255,255,.78);
 
     border:
         1px solid
-        rgba(90,105,145,.23);
+        rgba(90,105,145,.20);
+
+    box-shadow:
+        inset 0 1px 2px
+        rgba(30,50,90,.03);
 
     transition:
-        .2s ease;
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
 }
 
 
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
 .input-container:focus-within {
-    border-color: #7046e9;
+    border-color:
+        rgba(112,70,233,.70);
+
+    background:
+        rgba(255,255,255,.92);
 
     box-shadow:
         0 0 0 3px
-        rgba(112,70,233,.09);
+        rgba(112,70,233,.09),
+
+        0 8px 22px
+        rgba(80,65,190,.07);
+
+    transform:
+        translateY(-1px);
 }
 
+
+/* =========================================================
+   INPUT ICON
+========================================================= */
 
 .input-container > i {
     position: absolute;
 
-    left: 19px;
+    left: 18px;
 
     color: #6844e8;
 
-    font-size: 20px;
+    font-size: 19px;
 
     z-index: 2;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
 }
 
+.input-container:focus-within > i {
+    color: #5b32e8;
+
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
 
 .input-container input {
     width: 100%;
@@ -682,7 +1143,7 @@ body {
     background: transparent;
 
     padding:
-        0 55px 0 57px;
+        0 55px 0 55px;
 
     color: #29365f;
 
@@ -690,9 +1151,8 @@ body {
         "Poppins",
         sans-serif;
 
-    font-size: 16px;
+    font-size: 14px;
 }
-
 
 .input-container input::placeholder {
     color: #53618c;
@@ -708,7 +1168,7 @@ body {
 .eye-button {
     position: absolute;
 
-    right: 13px;
+    right: 10px;
     top: 50%;
 
     transform:
@@ -725,12 +1185,20 @@ body {
 
     cursor: pointer;
 
-    font-size: 19px;
-}
+    font-size: 18px;
 
+    border-radius: 8px;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+}
 
 .eye-button:hover {
     color: #6035e7;
+
+    background:
+        rgba(96,53,231,.07);
 }
 
 
@@ -745,22 +1213,25 @@ body {
 
     margin-top: 0;
 
-    margin-bottom: 17px;
+    margin-bottom: 14px;
 }
-
 
 .forgot-row a {
     color: #5528e8;
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 500;
+
+    transition:
+        color .2s ease;
 }
 
-
 .forgot-row a:hover {
+    color: #3e20b9;
+
     text-decoration: underline;
 }
 
@@ -771,11 +1242,11 @@ body {
 
 .login-button {
     width: 100%;
-    height: 61px;
+    height: 56px;
 
     border: none;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background:
         linear-gradient(
@@ -792,34 +1263,43 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 14px;
+    gap: 12px;
 
     font-family:
         "Poppins",
         sans-serif;
 
-    font-size: 18px;
+    font-size: 16px;
 
-    font-weight: 500;
+    font-weight: 600;
 
     cursor: pointer;
 
     box-shadow:
-        0 9px 22px
-        rgba(78,67,230,.28);
+        0 10px 25px
+        rgba(78,67,230,.27);
 
     transition:
-        .25s ease;
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
 }
-
 
 .login-button:hover {
     transform:
         translateY(-2px);
 
+    filter:
+        brightness(1.04);
+
     box-shadow:
-        0 13px 27px
+        0 15px 30px
         rgba(78,67,230,.35);
+}
+
+.login-button:active {
+    transform:
+        translateY(0);
 }
 
 
@@ -832,12 +1312,11 @@ body {
 
     align-items: center;
 
-    gap: 16px;
+    gap: 14px;
 
     margin:
-        22px 0;
+        18px 0;
 }
-
 
 .or-divider div {
     flex: 1;
@@ -845,14 +1324,13 @@ body {
     height: 1px;
 
     background:
-        rgba(80,92,126,.35);
+        rgba(80,92,126,.30);
 }
-
 
 .or-divider span {
     color: #18234d;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 500;
 }
@@ -864,16 +1342,16 @@ body {
 
 .qr-button {
     width: 100%;
-    height: 60px;
+    height: 55px;
 
     border:
         1px solid
         #6843ed;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     background:
-        rgba(255,255,255,.22);
+        rgba(255,255,255,.28);
 
     color: #5526e3;
 
@@ -882,31 +1360,38 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 13px;
+    gap: 12px;
 
     font-family:
         "Poppins",
         sans-serif;
 
-    font-size: 17px;
+    font-size: 15px;
 
     font-weight: 600;
 
     cursor: pointer;
 
     transition:
-        .25s ease;
+        background .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
 }
-
 
 .qr-button i {
-    font-size: 23px;
+    font-size: 21px;
 }
-
 
 .qr-button:hover {
     background:
-        rgba(98,70,230,.07);
+        rgba(98,70,230,.09);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(90,65,220,.10);
 }
 
 
@@ -917,58 +1402,81 @@ body {
 .apply-container {
     width: 100%;
 
-    height: 79px;
+    min-height: 67px;
 
-    margin-top: 29px;
+    margin-top: 20px;
 
     padding:
-        0 17px;
+        8px 12px;
 
     border:
         1px solid
-        rgba(88,103,143,.22);
+        rgba(88,103,143,.20);
 
-    border-radius: 11px;
+    border-radius: 13px;
 
     background:
-        rgba(255,255,255,.31);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.45),
+            rgba(238,241,250,.34)
+        );
 
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
+
+    gap: 12px;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.55);
 }
 
+
+/* =========================================================
+   APPLY TEXT
+========================================================= */
 
 .apply-container > span {
     color: #2a3760;
 
-    font-size: 15px;
+    font-size: 13px;
 
     line-height: 1.3;
+
+    font-weight: 500;
+
+    white-space: nowrap;
 }
 
 
+/* =========================================================
+   APPLY LINK
+========================================================= */
+
 .apply-link {
-    min-width: 250px;
+    min-width: 235px;
 
-    height: 50px;
+    height: 46px;
 
-    padding: 0 20px;
+    padding:
+        0 17px;
 
     border-radius: 11px;
 
     background:
         linear-gradient(
             135deg,
-            #f0edff,
-            #e7e1ff
+            #f2efff,
+            #e8e1ff
         );
 
     border:
         1px solid
-        rgba(112,70,233,.16);
+        rgba(112,70,233,.17);
 
     color: #592ce5;
 
@@ -979,18 +1487,21 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 12px;
+    gap: 10px;
 
-    font-size: 15px;
+    font-size: 13px;
 
     font-weight: 600;
 
     box-shadow:
-        0 5px 15px
-        rgba(89,44,229,.08);
+        0 6px 17px
+        rgba(89,44,229,.09);
 
     transition:
-        .25s ease;
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease,
+        color .25s ease;
 }
 
 .apply-link:hover {
@@ -998,27 +1509,29 @@ body {
         linear-gradient(
             135deg,
             #e9e4ff,
-            #ddd5ff
+            #dcd3ff
         );
 
     color: #4c22c7;
 
-    transform: translateX(2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 8px 20px
-        rgba(89,44,229,.15);
+        0 10px 23px
+        rgba(89,44,229,.17);
 }
 
 .apply-link i {
-    font-size: 17px;
+    font-size: 16px;
 
     transition:
         transform .25s ease;
 }
 
 .apply-link:hover i {
-    transform: translateX(4px);
+    transform:
+        translateX(4px);
 }
 
 
@@ -1028,10 +1541,16 @@ body {
 
 .footer {
     width: 100%;
+
     height: 55px;
 
     background:
-        #06183c;
+        linear-gradient(
+            90deg,
+            #051636,
+            #061b42,
+            #051636
+        );
 
     color: white;
 
@@ -1045,7 +1564,24 @@ body {
 
     padding:
         0 30px;
+
+    position: relative;
+
+    z-index: 10;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 -5px 20px
+        rgba(0,0,0,.12);
 }
+
+
+/* =========================================================
+   FOOTER ITEM
+========================================================= */
 
 .footer-item {
     display: flex;
@@ -1054,22 +1590,36 @@ body {
 
     gap: 9px;
 
-    font-size: 14px;
-}
+    font-size: 13px;
 
+    color:
+        rgba(255,255,255,.94);
+}
 
 .footer-item i {
-    font-size: 19px;
+    font-size: 17px;
+
+    color: #ffffff;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(90,150,255,.30)
+        );
 }
 
+
+/* =========================================================
+   FOOTER DIVIDER
+========================================================= */
 
 .footer-divider {
     width: 1px;
 
-    height: 24px;
+    height: 23px;
 
     background:
-        rgba(255,255,255,.42);
+        rgba(255,255,255,.30);
 }
 
 
@@ -1088,10 +1638,13 @@ body {
     justify-content: center;
 
     background:
-        rgba(2,12,35,.75);
+        rgba(2,12,35,.78);
 
     backdrop-filter:
-        blur(8px);
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
 
     opacity: 0;
 
@@ -1103,13 +1656,16 @@ body {
     z-index: 9999;
 }
 
-
 .qr-modal.active {
     opacity: 1;
 
     visibility: visible;
 }
 
+
+/* =========================================================
+   QR MODAL BOX
+========================================================= */
 
 .qr-modal-box {
     position: relative;
@@ -1129,9 +1685,16 @@ body {
 
     box-shadow:
         0 30px 80px
-        rgba(0,0,0,.4);
+        rgba(0,0,0,.42);
+
+    animation:
+        modalSlideUp .3s ease;
 }
 
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 .close-modal {
     position: absolute;
@@ -1149,11 +1712,28 @@ body {
     background:
         #edf0f8;
 
-    color: #333d60;
+    color:
+        #333d60;
 
     cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
 }
 
+.close-modal:hover {
+    background:
+        #e2e6f1;
+
+    transform:
+        rotate(5deg);
+}
+
+
+/* =========================================================
+   QR MODAL ICON
+========================================================= */
 
 .qr-modal-icon {
     width: 65px;
@@ -1179,18 +1759,32 @@ body {
             #3988f5,
             #7225e9
         );
+
+    box-shadow:
+        0 10px 25px
+        rgba(76,73,230,.25);
 }
 
 
+/* =========================================================
+   QR MODAL TITLE
+========================================================= */
+
 .qr-modal-box h2 {
-    color: #16214b;
+    color:
+        #16214b;
 
     margin-bottom: 8px;
 }
 
 
+/* =========================================================
+   QR MODAL TEXT
+========================================================= */
+
 .qr-modal-box p {
-    color: #5d668a;
+    color:
+        #5d668a;
 
     font-size: 14px;
 
@@ -1199,6 +1793,10 @@ body {
     margin-bottom: 20px;
 }
 
+
+/* =========================================================
+   QR SCANNER
+========================================================= */
 
 .qr-scanner {
     min-height: 230px;
@@ -1216,18 +1814,30 @@ body {
     align-items: center;
     justify-content: center;
 
-    color: #6841df;
+    color:
+        #6841df;
 
     gap: 8px;
 
     margin-bottom: 20px;
+
+    background:
+        rgba(246,244,255,.60);
 }
 
+
+/* =========================================================
+   QR SCANNER ICON
+========================================================= */
 
 .qr-scanner i {
     font-size: 42px;
 }
 
+
+/* =========================================================
+   QR SCANNER SPAN
+========================================================= */
 
 .qr-scanner span {
     font-size: 17px;
@@ -1236,12 +1846,21 @@ body {
 }
 
 
+/* =========================================================
+   QR SCANNER SMALL
+========================================================= */
+
 .qr-scanner small {
-    color: #727a99;
+    color:
+        #727a99;
 
     font-size: 12px;
 }
 
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
 .close-button {
     width: 100%;
@@ -1268,6 +1887,93 @@ body {
     font-weight: 600;
 
     cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.close-button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(72,55,220,.25);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes loginCardIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(25px)
+            scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes modalSlideUp {
+
+    from {
+        transform:
+            translateY(30px)
+            scale(.98);
+
+        opacity: 0;
+    }
+
+    to {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 1;
+    }
 }
 
 
@@ -1285,6 +1991,11 @@ body {
     .login-card {
         max-width: 640px;
     }
+
+    .hero-content h1 {
+        font-size:
+            clamp(65px, 5.5vw, 88px);
+    }
 }
 
 
@@ -1296,29 +2007,36 @@ body {
 
     .left-content {
         padding:
-            30px 35px 22px;
+            28px 34px 18px;
     }
 
     .right-side {
         padding:
-            20px 30px;
+            18px 28px;
     }
 
     .login-card {
         padding:
-            40px 45px 35px;
+            30px 42px 25px;
     }
 
     .features {
-        gap: 12px;
+        gap: 11px;
     }
 
     .feature-card {
-        height: 145px;
+        height: 140px;
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 22px;
     }
 
     .footer {
-        gap: 20px;
+        gap: 18px;
     }
 }
 
@@ -1331,6 +2049,7 @@ body {
 
     body {
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .page {
@@ -1338,35 +2057,111 @@ body {
         min-height: 0;
 
         flex-direction: column;
+
+        overflow: visible;
     }
 
     .left-side {
         width: 100%;
-        min-height: 720px;
+
+        min-height: 700px;
+
         height: auto;
     }
 
     .right-side {
         width: 100%;
+
         height: auto;
 
-        min-height: 750px;
+        min-height: 700px;
 
         padding:
-            45px 25px;
+            40px 25px;
     }
 
     .login-card {
         max-width: 650px;
+
+        padding:
+            35px 45px 30px;
     }
 
     .footer {
         height: auto;
 
+        min-height: 55px;
+
         padding:
-            20px;
+            16px 20px;
 
         flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   TABLET SMALL
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .left-content {
+        padding:
+            25px 25px 18px;
+    }
+
+    .logos {
+        height: 95px;
+
+        gap: 14px;
+    }
+
+    .naga-logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .scholar-logo {
+        width: 150px;
+    }
+
+    .hero-content h1 {
+        font-size:
+            clamp(48px, 9vw, 68px);
+
+        letter-spacing:
+            -3px;
+    }
+
+    .welcome {
+        font-size: 27px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .features {
+        max-width: 100%;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .feature-card {
+        height: 135px;
+    }
+
+    .left-bottom {
+        font-size: 11px;
+    }
+
+    .login-card {
+        padding:
+            32px 30px 27px;
     }
 }
 
@@ -1377,107 +2172,246 @@ body {
 
 @media (max-width: 600px) {
 
+    body {
+        overflow-y: auto;
+    }
+
+    .page {
+        display: block;
+
+        height: auto;
+    }
+
     .left-side {
         min-height: 690px;
+
+        height: auto;
     }
 
     .left-content {
+        min-height: 690px;
+
+        height: auto;
+
         padding:
-            25px 20px;
+            22px 18px 18px;
     }
 
     .logos {
-        gap: 12px;
+        height: 82px;
+
+        gap: 10px;
     }
 
     .naga-logo {
-        width: 75px;
-        height: 75px;
+        width: 68px;
+        height: 68px;
     }
 
     .scholar-logo {
-        width: 90px;
+        width: 105px;
     }
 
     .welcome {
-        font-size: 25px;
+        font-size: 24px;
+    }
+
+    .hero-content {
+        margin-top: 0;
     }
 
     .hero-content h1 {
-        font-size: 55px;
+        font-size:
+            clamp(43px, 13vw, 58px);
 
         letter-spacing:
             -3px;
+
+        margin-bottom: 10px;
     }
 
     .hero-content h2 {
-        font-size: 18px;
+        font-size: 17px;
+
+        line-height: 1.45;
+
+        margin-bottom: 18px;
+    }
+
+    .purple-line {
+        height: 3px;
+
+        margin-bottom: 18px;
     }
 
     .description {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .features {
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 10px;
+        gap: 9px;
+
+        margin-top: 10px;
     }
 
     .feature-card {
-        height: 120px;
+        height: 118px;
+
+        border-radius: 13px;
     }
 
     .feature-icon {
-        width: 45px;
-        height: 45px;
+        width: 43px;
+        height: 43px;
 
-        font-size: 20px;
+        font-size: 19px;
+
+        margin-bottom: 7px;
     }
 
     .feature-card h3,
     .feature-card p {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .left-bottom {
-        font-size: 10px;
+        font-size: 9px;
+
+        gap: 8px;
+
+        padding-top: 12px;
+    }
+
+    .bottom-item {
+        gap: 5px;
+    }
+
+    .bottom-item i {
+        font-size: 13px;
+    }
+
+    .bottom-divider {
+        height: 20px;
+    }
+
+
+    /* LOGIN SIDE */
+
+    .right-side {
+        min-height: auto;
+
+        padding:
+            35px 16px 40px;
     }
 
     .login-card {
+        width: 100%;
+
         padding:
-            35px 22px;
+            30px 20px 25px;
+
+        border-radius: 20px;
+    }
+
+    .login-logo img {
+        width: 115px;
     }
 
     .login-card > h1 {
-        font-size: 25px;
+        font-size: 24px;
     }
 
     .login-subtitle {
+        font-size: 13px;
+
+        margin-bottom: 18px;
+    }
+
+    .field-group {
+        margin-bottom: 13px;
+    }
+
+    .field-group label {
+        font-size: 13px;
+    }
+
+    .input-container {
+        height: 54px;
+    }
+
+    .input-container input {
+        font-size: 13px;
+    }
+
+    .login-button {
+        height: 54px;
+
+        font-size: 15px;
+    }
+
+    .qr-button {
+        height: 53px;
+
         font-size: 14px;
     }
+
+
+    /* APPLY */
 
     .apply-container {
         height: auto;
 
-        padding: 14px;
+        min-height: 0;
+
+        padding:
+            12px;
 
         flex-direction: column;
 
-        gap: 12px;
+        align-items: stretch;
+
+        gap: 10px;
     }
 
-    .apply-button {
+    .apply-container > span {
+        text-align: center;
+
+        font-size: 13px;
+    }
+
+    .apply-link {
         width: 100%;
 
         min-width: 0;
+
+        height: 48px;
+
+        font-size: 13px;
     }
+
+
+    /* FOOTER */
 
     .footer {
         flex-direction: column;
 
-        gap: 12px;
+        gap: 9px;
+
+        padding:
+            14px 12px;
+
+        min-height: 120px;
+    }
+
+    .footer-item {
+        font-size: 12px;
+    }
+
+    .footer-item i {
+        font-size: 15px;
     }
 
     .footer-divider {
@@ -1485,220 +2419,565 @@ body {
     }
 }
 
- /* Forgot Password Modal Styles */
-        .forgot-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .forgot-modal.active {
-            display: flex;
-        }
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
 
-        .forgot-modal-box {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 440px;
-            width: 90%;
-            position: relative;
-            animation: modalSlideUp 0.3s ease;
-        }
+@media (max-width: 400px) {
 
-        .forgot-modal-box .forgot-icon {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 32px;
-            color: #ffffff;
-        }
+    .left-content {
+        padding:
+            20px 14px 16px;
+    }
 
-        .forgot-modal-box h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e1b4b;
-            text-align: center;
-            margin-bottom: 8px;
-        }
+    .naga-logo {
+        width: 60px;
+        height: 60px;
+    }
 
-        .forgot-modal-box p {
-            text-align: center;
-            color: #6b7280;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
+    .scholar-logo {
+        width: 95px;
+    }
 
-        .forgot-modal-box .input-group {
-            margin-bottom: 20px;
-        }
+    .welcome {
+        font-size: 21px;
+    }
 
-        .forgot-modal-box .input-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #1e1b4b;
-            margin-bottom: 6px;
-        }
+    .hero-content h1 {
+        font-size: 42px;
 
-        .forgot-modal-box .input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: #f9fafb;
-        }
+        letter-spacing:
+            -2px;
+    }
 
-        .forgot-modal-box .input-container:focus-within {
-            border-color: #7c3aed;
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
-        }
+    .hero-content h2 {
+        font-size: 15px;
+    }
 
-        .forgot-modal-box .input-container i {
-            padding: 0 12px 0 16px;
-            color: #9ca3af;
-            font-size: 16px;
-        }
+    .description {
+        font-size: 12px;
+    }
 
-        .forgot-modal-box .input-container:focus-within i {
-            color: #7c3aed;
-        }
+    .feature-card {
+        height: 110px;
+    }
 
-        .forgot-modal-box .input-container input {
-            flex: 1;
-            padding: 14px 12px 14px 0;
-            border: none;
-            background: transparent;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            color: #1e1b4b;
-            outline: none;
-        }
+    .feature-icon {
+        width: 39px;
+        height: 39px;
 
-        .forgot-modal-box .input-container input::placeholder {
-            color: #9ca3af;
-            font-weight: 300;
-        }
+        font-size: 17px;
+    }
 
-        .forgot-modal-box .reset-button {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+    .feature-card h3,
+    .feature-card p {
+        font-size: 11px;
+    }
 
-        .forgot-modal-box .reset-button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
-        }
+    .login-card {
+        padding:
+            27px 16px 22px;
+    }
 
-        .forgot-modal-box .reset-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
+    .login-card > h1 {
+        font-size: 22px;
+    }
+}
 
-        .forgot-modal-box .close-modal-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: #f3f4f6;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 20px;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .forgot-modal-box .close-modal-btn:hover {
-            background: #e5e7eb;
-            color: #1e1b4b;
-        }
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+========================================================= */
 
-        .forgot-modal-box .success-message {
-            display: none;
-            text-align: center;
-            padding: 20px 0;
-        }
+@media (prefers-reduced-motion: reduce) {
 
-        .forgot-modal-box .success-message.show {
-            display: block;
-        }
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
 
-        .forgot-modal-box .success-message i {
-            font-size: 48px;
-            color: #22c55e;
-            margin-bottom: 16px;
-        }
 
-        .forgot-modal-box .success-message h3 {
-            color: #1e1b4b;
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
+/* =========================================================
+   FORGOT PASSWORD MODAL
+   ORIGINAL FUNCTIONALITY PRESERVED
+========================================================= */
 
-        .forgot-modal-box .success-message p {
-            color: #6b7280;
-            font-size: 14px;
-        }
+.forgot-modal {
+    display: none;
 
-        .forgot-modal-box .back-to-login {
-            display: block;
-            text-align: center;
-            margin-top: 16px;
-            color: #7c3aed;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
+    position: fixed;
 
-        .forgot-modal-box .back-to-login:hover {
-            color: #6d28d9;
-            text-decoration: underline;
-        }
+    top: 0;
+    left: 0;
 
-        @keyframes modalSlideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(0,0,0,.58);
+
+    backdrop-filter:
+        blur(9px);
+
+    -webkit-backdrop-filter:
+        blur(9px);
+
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.forgot-modal.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   FORGOT MODAL BOX
+========================================================= */
+
+.forgot-modal-box {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(245,247,253,.97)
+        );
+
+    border-radius: 24px;
+
+    padding: 38px;
+
+    max-width: 440px;
+
+    width: 90%;
+
+    position: relative;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.35),
+
+        inset 0 1px 0
+        rgba(255,255,255,.90);
+
+    animation:
+        modalSlideUp .3s ease;
+}
+
+
+/* =========================================================
+   FORGOT ICON
+========================================================= */
+
+.forgot-modal-box .forgot-icon {
+    width: 72px;
+    height: 72px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #6d28d9
+        );
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 auto 20px;
+
+    font-size: 32px;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 28px
+        rgba(109,40,217,.25);
+}
+
+
+/* =========================================================
+   FORGOT MODAL TITLE
+========================================================= */
+
+.forgot-modal-box h2 {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: #1e1b4b;
+
+    text-align: center;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   FORGOT MODAL TEXT
+========================================================= */
+
+.forgot-modal-box p {
+    text-align: center;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   FORGOT INPUT GROUP
+========================================================= */
+
+.forgot-modal-box .input-group {
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   FORGOT LABEL
+========================================================= */
+
+.forgot-modal-box .input-group label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: #1e1b4b;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   FORGOT INPUT
+========================================================= */
+
+.forgot-modal-box .input-container {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    border:
+        2px solid
+        #e5e7eb;
+
+    border-radius: 12px;
+
+    transition:
+        all .3s ease;
+
+    background:
+        #f9fafb;
+
+    height: auto;
+}
+
+.forgot-modal-box .input-container:focus-within {
+    border-color:
+        #7c3aed;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(124,58,237,.10);
+}
+
+
+/* =========================================================
+   FORGOT INPUT ICON
+========================================================= */
+
+.forgot-modal-box .input-container i {
+    padding:
+        0 12px 0 16px;
+
+    color:
+        #9ca3af;
+
+    font-size: 16px;
+}
+
+.forgot-modal-box .input-container:focus-within i {
+    color:
+        #7c3aed;
+}
+
+
+/* =========================================================
+   FORGOT INPUT FIELD
+========================================================= */
+
+.forgot-modal-box .input-container input {
+    flex: 1;
+
+    padding:
+        14px 12px 14px 0;
+
+    border: none;
+
+    background:
+        transparent;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size: 14px;
+
+    color:
+        #1e1b4b;
+
+    outline: none;
+}
+
+.forgot-modal-box .input-container input::placeholder {
+    color:
+        #9ca3af;
+
+    font-weight: 300;
+}
+
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+.forgot-modal-box .reset-button {
+    width: 100%;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #6d28d9
+        );
+
+    color:
+        #ffffff;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        all .3s ease;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(109,40,217,.18);
+}
+
+.forgot-modal-box .reset-button:hover:not(:disabled) {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 27px
+        rgba(124,58,237,.32);
+}
+
+.forgot-modal-box .reset-button:disabled {
+    opacity: .7;
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   CLOSE FORGOT BUTTON
+========================================================= */
+
+.forgot-modal-box .close-modal-btn {
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    background:
+        #f3f4f6;
+
+    border: none;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    color:
+        #6b7280;
+
+    cursor: pointer;
+
+    transition:
+        all .3s ease;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.forgot-modal-box .close-modal-btn:hover {
+    background:
+        #e5e7eb;
+
+    color:
+        #1e1b4b;
+
+    transform:
+        rotate(5deg);
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.forgot-modal-box .success-message {
+    display: none;
+
+    text-align: center;
+
+    padding:
+        20px 0;
+}
+
+.forgot-modal-box .success-message.show {
+    display: block;
+}
+
+.forgot-modal-box .success-message i {
+    font-size: 48px;
+
+    color:
+        #22c55e;
+
+    margin-bottom: 16px;
+}
+
+.forgot-modal-box .success-message h3 {
+    color:
+        #1e1b4b;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.forgot-modal-box .success-message p {
+    color:
+        #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BACK TO LOGIN
+========================================================= */
+
+.forgot-modal-box .back-to-login {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 16px;
+
+    color:
+        #7c3aed;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        color .3s ease;
+}
+
+.forgot-modal-box .back-to-login:hover {
+    color:
+        #6d28d9;
+
+    text-decoration:
+        underline;
+}
+
+
+/* =========================================================
+   MOBILE FORGOT MODAL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .forgot-modal-box {
+        padding:
+            32px 22px;
+
+        border-radius:
+            20px;
+    }
+
+    .forgot-modal-box .forgot-icon {
+        width: 64px;
+        height: 64px;
+
+        font-size: 28px;
+    }
+
+    .forgot-modal-box h2 {
+        font-size: 21px;
+    }
+
+    .forgot-modal-box p {
+        font-size: 13px;
+    }
+}
