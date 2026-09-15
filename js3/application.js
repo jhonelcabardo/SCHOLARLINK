@@ -3496,7 +3496,6 @@ function setupApplicationProgress() {
         return;
     }
 
-
     /* =====================================================
        GET FORM
     ===================================================== */
@@ -3509,9 +3508,8 @@ function setupApplicationProgress() {
         return;
     }
 
-
     /* =====================================================
-       REQUIRED FIELDS
+       CHECK IF FIELD IS COMPLETED
     ===================================================== */
 
     function isFieldCompleted(field) {
@@ -3520,27 +3518,20 @@ function setupApplicationProgress() {
             return false;
         }
 
-
         /* FILE INPUT */
 
         if (field.type === "file") {
-
             return (
                 field.files &&
                 field.files.length > 0
             );
-
         }
-
 
         /* CHECKBOX */
 
         if (field.type === "checkbox") {
-
             return field.checked;
-
         }
-
 
         /* RADIO */
 
@@ -3553,21 +3544,16 @@ function setupApplicationProgress() {
 
             return Array.from(radios)
                 .some(radio => radio.checked);
-
         }
-
 
         /* SELECT */
 
         if (field.tagName === "SELECT") {
-
             return (
                 field.value &&
                 field.value.trim() !== ""
             );
-
         }
-
 
         /* NORMAL INPUT / TEXTAREA */
 
@@ -3575,12 +3561,10 @@ function setupApplicationProgress() {
             field.value &&
             field.value.trim() !== ""
         );
-
     }
 
-
     /* =====================================================
-       GET FIELDS FROM SECTION
+       GET REQUIRED FIELDS FROM SECTION
     ===================================================== */
 
     function getSectionFields(section) {
@@ -3589,37 +3573,26 @@ function setupApplicationProgress() {
             return [];
         }
 
-
         return Array.from(
             section.querySelectorAll(
                 "input, select, textarea"
             )
         ).filter(field => {
 
-            /*
-             * Ignore hidden technical fields
-             */
+            /* Ignore hidden technical fields */
 
-            if (
-                field.type === "hidden"
-            ) {
+            if (field.type === "hidden") {
                 return false;
             }
 
-
-            /*
-             * Only required fields count
-             */
+            /* Only required fields count */
 
             return field.required;
-
         });
-
     }
 
-
     /* =====================================================
-       SECTION COMPLETE
+       CHECK SECTION COMPLETION
     ===================================================== */
 
     function isSectionComplete(section) {
@@ -3627,23 +3600,19 @@ function setupApplicationProgress() {
         const fields =
             getSectionFields(section);
 
-
         /*
-         * If no required fields were detected,
-         * don't automatically mark the section complete.
+         * If there are no required fields,
+         * do not mark the section as complete.
          */
 
         if (!fields.length) {
             return false;
         }
 
-
         return fields.every(
             field => isFieldCompleted(field)
         );
-
     }
-
 
     /* =====================================================
        FIND FORM SECTIONS
@@ -3651,30 +3620,18 @@ function setupApplicationProgress() {
 
     const formCards =
         Array.from(
-            form.querySelectorAll(
-                ".form-card"
-            )
+            form.querySelectorAll(".form-card")
         );
 
-
     /*
-     * Your form contains:
+     * FORM SECTIONS:
      *
      * 0 = Personal
      * 1 = Academic
      * 2 = Family
      * 3 = Household
      * 4 = Requirements
-     *
-     * Progress has:
-     *
-     * 1 = Personal
-     * 2 = Academic
-     * 3 = Family
-     * 4 = Requirements
-     * 5 = Review
      */
-
 
     function getPersonalSection() {
 
@@ -3686,9 +3643,7 @@ function setupApplicationProgress() {
                         "personal information"
                     )
         );
-
     }
-
 
     function getAcademicSection() {
 
@@ -3700,9 +3655,7 @@ function setupApplicationProgress() {
                         "academic information"
                     )
         );
-
     }
-
 
     function getFamilySection() {
 
@@ -3714,28 +3667,7 @@ function setupApplicationProgress() {
                         "family information"
                     )
         );
-
     }
-
-
-    function getRequirementsSection() {
-
-        return formCards.find(
-            section =>
-                section.innerText
-                    .toLowerCase()
-                    .includes(
-                        "scholarship requirements"
-                    ) ||
-                section.innerText
-                    .toLowerCase()
-                    .includes(
-                        "requirements"
-                    )
-        );
-
-    }
-
 
     function getHouseholdSection() {
 
@@ -3747,9 +3679,27 @@ function setupApplicationProgress() {
                         "household information"
                     )
         );
-
     }
 
+    function getRequirementsSection() {
+
+        return formCards.find(
+            section => {
+
+                const text =
+                    section.innerText.toLowerCase();
+
+                return (
+                    text.includes(
+                        "scholarship requirements"
+                    ) ||
+                    text.includes(
+                        "requirements"
+                    )
+                );
+            }
+        );
+    }
 
     /* =====================================================
        MARK STEP
@@ -3764,12 +3714,6 @@ function setupApplicationProgress() {
             return;
         }
 
-
-        step.classList.remove(
-            "active"
-        );
-
-
         if (completed) {
 
             step.classList.add(
@@ -3781,14 +3725,11 @@ function setupApplicationProgress() {
             step.classList.remove(
                 "completed"
             );
-
         }
-
     }
 
-
     /* =====================================================
-       UPDATE PROGRESS
+       UPDATE APPLICATION PROGRESS
     ===================================================== */
 
     function updateApplicationProgress() {
@@ -3808,106 +3749,127 @@ function setupApplicationProgress() {
         const requirements =
             getRequirementsSection();
 
+        /* =================================================
+           CHECK COMPLETION
+        ================================================= */
 
         const personalComplete =
             isSectionComplete(
                 personal
             );
 
-
         const academicComplete =
             isSectionComplete(
                 academic
             );
-
 
         const familyComplete =
             isSectionComplete(
                 family
             );
 
-
         const householdComplete =
             isSectionComplete(
                 household
             );
-
 
         const requirementsComplete =
             isSectionComplete(
                 requirements
             );
 
-
-        /*
-         * STEP 1
-         */
+        /* =================================================
+           STEP 1 - PERSONAL
+        ================================================= */
 
         setStepComplete(
             steps[0],
             personalComplete
         );
 
-
-        /*
-         * STEP 2
-         */
+        /* =================================================
+           STEP 2 - ACADEMIC
+        ================================================= */
 
         setStepComplete(
             steps[1],
             academicComplete
         );
 
-
-        /*
-         * STEP 3
-         */
+        /* =================================================
+           STEP 3 - FAMILY
+        ================================================= */
 
         setStepComplete(
             steps[2],
             familyComplete
         );
 
-
-        /*
-         * STEP 4
-         *
-         * Requirements + Household
-         *
-         * must both be complete.
-         */
-
-        const step4Complete =
-            requirementsComplete &&
-            householdComplete;
-
+        /* =================================================
+           STEP 4 - HOUSEHOLD
+        ================================================= */
 
         setStepComplete(
             steps[3],
-            step4Complete
+            householdComplete
         );
 
-
-        /*
-         * STEP 5 REVIEW
-         *
-         * ONLY blue when EVERYTHING
-         * is complete.
-         */
-
-        const everythingComplete =
-            personalComplete &&
-            academicComplete &&
-            familyComplete &&
-            householdComplete &&
-            requirementsComplete;
-
+        /* =================================================
+           STEP 5 - REQUIREMENTS
+        ================================================= */
 
         setStepComplete(
             steps[4],
-            everythingComplete
+            requirementsComplete
         );
 
+        /* =================================================
+           RESET ACTIVE STEP
+        ================================================= */
+
+        steps.forEach(
+            step => {
+                step.classList.remove(
+                    "active"
+                );
+            }
+        );
+
+        /* =================================================
+           FIRST INCOMPLETE STEP = ACTIVE
+        ================================================= */
+
+        if (!personalComplete) {
+
+            steps[0].classList.add(
+                "active"
+            );
+
+        } else if (!academicComplete) {
+
+            steps[1].classList.add(
+                "active"
+            );
+
+        } else if (!familyComplete) {
+
+            steps[2].classList.add(
+                "active"
+            );
+
+        } else if (!householdComplete) {
+
+            steps[3].classList.add(
+                "active"
+            );
+
+        } else if (!requirementsComplete) {
+
+            steps[4].classList.add(
+                "active"
+            );
+
+        }
 
         /* =================================================
            PROGRESS LINES
@@ -3919,9 +3881,7 @@ function setupApplicationProgress() {
                 "completed",
                 personalComplete
             );
-
         }
-
 
         if (lines[1]) {
 
@@ -3929,9 +3889,7 @@ function setupApplicationProgress() {
                 "completed",
                 academicComplete
             );
-
         }
-
 
         if (lines[2]) {
 
@@ -3939,34 +3897,16 @@ function setupApplicationProgress() {
                 "completed",
                 familyComplete
             );
-
         }
-
 
         if (lines[3]) {
 
             lines[3].classList.toggle(
                 "completed",
-                step4Complete
+                householdComplete
             );
-
         }
-
-
-        console.log(
-            "Application Progress:",
-            {
-                personalComplete,
-                academicComplete,
-                familyComplete,
-                householdComplete,
-                requirementsComplete,
-                everythingComplete
-            }
-        );
-
     }
-
 
     /* =====================================================
        LIVE UPDATE
@@ -3977,18 +3917,15 @@ function setupApplicationProgress() {
         updateApplicationProgress
     );
 
-
     form.addEventListener(
         "change",
         updateApplicationProgress
     );
 
-
     form.addEventListener(
         "keyup",
         updateApplicationProgress
     );
-
 
     /* =====================================================
        FILE UPLOAD UPDATE
@@ -4007,7 +3944,6 @@ function setupApplicationProgress() {
         }
     );
 
-
     /* =====================================================
        INITIAL CHECK
     ===================================================== */
@@ -4016,7 +3952,6 @@ function setupApplicationProgress() {
         updateApplicationProgress,
         300
     );
-
 }
 
 
