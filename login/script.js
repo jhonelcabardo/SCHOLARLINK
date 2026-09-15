@@ -117,6 +117,23 @@ if (
     eyeIcon
 ) {
 
+    // INITIAL STATE: PASSWORD HIDDEN
+    password.type = "password";
+
+    eyeIcon.classList.remove(
+        "fa-eye"
+    );
+
+    eyeIcon.classList.add(
+        "fa-eye-slash"
+    );
+
+    togglePassword.setAttribute(
+        "aria-label",
+        "Show password"
+    );
+
+
     togglePassword.addEventListener(
         "click",
         function () {
@@ -126,15 +143,16 @@ if (
                 "password"
             ) {
 
+                // SHOW PASSWORD
                 password.type =
                     "text";
 
                 eyeIcon.classList.remove(
-                    "fa-eye"
+                    "fa-eye-slash"
                 );
 
                 eyeIcon.classList.add(
-                    "fa-eye-slash"
+                    "fa-eye"
                 );
 
                 togglePassword.setAttribute(
@@ -146,15 +164,16 @@ if (
 
             else {
 
+                // HIDE PASSWORD
                 password.type =
                     "password";
 
                 eyeIcon.classList.remove(
-                    "fa-eye-slash"
+                    "fa-eye"
                 );
 
                 eyeIcon.classList.add(
-                    "fa-eye"
+                    "fa-eye-slash"
                 );
 
                 togglePassword.setAttribute(
