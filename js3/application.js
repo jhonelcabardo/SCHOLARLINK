@@ -101,6 +101,544 @@ const applicantIdInput =
 let currentUser = null;
 
 // =========================================================
+// ADDRESS CASCADING DROPDOWNS
+// =========================================================
+
+const PSGC_API =
+    "https://psgc.cloud/api/v2";
+
+const provinceSelect =
+    document.getElementById("province");
+
+const citySelect =
+    document.getElementById("city");
+
+const barangaySelect =
+    document.getElementById("barangay");
+
+const addressDetailsInput =
+    document.getElementById("addressDetails");
+
+const completeAddressInput =
+    document.getElementById("completeAddress");
+
+
+// =========================================================
+// LOAD ALL PHILIPPINE PROVINCES
+// =========================================================
+
+async function loadProvinces() {
+
+    if (!provinceSelect) {
+        return;
+    }
+
+    provinceSelect.innerHTML =
+        `<option value="">Select Province</option>`;
+
+    provinceSelect.disabled = true;
+
+    try {
+
+        const response =
+            await fetch(
+                `${PSGC_API}/provinces`
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Failed to load provinces."
+            );
+        }
+const provincesResponse =
+    await response.json();
+
+const provinces =
+    Array.isArray(provincesResponse)
+        ? provincesResponse
+        : Array.isArray(provincesResponse.data)
+            ? provincesResponse.data
+            : Array.isArray(provincesResponse.results)
+                ? provincesResponse.results
+                : [];
+
+if (provinces.length === 0) {
+    throw new Error(
+        "No provinces were returned by the PSGC API."
+    );
+}
+
+provinces.sort(
+    (a, b) =>
+        a.name.localeCompare(
+            b.name,
+            undefined,
+            {
+                sensitivity: "base"
+            }
+        )
+);
+
+        provinces.forEach(
+            province => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    province.code;
+
+                option.textContent =
+                    province.name;
+
+                provinceSelect.appendChild(
+                    option
+                );
+            }
+        );
+
+        provinceSelect.disabled =
+            false;
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load provinces:",
+            error
+        );
+
+        provinceSelect.innerHTML =
+            `<option value="">
+                Unable to load provinces
+            </option>`;
+    }
+}
+
+
+// =========================================================
+// LOAD CITIES / MUNICIPALITIES
+// BASED ON SELECTED PROVINCE
+// =========================================================
+
+async function loadCities(
+    provinceCode
+) {
+
+    if (!citySelect) {
+        return;
+    }
+
+    citySelect.innerHTML =
+        `<option value="">
+            Select Municipality / City
+        </option>`;
+
+    citySelect.disabled = true;
+
+    if (barangaySelect) {
+
+        barangaySelect.innerHTML =
+            `<option value="">
+                Select Barangay
+            </option>`;
+
+        barangaySelect.disabled = true;
+    }
+
+    if (!provinceCode) {
+
+        updateCompleteAddress();
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                `${PSGC_API}/provinces/${provinceCode}/cities-municipalities`
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load cities and municipalities."
+            );
+        }
+const citiesResponse =
+    await response.json();
+
+const cities =
+    Array.isArray(citiesResponse)
+        ? citiesResponse
+        : Array.isArray(citiesResponse.data)
+            ? citiesResponse.data
+            : Array.isArray(citiesResponse.results)
+                ? citiesResponse.results
+                : [];
+
+if (cities.length === 0) {
+    throw new Error(
+        "No cities or municipalities were returned by the PSGC API."
+    );
+}
+
+cities.sort(
+    (a, b) =>
+        a.name.localeCompare(
+            b.name,
+            undefined,
+            {
+                sensitivity: "base"
+            }
+        )
+);
+
+cities.forEach(
+    city => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            city.code;
+
+        option.textContent =
+            city.name;
+
+        citySelect.appendChild(option);
+    }
+);
+
+        citySelect.disabled =
+            false;
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load cities/municipalities:",
+            error
+        );
+
+        citySelect.innerHTML =
+            `<option value="">
+                Unable to load cities
+            </option>`;
+    }
+
+    updateCompleteAddress();
+}
+
+
+// =========================================================
+// LOAD BARANGAYS
+// BASED ON SELECTED CITY / MUNICIPALITY
+// =========================================================
+
+async function loadBarangays(
+    cityCode
+) {
+
+    if (!barangaySelect) {
+        return;
+    }
+
+    barangaySelect.innerHTML =
+        `<option value="">
+            Select Barangay
+        </option>`;
+
+    barangaySelect.disabled = true;
+
+    if (!cityCode) {
+
+        updateCompleteAddress();
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                `${PSGC_API}/cities-municipalities/${cityCode}/barangays`
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load barangays."
+            );
+        }
+
+       const barangaysResponse =
+    await response.json();
+
+const barangays =
+    Array.isArray(barangaysResponse)
+        ? barangaysResponse
+        : Array.isArray(barangaysResponse.data)
+            ? barangaysResponse.data
+            : Array.isArray(barangaysResponse.results)
+                ? barangaysResponse.results
+                : [];
+
+if (barangays.length === 0) {
+    throw new Error(
+        "No barangays were returned by the PSGC API."
+    );
+}
+
+barangays.sort(
+    (a, b) =>
+        a.name.localeCompare(
+            b.name,
+            undefined,
+            {
+                sensitivity: "base"
+            }
+        )
+);
+        barangays.forEach(
+            barangay => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    barangay.code;
+
+                option.textContent =
+                    barangay.name;
+
+                barangaySelect.appendChild(
+                    option
+                );
+            }
+        );
+
+        barangaySelect.disabled =
+            false;
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load barangays:",
+            error
+        );
+
+        barangaySelect.innerHTML =
+            `<option value="">
+                Unable to load barangays
+            </option>`;
+    }
+
+    updateCompleteAddress();
+}
+
+
+// =========================================================
+// GET SELECTED TEXT
+// =========================================================
+
+function getSelectedText(
+    selectElement
+) {
+
+    if (!selectElement) {
+        return "";
+    }
+
+    const selectedOption =
+        selectElement.options[
+            selectElement.selectedIndex
+        ];
+
+    if (!selectedOption) {
+        return "";
+    }
+
+    const text =
+        selectedOption.textContent.trim();
+
+    if (
+        !text ||
+        text === "Select Province" ||
+        text === "Select Municipality / City" ||
+        text === "Select Barangay" ||
+        text.startsWith("Unable to load")
+    ) {
+
+        return "";
+    }
+
+    return text;
+}
+
+
+// =========================================================
+// AUTOMATIC COMPLETE ADDRESS
+// =========================================================
+
+function updateCompleteAddress() {
+
+    if (!completeAddressInput) {
+        return;
+    }
+
+    const addressDetails =
+        addressDetailsInput?.value.trim() || "";
+
+    const barangay =
+        getSelectedText(
+            barangaySelect
+        );
+
+    const city =
+        getSelectedText(
+            citySelect
+        );
+
+    const province =
+        getSelectedText(
+            provinceSelect
+        );
+
+    const parts = [];
+
+    if (addressDetails) {
+        parts.push(addressDetails);
+    }
+
+    if (barangay) {
+        parts.push(barangay);
+    }
+
+    if (city) {
+        parts.push(city);
+    }
+
+    if (province) {
+        parts.push(province);
+    }
+
+    if (parts.length > 0) {
+        parts.push("Philippines");
+    }
+
+    completeAddressInput.value =
+        parts.join(", ");
+}
+
+
+// =========================================================
+// PROVINCE CHANGE
+// =========================================================
+
+if (provinceSelect) {
+
+    provinceSelect.addEventListener(
+        "change",
+        async function () {
+
+            try {
+
+                await loadCities(
+                    provinceSelect.value
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Province change error:",
+                    error
+                );
+            }
+
+            updateCompleteAddress();
+        }
+    );
+}
+
+
+// =========================================================
+// CITY / MUNICIPALITY CHANGE
+// =========================================================
+
+if (citySelect) {
+
+    citySelect.addEventListener(
+        "change",
+        async function () {
+
+            try {
+
+                await loadBarangays(
+                    citySelect.value
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "City/Municipality change error:",
+                    error
+                );
+            }
+
+            updateCompleteAddress();
+        }
+    );
+}
+
+
+// =========================================================
+// BARANGAY CHANGE
+// =========================================================
+
+if (barangaySelect) {
+
+    barangaySelect.addEventListener(
+        "change",
+        updateCompleteAddress
+    );
+}
+
+
+// =========================================================
+// HOUSE / STREET / PUROK CHANGE
+// =========================================================
+
+if (addressDetailsInput) {
+
+    addressDetailsInput.addEventListener(
+        "input",
+        updateCompleteAddress
+    );
+}
+
+
+// =========================================================
+// INITIALIZE ADDRESS
+// =========================================================
+
+const addressReadyPromise =
+    loadProvinces().catch(
+        error => {
+
+            console.error(
+                "Address initialization error:",
+                error
+            );
+
+            throw error;
+        }
+    );
+
+// =========================================================
 // MESSAGE
 // =========================================================
 
@@ -684,35 +1222,100 @@ async function loadExistingApplication(
             personal.birthplace
         );
 
+        // =================================================
+        // ADDRESS INFORMATION
+        // =================================================
 
-        setValue(
-            "completeAddress",
-            personal.completeAddress
-        );
+            await addressReadyPromise;
+
+            if (personal.province && provinceSelect) {
+
+                const provinceOption =
+                    Array.from(provinceSelect.options).find(
+                        option =>
+                            option.textContent.trim().toLowerCase() ===
+                            String(personal.province)
+                                .trim()
+                                .toLowerCase()
+                    );
+
+                if (provinceOption) {
+
+                    provinceSelect.value =
+                        provinceOption.value;
+
+                    await loadCities(
+                        provinceOption.value
+                    );
+                }
+            }
 
 
-        setValue(
-            "barangay",
-            personal.barangay
-        );
+            if (personal.city && citySelect) {
+
+                const cityOption =
+                    Array.from(citySelect.options).find(
+                        option =>
+                            option.textContent.trim().toLowerCase() ===
+                            String(personal.city)
+                                .trim()
+                                .toLowerCase()
+                    );
+
+                if (cityOption) {
+
+                    citySelect.value =
+                        cityOption.value;
+
+                    await loadBarangays(
+                        cityOption.value
+                    );
+                }
+            }
 
 
-        setValue(
-            "city",
-            personal.city
-        );
+            if (personal.barangay && barangaySelect) {
+
+                const barangayOption =
+                    Array.from(barangaySelect.options).find(
+                        option =>
+                            option.textContent.trim().toLowerCase() ===
+                            String(personal.barangay)
+                                .trim()
+                                .toLowerCase()
+                    );
+
+                if (barangayOption) {
+
+                    barangaySelect.value =
+                        barangayOption.value;
+                }
+            }
 
 
-        setValue(
-            "province",
-            personal.province
-        );
+            setValue(
+                "addressDetails",
+                personal.addressDetails || ""
+            );
 
 
-        setValue(
-            "zipCode",
-            personal.zipCode
-        );
+            setValue(
+                "zipCode",
+                personal.zipCode || ""
+            );
+
+
+            if (personal.completeAddress) {
+
+                setValue(
+                    "completeAddress",
+                    personal.completeAddress
+                );
+
+            } else {
+
+                updateCompleteAddress();
+            }
 
 
         setValue(

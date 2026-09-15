@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Scholarship Application | SCHOLARLINK</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- GOOGLE FONT -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
+    <!-- FONT AWESOME -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     >
 
-    <link rel="stylesheet" href="../css3/application.css">
+    <!-- APPLICATION CSS -->
+    <link
+        rel="stylesheet"
+        href="../css3/application.css"
+    >
 </head>
+
 
 <body>
 
 <div class="application-page">
 
-    <!-- =========================
+
+    <!-- =====================================================
          HEADER
-    ========================== -->
+    ====================================================== -->
 
     <header class="application-header">
 
@@ -39,11 +59,19 @@
             </div>
 
             <div>
-                <h1>SCHOLAR<span>LINK</span></h1>
-                <p>Scholarship Management System</p>
+
+                <h1>
+                    SCHOLAR<span>LINK</span>
+                </h1>
+
+                <p>
+                    Scholarship Management System
+                </p>
+
             </div>
 
         </div>
+
 
         <div class="application-status">
 
@@ -56,86 +84,143 @@
     </header>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          MAIN
-    ========================== -->
+    ====================================================== -->
 
     <main class="application-container">
 
-        <!-- PAGE TITLE -->
+
+        <!-- =================================================
+             PAGE TITLE
+        ================================================== -->
 
         <div class="page-title">
 
             <div>
+
                 <span class="page-badge">
                     Scholarship Application
                 </span>
 
-                <h2>Complete Your Application</h2>
+                <h2>
+                    Complete Your Application
+                </h2>
 
                 <p>
                     Please provide accurate information and upload
                     all required documents.
                 </p>
+
             </div>
 
         </div>
 
 
-        <!-- =========================
-             PROGRESS
-        ========================== -->
 
-        <div class="progress-container" id="applicationProgress">
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
+
+        <div
+            class="progress-container"
+            id="applicationProgress"
+        >
 
             <div class="progress-step active">
-                <div class="step-number">1</div>
-                <span>Personal Information</span>
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <span>
+                    Personal Information
+                </span>
+
             </div>
+
 
             <div class="progress-line"></div>
 
+
             <div class="progress-step">
-                <div class="step-number">2</div>
-                <span>Academic Information</span>
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <span>
+                    Academic Information
+                </span>
+
             </div>
+
 
             <div class="progress-line"></div>
 
+
             <div class="progress-step">
-                <div class="step-number">3</div>
-                <span>Family Information</span>
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <span>
+                    Family Information
+                </span>
+
             </div>
+
 
             <div class="progress-line"></div>
 
+
             <div class="progress-step">
-                <div class="step-number">4</div>
-                <span>Requirements</span>
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <span>
+                    Requirements
+                </span>
+
             </div>
+
 
             <div class="progress-line"></div>
 
+
             <div class="progress-step">
-                <div class="step-number">5</div>
-                <span>Review</span>
+
+                <div class="step-number">
+                    5
+                </div>
+
+                <span>
+                    Review
+                </span>
+
             </div>
 
         </div>
 
 
-        <!-- =========================
-             FORM
-        ========================== -->
+
+        <!-- =================================================
+             APPLICATION FORM
+        ================================================== -->
 
         <form id="applicationForm">
 
 
-            <!-- =========================
+            <!-- =================================================
                  PERSONAL INFORMATION
-            ========================== -->
+            ================================================== -->
 
             <section class="form-card">
+
 
                 <div class="section-header">
 
@@ -144,35 +229,48 @@
                     </div>
 
                     <div>
-                        <h3>Personal Information</h3>
+
+                        <h3>
+                            Personal Information
+                        </h3>
 
                         <p>
                             Provide your basic personal information.
                         </p>
+
                     </div>
 
                 </div>
 
 
+
                 <div class="form-grid">
+
+
                     <!-- APPLICANT ID -->
-<div class="form-group full">
-    <label>
-        Applicant ID
-    </label>
 
-    <input
-        type="text"
-        id="applicantId"
-        name="applicantId"
-        placeholder="Generating Applicant ID..."
-        readonly
-    >
+                    <div class="form-group full">
 
-    <small style="color:#64748b;">
-        Your Applicant ID is automatically generated by SCHOLARLINK.
-    </small>
-</div>
+                        <label>
+                            Applicant ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="applicantId"
+                            name="applicantId"
+                            placeholder="Generating Applicant ID..."
+                            readonly
+                        >
+
+                        <small style="color:#64748b;">
+                            Your Applicant ID is automatically generated
+                            by SCHOLARLINK.
+                        </small>
+
+                    </div>
+
+
 
                     <!-- FIRST NAME -->
 
@@ -193,6 +291,7 @@
                     </div>
 
 
+
                     <!-- MIDDLE NAME -->
 
                     <div class="form-group">
@@ -208,6 +307,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- LAST NAME -->
@@ -229,6 +329,7 @@
                     </div>
 
 
+
                     <!-- SUFFIX -->
 
                     <div class="form-group">
@@ -237,18 +338,39 @@
                             Suffix
                         </label>
 
-                        <select id="suffix" name="suffix">
+                        <select
+                            id="suffix"
+                            name="suffix"
+                        >
 
-                            <option value="">Select</option>
-                            <option value="Jr.">Jr.</option>
-                            <option value="Sr.">Sr.</option>
-                            <option value="II">II</option>
-                            <option value="III">III</option>
-                            <option value="IV">IV</option>
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option value="Jr.">
+                                Jr.
+                            </option>
+
+                            <option value="Sr.">
+                                Sr.
+                            </option>
+
+                            <option value="II">
+                                II
+                            </option>
+
+                            <option value="III">
+                                III
+                            </option>
+
+                            <option value="IV">
+                                IV
+                            </option>
 
                         </select>
 
                     </div>
+
 
 
                     <!-- DATE OF BIRTH -->
@@ -270,6 +392,7 @@
                     </div>
 
 
+
                     <!-- AGE -->
 
                     <div class="form-group">
@@ -287,6 +410,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- SEX -->
@@ -319,6 +443,7 @@
                         </select>
 
                     </div>
+
 
 
                     <!-- CIVIL STATUS -->
@@ -361,6 +486,7 @@
                     </div>
 
 
+
                     <!-- CITIZENSHIP -->
 
                     <div class="form-group">
@@ -379,6 +505,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- BIRTHPLACE -->
@@ -401,65 +528,38 @@
                     </div>
 
 
-                    <!-- ADDRESS -->
+
+                    <!-- =================================================
+                         HOUSE / STREET / PUROK
+                    ================================================== -->
 
                     <div class="form-group full">
 
                         <label>
-                            Complete Address
-                            <span>*</span>
-                        </label>
-
-                        <textarea
-                            id="completeAddress"
-                            name="completeAddress"
-                            rows="3"
-                            placeholder="House No., Street, Barangay, Municipality/City, Province"
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-                    <!-- BARANGAY -->
-
-                    <div class="form-group">
-
-                        <label>
-                            Barangay
+                            House No. / Street / Purok
                             <span>*</span>
                         </label>
 
                         <input
                             type="text"
-                            id="barangay"
-                            name="barangay"
+                            id="addressDetails"
+                            name="addressDetails"
+                            placeholder="Enter House No., Street, Purok"
                             required
                         >
+
+                        <small style="color:#64748b;">
+                            Enter your house number, street name,
+                            sitio, or purok manually.
+                        </small>
 
                     </div>
 
 
-                    <!-- CITY -->
 
-                    <div class="form-group">
-
-                        <label>
-                            Municipality / City
-                            <span>*</span>
-                        </label>
-
-                        <input
-                            type="text"
-                            id="city"
-                            name="city"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- PROVINCE -->
+                    <!-- =================================================
+                         PROVINCE
+                    ================================================== -->
 
                     <div class="form-group">
 
@@ -468,17 +568,81 @@
                             <span>*</span>
                         </label>
 
-                        <input
-                            type="text"
+                        <select
                             id="province"
                             name="province"
                             required
                         >
 
+                            <option value="">
+                                Select Province
+                            </option>
+
+                        </select>
+
                     </div>
 
 
-                    <!-- ZIP -->
+
+                    <!-- =================================================
+                         CITY / MUNICIPALITY
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Municipality / City
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="city"
+                            name="city"
+                            required
+                            disabled
+                        >
+
+                            <option value="">
+                                Select Municipality / City
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         BARANGAY
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Barangay
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="barangay"
+                            name="barangay"
+                            required
+                            disabled
+                        >
+
+                            <option value="">
+                                Select Barangay
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         ZIP CODE
+                    ================================================== -->
 
                     <div class="form-group">
 
@@ -491,13 +655,47 @@
                             type="text"
                             id="zipCode"
                             name="zipCode"
+                            placeholder="Enter ZIP Code"
+                            inputmode="numeric"
+                            maxlength="10"
                             required
                         >
 
                     </div>
 
 
-                    <!-- CONTACT -->
+
+                    <!-- =================================================
+                         COMPLETE ADDRESS
+                    ================================================== -->
+
+                    <div class="form-group full">
+
+                        <label>
+                            Complete Address
+                            <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="completeAddress"
+                            name="completeAddress"
+                            rows="3"
+                            placeholder="Complete address will be generated automatically"
+                            readonly
+                            required
+                        ></textarea>
+
+                        <small style="color:#64748b;">
+                            This field is automatically generated from
+                            your House No./Street/Purok, Barangay,
+                            Municipality/City, and Province.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- CONTACT NUMBER -->
 
                     <div class="form-group">
 
@@ -517,6 +715,7 @@
                     </div>
 
 
+
                     <!-- EMAIL -->
 
                     <div class="form-group">
@@ -534,9 +733,11 @@
 
                     </div>
 
-                    <!-- =========================================================
-                         APPLICANT PHOTO - FIXED VERSION
-                    ========================================================= -->
+
+
+                    <!-- =================================================
+                         APPLICANT PHOTO
+                    ================================================== -->
 
                     <div class="form-group full">
 
@@ -545,57 +746,97 @@
                             <span>*</span>
                         </label>
 
+
                         <div class="photo-upload-wrapper">
 
-                            <!-- Preview Area -->
+
+                            <!-- PREVIEW -->
+
                             <div class="photo-preview-area">
-                                <div class="photo-preview" id="photoPreviewContainer">
-                                    <img 
-                                        id="photoPreview" 
-                                        src="" 
+
+                                <div
+                                    class="photo-preview"
+                                    id="photoPreviewContainer"
+                                >
+
+                                    <img
+                                        id="photoPreview"
+                                        src=""
                                         alt="Photo Preview"
-                                        style="display: none; width: 100%; height: 100%; object-fit: cover;"
+                                        style="
+                                            display:none;
+                                            width:100%;
+                                            height:100%;
+                                            object-fit:cover;
+                                        "
                                     >
-                                    <i 
-                                        id="photoPlaceholder" 
+
+                                    <i
+                                        id="photoPlaceholder"
                                         class="fa-solid fa-user"
-                                        style="font-size: 48px; color: #94a3b8;"
+                                        style="
+                                            font-size:48px;
+                                            color:#94a3b8;
+                                        "
                                     ></i>
+
                                 </div>
+
                             </div>
 
-                            <!-- Upload Controls -->
+
+
+                            <!-- UPLOAD CONTROLS -->
+
                             <div class="photo-upload-controls">
-                                <strong>Upload your photo</strong>
-                                <p>Use a clear recent 2x2 or ID-style photo.</p>
-                                
-                                <label for="applicantPhoto" class="photo-upload-btn">
+
+                                <strong>
+                                    Upload your photo
+                                </strong>
+
+                                <p>
+                                    Use a clear recent 2x2 or ID-style photo.
+                                </p>
+
+
+                                <label
+                                    for="applicantPhoto"
+                                    class="photo-upload-btn"
+                                >
+
                                     <i class="fa-solid fa-camera"></i>
+
                                     Choose Photo
+
                                 </label>
-                                
+
+
                                 <input
                                     type="file"
                                     id="applicantPhoto"
                                     accept=".jpg,.jpeg,.png"
                                     hidden
                                 >
+
                             </div>
 
                         </div>
 
                     </div>
 
+
                 </div>
 
             </section>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  ACADEMIC INFORMATION
-            ========================== -->
+            ================================================== -->
 
             <section class="form-card">
+
 
                 <div class="section-header">
 
@@ -605,7 +846,9 @@
 
                     <div>
 
-                        <h3>Academic Information</h3>
+                        <h3>
+                            Academic Information
+                        </h3>
 
                         <p>
                             Provide your current educational information.
@@ -616,10 +859,11 @@
                 </div>
 
 
+
                 <div class="form-grid">
 
 
-                    <!-- SCHOOL -->
+                    <!-- SCHOOL NAME -->
 
                     <div class="form-group full">
 
@@ -636,6 +880,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- SCHOOL ADDRESS -->
@@ -657,6 +902,7 @@
                     </div>
 
 
+
                     <!-- STUDENT ID -->
 
                     <div class="form-group">
@@ -674,6 +920,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- GENERAL AVERAGE -->
@@ -698,7 +945,8 @@
                     </div>
 
 
-                    <!-- GRADUATION -->
+
+                    <!-- GRADUATION YEAR -->
 
                     <div class="form-group">
 
@@ -718,16 +966,19 @@
 
                     </div>
 
+
                 </div>
 
             </section>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  FAMILY INFORMATION
-            ========================== -->
+            ================================================== -->
 
             <section class="form-card">
+
 
                 <div class="section-header">
 
@@ -737,7 +988,9 @@
 
                     <div>
 
-                        <h3>Family Information</h3>
+                        <h3>
+                            Family Information
+                        </h3>
 
                         <p>
                             Provide information about your family.
@@ -748,6 +1001,9 @@
                 </div>
 
 
+
+                <!-- FATHER -->
+
                 <h4 class="sub-title">
                     Father's Information
                 </h4>
@@ -755,9 +1011,13 @@
 
                 <div class="form-grid">
 
+
                     <div class="form-group">
 
-                        <label>Full Name <span>*</span></label>
+                        <label>
+                            Full Name
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="text"
@@ -768,9 +1028,13 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Occupation <span>*</span></label>
+                        <label>
+                            Occupation
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="text"
@@ -781,9 +1045,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Employer</label>
+                        <label>
+                            Employer
+                        </label>
 
                         <input
                             type="text"
@@ -793,9 +1060,13 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Monthly Income <span>*</span></label>
+                        <label>
+                            Monthly Income
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="number"
@@ -807,9 +1078,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Contact Number</label>
+                        <label>
+                            Contact Number
+                        </label>
 
                         <input
                             type="tel"
@@ -818,8 +1092,12 @@
 
                     </div>
 
+
                 </div>
 
+
+
+                <!-- MOTHER -->
 
                 <h4 class="sub-title">
                     Mother's Information
@@ -828,9 +1106,13 @@
 
                 <div class="form-grid">
 
+
                     <div class="form-group">
 
-                        <label>Full Name <span>*</span></label>
+                        <label>
+                            Full Name
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="text"
@@ -841,9 +1123,13 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Occupation <span>*</span></label>
+                        <label>
+                            Occupation
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="text"
@@ -854,9 +1140,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Employer</label>
+                        <label>
+                            Employer
+                        </label>
 
                         <input
                             type="text"
@@ -866,9 +1155,13 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Monthly Income <span>*</span></label>
+                        <label>
+                            Monthly Income
+                            <span>*</span>
+                        </label>
 
                         <input
                             type="number"
@@ -880,9 +1173,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Contact Number</label>
+                        <label>
+                            Contact Number
+                        </label>
 
                         <input
                             type="tel"
@@ -891,20 +1187,32 @@
 
                     </div>
 
+
                 </div>
 
 
+
+                <!-- GUARDIAN -->
+
                 <h4 class="sub-title">
+
                     Guardian Information
-                    <span>(If Applicable)</span>
+
+                    <span>
+                        (If Applicable)
+                    </span>
+
                 </h4>
 
 
                 <div class="form-grid">
 
+
                     <div class="form-group">
 
-                        <label>Full Name</label>
+                        <label>
+                            Full Name
+                        </label>
 
                         <input
                             type="text"
@@ -914,9 +1222,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Relationship</label>
+                        <label>
+                            Relationship
+                        </label>
 
                         <input
                             type="text"
@@ -926,9 +1237,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Occupation</label>
+                        <label>
+                            Occupation
+                        </label>
 
                         <input
                             type="text"
@@ -938,9 +1252,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Monthly Income</label>
+                        <label>
+                            Monthly Income
+                        </label>
 
                         <input
                             type="number"
@@ -951,9 +1268,12 @@
                     </div>
 
 
+
                     <div class="form-group">
 
-                        <label>Contact Number</label>
+                        <label>
+                            Contact Number
+                        </label>
 
                         <input
                             type="tel"
@@ -962,16 +1282,20 @@
 
                     </div>
 
+
                 </div>
+
 
             </section>
 
 
-            <!-- =========================
-                 HOUSEHOLD
-            ========================== -->
+
+            <!-- =================================================
+                 HOUSEHOLD INFORMATION
+            ================================================== -->
 
             <section class="form-card">
+
 
                 <div class="section-header">
 
@@ -981,7 +1305,9 @@
 
                     <div>
 
-                        <h3>Household Information</h3>
+                        <h3>
+                            Household Information
+                        </h3>
 
                         <p>
                             Provide information about your household.
@@ -992,8 +1318,11 @@
                 </div>
 
 
+
                 <div class="form-grid">
 
+
+                    <!-- FAMILY MEMBERS -->
 
                     <div class="form-group">
 
@@ -1012,6 +1341,9 @@
                     </div>
 
 
+
+                    <!-- SIBLINGS -->
+
                     <div class="form-group">
 
                         <label>
@@ -1028,6 +1360,9 @@
 
                     </div>
 
+
+
+                    <!-- SIBLINGS STUDYING -->
 
                     <div class="form-group">
 
@@ -1046,6 +1381,9 @@
                     </div>
 
 
+
+                    <!-- HOUSEHOLD INCOME -->
+
                     <div class="form-group">
 
                         <label>
@@ -1062,6 +1400,9 @@
 
                     </div>
 
+
+
+                    <!-- HOUSING STATUS -->
 
                     <div class="form-group">
 
@@ -1096,6 +1437,9 @@
                     </div>
 
 
+
+                    <!-- INCOME SOURCE -->
+
                     <div class="form-group">
 
                         <label>
@@ -1111,6 +1455,7 @@
                         >
 
                     </div>
+
 
 
                     <!-- REASON -->
@@ -1131,16 +1476,19 @@
 
                     </div>
 
+
                 </div>
 
             </section>
 
 
-            <!-- =========================
-                 REQUIREMENTS
-            ========================== -->
+
+            <!-- =================================================
+                 SCHOLARSHIP REQUIREMENTS
+            ================================================== -->
 
             <section class="form-card">
+
 
                 <div class="section-header">
 
@@ -1150,7 +1498,9 @@
 
                     <div>
 
-                        <h3>Scholarship Requirements</h3>
+                        <h3>
+                            Scholarship Requirements
+                        </h3>
 
                         <p>
                             Upload the required documents.
@@ -1161,8 +1511,11 @@
                 </div>
 
 
+
                 <div class="requirements-grid">
 
+
+                    <!-- BIRTH CERTIFICATE -->
 
                     <div class="upload-box">
 
@@ -1170,10 +1523,12 @@
                             <i class="fa-solid fa-file-lines"></i>
                         </div>
 
-                        <h4>Birth Certificate</h4>
+                        <h4>
+                            Birth Certificate
+                        </h4>
 
                         <p>
-                            JPG or PNG
+                            JPG, PNG, or PDF
                         </p>
 
                         <input
@@ -1186,13 +1541,18 @@
                     </div>
 
 
+
+                    <!-- REGISTRATION CERTIFICATE -->
+
                     <div class="upload-box">
 
                         <div class="upload-icon">
                             <i class="fa-solid fa-file-certificate"></i>
                         </div>
 
-                        <h4>Certificate of Registration</h4>
+                        <h4>
+                            Certificate of Registration
+                        </h4>
 
                         <p>
                             JPG or PNG
@@ -1208,13 +1568,18 @@
                     </div>
 
 
+
+                    <!-- OTHER REQUIREMENT -->
+
                     <div class="upload-box">
 
                         <div class="upload-icon">
                             <i class="fa-solid fa-file-invoice"></i>
                         </div>
 
-                        <h4>Other Requirement</h4>
+                        <h4>
+                            Other Requirement
+                        </h4>
 
                         <p>
                             JPG or PNG
@@ -1228,20 +1593,26 @@
 
                     </div>
 
+
                 </div>
 
             </section>
 
 
-            <!-- =========================
+
+            <!-- =================================================
                  REVIEW NOTICE
-            ========================== -->
+            ================================================== -->
 
             <div class="review-notice">
 
+
                 <div class="review-icon">
+
                     <i class="fa-solid fa-circle-info"></i>
+
                 </div>
+
 
                 <div>
 
@@ -1257,21 +1628,30 @@
 
                 </div>
 
+
             </div>
 
 
-            <!-- =========================
-                 MESSAGE
-            ========================== -->
 
-            <div id="formMessage" class="form-message"></div>
+            <!-- =================================================
+                 FORM MESSAGE
+            ================================================== -->
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
 
 
-            <!-- =========================
-                 BUTTONS
-            ========================== -->
+
+            <!-- =================================================
+                 FORM BUTTONS
+            ================================================== -->
 
             <div class="form-actions">
+
+
+                <!-- SAVE DRAFT -->
 
                 <button
                     type="button"
@@ -1285,6 +1665,9 @@
 
                 </button>
 
+
+
+                <!-- SUBMIT -->
 
                 <button
                     type="submit"
@@ -1303,7 +1686,9 @@
 
                 </button>
 
+
             </div>
+
 
         </form>
 
@@ -1312,76 +1697,178 @@
 </div>
 
 
-<script type="module" src="../js3/application.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+<!-- =========================================================
+     SUPABASE
+========================================================== -->
 
-    const photoInput = document.getElementById("applicantPhoto");
-    const photoPreview = document.getElementById("photoPreview");
-    const photoPlaceholder = document.getElementById("photoPlaceholder");
-
-    if (!photoInput || !photoPreview) {
-        console.error("Applicant photo elements not found.");
-        return;
-    }
-
-    photoInput.addEventListener("change", function () {
-
-        const file = this.files[0];
-
-        if (!file) {
-            return;
-        }
-
-        // Check image type
-        if (!file.type.startsWith("image/")) {
-            alert("Please select a JPG, JPEG, or PNG image.");
-            this.value = "";
-            return;
-        }
-
-        // Check file size - 5MB
-        if (file.size > 5 * 1024 * 1024) {
-            alert("Photo must not exceed 5MB.");
-            this.value = "";
-            return;
-        }
-
-        // Read selected image
-        const reader = new FileReader();
-
-        reader.onload = function (event) {
-
-            photoPreview.src = event.target.result;
-
-            photoPreview.style.display = "block";
-            photoPreview.style.visibility = "visible";
-            photoPreview.style.opacity = "1";
-
-            if (photoPlaceholder) {
-                photoPlaceholder.style.display = "none";
-            }
-        };
-
-        reader.onerror = function () {
-            alert("Unable to preview the selected photo.");
-        };
-
-        reader.readAsDataURL(file);
-    });
-
-});
-</script>
-
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- APPLICATION JS -->
-<script type="module" src="../js3/application.js"></script>
 
-</body>
-</html>
+
+<!-- =========================================================
+     APPLICATION JAVASCRIPT
+     
+     IMPORTANT:
+     Load application.js only ONCE.
+========================================================== -->
+
+<script
+    type="module"
+    src="../js3/application.js"
+></script>
+
+
+
+<!-- =========================================================
+     APPLICANT PHOTO PREVIEW
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const photoInput =
+            document.getElementById(
+                "applicantPhoto"
+            );
+
+        const photoPreview =
+            document.getElementById(
+                "photoPreview"
+            );
+
+        const photoPlaceholder =
+            document.getElementById(
+                "photoPlaceholder"
+            );
+
+
+        if (
+            !photoInput ||
+            !photoPreview
+        ) {
+
+            console.error(
+                "Applicant photo elements not found."
+            );
+
+            return;
+        }
+
+
+        photoInput.addEventListener(
+            "change",
+            function () {
+
+                const file =
+                    this.files[0];
+
+
+                if (!file) {
+                    return;
+                }
+
+
+                /* ==========================================
+                   CHECK IMAGE TYPE
+                ========================================== */
+
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
+
+                    alert(
+                        "Please select a JPG, JPEG, or PNG image."
+                    );
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                /* ==========================================
+                   CHECK FILE SIZE - 5MB
+                ========================================== */
+
+                if (
+                    file.size >
+                    5 * 1024 * 1024
+                ) {
+
+                    alert(
+                        "Photo must not exceed 5MB."
+                    );
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                /* ==========================================
+                   READ SELECTED IMAGE
+                ========================================== */
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function (event) {
+
+                        photoPreview.src =
+                            event.target.result;
+
+                        photoPreview.style.display =
+                            "block";
+
+                        photoPreview.style.visibility =
+                            "visible";
+
+                        photoPreview.style.opacity =
+                            "1";
+
+
+                        if (
+                            photoPlaceholder
+                        ) {
+
+                            photoPlaceholder.style.display =
+                                "none";
+
+                        }
+
+                    };
+
+
+                reader.onerror =
+                    function () {
+
+                        alert(
+                            "Unable to preview the selected photo."
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(
+                    file
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
