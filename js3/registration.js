@@ -303,8 +303,21 @@ function validatePassword(password) {
 // =====================================================
 // PASSWORD TOGGLE
 // =====================================================
+//
+// BEHAVIOR:
+//
+// Eye-slash = password is HIDDEN
+// Eye       = password is VISIBLE
+//
+// =====================================================
 
-if (togglePassword) {
+if (togglePassword && passwordInput) {
+
+    // INITIAL STATE
+    // Password is hidden
+    // Therefore show eye-slash
+    togglePassword.innerHTML =
+        '<i class="fa-solid fa-eye-slash"></i>';
 
     togglePassword.addEventListener(
         "click",
@@ -314,16 +327,34 @@ if (togglePassword) {
                 passwordInput.type === "password";
 
 
-            passwordInput.type =
-                isPassword
-                    ? "text"
-                    : "password";
+            if (isPassword) {
+
+                // =========================================
+                // SHOW PASSWORD
+                // =========================================
+
+                passwordInput.type =
+                    "text";
 
 
-            togglePassword.innerHTML =
-                isPassword
-                    ? '<i class="fa-solid fa-eye-slash"></i>'
-                    : '<i class="fa-solid fa-eye"></i>';
+                // Eye = password is visible
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye"></i>';
+
+            } else {
+
+                // =========================================
+                // HIDE PASSWORD
+                // =========================================
+
+                passwordInput.type =
+                    "password";
+
+
+                // Eye-slash = password is hidden
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye-slash"></i>';
+            }
         }
     );
 }
@@ -332,8 +363,24 @@ if (togglePassword) {
 // =====================================================
 // CONFIRM PASSWORD TOGGLE
 // =====================================================
+//
+// BEHAVIOR:
+//
+// Eye-slash = password is HIDDEN
+// Eye       = password is VISIBLE
+//
+// =====================================================
 
-if (toggleConfirmPassword) {
+if (
+    toggleConfirmPassword &&
+    confirmPasswordInput
+) {
+
+    // INITIAL STATE
+    // Password is hidden
+    // Therefore show eye-slash
+    toggleConfirmPassword.innerHTML =
+        '<i class="fa-solid fa-eye-slash"></i>';
 
     toggleConfirmPassword.addEventListener(
         "click",
@@ -343,16 +390,34 @@ if (toggleConfirmPassword) {
                 confirmPasswordInput.type === "password";
 
 
-            confirmPasswordInput.type =
-                isPassword
-                    ? "text"
-                    : "password";
+            if (isPassword) {
+
+                // =========================================
+                // SHOW CONFIRM PASSWORD
+                // =========================================
+
+                confirmPasswordInput.type =
+                    "text";
 
 
-            toggleConfirmPassword.innerHTML =
-                isPassword
-                    ? '<i class="fa-solid fa-eye-slash"></i>'
-                    : '<i class="fa-solid fa-eye"></i>';
+                // Eye = password is visible
+                toggleConfirmPassword.innerHTML =
+                    '<i class="fa-solid fa-eye"></i>';
+
+            } else {
+
+                // =========================================
+                // HIDE CONFIRM PASSWORD
+                // =========================================
+
+                confirmPasswordInput.type =
+                    "password";
+
+
+                // Eye-slash = password is hidden
+                toggleConfirmPassword.innerHTML =
+                    '<i class="fa-solid fa-eye-slash"></i>';
+            }
         }
     );
 }
@@ -520,6 +585,7 @@ if (form) {
         async (event) => {
 
             event.preventDefault();
+
 
             hideMessage();
 

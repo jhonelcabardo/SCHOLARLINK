@@ -116,6 +116,7 @@ body {
    LOGOS
 ========================================================= */
 
+
 .logos {
     display: flex;
     align-items: center;
@@ -553,28 +554,32 @@ body {
         rgba(91, 70, 230, .28);
 }
 
-
 /* =========================================================
-   LOGIN TITLE
+   SCHOLARLINK LOGO - RIGHT SIDE
 ========================================================= */
 
-.login-card > h1 {
-    color: #111d49;
+.login-logo {
+    width: 100%;
 
-    text-align: center;
+    display: flex;
 
-    font-size: 30px;
+    align-items: center;
 
-    font-weight: 700;
+    justify-content: center;
 
-    line-height: 1.3;
-
-    margin-bottom: 9px;
+    margin: 0 auto 12px;
 }
 
+.login-logo img {
+    width: 145px;
 
-.login-card > h1 span {
-    color: #5427df;
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    display: block;
 }
 
 
@@ -945,22 +950,25 @@ body {
 }
 
 
-/* =========================================================
-   APPLY BUTTON
-========================================================= */
+.apply-link {
+    min-width: 250px;
 
-.apply-button {
-    min-width: 265px;
+    height: 50px;
 
-    height: 51px;
+    padding: 0 20px;
 
-    padding:
-        0 18px;
-
-    border-radius: 10px;
+    border-radius: 11px;
 
     background:
-        rgba(241,239,255,.82);
+        linear-gradient(
+            135deg,
+            #f0edff,
+            #e7e1ff
+        );
+
+    border:
+        1px solid
+        rgba(112,70,233,.16);
 
     color: #592ce5;
 
@@ -971,28 +979,46 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 20px;
+    gap: 12px;
 
     font-size: 15px;
 
     font-weight: 600;
 
+    box-shadow:
+        0 5px 15px
+        rgba(89,44,229,.08);
+
     transition:
         .25s ease;
 }
 
+.apply-link:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #e9e4ff,
+            #ddd5ff
+        );
 
-.apply-button i {
-    font-size: 20px;
+    color: #4c22c7;
+
+    transform: translateX(2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(89,44,229,.15);
 }
 
+.apply-link i {
+    font-size: 17px;
 
-.apply-button:hover {
-    background:
-        rgba(232,227,255,.98);
+    transition:
+        transform .25s ease;
+}
 
-    transform:
-        translateX(2px);
+.apply-link:hover i {
+    transform: translateX(4px);
 }
 
 

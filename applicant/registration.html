@@ -1,145 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Applicant Registration | SCHOLARLINK</title>
 
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     >
 
-    <link rel="stylesheet" href="../css3/registration.css">
+
+    <!-- =====================================================
+         REGISTRATION CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css3/registration.css"
+    >
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
 
 <div class="page-container">
 
-    <!-- LEFT SIDE -->
+
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
+
     <div class="welcome-section">
+
 
         <div class="welcome-overlay"></div>
 
+
         <div class="welcome-content">
 
+
+            <!-- =================================================
+                 LOGO
+            ================================================== -->
+
             <div class="logo-container">
+
+
                 <div class="logo-circle">
+
                     <i class="fa-solid fa-graduation-cap"></i>
+
                 </div>
 
+
                 <div>
-                    <h1>SCHOLAR<span>LINK</span></h1>
-                    <p> A Portal For Scholarship Management System</p>
+
+                    <h1>
+                        SCHOLAR<span>LINK</span>
+                    </h1>
+
+                    <p>
+                        A Portal For Scholarship Management System
+                    </p>
+
                 </div>
+
+
             </div>
+
+
+
+            <!-- =================================================
+                 WELCOME TEXT
+            ================================================== -->
 
             <div class="welcome-text">
 
+
                 <span class="badge">
+
                     <i class="fa-solid fa-award"></i>
+
                     Scholarship Application
+
                 </span>
 
+
                 <h2>
+
                     Start Your<br>
-                    <span>Scholarship Journey</span>
+
+                    <span>
+                        Scholarship Journey
+                    </span>
+
                 </h2>
 
+
                 <p>
+
                     Create your applicant account and begin your
                     scholarship application with SCHOLARLINK.
+
                 </p>
 
+
             </div>
+
+
+
+            <!-- =================================================
+                 INFORMATION LIST
+            ================================================== -->
 
             <div class="info-list">
 
+
+                <!-- SUBMIT -->
+
                 <div class="info-item">
+
+
                     <i class="fa-solid fa-user-plus"></i>
+
+
                     <div>
-                        <strong>Submit</strong>
-                        <span>Register as a scholarship applicant</span>
+
+                        <strong>
+                            Submit
+                        </strong>
+
+                        <span>
+                            Register as a scholarship applicant
+                        </span>
+
                     </div>
+
+
                 </div>
 
+
+
+                <!-- COMPLETE APPLICATION -->
+
                 <div class="info-item">
+
+
                     <i class="fa-solid fa-file-lines"></i>
+
+
                     <div>
-                        <strong>Complete Application</strong>
-                        <span>Provide your scholarship information</span>
+
+                        <strong>
+                            Complete Application
+                        </strong>
+
+                        <span>
+                            Provide your scholarship information
+                        </span>
+
                     </div>
+
+
                 </div>
 
+
+
+                <!-- UPLOAD REQUIREMENTS -->
+
                 <div class="info-item">
+
+
                     <i class="fa-solid fa-cloud-arrow-up"></i>
+
+
                     <div>
-                        <strong>Upload Requirements</strong>
-                        <span>Submit your required documents</span>
+
+                        <strong>
+                            Upload Requirements
+                        </strong>
+
+                        <span>
+                            Submit your required documents
+                        </span>
+
                     </div>
+
+
                 </div>
+
 
             </div>
 
+
         </div>
+
 
     </div>
 
 
-    <!-- RIGHT SIDE -->
+
+    <!-- =====================================================
+         RIGHT SIDE
+    ====================================================== -->
+
     <div class="form-section">
+
 
         <div class="form-container">
 
-            <a href="../index.html" class="back-link">
+
+            <!-- =================================================
+                 BACK TO HOME
+            ================================================== -->
+
+            <a
+                href="../index.html"
+                class="back-link"
+            >
+
                 <i class="fa-solid fa-arrow-left"></i>
+
                 Back to Home
+
             </a>
+
+
+
+            <!-- =================================================
+                 FORM HEADER
+            ================================================== -->
 
             <div class="form-header">
 
+
+                <!-- MOBILE LOGO -->
+
                 <div class="mobile-logo">
+
                     <i class="fa-solid fa-graduation-cap"></i>
+
                 </div>
 
-                <h2>Create Applicant Account</h2>
+
+                <h2>
+                    Create Applicant Account
+                </h2>
+
 
                 <p>
                     Register first to start your scholarship application.
                 </p>
 
+
             </div>
 
 
-            <!-- MESSAGE -->
-            <div id="message" class="message"></div>
+
+            <!-- =================================================
+                 MESSAGE
+            ================================================== -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
 
 
-            <!-- REGISTRATION FORM -->
+
+            <!-- =================================================
+                 REGISTRATION FORM
+            ================================================== -->
+
             <form id="registrationForm">
 
-                <!-- FIRST NAME -->
+
+                <!-- =================================================
+                     FIRST NAME
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="firstName">
+
                         First Name
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-user"></i>
+
 
                         <input
                             type="text"
@@ -149,22 +337,37 @@
                             required
                         >
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- MIDDLE NAME -->
+
+                <!-- =================================================
+                     MIDDLE NAME
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="middleName">
+
                         Middle Name
-                        <span class="optional">(Optional)</span>
+
+                        <span class="optional">
+                            (Optional)
+                        </span>
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-user"></i>
+
 
                         <input
                             type="text"
@@ -173,21 +376,33 @@
                             placeholder="Enter your middle name"
                         >
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- LAST NAME -->
+
+                <!-- =================================================
+                     LAST NAME
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="lastName">
+
                         Last Name
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-user"></i>
+
 
                         <input
                             type="text"
@@ -197,21 +412,33 @@
                             required
                         >
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- EMAIL -->
+
+                <!-- =================================================
+                     EMAIL
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="email">
+
                         Email Address
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-envelope"></i>
+
 
                         <input
                             type="email"
@@ -221,21 +448,33 @@
                             required
                         >
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- PASSWORD -->
+
+                <!-- =================================================
+                     PASSWORD
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="password">
+
                         Password
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-lock"></i>
+
 
                         <input
                             type="password"
@@ -246,33 +485,54 @@
                             required
                         >
 
+
+                        <!-- CUSTOM PASSWORD TOGGLE -->
+
                         <button
                             type="button"
                             class="password-toggle"
                             id="togglePassword"
+                            aria-label="Show password"
                         >
+
                             <i class="fa-solid fa-eye"></i>
+
                         </button>
+
 
                     </div>
 
+
                     <small>
+
                         Password must contain at least 8 characters.
+
                     </small>
+
 
                 </div>
 
 
-                <!-- CONFIRM PASSWORD -->
+
+                <!-- =================================================
+                     CONFIRM PASSWORD
+                ================================================== -->
+
                 <div class="input-group">
 
+
                     <label for="confirmPassword">
+
                         Confirm Password
+
                     </label>
+
 
                     <div class="input-wrapper">
 
+
                         <i class="fa-solid fa-lock"></i>
+
 
                         <input
                             type="password"
@@ -283,23 +543,37 @@
                             required
                         >
 
+
+                        <!-- CUSTOM CONFIRM PASSWORD TOGGLE -->
+
                         <button
                             type="button"
                             class="password-toggle"
                             id="toggleConfirmPassword"
+                            aria-label="Show password"
                         >
+
                             <i class="fa-solid fa-eye"></i>
+
                         </button>
 
+
                     </div>
+
 
                 </div>
 
 
-                <!-- TERMS -->
+
+                <!-- =================================================
+                     TERMS CHECKBOX
+                ================================================== -->
+
                 <div class="terms">
 
+
                     <label>
+
 
                         <input
                             type="checkbox"
@@ -307,58 +581,1607 @@
                             required
                         >
 
+
                         <span>
+
+
                             I agree to the
-                            <a href="#">Terms and Conditions</a>
+
+
+                            <a
+                                href="#"
+                                id="termsLink"
+                            >
+
+                                Terms and Conditions
+
+                            </a>
+
+
                             and confirm that the information I provide
                             is accurate.
+
+
                         </span>
 
+
                     </label>
+
 
                 </div>
 
 
-                <!-- BUTTON -->
+
+                <!-- =================================================
+                     SUBMIT BUTTON
+                ================================================== -->
+
                 <button
                     type="submit"
                     class="register-btn"
                     id="registerBtn"
                 >
 
+
                     <span id="buttonText">
+
                         Submit
+
                     </span>
+
 
                     <i
                         id="buttonIcon"
                         class="fa-solid fa-arrow-right"
                     ></i>
 
+
                 </button>
+
 
             </form>
 
 
+
+            <!-- =================================================
+                 LOGIN INFORMATION
+            ================================================== -->
+
             <div class="login-info">
+
 
                 Already have an account?
 
+
                 <span>
+
                     You can continue your application using your
                     applicant account.
+
                 </span>
+
 
             </div>
 
+
         </div>
 
+
     </div>
+
 
 </div>
 
 
-<script type="module" src="../js3/registration.js"></script>
+
+<!-- =========================================================
+     TERMS AND CONDITIONS MODAL
+     
+     IMPORTANT:
+     HIDDEN BY DEFAULT
+     
+     It will only appear when the applicant clicks
+     "Terms and Conditions".
+========================================================= -->
+
+<div
+    class="terms-modal"
+    id="termsModal"
+    aria-hidden="true"
+>
+
+
+    <!-- =====================================================
+         DARK OVERLAY
+    ====================================================== -->
+
+    <div class="terms-modal-overlay"></div>
+
+
+
+    <!-- =====================================================
+         MODAL BOX
+    ====================================================== -->
+
+    <div
+        class="terms-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="termsModalTitle"
+    >
+
+
+        <!-- =================================================
+             MODAL HEADER
+        ================================================== -->
+
+        <div class="terms-modal-header">
+
+
+            <div class="terms-modal-title">
+
+
+                <div class="terms-icon">
+
+                    <i class="fa-solid fa-file-contract"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2 id="termsModalTitle">
+
+                        Terms and Conditions
+
+                    </h2>
+
+
+                    <p>
+
+                        SCHOLARLINK Scholarship Management System
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                type="button"
+                class="terms-close"
+                id="termsClose"
+                aria-label="Close Terms and Conditions"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SCROLLABLE CONTENT
+        ================================================== -->
+
+        <div
+            class="terms-modal-content"
+            id="termsContent"
+        >
+
+
+            <!-- =================================================
+                 1. ACCEPTANCE OF TERMS
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    1. Acceptance of Terms
+                </h3>
+
+
+                <p>
+
+                    By creating an account, accessing, or using the
+                    SCHOLARLINK Scholarship Management System
+                    (“SCHOLARLINK”), you acknowledge that you have
+                    read, understood, and agreed to these Terms and
+                    Conditions.
+
+                </p>
+
+
+                <p>
+
+                    These Terms and Conditions govern your use of
+                    SCHOLARLINK for scholarship registration,
+                    application submission, document submission,
+                    application monitoring, notifications,
+                    examination-related activities, and other
+                    scholarship-related services provided through
+                    the system.
+
+                </p>
+
+
+                <p>
+
+                    If you do not agree to these Terms and Conditions,
+                    you should not create an account or proceed with
+                    the scholarship application.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 2. ELIGIBILITY
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    2. Eligibility
+                </h3>
+
+
+                <p>
+
+                    SCHOLARLINK is intended for individuals who meet
+                    the eligibility requirements established by the
+                    applicable scholarship program administered by
+                    the City Government of Naga or its authorized
+                    scholarship office.
+
+                </p>
+
+
+                <p>
+
+                    Creating an account does not automatically
+                    establish eligibility for a scholarship.
+
+                </p>
+
+
+                <p>
+
+                    Applicants must satisfy the requirements,
+                    qualifications, documentary requirements, and
+                    other conditions prescribed by the applicable
+                    scholarship program.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 3. ACCOUNT REGISTRATION
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    3. Account Registration
+                </h3>
+
+
+                <p>
+
+                    Applicants are required to provide accurate and
+                    complete information when creating a SCHOLARLINK
+                    account.
+
+                </p>
+
+
+                <p>
+
+                    Each applicant should maintain only one applicant
+                    account unless otherwise authorized by the
+                    Scholarship Office.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are responsible for maintaining the
+                    confidentiality of their account credentials and
+                    for immediately reporting suspected unauthorized
+                    access or suspicious activity involving their
+                    account.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 4. ACCURACY AND TRUTHFULNESS
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    4. Accuracy and Truthfulness of Information
+                </h3>
+
+
+                <p>
+
+                    Applicants certify that all information submitted
+                    through SCHOLARLINK is true, accurate, complete,
+                    and current to the best of their knowledge.
+
+                </p>
+
+
+                <p>
+
+                    Applicants must not intentionally provide false,
+                    misleading, incomplete, or fraudulent information.
+
+                </p>
+
+
+                <p>
+
+                    The Scholarship Office may verify information
+                    and documents submitted by applicants.
+
+                </p>
+
+
+                <p>
+
+                    If information is found to be false, fraudulent,
+                    materially misleading, or intentionally withheld,
+                    the application may be rejected or disqualified,
+                    subject to applicable policies and procedures.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 5. DOCUMENTS
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    5. Submission of Documents
+                </h3>
+
+
+                <p>
+
+                    Applicants may be required to submit supporting
+                    documents through SCHOLARLINK.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are responsible for ensuring that all
+                    submitted documents are authentic, valid,
+                    readable, complete, and meet the requirements
+                    specified by the Scholarship Office.
+
+                </p>
+
+
+                <p>
+
+                    Applicants must not upload falsified, altered,
+                    fraudulent, or unauthorized documents.
+
+                </p>
+
+
+                <p>
+
+                    The Scholarship Office may request additional
+                    documents or clarification when necessary to
+                    verify an application.
+
+                </p>
+
+
+                <p>
+
+                    Submission of documents does not guarantee
+                    scholarship approval.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 6. APPLICATION REVIEW
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    6. Application Review and Verification
+                </h3>
+
+
+                <p>
+
+                    All scholarship applications are subject to review
+                    and verification by authorized personnel.
+
+                </p>
+
+
+                <p>
+
+                    Applications may be evaluated based on eligibility
+                    requirements, qualifications, documentary
+                    requirements, academic information, financial
+                    circumstances, and other criteria established
+                    for the applicable scholarship program.
+
+                </p>
+
+
+                <p>
+
+                    SCHOLARLINK serves as a platform for managing
+                    scholarship applications and does not guarantee
+                    that an applicant will be selected.
+
+                </p>
+
+
+                <p>
+
+                    Application statuses may include Pending,
+                    Under Review, For Verification, Qualified,
+                    Qualified for Examination, Approved, Rejected,
+                    Disqualified, or other statuses determined by
+                    the Scholarship Office.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 7. EXAMINATION
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    7. Examination and Assessment
+                </h3>
+
+
+                <p>
+
+                    Where applicable, qualified applicants may be
+                    required to participate in examinations,
+                    interviews, assessments, or other evaluation
+                    activities.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are responsible for monitoring their
+                    SCHOLARLINK account and official notifications
+                    regarding schedules, instructions, and
+                    requirements.
+
+                </p>
+
+
+                <p>
+
+                    Failure to comply with an examination, interview,
+                    verification activity, or other required process
+                    may affect an applicant's eligibility, subject
+                    to applicable scholarship rules.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 8. SCHOLARSHIP APPROVAL
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    8. Scholarship Approval
+                </h3>
+
+
+                <p>
+
+                    Being registered in SCHOLARLINK, submitting an
+                    application, being qualified for examination,
+                    or receiving a notification does not
+                    automatically constitute a scholarship award.
+
+                </p>
+
+
+                <p>
+
+                    Scholarship approval shall only be recognized
+                    when officially determined and communicated by
+                    the authorized Scholarship Office.
+
+                </p>
+
+
+                <p>
+
+                    Applicants may be required to comply with
+                    additional requirements before or after
+                    scholarship approval.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 9. APPLICANT RESPONSIBILITIES
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    9. Applicant Responsibilities
+                </h3>
+
+
+                <p>
+
+                    Applicants agree to provide truthful information,
+                    submit authentic documents, keep their account
+                    information updated, protect their credentials,
+                    monitor notifications, follow scholarship
+                    requirements, and comply with applicable
+                    scholarship policies and procedures.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are responsible for reviewing their
+                    submitted information before completing their
+                    application.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 10. PROHIBITED ACTIVITIES
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    10. Prohibited Activities
+                </h3>
+
+
+                <p>
+
+                    Applicants are prohibited from using SCHOLARLINK
+                    to submit fraudulent information, impersonate
+                    another person, create fraudulent accounts,
+                    access another applicant's account, bypass
+                    authentication or security controls, interfere
+                    with system operations, introduce malicious
+                    software, or obtain or disclose another person's
+                    information without authorization.
+
+                </p>
+
+
+                <p>
+
+                    Applicants must not attempt to manipulate,
+                    modify, damage, disrupt, or gain unauthorized
+                    access to SCHOLARLINK, its databases, or its
+                    associated services.
+
+                </p>
+
+
+                <p>
+
+                    Unauthorized access, disclosure, use, or
+                    dissemination of personal information may have
+                    consequences under applicable laws and
+                    regulations.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 11. PRIVACY
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    11. Privacy and Personal Data Processing
+                </h3>
+
+
+                <p>
+
+                    SCHOLARLINK may collect and process personal
+                    information necessary for the administration and
+                    management of scholarship applications.
+
+                </p>
+
+
+                <p>
+
+                    Depending on the applicable scholarship program,
+                    information may include personal, educational,
+                    contact, family, household, financial,
+                    identification, documentary, and other
+                    information necessary for application evaluation.
+
+                </p>
+
+
+                <p>
+
+                    Personal information shall be processed for
+                    specified and legitimate purposes related to
+                    scholarship administration and other purposes
+                    communicated to the applicant, subject to
+                    applicable laws and regulations.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 12. DATA PROCESSING PURPOSE
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    12. Purpose of Data Processing
+                </h3>
+
+
+                <p>
+
+                    Personal information submitted through SCHOLARLINK
+                    may be processed for applicant registration,
+                    identity verification, scholarship application
+                    processing, eligibility assessment, document
+                    verification, examination and assessment,
+                    application monitoring, communication,
+                    scholarship administration, reporting, and
+                    prevention of fraudulent applications.
+
+                </p>
+
+
+                <p>
+
+                    Personal information shall be processed only to
+                    the extent necessary for legitimate scholarship
+                    administration and related purposes.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 13. DATA SHARING
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    13. Data Sharing and Disclosure
+                </h3>
+
+
+                <p>
+
+                    Personal information may be accessed by authorized
+                    personnel of the City Government of Naga, the
+                    Scholarship Office, and authorized service
+                    providers or government entities when such access
+                    or disclosure is necessary and permitted under
+                    applicable laws, regulations, policies, or
+                    agreements.
+
+                </p>
+
+
+                <p>
+
+                    SCHOLARLINK shall not authorize unauthorized
+                    persons to access or use applicant information.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 14. DATA SECURITY
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    14. Data Security
+                </h3>
+
+
+                <p>
+
+                    Reasonable and appropriate organizational,
+                    physical, and technical measures shall be
+                    implemented to protect personal information
+                    against unauthorized access, alteration,
+                    disclosure, loss, destruction, or other unlawful
+                    processing.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are also responsible for protecting
+                    their account credentials and should not share
+                    passwords or authentication information with
+                    unauthorized persons.
+
+                </p>
+
+
+                <p>
+
+                    Applicants should immediately report suspected
+                    unauthorized access or security incidents through
+                    the official SCHOLARLINK communication channels.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 15. DATA RETENTION
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    15. Data Retention
+                </h3>
+
+
+                <p>
+
+                    Personal information shall be retained only for
+                    as long as necessary to fulfill the purposes for
+                    which it was collected or as required or permitted
+                    by applicable laws, regulations, government
+                    policies, audit requirements, or legitimate legal
+                    purposes.
+
+                </p>
+
+
+                <p>
+
+                    When personal information is no longer necessary
+                    and may lawfully be disposed of, appropriate
+                    disposal or anonymization measures may be applied
+                    in accordance with applicable policies and
+                    requirements.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 16. APPLICANT RIGHTS
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    16. Rights of Applicants
+                </h3>
+
+
+                <p>
+
+                    Applicants may have rights under applicable data
+                    privacy laws, including the right to be informed,
+                    the right to access personal information, the
+                    right to request correction of inaccurate
+                    information, and other rights provided by
+                    applicable law.
+
+                </p>
+
+
+                <p>
+
+                    Requests concerning personal information may be
+                    submitted to the designated office or authorized
+                    privacy contact of the responsible government
+                    office.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 17. CONSENT
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    17. Applicant Consent and Acknowledgment
+                </h3>
+
+
+                <p>
+
+                    By selecting “I Agree,” creating an account, and
+                    proceeding with the SCHOLARLINK application, the
+                    applicant acknowledges that they have read and
+                    understood these Terms and Conditions.
+
+                </p>
+
+
+                <p>
+
+                    The applicant understands that submission of an
+                    application does not guarantee qualification,
+                    approval, or receipt of a scholarship award.
+
+                </p>
+
+
+                <p>
+
+                    The applicant also acknowledges that information
+                    and documents submitted through SCHOLARLINK may
+                    be verified by authorized personnel.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 18. NOTIFICATIONS
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    18. System Notifications and Communications
+                </h3>
+
+
+                <p>
+
+                    Applicants are responsible for regularly checking
+                    their SCHOLARLINK account and registered contact
+                    information for application updates,
+                    announcements, examination schedules,
+                    verification requests, and other
+                    scholarship-related communications.
+
+                </p>
+
+
+                <p>
+
+                    Applicants are responsible for ensuring that
+                    their registered email address and contact
+                    information remain accurate and accessible.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 19. SYSTEM AVAILABILITY
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    19. System Availability
+                </h3>
+
+
+                <p>
+
+                    SCHOLARLINK is intended to provide access to
+                    scholarship-related services, but temporary
+                    interruptions may occur due to maintenance,
+                    system updates, internet connectivity problems,
+                    technical failures, security incidents, or
+                    circumstances beyond the reasonable control of
+                    the system administrator.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 20. ACCOUNT SUSPENSION
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    20. Account Suspension or Termination
+                </h3>
+
+
+                <p>
+
+                    The authorized Scholarship Office may suspend,
+                    restrict, or terminate an account when there is
+                    reasonable basis to believe that the account
+                    violates these Terms and Conditions, contains
+                    fraudulent information, is being used by an
+                    unauthorized person, or presents a security or
+                    administrative risk.
+
+                </p>
+
+
+                <p>
+
+                    Where appropriate, the applicant may be notified
+                    and given an opportunity to address the matter,
+                    subject to applicable rules and procedures.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 21. CHANGES
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    21. Changes to the Terms and Conditions
+                </h3>
+
+
+                <p>
+
+                    SCHOLARLINK and the responsible Scholarship Office
+                    may update these Terms and Conditions when
+                    necessary due to changes in scholarship policies,
+                    system functionality, legal requirements,
+                    security requirements, or other legitimate
+                    administrative purposes.
+
+                </p>
+
+
+                <p>
+
+                    Where significant changes affect applicants,
+                    appropriate notice shall be provided in
+                    accordance with applicable requirements.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 22. GOVERNING LAW
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    22. Governing Laws
+                </h3>
+
+
+                <p>
+
+                    These Terms and Conditions shall be interpreted
+                    and implemented in accordance with the laws,
+                    rules, regulations, and applicable government
+                    policies of the Republic of the Philippines.
+
+                </p>
+
+
+                <p>
+
+                    Nothing in these Terms and Conditions shall be
+                    interpreted as limiting any right or protection
+                    granted to applicants by applicable Philippine
+                    law.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 23. CONTACT
+            ================================================== -->
+
+            <section>
+
+
+                <h3>
+                    23. Contact and Privacy Concerns
+                </h3>
+
+
+                <p>
+
+                    For questions, concerns, corrections, account
+                    issues, or requests involving personal information,
+                    applicants may contact the authorized SCHOLARLINK
+                    administrator or Scholarship Office through its
+                    official communication channels.
+
+                </p>
+
+
+                <p>
+
+                    Official contact details shall be provided by the
+                    responsible Scholarship Office.
+
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 END OF TERMS
+            ================================================== -->
+
+            <div class="terms-end">
+
+
+                <i class="fa-solid fa-circle-check"></i>
+
+
+                <strong>
+
+                    End of Terms and Conditions
+
+                </strong>
+
+
+                <span>
+
+                    You have reached the end.
+                    You may now click “I Agree”.
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             MODAL FOOTER
+        ================================================== -->
+
+        <div class="terms-modal-footer">
+
+
+            <!-- SCROLL STATUS -->
+
+            <div
+                class="terms-scroll-status"
+                id="termsScrollStatus"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                Please scroll to the bottom to continue.
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="terms-actions">
+
+
+                <!-- CANCEL -->
+
+                <button
+                    type="button"
+                    class="terms-cancel"
+                    id="termsCancel"
+                >
+
+                    Cancel
+
+                </button>
+
+
+
+                <!-- I AGREE -->
+
+                <button
+                    type="button"
+                    class="terms-agree"
+                    id="termsAgree"
+                    disabled
+                >
+
+                    <i class="fa-solid fa-check"></i>
+
+                    I Agree
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     EXISTING REGISTRATION JAVASCRIPT
+     
+     DO NOT REMOVE THIS.
+     This is your Firebase registration logic.
+========================================================= -->
+
+<script
+    type="module"
+    src="../js3/registration.js"
+></script>
+
+
+
+<!-- =========================================================
+     TERMS MODAL JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+    /* ========================================================
+       ELEMENTS
+    ======================================================== */
+
+    const termsInput =
+        document.getElementById("terms");
+
+    const termsLink =
+        document.getElementById("termsLink");
+
+    const termsModal =
+        document.getElementById("termsModal");
+
+    const termsClose =
+        document.getElementById("termsClose");
+
+    const termsCancel =
+        document.getElementById("termsCancel");
+
+    const termsAgree =
+        document.getElementById("termsAgree");
+
+    const termsContent =
+        document.getElementById("termsContent");
+
+    const termsScrollStatus =
+        document.getElementById("termsScrollStatus");
+
+
+    /* ========================================================
+       SAFETY CHECK
+    ======================================================== */
+
+    if (
+        !termsInput ||
+        !termsLink ||
+        !termsModal ||
+        !termsAgree ||
+        !termsContent
+    ) {
+
+        return;
+
+    }
+
+
+    /* ========================================================
+       OPEN TERMS
+    ======================================================== */
+
+    function openTerms() {
+
+
+        termsModal.classList.add("active");
+
+
+        termsModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        /*
+         * Every time the modal opens,
+         * the applicant must scroll again.
+         */
+
+        termsAgree.disabled = true;
+
+
+        termsContent.scrollTop = 0;
+
+
+        if (termsScrollStatus) {
+
+            termsScrollStatus.innerHTML =
+                '<i class="fa-solid fa-lock"></i> ' +
+                'Please scroll to the bottom to continue.';
+
+        }
+
+
+    }
+
+
+    /* ========================================================
+       CLOSE TERMS
+    ======================================================== */
+
+    function closeTerms() {
+
+
+        termsModal.classList.remove("active");
+
+
+        termsModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+    }
+
+
+    /* ========================================================
+       TERMS LINK
+    ======================================================== */
+
+    termsLink.addEventListener(
+        "click",
+        (event) => {
+
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            openTerms();
+
+
+        }
+    );
+
+
+    /* ========================================================
+       CHECKBOX
+       
+       Applicant cannot directly check the checkbox.
+       Terms must be opened first.
+    ======================================================== */
+
+    termsInput.addEventListener(
+        "click",
+        (event) => {
+
+
+            if (!termsInput.checked) {
+
+
+                event.preventDefault();
+
+
+                openTerms();
+
+
+            }
+
+
+        }
+    );
+
+
+    /* ========================================================
+       SCROLL DETECTION
+    ======================================================== */
+
+    termsContent.addEventListener(
+        "scroll",
+        () => {
+
+
+            const reachedBottom =
+                termsContent.scrollTop +
+                termsContent.clientHeight >=
+                termsContent.scrollHeight - 10;
+
+
+            if (reachedBottom) {
+
+
+                termsAgree.disabled = false;
+
+
+                if (termsScrollStatus) {
+
+                    termsScrollStatus.innerHTML =
+                        '<i class="fa-solid fa-circle-check"></i> ' +
+                        'You have reached the bottom. You may now click “I Agree”.';
+
+                }
+
+
+            }
+
+
+        }
+    );
+
+
+    /* ========================================================
+       I AGREE
+    ======================================================== */
+
+    termsAgree.addEventListener(
+        "click",
+        () => {
+
+
+            if (termsAgree.disabled) {
+
+                return;
+
+            }
+
+
+            /*
+             * Check checkbox
+             */
+
+            termsInput.checked = true;
+
+
+            /*
+             * Close modal
+             */
+
+            closeTerms();
+
+
+        }
+    );
+
+
+    /* ========================================================
+       CANCEL
+    ======================================================== */
+
+    if (termsCancel) {
+
+
+        termsCancel.addEventListener(
+            "click",
+            () => {
+
+                closeTerms();
+
+            }
+        );
+
+
+    }
+
+
+    /* ========================================================
+       CLOSE BUTTON
+    ======================================================== */
+
+    if (termsClose) {
+
+
+        termsClose.addEventListener(
+            "click",
+            () => {
+
+                closeTerms();
+
+            }
+        );
+
+
+    }
+
+
+    /* ========================================================
+       ESC KEY
+    ======================================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+
+            if (
+                event.key === "Escape" &&
+                termsModal.classList.contains("active")
+            ) {
+
+
+                closeTerms();
+
+
+            }
+
+
+        }
+    );
+
+
+});
+
+</script>
+
 
 </body>
+
 </html>

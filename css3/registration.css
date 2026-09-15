@@ -1,8 +1,23 @@
+/* ============================================================
+   SCHOLARLINK - APPLICANT REGISTRATION
+   REGISTRATION.CSS
+============================================================ */
+
+
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* ============================================================
+   BODY
+============================================================ */
 
 body {
     font-family: "Poppins", sans-serif;
@@ -11,21 +26,35 @@ body {
     color: #1f2937;
 }
 
+
+/* ============================================================
+   PAGE CONTAINER
+============================================================ */
+
 .page-container {
     min-height: 100vh;
     display: flex;
 }
 
 
-/* =========================
+/* ============================================================
    LEFT SIDE
-========================= */
+============================================================ */
 
 .welcome-section {
     width: 45%;
+
+    height: 100vh;
     min-height: 100vh;
-    position: relative;
+
+    position: sticky;
+    top: 0;
+
+    align-self: flex-start;
+
     overflow: hidden;
+
+    flex-shrink: 0;
 
     background:
         linear-gradient(
@@ -35,6 +64,10 @@ body {
             #4c1d95
         );
 }
+
+/* ============================================================
+   LEFT OVERLAY
+============================================================ */
 
 .welcome-overlay {
     position: absolute;
@@ -53,6 +86,11 @@ body {
         );
 }
 
+
+/* ============================================================
+   WELCOME CONTENT
+============================================================ */
+
 .welcome-content {
     position: relative;
     z-index: 2;
@@ -66,6 +104,11 @@ body {
     justify-content: center;
 }
 
+
+/* ============================================================
+   LOGO
+============================================================ */
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -74,9 +117,12 @@ body {
     margin-bottom: 70px;
 }
 
+
 .logo-circle {
     width: 58px;
     height: 58px;
+
+    flex-shrink: 0;
 
     border-radius: 50%;
 
@@ -85,28 +131,40 @@ body {
     justify-content: center;
 
     background: rgba(255,255,255,0.15);
+
     border: 1px solid rgba(255,255,255,0.3);
 
     color: white;
+
     font-size: 25px;
 }
 
+
 .logo-container h1 {
     color: white;
+
     font-size: 28px;
     font-weight: 700;
+
     letter-spacing: 1px;
 }
+
 
 .logo-container h1 span {
     color: #c4b5fd;
 }
 
+
 .logo-container p {
     color: rgba(255,255,255,0.75);
+
     font-size: 11px;
 }
 
+
+/* ============================================================
+   BADGE
+============================================================ */
 
 .badge {
     display: inline-flex;
@@ -118,13 +176,20 @@ body {
     border-radius: 30px;
 
     background: rgba(255,255,255,0.12);
+
     border: 1px solid rgba(255,255,255,0.2);
 
     color: white;
 
     font-size: 12px;
+
     margin-bottom: 20px;
 }
+
+
+/* ============================================================
+   WELCOME TEXT
+============================================================ */
 
 .welcome-text h2 {
     color: white;
@@ -136,9 +201,11 @@ body {
     margin-bottom: 25px;
 }
 
+
 .welcome-text h2 span {
     color: #c4b5fd;
 }
+
 
 .welcome-text p {
     max-width: 520px;
@@ -146,33 +213,40 @@ body {
     color: rgba(255,255,255,0.75);
 
     font-size: 15px;
+
     line-height: 1.8;
 
     margin-bottom: 45px;
 }
 
 
-/* =========================
+/* ============================================================
    INFO LIST
-========================= */
+============================================================ */
 
 .info-list {
     display: flex;
     flex-direction: column;
+
     gap: 20px;
 }
+
 
 .info-item {
     display: flex;
     align-items: center;
+
     gap: 15px;
 
     color: white;
 }
 
+
 .info-item > i {
     width: 42px;
     height: 42px;
+
+    flex-shrink: 0;
 
     border-radius: 12px;
 
@@ -185,27 +259,33 @@ body {
     color: #ddd6fe;
 }
 
+
 .info-item div {
     display: flex;
     flex-direction: column;
 }
 
+
 .info-item strong {
     font-size: 13px;
 }
 
+
 .info-item span {
     color: rgba(255,255,255,0.65);
+
     font-size: 11px;
 }
 
 
-/* =========================
+/* ============================================================
    RIGHT SIDE
-========================= */
+============================================================ */
 
 .form-section {
     width: 55%;
+
+    min-height: 100vh;
 
     display: flex;
     align-items: center;
@@ -214,14 +294,21 @@ body {
     padding: 40px;
 }
 
+
 .form-container {
     width: 100%;
     max-width: 550px;
 }
 
+
+/* ============================================================
+   BACK LINK
+============================================================ */
+
 .back-link {
     display: inline-flex;
     align-items: center;
+
     gap: 8px;
 
     color: #64748b;
@@ -231,35 +318,51 @@ body {
     font-size: 13px;
 
     margin-bottom: 30px;
+
+    transition: 0.2s;
 }
+
 
 .back-link:hover {
     color: #4f46e5;
+
+    transform: translateX(-2px);
 }
+
+
+/* ============================================================
+   FORM HEADER
+============================================================ */
 
 .form-header {
     margin-bottom: 30px;
 }
 
+
 .form-header h2 {
     font-size: 30px;
+
     color: #111827;
+
     margin-bottom: 8px;
 }
 
+
 .form-header p {
     color: #64748b;
+
     font-size: 13px;
 }
+
 
 .mobile-logo {
     display: none;
 }
 
 
-/* =========================
+/* ============================================================
    MESSAGE
-========================= */
+============================================================ */
 
 .message {
     display: none;
@@ -273,37 +376,43 @@ body {
     margin-bottom: 20px;
 }
 
+
 .message.success {
     display: block;
 
     background: #dcfce7;
+
     color: #166534;
 
     border: 1px solid #bbf7d0;
 }
 
+
 .message.error {
     display: block;
 
     background: #fee2e2;
+
     color: #991b1b;
 
     border: 1px solid #fecaca;
 }
 
 
-/* =========================
-   INPUTS
-========================= */
+/* ============================================================
+   INPUT GROUP
+============================================================ */
 
 .input-group {
     margin-bottom: 18px;
 }
 
+
 .input-group label {
     display: block;
 
     font-size: 12px;
+
     font-weight: 600;
 
     color: #374151;
@@ -311,14 +420,22 @@ body {
     margin-bottom: 7px;
 }
 
+
 .optional {
     color: #9ca3af;
+
     font-weight: 400;
 }
+
+
+/* ============================================================
+   INPUT WRAPPER
+============================================================ */
 
 .input-wrapper {
     position: relative;
 }
+
 
 .input-wrapper > i {
     position: absolute;
@@ -333,7 +450,14 @@ body {
     font-size: 14px;
 
     pointer-events: none;
+
+    z-index: 2;
 }
+
+
+/* ============================================================
+   INPUT
+============================================================ */
 
 .input-wrapper input {
     width: 100%;
@@ -349,23 +473,48 @@ body {
     outline: none;
 
     font-family: inherit;
+
     font-size: 13px;
 
     background: white;
 
+    color: #1f2937;
+
     transition: 0.2s;
 }
+
 
 .input-wrapper input:focus {
     border-color: #6366f1;
 
     box-shadow:
-        0 0 0 3px rgba(99,102,241,0.1);
+        0 0 0 3px
+        rgba(99,102,241,0.1);
 }
+
 
 .input-wrapper input::placeholder {
     color: #a1a1aa;
 }
+
+
+/* ============================================================
+   INPUT VALIDATION
+============================================================ */
+
+.input-wrapper input:valid:not(:placeholder-shown) {
+    border-color: #dbe1ea;
+}
+
+
+.input-wrapper input:focus:invalid {
+    border-color: #f59e0b;
+}
+
+
+/* ============================================================
+   SMALL TEXT
+============================================================ */
 
 .input-group small {
     display: block;
@@ -378,9 +527,9 @@ body {
 }
 
 
-/* =========================
+/* ============================================================
    PASSWORD TOGGLE
-========================= */
+============================================================ */
 
 .password-toggle {
     position: absolute;
@@ -389,6 +538,9 @@ body {
     top: 50%;
 
     transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
 
     border: none;
 
@@ -399,24 +551,75 @@ body {
     cursor: pointer;
 
     padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    z-index: 5;
+
+    transition: 0.2s;
 }
+
 
 .password-toggle:hover {
     color: #4f46e5;
+
+    background: #f5f3ff;
 }
 
 
-/* =========================
-   TERMS
-========================= */
+.password-toggle:focus {
+    outline: none;
+
+    color: #4f46e5;
+
+    background: #f5f3ff;
+}
+
+
+/* ============================================================
+   HIDE BROWSER PASSWORD EYE
+============================================================ */
+
+/* Microsoft Edge / Internet Explorer */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="text"]::-ms-reveal,
+input[type="text"]::-ms-clear {
+    display: none !important;
+}
+
+
+/* Chrome / Chromium */
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="text"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden !important;
+
+    display: none !important;
+
+    pointer-events: none !important;
+}
+
+
+/* ============================================================
+   TERMS CHECKBOX AREA
+============================================================ */
 
 .terms {
     margin: 20px 0;
 }
 
+
 .terms label {
     display: flex;
+
     align-items: flex-start;
+
     gap: 10px;
 
     color: #64748b;
@@ -428,20 +631,38 @@ body {
     cursor: pointer;
 }
 
+
 .terms input {
+    width: 15px;
+    height: 15px;
+
+    flex-shrink: 0;
+
     margin-top: 3px;
+
+    accent-color: #4f46e5;
+
+    cursor: pointer;
 }
+
 
 .terms a {
     color: #4f46e5;
+
     text-decoration: none;
+
     font-weight: 600;
 }
 
 
-/* =========================
-   BUTTON
-========================= */
+.terms a:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   REGISTER BUTTON
+============================================================ */
 
 .register-btn {
     width: 100%;
@@ -449,6 +670,7 @@ body {
     height: 50px;
 
     border: none;
+
     border-radius: 10px;
 
     background:
@@ -463,6 +685,7 @@ body {
     font-family: inherit;
 
     font-size: 13px;
+
     font-weight: 600;
 
     cursor: pointer;
@@ -470,28 +693,41 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 10px;
 
     transition: 0.2s;
 }
 
+
 .register-btn:hover {
     transform: translateY(-1px);
 
     box-shadow:
-        0 10px 25px rgba(79,70,229,0.25);
+        0 10px 25px
+        rgba(79,70,229,0.25);
 }
+
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
 
 .register-btn:disabled {
     opacity: 0.6;
+
     cursor: not-allowed;
+
     transform: none;
+
+    box-shadow: none;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ============================================================
+   LOGIN INFORMATION
+============================================================ */
 
 .login-info {
     text-align: center;
@@ -505,15 +741,676 @@ body {
     line-height: 1.6;
 }
 
+
 .login-info span {
     display: block;
+
     color: #94a3b8;
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ============================================================
+   ============================================================
+   TERMS AND CONDITIONS MODAL
+   ============================================================
+============================================================ */
+
+
+/* ============================================================
+   MODAL CONTAINER
+   HIDDEN BY DEFAULT
+============================================================ */
+
+.terms-modal {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 99999;
+}
+
+
+/* ============================================================
+   MODAL ACTIVE
+============================================================ */
+
+.terms-modal.active {
+    display: flex;
+
+    animation: termsModalFadeIn 0.2s ease;
+}
+
+
+/* ============================================================
+   MODAL FADE ANIMATION
+============================================================ */
+
+@keyframes termsModalFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* ============================================================
+   DARK OVERLAY
+============================================================ */
+
+.terms-modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(15,23,42,0.72);
+
+    backdrop-filter: blur(7px);
+
+    -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* ============================================================
+   MODAL BOX
+============================================================ */
+
+.terms-modal-box {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 720px;
+
+    max-height: 90vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(15,23,42,0.30);
+
+    animation: termsBoxSlideUp 0.25s ease;
+}
+
+
+/* ============================================================
+   MODAL SLIDE ANIMATION
+============================================================ */
+
+@keyframes termsBoxSlideUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ============================================================
+   MODAL HEADER
+============================================================ */
+
+.terms-modal-header {
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 24px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8f9ff
+        );
+}
+
+
+/* ============================================================
+   MODAL TITLE
+============================================================ */
+
+.terms-modal-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 0;
+}
+
+
+/* ============================================================
+   TERMS ICON
+============================================================ */
+
+.terms-icon {
+    width: 45px;
+    height: 45px;
+
+    min-width: 45px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(79,70,229,0.20);
+}
+
+
+/* ============================================================
+   MODAL TITLE TEXT
+============================================================ */
+
+.terms-modal-title h2 {
+    color: #111827;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+
+    margin-bottom: 3px;
+}
+
+
+.terms-modal-title p {
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* ============================================================
+   CLOSE BUTTON
+============================================================ */
+
+.terms-close {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+
+.terms-close:hover {
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    transform: rotate(3deg);
+}
+
+
+.terms-close:focus {
+    outline: 2px solid #c7d2fe;
+
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   SCROLLABLE CONTENT
+============================================================ */
+
+.terms-modal-content {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 25px 28px 35px;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #6366f1
+        #eef1f6;
+}
+
+
+/* ============================================================
+   WEBKIT SCROLLBAR
+============================================================ */
+
+.terms-modal-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.terms-modal-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+
+.terms-modal-content::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    border-radius: 20px;
+}
+
+
+.terms-modal-content::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #4338ca,
+            #6d28d9
+        );
+}
+
+
+/* ============================================================
+   TERMS SECTIONS
+============================================================ */
+
+.terms-modal-content section {
+    margin-bottom: 25px;
+}
+
+
+.terms-modal-content h3 {
+    color: #1e293b;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.terms-modal-content p {
+    margin-bottom: 9px;
+
+    text-align: justify;
+}
+
+
+.terms-modal-content section:last-of-type {
+    margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   END OF TERMS
+============================================================ */
+
+.terms-end {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 5px;
+
+    margin-top: 30px;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    background: #f0fdf4;
+
+    border:
+        1px solid #bbf7d0;
+
+    color: #166534;
+}
+
+
+.terms-end i {
+    font-size: 26px;
+
+    margin-bottom: 3px;
+}
+
+
+.terms-end strong {
+    font-size: 12px;
+}
+
+
+.terms-end span {
+    font-size: 10px;
+
+    color: #4d7c0f;
+}
+
+
+/* ============================================================
+   MODAL FOOTER
+============================================================ */
+
+.terms-modal-footer {
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 15px 24px;
+
+    border-top:
+        1px solid #e5e7eb;
+
+    background: #ffffff;
+}
+
+
+/* ============================================================
+   SCROLL STATUS
+============================================================ */
+
+.terms-scroll-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    transition: 0.2s;
+}
+
+
+.terms-scroll-status i {
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   MODAL ACTIONS
+============================================================ */
+
+.terms-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* ============================================================
+   CANCEL BUTTON
+============================================================ */
+
+.terms-cancel {
+    height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid #dbe1ea;
+
+    background: white;
+
+    color: #64748b;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.terms-cancel:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+
+    color: #475569;
+}
+
+
+.terms-cancel:focus {
+    outline: 2px solid #c7d2fe;
+
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   I AGREE BUTTON
+============================================================ */
+
+.terms-agree {
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: 0.2s;
+}
+
+
+.terms-agree:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(79,70,229,0.25);
+}
+
+
+.terms-agree:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+
+.terms-agree:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ============================================================
+   DESKTOP LARGE
+============================================================ */
+
+@media (min-width: 1400px) {
+
+    .welcome-content {
+        padding: 80px;
+    }
+
+
+    .form-section {
+        padding: 60px;
+    }
+
+
+    .form-container {
+        max-width: 570px;
+    }
+
+}
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .welcome-content {
+        padding: 50px;
+    }
+
+
+    .logo-container {
+        margin-bottom: 50px;
+    }
+
+
+    .welcome-text h2 {
+        font-size: 42px;
+    }
+
+
+    .welcome-text p {
+        font-size: 13px;
+    }
+
+
+    .form-section {
+        padding: 30px;
+    }
+
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
 
 @media (max-width: 900px) {
 
@@ -521,17 +1418,27 @@ body {
         display: none;
     }
 
+
     .form-section {
         width: 100%;
+
         min-height: 100vh;
+
         padding: 25px;
     }
+
+
+    .form-container {
+        max-width: 550px;
+    }
+
 
     .mobile-logo {
         width: 55px;
         height: 55px;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
 
@@ -549,23 +1456,509 @@ body {
         font-size: 22px;
 
         margin-bottom: 20px;
+
+        box-shadow:
+            0 10px 25px
+            rgba(79,70,229,0.20);
+    }
+
+
+    /* TERMS */
+
+    .terms-modal {
+        padding: 15px;
+    }
+
+
+    .terms-modal-box {
+        max-height: 92vh;
     }
 
 }
 
 
+/* ============================================================
+   MOBILE
+============================================================ */
+
 @media (max-width: 768px) {
 
     .form-section {
         padding: 20px 16px;
+
+        align-items: flex-start;
     }
+
+
+    .form-container {
+        padding-top: 5px;
+    }
+
 
     .form-header h2 {
         font-size: 25px;
     }
 
+
+    .form-header p {
+        font-size: 12px;
+    }
+
+
     .back-link {
         margin-bottom: 25px;
+    }
+
+
+    .input-group {
+        margin-bottom: 16px;
+    }
+
+
+    .input-wrapper input {
+        height: 48px;
+
+        font-size: 13px;
+    }
+
+
+    .register-btn {
+        height: 50px;
+    }
+
+
+    /* ========================================================
+       TERMS MODAL MOBILE
+    ======================================================== */
+
+    .terms-modal {
+        padding: 10px;
+    }
+
+
+    .terms-modal-box {
+        max-height: 94vh;
+
+        border-radius: 16px;
+    }
+
+
+    .terms-modal-header {
+        padding: 15px 16px;
+    }
+
+
+    .terms-modal-title {
+        gap: 9px;
+    }
+
+
+    .terms-icon {
+        width: 40px;
+        height: 40px;
+
+        min-width: 40px;
+
+        font-size: 16px;
+    }
+
+
+    .terms-modal-title h2 {
+        font-size: 16px;
+    }
+
+
+    .terms-modal-title p {
+        font-size: 9px;
+    }
+
+
+    .terms-close {
+        width: 32px;
+        height: 32px;
+
+        min-width: 32px;
+    }
+
+
+    .terms-modal-content {
+        padding: 20px 17px 25px;
+
+        font-size: 11px;
+
+        line-height: 1.7;
+    }
+
+
+    .terms-modal-content h3 {
+        font-size: 12px;
+    }
+
+
+    .terms-modal-content p {
+        font-size: 11px;
+
+        text-align: left;
+    }
+
+
+    .terms-modal-footer {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+
+        padding: 13px 16px;
+    }
+
+
+    .terms-scroll-status {
+        justify-content: center;
+
+        text-align: center;
+
+        line-height: 1.5;
+    }
+
+
+    .terms-actions {
+        width: 100%;
+    }
+
+
+    .terms-cancel,
+    .terms-agree {
+        flex: 1;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+
+    .form-section {
+        padding: 18px 14px;
+    }
+
+
+    .mobile-logo {
+        width: 50px;
+        height: 50px;
+
+        font-size: 20px;
+
+        border-radius: 14px;
+    }
+
+
+    .form-header {
+        margin-bottom: 24px;
+    }
+
+
+    .form-header h2 {
+        font-size: 23px;
+    }
+
+
+    .form-header p {
+        font-size: 11px;
+    }
+
+
+    .back-link {
+        font-size: 12px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .input-group label {
+        font-size: 11px;
+    }
+
+
+    .input-wrapper input {
+        height: 46px;
+
+        font-size: 12px;
+
+        padding-left: 43px;
+
+        padding-right: 43px;
+    }
+
+
+    .input-wrapper > i {
+        left: 14px;
+
+        font-size: 13px;
+    }
+
+
+    .password-toggle {
+        right: 9px;
+    }
+
+
+    .terms {
+        margin: 18px 0;
+    }
+
+
+    .terms label {
+        font-size: 10px;
+
+        gap: 8px;
+    }
+
+
+    .terms input {
+        width: 14px;
+        height: 14px;
+    }
+
+
+    .register-btn {
+        height: 48px;
+
+        font-size: 12px;
+    }
+
+
+    .login-info {
+        margin-top: 20px;
+
+        font-size: 10px;
+    }
+
+
+    /* ========================================================
+       TERMS
+    ======================================================== */
+
+    .terms-modal {
+        padding: 7px;
+    }
+
+
+    .terms-modal-box {
+        max-height: 96vh;
+
+        border-radius: 14px;
+    }
+
+
+    .terms-modal-header {
+        padding: 13px;
+    }
+
+
+    .terms-modal-title {
+        gap: 8px;
+    }
+
+
+    .terms-icon {
+        width: 36px;
+        height: 36px;
+
+        min-width: 36px;
+
+        font-size: 14px;
+
+        border-radius: 10px;
+    }
+
+
+    .terms-modal-title h2 {
+        font-size: 14px;
+    }
+
+
+    .terms-modal-title p {
+        font-size: 8px;
+    }
+
+
+    .terms-close {
+        width: 30px;
+        height: 30px;
+
+        min-width: 30px;
+    }
+
+
+    .terms-modal-content {
+        padding:
+            16px
+            13px
+            20px;
+
+        font-size: 10px;
+
+        line-height: 1.65;
+    }
+
+
+    .terms-modal-content section {
+        margin-bottom: 22px;
+    }
+
+
+    .terms-modal-content h3 {
+        font-size: 11px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .terms-modal-content p {
+        font-size: 10px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .terms-end {
+        margin-top: 25px;
+
+        padding: 18px 12px;
+    }
+
+
+    .terms-end i {
+        font-size: 22px;
+    }
+
+
+    .terms-end strong {
+        font-size: 11px;
+    }
+
+
+    .terms-end span {
+        font-size: 9px;
+    }
+
+
+    .terms-modal-footer {
+        padding: 11px 13px;
+
+        gap: 10px;
+    }
+
+
+    .terms-scroll-status {
+        font-size: 8px;
+    }
+
+
+    .terms-actions {
+        gap: 7px;
+    }
+
+
+    .terms-cancel,
+    .terms-agree {
+        height: 39px;
+
+        font-size: 10px;
+
+        padding: 0 12px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE
+============================================================ */
+
+@media (max-width: 360px) {
+
+    .form-section {
+        padding: 16px 12px;
+    }
+
+
+    .form-header h2 {
+        font-size: 21px;
+    }
+
+
+    .input-wrapper input {
+        height: 45px;
+    }
+
+
+    .terms-modal {
+        padding: 5px;
+    }
+
+
+    .terms-modal-box {
+        max-height: 97vh;
+
+        border-radius: 12px;
+    }
+
+
+    .terms-modal-header {
+        padding: 11px;
+    }
+
+
+    .terms-icon {
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+
+        font-size: 13px;
+    }
+
+
+    .terms-modal-title h2 {
+        font-size: 13px;
+    }
+
+
+    .terms-modal-content {
+        padding:
+            14px
+            11px
+            18px;
+
+        font-size: 9px;
+    }
+
+
+    .terms-modal-content h3 {
+        font-size: 10px;
+    }
+
+
+    .terms-modal-content p {
+        font-size: 9px;
+    }
+
+
+    .terms-scroll-status {
+        font-size: 7.5px;
+    }
+
+
+    .terms-cancel,
+    .terms-agree {
+        height: 37px;
+
+        font-size: 9px;
     }
 
 }
