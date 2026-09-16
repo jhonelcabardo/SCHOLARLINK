@@ -987,171 +987,175 @@ if (
                 );
 
 
-                // =========================================
-                // ADMIN LOGIN
-                // =========================================
+// =========================================
+// ADMIN LOGIN
+// =========================================
 
-                if (
-                    role === "admin"
-                ) {
+if (
+    role === "admin"
+) {
 
-                    console.log(
-                        "ADMIN LOGIN AUTHORIZED"
-                    );
-
-
-                    localStorage.setItem(
-                        "scholarLinkRole",
-                        "admin"
-                    );
+    console.log(
+        "ADMIN LOGIN AUTHORIZED"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkLoggedIn",
-                        "true"
-                    );
+    localStorage.setItem(
+        "scholarLinkRole",
+        "admin"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkUID",
-                        uid
-                    );
+    localStorage.setItem(
+        "scholarLinkLoggedIn",
+        "true"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkEmail",
-                        user.email || ""
-                    );
+    localStorage.setItem(
+        "scholarLinkUID",
+        uid
+    );
 
 
-                    await logSecurityEvent(
-                        "LOGIN",
-                        "Administrator successfully logged in."
-                    );
+    localStorage.setItem(
+        "scholarLinkEmail",
+        user.email || ""
+    );
 
 
-                    window.location.href =
-                        "../components/admin-dashboard.html";
+    await logSecurityEvent(
+        "LOGIN",
+        "Administrator successfully logged in."
+    );
 
 
-                    return;
-
-                }
-
-
-                // =========================================
-                // SCHOLAR LOGIN
-                // =========================================
-
-                if (
-                    role === "scholar" &&
-                    (
-                        applicationStatus ===
-                            "active" ||
-
-                        scholarStatus ===
-                            "active" ||
-
-                        scholarConfirmed ===
-                            true
-                    )
-                ) {
-
-                    console.log(
-                        "SCHOLAR LOGIN AUTHORIZED"
-                    );
+    window.location.href =
+        "../components/admin-dashboard.html";
 
 
-                    localStorage.setItem(
-                        "scholarLinkRole",
-                        "scholar"
-                    );
+    return;
+
+}
 
 
-                    localStorage.setItem(
-                        "scholarLinkLoggedIn",
-                        "true"
-                    );
+// =========================================
+// SCHOLAR LOGIN
+// =========================================
+
+if (
+    role === "scholar" &&
+    (
+        applicationStatus ===
+            "active" ||
+
+        scholarStatus ===
+            "active" ||
+
+        scholarConfirmed ===
+            true
+    )
+) {
+
+    console.log(
+        "SCHOLAR LOGIN AUTHORIZED"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkUID",
-                        uid
-                    );
+    localStorage.setItem(
+        "scholarLinkRole",
+        "scholar"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkEmail",
-                        user.email || ""
-                    );
+    localStorage.setItem(
+        "scholarLinkLoggedIn",
+        "true"
+    );
 
 
-                    await logSecurityEvent(
-                        "LOGIN",
-                        "Scholar successfully logged in."
-                    );
+    localStorage.setItem(
+        "scholarLinkUID",
+        uid
+    );
 
 
-                    window.location.href =
-                        "../scholarcomponents/Home.html";
+    localStorage.setItem(
+        "scholarLinkEmail",
+        user.email || ""
+    );
 
 
-                    return;
-
-                }
-
-
-                // =========================================
-                // APPLICANT LOGIN
-                // =========================================
-
-                if (
-                    role === "applicant"
-                ) {
-
-                    console.log(
-                        "APPLICANT LOGIN AUTHORIZED"
-                    );
+    await logSecurityEvent(
+        "LOGIN",
+        "Scholar successfully logged in."
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkRole",
-                        "applicant"
-                    );
+    // IMPORTANT:
+    // Actual file is Home.html with capital H
+
+    window.location.href =
+        "../scholarcomponents/Home.html";
 
 
-                    localStorage.setItem(
-                        "scholarLinkLoggedIn",
-                        "true"
-                    );
+    return;
+
+}
 
 
-                    localStorage.setItem(
-                        "scholarLinkUID",
-                        uid
-                    );
+// =========================================
+// APPLICANT LOGIN
+// =========================================
+
+if (
+    role === "applicant"
+) {
+
+    console.log(
+        "APPLICANT LOGIN AUTHORIZED"
+    );
 
 
-                    localStorage.setItem(
-                        "scholarLinkEmail",
-                        user.email || ""
-                    );
+    localStorage.setItem(
+        "scholarLinkRole",
+        "applicant"
+    );
 
 
-                    await logSecurityEvent(
-                        "LOGIN",
-                        "Applicant successfully logged in."
-                    );
+    localStorage.setItem(
+        "scholarLinkLoggedIn",
+        "true"
+    );
 
 
-                    window.location.href =
-                        "../applicantcomponents/applicant-dashboard.html";
+    localStorage.setItem(
+        "scholarLinkUID",
+        uid
+    );
 
 
-                    return;
+    localStorage.setItem(
+        "scholarLinkEmail",
+        user.email || ""
+    );
 
-                }
 
+    await logSecurityEvent(
+        "LOGIN",
+        "Applicant successfully logged in."
+    );
+
+
+    // Applicant goes directly to Application Status
+
+    window.location.href =
+        "../applicant/application-status.html";
+
+
+    return;
+
+}
 
                 // =========================================
                 // UNAUTHORIZED ACCOUNT
@@ -1319,266 +1323,455 @@ onAuthStateChanged(
     auth,
     async function (user) {
 
-        if (
-            user
-        ) {
-
-            const uid =
-                user.uid;
-
-
-            const isLoggedIn =
-                localStorage.getItem(
-                    "scholarLinkLoggedIn"
-                ) === "true";
-
-
-            const currentPath =
-                window.location.pathname;
-
-
-            if (
-                isLoggedIn &&
-                (
-                    currentPath.includes(
-                        "index.html"
-                    ) ||
-                    currentPath.endsWith(
-                        "/"
-                    )
-                )
-            ) {
-
-                try {
-
-                    const userRef =
-                        doc(
-                            db,
-                            "users",
-                            uid
-                        );
-
-
-                    const userSnapshot =
-                        await getDoc(
-                            userRef
-                        );
-
-
-                    if (
-                        !userSnapshot.exists()
-                    ) {
-
-                        await signOut(
-                            auth
-                        );
-
-                        return;
-
-                    }
-
-
-                    const userData =
-                        userSnapshot.data();
-
-
-                    const role =
-                        String(
-                            userData.role || ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-
-                    const applicationStatus =
-                        String(
-                            userData.applicationStatus ||
-                            ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-
-                    const scholarStatus =
-                        String(
-                            userData.scholarStatus ||
-                            ""
-                        )
-                        .trim()
-                        .toLowerCase();
-
-
-                    const scholarConfirmed =
-                        userData.scholarConfirmed ===
-                        true;
-
-
-                    // ADMIN
-
-                    if (
-                        role === "admin"
-                    ) {
-
-                        localStorage.setItem(
-                            "scholarLinkRole",
-                            "admin"
-                        );
-
-
-                        window.location.href =
-                            "../components/admin-dashboard.html";
-
-
-                        return;
-
-                    }
-
-
-                    // SCHOLAR
-
-                    if (
-                        role === "scholar" &&
-                        (
-                            applicationStatus ===
-                                "active" ||
-
-                            scholarStatus ===
-                                "active" ||
-
-                            scholarConfirmed ===
-                                true
-                        )
-                    ) {
-
-                        localStorage.setItem(
-                            "scholarLinkRole",
-                            "scholar"
-                        );
-
-
-                        window.location.href =
-                            "../scholarcomponents/Home.html";
-
-
-                        return;
-
-                    }
-
-
-                    // APPLICANT
-
-                    if (
-                        role === "applicant"
-                    ) {
-
-                        localStorage.setItem(
-                            "scholarLinkRole",
-                            "applicant"
-                        );
-
-
-                        window.location.href =
-                            "../applicantcomponents/applicant-dashboard.html";
-
-
-                        return;
-
-                    }
-
-
-                    // INVALID ROLE
-
-                    await signOut(
-                        auth
-                    );
-
-
-                    localStorage.removeItem(
-                        "scholarLinkLoggedIn"
-                    );
-
-
-                    localStorage.removeItem(
-                        "scholarLinkRole"
-                    );
-
-
-                    localStorage.removeItem(
-                        "scholarLinkUID"
-                    );
-
-
-                    localStorage.removeItem(
-                        "scholarLinkEmail"
-                    );
-
-                }
-
-                catch (error) {
-
-                    console.error(
-                        "Auth state profile error:",
-                        error
-                    );
-
-                }
-
-            }
-
-        }
-
-        else {
+        // =====================================================
+        // NO FIREBASE USER
+        // =====================================================
+
+        if (!user) {
 
             localStorage.removeItem(
                 "scholarLinkLoggedIn"
             );
 
-
             localStorage.removeItem(
                 "scholarLinkRole"
             );
-
 
             localStorage.removeItem(
                 "scholarLinkUID"
             );
 
+            localStorage.removeItem(
+                "scholarLinkEmail"
+            );
+
+            return;
+        }
+
+
+        // =====================================================
+        // CURRENT PAGE
+        // =====================================================
+
+        const currentPath =
+            window.location.pathname;
+
+
+        const isLoginPage =
+            currentPath.includes(
+                "index.html"
+            ) ||
+            currentPath.endsWith(
+                "/"
+            );
+
+
+        // =====================================================
+        // CHECK SCHOLARLINK SESSION
+        // =====================================================
+
+        const isLoggedIn =
+            localStorage.getItem(
+                "scholarLinkLoggedIn"
+            ) === "true";
+
+
+        // =====================================================
+        // IMPORTANT:
+        // DO NOT AUTO-REDIRECT FROM THE LOGIN PAGE.
+        //
+        // Firebase can restore an old authenticated session when
+        // index.html is opened again. The actual Login button is
+        // responsible for deciding where the user goes after a
+        // successful login.
+        // =====================================================
+
+        if (
+            isLoginPage
+        ) {
+
+            console.log(
+                "Login page opened. Waiting for user to log in."
+            );
+
+            return;
+        }
+
+
+        // =====================================================
+        // ONLY PROCESS AUTHENTICATED USERS ON OTHER PAGES
+        // =====================================================
+
+        if (
+            !isLoggedIn
+        ) {
+
+            return;
+
+        }
+
+
+        // =====================================================
+        // GET USER UID
+        // =====================================================
+
+        const uid =
+            user.uid;
+
+
+        try {
+
+            // =================================================
+            // GET FIRESTORE USER PROFILE
+            // =================================================
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    uid
+                );
+
+
+            const userSnapshot =
+                await getDoc(
+                    userRef
+                );
+
+
+            // =================================================
+            // USER PROFILE DOES NOT EXIST
+            // =================================================
+
+            if (
+                !userSnapshot.exists()
+            ) {
+
+                console.warn(
+                    "User profile does not exist."
+                );
+
+
+                await signOut(
+                    auth
+                );
+
+
+                localStorage.removeItem(
+                    "scholarLinkLoggedIn"
+                );
+
+                localStorage.removeItem(
+                    "scholarLinkRole"
+                );
+
+                localStorage.removeItem(
+                    "scholarLinkUID"
+                );
+
+                localStorage.removeItem(
+                    "scholarLinkEmail"
+                );
+
+
+                return;
+            }
+
+
+            // =================================================
+            // USER DATA
+            // =================================================
+
+            const userData =
+                userSnapshot.data();
+
+
+            // =================================================
+            // ROLE
+            // =================================================
+
+            const role =
+                String(
+                    userData.role || ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            // =================================================
+            // APPLICATION STATUS
+            // =================================================
+
+            const applicationStatus =
+                String(
+                    userData.applicationStatus ||
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            // =================================================
+            // SCHOLAR STATUS
+            // =================================================
+
+            const scholarStatus =
+                String(
+                    userData.scholarStatus ||
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            // =================================================
+            // SCHOLAR CONFIRMED
+            // =================================================
+
+            const scholarConfirmed =
+                userData.scholarConfirmed ===
+                true;
+
+
+            console.log(
+                "AUTH STATE CHECK"
+            );
+
+            console.log(
+                "UID:",
+                uid
+            );
+
+            console.log(
+                "ROLE:",
+                role
+            );
+
+            console.log(
+                "APPLICATION STATUS:",
+                applicationStatus
+            );
+
+            console.log(
+                "SCHOLAR STATUS:",
+                scholarStatus
+            );
+
+            console.log(
+                "SCHOLAR CONFIRMED:",
+                scholarConfirmed
+            );
+
+
+            // =================================================
+            // ADMIN
+            // =================================================
+
+            if (
+                role === "admin"
+            ) {
+
+                localStorage.setItem(
+                    "scholarLinkRole",
+                    "admin"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkLoggedIn",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkUID",
+                    uid
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkEmail",
+                    user.email || ""
+                );
+
+
+                // Do not redirect if already inside admin area
+
+                if (
+                    !currentPath.includes(
+                        "admin-dashboard.html"
+                    )
+                ) {
+
+                    window.location.href =
+                        "../components/admin-dashboard.html";
+
+                }
+
+
+                return;
+            }
+
+
+            // =================================================
+            // SCHOLAR
+            // =================================================
+
+            if (
+                role === "scholar" &&
+                (
+                    applicationStatus ===
+                        "active" ||
+
+                    scholarStatus ===
+                        "active" ||
+
+                    scholarConfirmed ===
+                        true
+                )
+            ) {
+
+                localStorage.setItem(
+                    "scholarLinkRole",
+                    "scholar"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkLoggedIn",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkUID",
+                    uid
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkEmail",
+                    user.email || ""
+                );
+
+
+                // IMPORTANT:
+                // Actual Scholar file is Home.html
+                // Capital H
+
+                if (
+                    !currentPath.includes(
+                        "scholarcomponents"
+                    )
+                ) {
+
+                    window.location.href =
+                        "../scholarcomponents/Home.html";
+
+                }
+
+
+                return;
+            }
+
+
+            // =================================================
+            // APPLICANT
+            // =================================================
+
+            if (
+                role === "applicant"
+            ) {
+
+                localStorage.setItem(
+                    "scholarLinkRole",
+                    "applicant"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkLoggedIn",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkUID",
+                    uid
+                );
+
+
+                localStorage.setItem(
+                    "scholarLinkEmail",
+                    user.email || ""
+                );
+
+
+                // IMPORTANT:
+                // Actual Applicant folder is "applicant"
+                // Applicant goes to Application Status
+
+                if (
+                    !currentPath.includes(
+                        "application-status.html"
+                    )
+                ) {
+
+                    window.location.href =
+                        "../applicant/application-status.html";
+
+                }
+
+
+                return;
+            }
+
+
+            // =================================================
+            // INVALID / UNAUTHORIZED ROLE
+            // =================================================
+
+            console.warn(
+                "INVALID OR UNAUTHORIZED ROLE:",
+                role
+            );
+
+
+            await signOut(
+                auth
+            );
+
+
+            localStorage.removeItem(
+                "scholarLinkLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "scholarLinkRole"
+            );
+
+            localStorage.removeItem(
+                "scholarLinkUID"
+            );
 
             localStorage.removeItem(
                 "scholarLinkEmail"
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Auth state profile error:",
+                error
             );
 
         }
 
     }
 );
-
-
-// =========================================================
-// ENTER KEY - EMAIL
-// =========================================================
-
-if (
-    email &&
-    password
-) {
-
-    email.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter"
-            ) {
-
-                password.focus();
-
-            }
-
-        }
-    );
-
-}
 
 
 // =========================================================

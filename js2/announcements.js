@@ -1267,7 +1267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 =========================================*/
 
 const logoutLink =
-    document.getElementById("logoutLink");
+    document.getElementById("sidebarlogout");
 
 const logoutModal =
     document.getElementById("logoutModal");

@@ -44,163 +44,167 @@
 
 <div class="container">
 
+<!-- =====================================================
+     SIDEBAR - NAVBAR
+====================================================== -->
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
+<aside class="sidebar">
 
-    <aside class="sidebar">
+    <div class="logo">
 
-        <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
 
-            <i class="fas fa-graduation-cap"></i>
+        <div>
 
-            <div>
+            <h2>SCHOLARLINK</h2>
 
-                <h2>SCHOLARLINK</h2>
-
-                <p>Scholar Dashboard</p>
-
-            </div>
+            <p>Home</p>
 
         </div>
 
-
-        <ul class="menu">
-
-            <li>
-                <a href="Home.html">
-
-                    <i class="fas fa-house"></i>
-
-                    <span>Home</span>
-
-                </a>
-            </li>
+    </div>
 
 
-            <li>
-                <a href="profile.html">
+    <ul class="menu">
 
-                    <i class="fas fa-user"></i>
+        <!-- HOME -->
+        <li class="active">
 
-                    <span>My Profile</span>
+            <a href="Home.html">
 
-                </a>
-            </li>
+                <i class="fas fa-house"></i>
 
+                <span>Home</span>
 
-            <li>
-                <a href="scholarship-status.html">
+            </a>
 
-                    <i class="fas fa-award"></i>
-
-                    <span>Scholarship Status</span>
-
-                </a>
-            </li>
+        </li>
 
 
-            <li>
-                <a href="grades.html">
+        <!-- PROFILE -->
+        <li>
 
-                    <i class="fas fa-file-signature"></i>
+            <a href="profile.html">
 
-                    <span>Submit Grades</span>
+                <i class="fas fa-user"></i>
 
-                </a>
-            </li>
+                <span>Profile</span>
 
+            </a>
 
-            <li>
-                <a href="cor.html">
-
-                    <i class="fas fa-file-circle-check"></i>
-
-                    <span>Submit COR</span>
-
-                </a>
-            </li>
+        </li>
 
 
-            <li>
-                <a href="schedule.html">
+        <!-- ACADEMIC SUBMISSION -->
+        <li>
 
-                    <i class="fas fa-calendar-days"></i>
+            <a href="academic-submissions.html">
 
-                    <span>Schedule</span>
+                <i class="fas fa-file-signature"></i>
 
-                </a>
-            </li>
+                <span>Academic Submission</span>
 
+            </a>
 
-            <li>
-                <a href="announcements.html">
-
-                    <i class="fas fa-bullhorn"></i>
-
-                    <span>Announcements</span>
-
-                </a>
-            </li>
+        </li>
 
 
-            <li>
-                <a href="notifications.html">
+        <!-- SCHOLARSHIP STATUS -->
+        <li>
 
-                    <i class="fas fa-bell"></i>
+            <a href="scholarship-status.html">
 
-                    <span>Notifications</span>
+                <i class="fas fa-award"></i>
 
-                </a>
-            </li>
+                <span>Scholarship Status</span>
 
+            </a>
 
-            <li class="active">
-
-                <a href="qr-code.html">
-
-                    <i class="fas fa-qrcode"></i>
-
-                    <span>My QR Code</span>
-
-                </a>
-
-            </li>
+        </li>
 
 
-            <li>
-                <a href="settings.html">
+        <!-- ANNOUNCEMENT -->
+        <li>
 
-                    <i class="fas fa-gear"></i>
+            <a href="announcements.html">
 
-                    <span>Settings</span>
+                <i class="fas fa-bullhorn"></i>
 
-                </a>
-            </li>
+                <span>Announcement</span>
+
+            </a>
+
+        </li>
 
 
-        </ul>
+        <!-- NOTIFICATION -->
+        <li>
+
+            <a href="notifications.html">
+
+                <i class="fas fa-bell"></i>
+
+                <span>Notification</span>
+
+            </a>
+
+        </li>
+
+    <!-- MY QR CODE -->
+    <li class="active">
+
+        <a href="qr-code.html">
+            <i class="fas fa-qrcode"></i>
+            <span>My QR Code</span>
+        </a>
+
+    </li>
+
+        <!-- SETTINGS -->
+        <li>
+
+            <a href="settings.html">
+
+                <i class="fas fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </li>
 
 
         <!-- LOGOUT -->
+        <li>
 
-        <div class="bottom-menu">
+            <a href="#" id="sidebarlogout">
 
-            <a href="#"
-               id="sidebarlogout">
-
-                <i class="fas fa-right-from-bracket"></i>
+                <i class="fas fa-sign-out-alt"></i>
 
                 <span>Logout</span>
 
             </a>
 
-        </div>
+        </li>
+
+    </ul>
 
 
-    </aside>
+    <div class="bottom-menu"></div>
 
+</aside>
+
+
+<!-- MOBILE MENU BUTTON -->
+<button class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 
     <!-- =====================================================
@@ -1129,7 +1133,105 @@
 ====================================================== -->
 
 <script type="module"
+
         src="../js2/qr-code.js"></script>
+
+
+        <script>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("mobileMenuBtn");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (!menuButton || !sidebar || !overlay) return;
+
+    menuButton.addEventListener("click", function () {
+
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-xmark"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        } else {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+    });
+
+
+    overlay.addEventListener("click", function () {
+
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+
+        menuButton.innerHTML =
+            '<i class="fas fa-bars"></i>';
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+    });
+
+
+    sidebar.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        });
+
+    });
+
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+
+    });
+
+});
+
+
+</script>
 
 
 </body>

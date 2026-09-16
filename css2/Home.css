@@ -153,52 +153,19 @@ input {
 }
 
 
-/* Gold graduation cap */
+/* ScholarLink Logo Image */
 
-.logo > i {
-    width: 58px;
+.logo > img {
+    width: 280px;
     height: 58px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 
-    background: transparent;
-
-    color: var(--gold);
-
-    font-size: 43px;
+    object-fit: contain;
 
     flex-shrink: 0;
 }
 
-
-/* Logo title */
-
-.logo h2 {
-    font-size: 29px;
-
-    font-weight: 700;
-
-    letter-spacing: .2px;
-
-    color: #ffffff;
-
-    line-height: 1.1;
-}
-
-
-/* Logo subtitle */
-
-.logo p {
-    margin-top: 5px;
-
-    font-size: 15px;
-
-    color: #ffffff;
-
-    line-height: 1.2;
-}
 
 
 /* =========================================================
@@ -1820,4 +1787,1681 @@ input {
         height: 125px;
     }
 
+}
+
+/* =========================================================
+   SCHOLARLINK FINAL MOBILE RESPONSIVE
+   EXISTING DESIGN PRESERVED
+   RESPONSIVE ONLY
+   ========================================================= */
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   HIDDEN ON DESKTOP
+   ========================================================= */
+
+.mobile-menu-btn {
+    display: none;
+
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #4f46e5;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, .12);
+
+    z-index: 2001;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.mobile-menu-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, .18);
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    z-index: 1998;
+
+    opacity: 0;
+
+    transition:
+        opacity .3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    /* -----------------------------------------
+       MAIN CONTENT
+       ----------------------------------------- */
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+
+        padding:
+            82px 20px 30px;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE MENU BUTTON
+       ----------------------------------------- */
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+
+    /* -----------------------------------------
+       SIDEBAR
+       KEEP FULL SIDEBAR
+       SLIDE INSTEAD OF DISAPPEARING
+       ----------------------------------------- */
+
+    .sidebar {
+        width: 255px;
+
+        left: -270px;
+
+        top: 0;
+        bottom: 0;
+
+        padding:
+            24px 15px;
+
+        transition:
+            left .3s ease,
+            box-shadow .3s ease;
+
+        z-index: 2000;
+    }
+
+
+    /* -----------------------------------------
+       OPEN SIDEBAR
+       ----------------------------------------- */
+
+    .sidebar.mobile-open {
+        left: 0;
+
+        box-shadow:
+            12px 0 35px rgba(15, 23, 42, .25);
+    }
+
+
+    /* -----------------------------------------
+       RESTORE SIDEBAR LOGO
+       ----------------------------------------- */
+
+    .logo {
+        justify-content: flex-start;
+
+        padding:
+            4px 12px 28px;
+    }
+
+    .logo div {
+        display: block;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .logo p {
+        font-size: 10px;
+    }
+
+    .logo > i {
+        width: 44px;
+        height: 44px;
+
+        font-size: 21px;
+    }
+
+
+    /* -----------------------------------------
+       RESTORE SIDEBAR MENU TEXT
+       ----------------------------------------- */
+
+    .menu {
+        margin-top: 25px;
+    }
+
+    .menu li a {
+        justify-content: flex-start;
+
+        min-height: 46px;
+
+        padding:
+            11px 13px;
+
+        gap: 13px;
+
+        border-radius: 12px;
+
+        font-size: 13px;
+    }
+
+    .menu li a span {
+        display: inline;
+    }
+
+    .menu li a i {
+        width: 21px;
+
+        font-size: 15px;
+    }
+
+
+    /* -----------------------------------------
+       TOPBAR
+       ----------------------------------------- */
+
+    .topbar {
+        min-height: auto;
+
+        margin-bottom: 22px;
+
+        align-items: center;
+
+        flex-direction: row;
+    }
+
+
+    /* -----------------------------------------
+       WELCOME TEXT
+       ----------------------------------------- */
+
+    .topbar > div:first-child {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .topbar > div:first-child h1,
+    .welcome-section h1 {
+        font-size: 23px;
+
+        line-height: 1.3;
+    }
+
+    .topbar > div:first-child p,
+    .welcome-section p {
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE
+       ----------------------------------------- */
+
+    .profile {
+        width: auto;
+
+        justify-content: flex-end;
+
+        flex-shrink: 0;
+    }
+
+    .profile img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .profile h4 {
+        font-size: 11px;
+    }
+
+    .profile small {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       STAT CARDS
+       2 COLUMNS
+       ----------------------------------------- */
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .card {
+        min-height: 118px;
+
+        padding:
+            18px 16px;
+    }
+
+    .card i {
+        width: 40px;
+        height: 40px;
+
+        margin-bottom: 10px;
+
+        font-size: 17px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       LAST QR CARD
+       FULL WIDTH
+       ----------------------------------------- */
+
+    .card.cyan {
+        grid-column:
+            1 / -1;
+    }
+
+
+    /* -----------------------------------------
+       DASHBOARD SECTIONS
+       ----------------------------------------- */
+
+    .dashboard-grid,
+    .dashboard-grid:nth-of-type(2) {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-bottom: 14px;
+    }
+
+
+    /* -----------------------------------------
+       DASHBOARD CARD
+       ----------------------------------------- */
+
+    .dashboard-card {
+        width: 100%;
+
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    /* -----------------------------------------
+       CARD HEADER
+       ----------------------------------------- */
+
+    .card-header {
+        margin-bottom: 13px;
+    }
+
+    .card-header h2,
+    .dashboard-card > h2 {
+        font-size: 15px;
+
+        gap: 8px;
+    }
+
+    .card-header a {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       NOTIFICATIONS
+       ----------------------------------------- */
+
+    .notification-item {
+        gap: 10px;
+
+        padding:
+            11px 0;
+    }
+
+    .notification-item > i {
+        width: 36px;
+        height: 36px;
+
+        border-radius: 10px;
+
+        font-size: 13px;
+    }
+
+    .notification-item h4 {
+        font-size: 11px;
+    }
+
+    .notification-item p {
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------
+       ANNOUNCEMENTS
+       ----------------------------------------- */
+
+    .announcement-item {
+        padding:
+            11px 0;
+    }
+
+    .announcement-item h4 {
+        font-size: 11px;
+    }
+
+    .announcement-item p {
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------
+       UPLOAD AREA
+       ----------------------------------------- */
+
+    .upload-card {
+        min-height: auto;
+    }
+
+    .upload-area {
+        min-height: 135px;
+
+        padding: 16px;
+    }
+
+
+    /* -----------------------------------------
+       SCHEDULE
+       ----------------------------------------- */
+
+    .schedule-list li {
+        padding:
+            12px 0;
+
+        font-size: 10px;
+
+        gap: 10px;
+    }
+
+    .schedule-list li span {
+        font-size: 8px;
+
+        padding:
+            4px 8px;
+    }
+
+
+    /* -----------------------------------------
+       QR
+       ----------------------------------------- */
+
+    .qr-image-wrapper {
+        width: 135px;
+        height: 135px;
+    }
+
+    .qr-container h3 {
+        font-size: 14px;
+    }
+
+    .qr-container > p {
+        font-size: 9px;
+    }
+
+    .qr-buttons {
+        display: flex;
+
+        flex-direction: row;
+
+        justify-content: center;
+
+        gap: 8px;
+    }
+
+    .qr-buttons button {
+        min-width: 90px;
+
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       STATUS TABLE
+       ----------------------------------------- */
+
+    .status-table-wrapper {
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+    .status-table {
+        min-width: 100%;
+    }
+
+    .status-table td {
+        padding:
+            12px 4px;
+
+        font-size: 10px;
+    }
+
+    .status-table span {
+        font-size: 8px;
+
+        padding:
+            4px 8px;
+    }
+
+
+    /* -----------------------------------------
+       RECENT ACTIVITY
+       ----------------------------------------- */
+
+    .activity-list li {
+        padding:
+            11px 0;
+
+        font-size: 10px;
+    }
+
+    .activity-list li span {
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------
+       QUICK ACTIONS
+       ----------------------------------------- */
+
+    .quick-actions {
+        margin-top: 4px;
+
+        margin-bottom: 20px;
+    }
+
+    .quick-actions > h2 {
+        font-size: 16px;
+
+        margin-bottom: 12px;
+    }
+
+    .action-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 11px;
+    }
+
+    .action-card {
+        min-height: 105px;
+
+        padding: 15px;
+    }
+
+    .action-card > i {
+        width: 40px;
+        height: 40px;
+
+        font-size: 16px;
+
+        margin-bottom: 8px;
+    }
+
+    .action-card h4 {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       FOOTER
+       ----------------------------------------- */
+
+    .footer {
+        padding:
+            14px 0 8px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .main-content {
+        padding:
+            76px 12px 25px;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE MENU BUTTON
+       ----------------------------------------- */
+
+    .mobile-menu-btn {
+        top: 14px;
+        left: 14px;
+
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 18px;
+    }
+
+
+    /* -----------------------------------------
+       TOPBAR
+       ----------------------------------------- */
+
+    .topbar {
+        align-items: flex-start;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+    }
+
+    .topbar > div:first-child h1,
+    .welcome-section h1 {
+        font-size: 20px;
+
+        line-height: 1.3;
+    }
+
+    .topbar > div:first-child p,
+    .welcome-section p {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE
+       ----------------------------------------- */
+
+    .profile {
+        padding:
+            4px 6px;
+    }
+
+    .profile img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile h4 {
+        font-size: 10px;
+    }
+
+    .profile small {
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------
+       STATISTICS
+       2 × 2 + QR FULL WIDTH
+       ----------------------------------------- */
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .card {
+        min-height: 110px;
+
+        padding:
+            15px 13px;
+
+        border-radius: 15px;
+    }
+
+    .card i {
+        width: 36px;
+        height: 36px;
+
+        border-radius: 10px;
+
+        margin-bottom: 8px;
+
+        font-size: 15px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       QR STATUS FULL WIDTH
+       ----------------------------------------- */
+
+    .card.cyan {
+        grid-column:
+            1 / -1;
+
+        min-height: 95px;
+    }
+
+
+    /* -----------------------------------------
+       DASHBOARD CARDS
+       ----------------------------------------- */
+
+    .dashboard-grid {
+        gap: 12px;
+
+        margin-bottom: 12px;
+    }
+
+    .dashboard-card {
+        padding: 15px;
+
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------
+       HEADERS
+       ----------------------------------------- */
+
+    .card-header {
+        margin-bottom: 11px;
+    }
+
+    .card-header h2,
+    .dashboard-card > h2 {
+        font-size: 14px;
+    }
+
+    .card-header a {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       NOTIFICATIONS
+       ----------------------------------------- */
+
+    .notification-item {
+        gap: 9px;
+
+        padding:
+            10px 0;
+    }
+
+    .notification-item > i {
+        width: 34px;
+        height: 34px;
+
+        font-size: 12px;
+    }
+
+    .notification-item h4 {
+        font-size: 10px;
+    }
+
+    .notification-item p {
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------
+       ANNOUNCEMENTS
+       ----------------------------------------- */
+
+    .announcement-item h4 {
+        font-size: 10px;
+    }
+
+    .announcement-item p {
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------
+       UPLOAD
+       ----------------------------------------- */
+
+    .upload-area {
+        min-height: 125px;
+
+        padding: 14px;
+    }
+
+    .upload-area > i {
+        font-size: 23px;
+    }
+
+    .upload-area > span:not(.selected-file) {
+        font-size: 10px;
+    }
+
+    .upload-area small {
+        font-size: 8px;
+    }
+
+    .file-label {
+        font-size: 9px;
+
+        padding:
+            7px 12px;
+    }
+
+    .upload-btn {
+        margin-top: 10px;
+
+        padding:
+            10px 12px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       QR
+       ----------------------------------------- */
+
+    .qr-image-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+
+    .qr-buttons {
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+    .qr-buttons button {
+        flex: 1;
+
+        min-width: 0;
+
+        padding:
+            8px 10px;
+
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       QUICK ACTIONS
+       ----------------------------------------- */
+
+    .action-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .action-card {
+        min-height: 95px;
+
+        padding: 12px;
+    }
+
+    .action-card > i {
+        width: 36px;
+        height: 36px;
+
+        font-size: 15px;
+
+        margin-bottom: 7px;
+    }
+
+    .action-card h4 {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       LOGOUT MODAL
+       ----------------------------------------- */
+
+    .logout-modal {
+        padding: 15px;
+    }
+
+    .logout-modal-box {
+        padding:
+            26px 18px;
+    }
+
+    .logout-modal-box h2 {
+        font-size: 19px;
+    }
+
+    .logout-modal-box p {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   360px - 420px
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .main-content {
+        padding:
+            74px 10px 22px;
+    }
+
+
+    /* -----------------------------------------
+       TOPBAR
+       ----------------------------------------- */
+
+    .topbar {
+        gap: 8px;
+    }
+
+    .topbar > div:first-child h1,
+    .welcome-section h1 {
+        font-size: 18px;
+    }
+
+    .topbar > div:first-child p,
+    .welcome-section p {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE
+       ----------------------------------------- */
+
+    .profile {
+        padding: 2px 4px;
+    }
+
+    .profile img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile h4 {
+        font-size: 9px;
+    }
+
+    .profile small {
+        font-size: 7px;
+    }
+
+
+    /* -----------------------------------------
+       CARDS
+       ----------------------------------------- */
+
+    .cards {
+        gap: 8px;
+    }
+
+    .card {
+        min-height: 105px;
+
+        padding:
+            14px 11px;
+    }
+
+    .card i {
+        width: 34px;
+        height: 34px;
+
+        font-size: 14px;
+    }
+
+    .card h3 {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------
+       DASHBOARD
+       ----------------------------------------- */
+
+    .dashboard-card {
+        padding: 13px;
+    }
+
+    .card-header h2,
+    .dashboard-card > h2 {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       NOTIFICATIONS
+       ----------------------------------------- */
+
+    .notification-item > i {
+        width: 32px;
+        height: 32px;
+    }
+
+    .notification-item h4 {
+        font-size: 9px;
+    }
+
+    .notification-item p {
+        font-size: 7.5px;
+    }
+
+
+    /* -----------------------------------------
+       ANNOUNCEMENTS
+       ----------------------------------------- */
+
+    .announcement-item h4 {
+        font-size: 9px;
+    }
+
+    .announcement-item p {
+        font-size: 7.5px;
+    }
+
+
+    /* -----------------------------------------
+       ACTIONS
+       ----------------------------------------- */
+
+    .action-card {
+        min-height: 90px;
+    }
+
+    .action-card > i {
+        width: 34px;
+        height: 34px;
+
+        font-size: 14px;
+    }
+
+    .action-card h4 {
+        font-size: 8.5px;
+    }
+
+
+    /* -----------------------------------------
+       QR
+       ----------------------------------------- */
+
+    .qr-image-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+
+    .qr-container h3 {
+        font-size: 13px;
+    }
+
+    .qr-container > p {
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .main-content {
+        padding:
+            70px 18px 25px;
+    }
+
+    .topbar {
+        flex-direction: row;
+
+        align-items: center;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .card.cyan {
+        grid-column: auto;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .action-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL SCROLL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE OVERRIDE
+   QR CODE PAGE
+   ========================================================= */
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    background: #2F80ED;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10001;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 9998;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        display: block;
+        min-height: 100vh;
+    }
+
+    /* HAMBURGER */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* SIDEBAR OFF-CANVAS */
+    .sidebar {
+        position: fixed;
+        left: -310px;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        z-index: 10000;
+        transition: left .3s ease;
+        overflow-y: auto;
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+    /* KEEP ORIGINAL SIDEBAR DESIGN */
+    .logo {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+        overflow-y: auto;
+    }
+
+    .menu li {
+        margin-bottom: 7px;
+    }
+
+    .menu a {
+        display: flex;
+        font-size: 16px;
+    }
+
+    .menu a span {
+        display: inline;
+    }
+
+    .bottom-menu {
+        display: block;
+    }
+
+    /* MAIN */
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 78px 25px 25px;
+        grid-column: auto;
+    }
+
+    /* TOPBAR */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .topbar h1 {
+        font-size: 27px;
+    }
+
+    .topbar p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .profile-top {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* SUMMARY */
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .summary-card {
+        padding: 20px 15px;
+    }
+
+    /* QR CARD */
+    .qr-card {
+        padding: 22px;
+    }
+
+    .qr-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .qr-card-header h2 {
+        font-size: 21px;
+        line-height: 1.4;
+    }
+
+    .qr-card-header p {
+        line-height: 1.5;
+    }
+
+    .qr-main {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .qr-details {
+        padding: 0;
+        text-align: center;
+    }
+
+    .scholar-photo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail-item {
+        text-align: left;
+    }
+
+    /* QR FRAME */
+    .qr-frame {
+        width: min(350px, 100%);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        padding: 12px;
+    }
+
+    #scholarQR {
+        width: 100%;
+        height: 100%;
+    }
+
+    #scholarQR img,
+    #scholarQR canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* QR BUTTONS */
+    .qr-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .qr-actions button {
+        min-width: 150px;
+    }
+
+    /* INFORMATION GRID */
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    /* MODAL */
+    .qr-modal-box {
+        width: calc(100% - 30px);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 25px 18px;
+    }
+
+    .modal-qr-frame {
+        width: min(460px, 100%);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    #modalQRCode img,
+    #modalQRCode canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* LOGOUT MODAL */
+    .logout-modal-box {
+        width: calc(100% - 30px);
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .mobile-menu-btn {
+        top: 12px;
+        left: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .sidebar {
+        width: 285px;
+        left: -295px;
+    }
+
+    .main-content {
+        padding: 70px 14px 20px;
+    }
+
+    /* TOPBAR */
+    .topbar {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .topbar p {
+        font-size: 12px;
+    }
+
+    .profile-top {
+        padding: 7px 10px;
+    }
+
+    .profile-top img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* SUMMARY */
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .summary-card {
+        padding: 18px;
+    }
+
+    .summary-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 21px;
+    }
+
+    /* QR CARD */
+    .qr-card {
+        padding: 17px;
+        border-radius: 18px;
+    }
+
+    .qr-card-header h2 {
+        font-size: 19px;
+    }
+
+    .qr-card-header p {
+        font-size: 12px;
+    }
+
+    .permanent-badge {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    /* QR */
+    .qr-frame {
+        width: min(290px, 100%);
+        padding: 9px;
+        border-width: 8px;
+        border-radius: 18px;
+    }
+
+    .qr-scan-note {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* SCHOLAR DETAILS */
+    .qr-details > h2 {
+        font-size: 21px;
+    }
+
+    .scholar-id-display strong {
+        font-size: 17px;
+    }
+
+    .detail-item strong {
+        font-size: 12px;
+        word-break: break-word;
+    }
+
+    /* BUTTONS */
+    .qr-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .qr-actions button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* CARDS */
+    .card {
+        padding: 18px;
+        border-radius: 17px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    /* INFO */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .info-box input {
+        font-size: 12px;
+        padding: 11px 12px;
+    }
+
+    /* INSTRUCTIONS */
+    .instruction-item {
+        padding: 13px;
+        gap: 10px;
+    }
+
+    .step-number {
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .instruction-item h3 {
+        font-size: 13px;
+    }
+
+    .instruction-item p {
+        font-size: 11px;
+    }
+
+    /* SECURITY */
+    .security-box {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .security-box > i {
+        font-size: 20px;
+    }
+
+    .security-box h3 {
+        font-size: 14px;
+    }
+
+    .security-box p {
+        font-size: 11px;
+    }
+
+    /* MODAL */
+    .qr-modal {
+        padding: 10px;
+    }
+
+    .qr-modal-box {
+        width: 100%;
+        padding: 22px 12px;
+        border-radius: 18px;
+    }
+
+    .qr-modal-box h2 {
+        font-size: 19px;
+        margin-bottom: 15px;
+    }
+
+    .modal-qr-frame {
+        width: min(280px, 100%);
+    }
+
+    .qr-modal-box h3 {
+        font-size: 17px;
+    }
+
+    /* LOGOUT */
+    .logout-modal {
+        padding: 12px;
+    }
+
+    .logout-modal-box {
+        width: 100%;
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+
+    .logout-buttons {
+        flex-direction: column;
+    }
+
+    .logout-buttons button {
+        width: 100%;
+    }
+
+    /* FOOTER */
+    .footer {
+        font-size: 10px;
+        padding: 20px 5px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .main-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .qr-card {
+        padding: 14px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .qr-frame {
+        width: min(250px, 100%);
+    }
+
+    .summary-card h2 {
+        font-size: 19px;
+    }
+
+    .instruction-item {
+        padding: 11px;
+    }
 }

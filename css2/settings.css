@@ -766,3 +766,517 @@ CUSTOM SCROLLBAR
 
 }
 
+
+/* =========================================================
+   SETTINGS - MOBILE RESPONSIVE OVERRIDE
+   ========================================================= */
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn{
+    display:none;
+    position:fixed;
+    top:15px;
+    left:15px;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#2F80ED;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    z-index:10001;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:9998;
+}
+
+.sidebar-overlay.active{
+    display:block;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media(max-width:900px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    .container{
+        display:block;
+        min-height:100vh;
+    }
+
+    /* HAMBURGER */
+    .mobile-menu-btn{
+        display:flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+        position:fixed;
+        left:-285px;
+        top:0;
+        width:270px;
+        height:100vh;
+        z-index:10000;
+        transition:left .3s ease;
+        overflow-y:auto;
+    }
+
+    .sidebar.mobile-open{
+        left:0;
+    }
+
+    /* RESTORE SIDEBAR CONTENT */
+    .logo{
+        display:flex;
+    }
+
+    .logo h2,
+    .logo p{
+        display:block;
+    }
+
+    .menu{
+        display:block;
+        padding:20px 15px;
+        overflow-y:auto;
+    }
+
+    .menu li{
+        margin-bottom:8px;
+    }
+
+    .menu li a{
+        display:flex;
+        gap:15px;
+        padding:15px;
+        font-size:inherit;
+    }
+
+    .menu li a i{
+        margin:0;
+        font-size:16px;
+    }
+
+    .menu li a span{
+        display:inline;
+    }
+
+    .bottom-menu{
+        display:block;
+    }
+
+
+    /* MAIN CONTENT */
+    .main-content{
+        margin-left:0;
+        width:100%;
+        padding:78px 25px 25px;
+    }
+
+
+    /* TOPBAR */
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+        margin-bottom:25px;
+    }
+
+    .topbar h1{
+        font-size:28px;
+    }
+
+    .topbar p{
+        font-size:13px;
+        line-height:1.5;
+    }
+
+    .profile-top{
+        width:100%;
+        max-width:100%;
+    }
+
+
+    /* SETTINGS GRID */
+    .settings-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+
+    /* CARDS */
+    .card{
+        padding:24px;
+        margin-bottom:22px;
+    }
+
+    .card h2{
+        font-size:20px;
+        line-height:1.4;
+    }
+
+
+    /* OPTIONS */
+    .option-item{
+        padding:17px 18px;
+    }
+
+
+    /* OFFICE */
+    .office-card{
+        flex-direction:column;
+        text-align:center;
+        gap:18px;
+    }
+
+    .office-card img{
+        margin-bottom:5px;
+    }
+
+
+    /* ACTION BUTTONS */
+    .action-buttons{
+        gap:12px;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger{
+        min-width:180px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+    .mobile-menu-btn{
+        top:12px;
+        left:12px;
+        width:42px;
+        height:42px;
+        font-size:18px;
+    }
+
+    .sidebar{
+        width:285px;
+        left:-295px;
+    }
+
+    .main-content{
+        padding:70px 14px 20px;
+    }
+
+
+    /* TOPBAR */
+    .topbar{
+        gap:12px;
+        margin-bottom:20px;
+    }
+
+    .topbar h1{
+        font-size:23px;
+    }
+
+    .topbar p{
+        font-size:12px;
+        line-height:1.5;
+    }
+
+    .profile-top{
+        padding:9px 12px;
+        gap:10px;
+    }
+
+    .profile-top img{
+        width:45px;
+        height:45px;
+    }
+
+
+    /* CARDS */
+    .card{
+        padding:18px;
+        border-radius:17px;
+        margin-bottom:18px;
+    }
+
+    .card h2{
+        font-size:18px;
+        gap:9px;
+        padding-bottom:13px;
+        margin-bottom:20px;
+    }
+
+
+    /* FORM */
+    .settings-grid{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .settings-grid label{
+        font-size:13px;
+    }
+
+    .settings-grid input,
+    .settings-grid select{
+        width:100%;
+        padding:12px;
+        font-size:13px;
+    }
+
+
+    /* SETTINGS OPTIONS */
+    .settings-options{
+        gap:12px;
+    }
+
+    .option-item{
+        padding:15px;
+        flex-direction:row;
+        align-items:center;
+        gap:12px;
+    }
+
+    .option-item label{
+        font-size:13px;
+        line-height:1.4;
+    }
+
+    .option-item input[type="checkbox"]{
+        width:21px;
+        height:21px;
+        flex-shrink:0;
+    }
+
+
+    /* OFFICE CARD */
+    .office-card{
+        padding:18px;
+        gap:15px;
+    }
+
+    .office-card img{
+        width:75px;
+        height:75px;
+    }
+
+    .office-card h3{
+        font-size:17px;
+        line-height:1.4;
+    }
+
+    .office-card p{
+        font-size:12px;
+        line-height:1.6;
+        word-break:break-word;
+    }
+
+
+    /* INFO BOX */
+    .info-box{
+        padding:16px;
+    }
+
+    .info-box p{
+        font-size:12px;
+        line-height:1.6;
+    }
+
+
+    /* ACTION BUTTONS */
+    .action-buttons{
+        flex-direction:column;
+        width:100%;
+        gap:10px;
+        margin:25px 0;
+    }
+
+    .btn-primary,
+    .btn-warning,
+    .btn-danger{
+        width:100%;
+        min-width:0;
+        padding:13px 20px;
+        font-size:13px;
+    }
+
+
+    /* FOOTER */
+    .footer{
+        padding:20px 8px;
+        margin-top:25px;
+        font-size:10px;
+        line-height:1.5;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media(max-width:380px){
+
+    .main-content{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .topbar h1{
+        font-size:21px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .card h2{
+        font-size:17px;
+    }
+
+    .option-item{
+        padding:13px;
+    }
+
+    .option-item label{
+        font-size:12px;
+    }
+
+    .office-card{
+        padding:15px;
+    }
+
+    .office-card h3{
+        font-size:16px;
+    }
+
+    .info-box{
+        padding:14px;
+    }
+}
+
+/* =========================================================
+   LOGOUT MODAL
+   ========================================================= */
+
+.logout-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(8,17,39,.70);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100000;
+}
+
+.logout-modal.active{
+    display:flex;
+}
+
+.logout-modal-box{
+    width:420px;
+    max-width:100%;
+    background:#fff;
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+.logout-icon{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#FFF0F0;
+    color:#E74C3C;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    font-size:25px;
+}
+
+.logout-modal-box h2{
+    color:#1D275D;
+    margin-bottom:8px;
+}
+
+.logout-modal-box p{
+    color:#737C90;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.logout-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:22px;
+}
+
+.logout-buttons button{
+    border:none;
+    padding:11px 25px;
+    border-radius:10px;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.cancel-btn{
+    background:#EDF1F7;
+    color:#4D5668;
+}
+
+.confirm-logout-btn{
+    background:#E74C3C;
+    color:#fff;
+}
+
+
+/* MOBILE */
+@media(max-width:600px){
+
+    .logout-modal{
+        padding:12px;
+    }
+
+    .logout-modal-box{
+        width:100%;
+        padding:25px 18px;
+        border-radius:18px;
+    }
+
+    .logout-buttons{
+        flex-direction:column;
+    }
+
+    .logout-buttons button{
+        width:100%;
+    }
+
+}

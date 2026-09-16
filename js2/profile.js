@@ -15,7 +15,6 @@ import {
     doc,
     getDoc,
     updateDoc,
-    setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -27,7 +26,9 @@ import { supabase } from "../supabase.js";
 ========================================= */
 
 const PHOTO_BUCKET = "applicant-photos";
-const DEFAULT_PHOTO = "../images/user.png";
+
+const DEFAULT_PHOTO =
+    "../images/user.png";
 
 
 /* =========================================
@@ -35,8 +36,11 @@ const DEFAULT_PHOTO = "../images/user.png";
 ========================================= */
 
 let currentUser = null;
+
 let userData = {};
+
 let applicationData = {};
+
 let scholarData = {};
 
 
@@ -45,85 +49,168 @@ let scholarData = {};
 ========================================= */
 
 const loadingOverlay =
-    document.getElementById("loadingOverlay");
+    document.getElementById(
+        "loadingOverlay"
+    );
 
 const saveFeedback =
-    document.getElementById("saveFeedback");
+    document.getElementById(
+        "saveFeedback"
+    );
+
+
+/* -----------------------------------------
+   TOP PROFILE
+----------------------------------------- */
 
 const profileAvatar =
-    document.getElementById("profileAvatar");
+    document.getElementById(
+        "profileAvatar"
+    );
 
 const profileAvatarLarge =
-    document.getElementById("profileAvatarLarge");
+    document.getElementById(
+        "profileAvatarLarge"
+    );
 
 const displayName =
-    document.getElementById("displayName");
+    document.getElementById(
+        "displayName"
+    );
 
 const displayScholarId =
-    document.getElementById("displayScholarId");
+    document.getElementById(
+        "displayScholarId"
+    );
+
+
+/* -----------------------------------------
+   PROFILE HEADER
+----------------------------------------- */
 
 const profileFullName =
-    document.getElementById("profileFullName");
+    document.getElementById(
+        "profileFullName"
+    );
 
 const profileScholarshipType =
-    document.getElementById("profileScholarshipType");
+    document.getElementById(
+        "profileScholarshipType"
+    );
 
 const profileStatus =
-    document.getElementById("profileStatus");
+    document.getElementById(
+        "profileStatus"
+    );
+
+
+/* -----------------------------------------
+   SCHOLAR INFORMATION
+----------------------------------------- */
 
 const scholarIdDisplay =
-    document.getElementById("scholarIdDisplay");
+    document.getElementById(
+        "scholarIdDisplay"
+    );
 
-const scholarshipProgramDisplay =
-    document.getElementById("scholarshipProgramDisplay");
+const dateApprovedDisplay =
+    document.getElementById(
+        "dateApprovedDisplay"
+    );
 
 const statusDisplay =
-    document.getElementById("statusDisplay");
+    document.getElementById(
+        "statusDisplay"
+    );
 
 const schoolDisplay =
-    document.getElementById("schoolDisplay");
+    document.getElementById(
+        "schoolDisplay"
+    );
 
 
 /* =========================================
    AUTHENTICATION
 ========================================= */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-    if (!user) {
+        /* ---------------------------------
+           NO USER
+        --------------------------------- */
 
-        window.location.href = "../login/index.html";
+        if (!user) {
 
-        return;
-    }
+            window.location.href =
+                "../login/index.html";
 
-    currentUser = user;
+            return;
+        }
 
-    console.log("Scholar authenticated:", user.uid);
-    console.log("Scholar email:", user.email);
 
-    try {
+        /* ---------------------------------
+           SAVE CURRENT USER
+        --------------------------------- */
 
-        await loadScholarProfile(user.uid);
+        currentUser = user;
 
-    } catch (error) {
 
-        console.error("Profile loading error:", error);
-
-        showFeedback(
-            "Unable to load your profile.",
-            "error"
+        console.log(
+            "Scholar authenticated:",
+            user.uid
         );
 
-    } finally {
+        console.log(
+            "Scholar email:",
+            user.email
+        );
 
-        if (loadingOverlay) {
-            loadingOverlay.classList.remove("show");
+
+        try {
+
+            /* -----------------------------
+               LOAD PROFILE
+            ----------------------------- */
+
+            await loadScholarProfile(
+                user.uid
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Profile loading error:",
+                error
+            );
+
+
+            showFeedback(
+                "Unable to load your profile.",
+                "error"
+            );
+
+
+        } finally {
+
+            /* -----------------------------
+               HIDE LOADING
+            ----------------------------- */
+
+            if (loadingOverlay) {
+
+                loadingOverlay.classList.remove(
+                    "show"
+                );
+
+            }
+
         }
 
     }
-
-});
+);
 
 
 /* =========================================
@@ -132,73 +219,137 @@ onAuthStateChanged(auth, async (user) => {
 
 async function loadScholarProfile(uid) {
 
-    console.log("=================================");
-    console.log("LOADING SCHOLAR PROFILE");
-    console.log("UID:", uid);
-    console.log("=================================");
+    console.log(
+        "================================="
+    );
+
+    console.log(
+        "LOADING SCHOLAR PROFILE"
+    );
+
+    console.log(
+        "UID:",
+        uid
+    );
+
+    console.log(
+        "================================="
+    );
 
 
-    /* -------------------------------------
+    /* =====================================
        USERS/{UID}
-    ------------------------------------- */
+    ===================================== */
 
-    const userRef = doc(db, "users", uid);
+    const userRef =
+        doc(
+            db,
+            "users",
+            uid
+        );
 
-    const userSnap = await getDoc(userRef);
+
+    const userSnap =
+        await getDoc(
+            userRef
+        );
+
 
     if (userSnap.exists()) {
 
-        userData = userSnap.data();
+        userData =
+            userSnap.data();
 
-        console.log("users/{UID} loaded:", userData);
+
+        console.log(
+            "users/{UID} loaded:",
+            userData
+        );
+
 
     } else {
 
-        console.warn("users/{UID} does not exist.");
+        console.warn(
+            "users/{UID} does not exist."
+        );
+
 
         userData = {};
+
     }
 
 
-    /* -------------------------------------
+    /* =====================================
        SCHOLARS/{UID}
-    ------------------------------------- */
+    ===================================== */
 
-    const scholarRef = doc(db, "scholars", uid);
+    const scholarRef =
+        doc(
+            db,
+            "scholars",
+            uid
+        );
 
-    const scholarSnap = await getDoc(scholarRef);
+
+    const scholarSnap =
+        await getDoc(
+            scholarRef
+        );
+
 
     if (scholarSnap.exists()) {
 
-        scholarData = scholarSnap.data();
+        scholarData =
+            scholarSnap.data();
 
-        console.log("scholars/{UID} loaded:", scholarData);
+
+        console.log(
+            "scholars/{UID} loaded:",
+            scholarData
+        );
+
 
     } else {
 
-        console.warn("scholars/{UID} does not exist.");
+        console.warn(
+            "scholars/{UID} does not exist."
+        );
+
 
         scholarData = {};
+
     }
 
 
-    /* -------------------------------------
+    /* =====================================
        APPLICATIONS/{UID}
-    ------------------------------------- */
+    ===================================== */
 
-    const applicationRef = doc(db, "applications", uid);
+    const applicationRef =
+        doc(
+            db,
+            "applications",
+            uid
+        );
+
 
     const applicationSnap =
-        await getDoc(applicationRef);
+        await getDoc(
+            applicationRef
+        );
+
 
     if (applicationSnap.exists()) {
 
-        applicationData = applicationSnap.data();
+        applicationData =
+            applicationSnap.data();
+
 
         console.log(
             "applications/{UID} loaded:",
             applicationData
         );
+
 
     } else {
 
@@ -206,16 +357,19 @@ async function loadScholarProfile(uid) {
             "applications/{UID} does not exist."
         );
 
+
         applicationData = {};
+
     }
 
 
-    /* -------------------------------------
-       BUILD PROFILE
-    ------------------------------------- */
+    /* =====================================
+       BUILD PROFILE DATA
+    ===================================== */
 
     const profileData =
         buildProfileData();
+
 
     console.log(
         "FINAL PROFILE DATA:",
@@ -223,25 +377,20 @@ async function loadScholarProfile(uid) {
     );
 
 
-    /* -------------------------------------
+    /* =====================================
        DISPLAY PROFILE
-    ------------------------------------- */
+    ===================================== */
 
-    populateProfile(profileData);
+    populateProfile(
+        profileData
+    );
 
 
-    /* -------------------------------------
+    /* =====================================
        LOAD PHOTO
-    ------------------------------------- */
+    ===================================== */
 
     await loadApplicantPhoto();
-
-
-    /* -------------------------------------
-       LOAD REQUIREMENTS
-    ------------------------------------- */
-
-    await loadDocuments(uid);
 
 }
 
@@ -252,28 +401,29 @@ async function loadScholarProfile(uid) {
 
 function buildProfileData() {
 
+    /* =====================================
+       PERSONAL INFORMATION
+    ===================================== */
+
     const personal =
-        applicationData.personalInformation || {};
+        applicationData
+            .personalInformation || {};
+
+
+    /* =====================================
+       EDUCATIONAL INFORMATION
+       Only used to retrieve School.
+       It will NOT be displayed as a section.
+    ===================================== */
 
     const educational =
-        applicationData.educationalInformation || {};
-
-    const family =
-        applicationData.familyInformation || {};
-
-    const household =
-        applicationData.householdInformation || {};
-
-    const emergency =
-        applicationData.emergencyContact ||
-        userData.emergencyContact ||
-        scholarData.emergencyContact ||
-        {};
+        applicationData
+            .educationalInformation || {};
 
 
-    /* -------------------------------------
-       NAME
-    ------------------------------------- */
+    /* =====================================
+       FULL NAME
+    ===================================== */
 
     const firstName =
         personal.firstName ||
@@ -281,11 +431,13 @@ function buildProfileData() {
         scholarData.firstName ||
         "";
 
+
     const middleName =
         personal.middleName ||
         userData.middleName ||
         scholarData.middleName ||
         "";
+
 
     const lastName =
         personal.lastName ||
@@ -293,11 +445,13 @@ function buildProfileData() {
         scholarData.lastName ||
         "";
 
+
     const suffix =
         personal.suffix ||
         userData.suffix ||
         scholarData.suffix ||
         "";
+
 
     const generatedFullName =
         [
@@ -306,8 +460,8 @@ function buildProfileData() {
             lastName,
             suffix
         ]
-        .filter(Boolean)
-        .join(" ");
+            .filter(Boolean)
+            .join(" ");
 
 
     const fullName =
@@ -320,9 +474,9 @@ function buildProfileData() {
         "Scholar";
 
 
-    /* -------------------------------------
+    /* =====================================
        SCHOLAR ID
-    ------------------------------------- */
+    ===================================== */
 
     const scholarId =
         scholarData.scholarId ||
@@ -331,119 +485,45 @@ function buildProfileData() {
         "Not assigned";
 
 
-    /* -------------------------------------
+    /* =====================================
+       DATE APPROVED
+    ===================================== */
+
+    const dateApproved =
+        scholarData.dateApproved ||
+        scholarData.confirmedAt ||
+        applicationData.dateApproved ||
+        applicationData.confirmedAt ||
+        "";
+
+
+    /* =====================================
+       SCHOLAR STATUS
+    ===================================== */
+
+    const status =
+        scholarData.status ||
+        userData.status ||
+        userData.scholarStatus ||
+        applicationData.status ||
+        "Active";
+
+
+    /* =====================================
        SCHOOL
-    ------------------------------------- */
+    ===================================== */
 
     const school =
         educational.schoolName ||
         educational.school ||
         scholarData.school ||
         userData.school ||
-        "";
-
-    const schoolAddress =
-        educational.schoolAddress ||
-        scholarData.schoolAddress ||
-        userData.schoolAddress ||
-        "";
-
-    const studentId =
-        educational.studentId ||
-        educational.studentID ||
-        educational.lrn ||
-        scholarData.studentId ||
-        userData.studentId ||
-        "";
-
-    const course =
-        educational.course ||
-        educational.program ||
-        educational.degree ||
-        scholarData.course ||
-        userData.course ||
-        "";
-
-    const yearLevel =
-        educational.yearLevel ||
-        educational.year ||
-        scholarData.yearLevel ||
-        userData.yearLevel ||
-        "";
-
-    const semester =
-        educational.semester ||
-        scholarData.semester ||
-        userData.semester ||
-        "";
-
-    const gpa =
-        educational.generalAverage ||
-        educational.gpa ||
-        educational.GPA ||
-        scholarData.gpa ||
-        userData.gpa ||
-        "";
-
-    const graduation =
-        educational.expectedGraduationYear ||
-        educational.graduationYear ||
-        scholarData.graduation ||
-        userData.graduation ||
-        "";
+        "Not specified";
 
 
-    /* -------------------------------------
-       SCHOLARSHIP
-    ------------------------------------- */
-
-    const scholarshipProgram =
-        scholarData.scholarshipProgram ||
-        applicationData.scholarshipProgram ||
-        applicationData.scholarshipName ||
-        userData.scholarshipProgram ||
-        "";
-
-    const scholarshipType =
-        scholarData.scholarshipType ||
-        applicationData.scholarshipType ||
-        userData.scholarshipType ||
-        "";
-
-    const benefactor =
-        scholarData.benefactor ||
-        applicationData.benefactor ||
-        "City Government of Naga";
-
-    const status =
-        scholarData.status ||
-        userData.scholarStatus ||
-        userData.applicationStatus ||
-        "Active";
-
-    const dateApproved =
-        scholarData.dateApproved ||
-        scholarData.confirmedAt ||
-        applicationData.confirmedAt ||
-        "";
-
-    const schoolYear =
-        scholarData.schoolYear ||
-        userData.schoolYear ||
-        "";
-
-    const startDate =
-        scholarData.startDate ||
-        "";
-
-    const remarks =
-        scholarData.remarks ||
-        "";
-
-
-    /* -------------------------------------
-       PERSONAL
-    ------------------------------------- */
+    /* =====================================
+       DATE OF BIRTH
+    ===================================== */
 
     const birthDate =
         personal.dateOfBirth ||
@@ -453,6 +533,11 @@ function buildProfileData() {
         scholarData.birthDate ||
         "";
 
+
+    /* =====================================
+       SEX
+    ===================================== */
+
     const gender =
         personal.sex ||
         personal.gender ||
@@ -461,23 +546,21 @@ function buildProfileData() {
         scholarData.gender ||
         "";
 
+
+    /* =====================================
+       CIVIL STATUS
+    ===================================== */
+
     const civilStatus =
         personal.civilStatus ||
         userData.civilStatus ||
         scholarData.civilStatus ||
         "";
 
-    const citizenship =
-        personal.citizenship ||
-        userData.citizenship ||
-        scholarData.citizenship ||
-        "";
 
-    const birthplace =
-        personal.birthplace ||
-        userData.birthplace ||
-        scholarData.birthplace ||
-        "";
+    /* =====================================
+       CONTACT NUMBER
+    ===================================== */
 
     const contactNumber =
         personal.contactNumber ||
@@ -486,11 +569,21 @@ function buildProfileData() {
         scholarData.contactNumber ||
         "";
 
+
+    /* =====================================
+       EMAIL
+    ===================================== */
+
     const email =
         userData.email ||
         currentUser?.email ||
         scholarData.email ||
         "";
+
+
+    /* =====================================
+       COMPLETE ADDRESS
+    ===================================== */
 
     const address =
         personal.completeAddress ||
@@ -500,132 +593,34 @@ function buildProfileData() {
         "";
 
 
-    /* -------------------------------------
-       FAMILY
-    ------------------------------------- */
-
-    const father =
-        family.father || {};
-
-    const mother =
-        family.mother || {};
-
-    const guardianData =
-        family.guardian || {};
-
-
-    const fatherName =
-        father.fullName ||
-        family.fatherName ||
-        scholarData.fatherName ||
-        "";
-
-    const fatherOccupation =
-        father.occupation ||
-        family.fatherOccupation ||
-        scholarData.fatherOccupation ||
-        "";
-
-    const motherName =
-        mother.fullName ||
-        family.motherName ||
-        scholarData.motherName ||
-        "";
-
-    const motherOccupation =
-        mother.occupation ||
-        family.motherOccupation ||
-        scholarData.motherOccupation ||
-        "";
-
-    const guardian =
-        guardianData.fullName ||
-        family.guardianName ||
-        scholarData.guardian ||
-        "";
-
-    const familyIncome =
-        household.totalMonthlyHouseholdIncome ||
-        family.totalMonthlyIncome ||
-        family.monthlyIncome ||
-        scholarData.familyIncome ||
-        "";
-
-
-    /* -------------------------------------
-       EMERGENCY
-    ------------------------------------- */
-
-    const emergencyContact =
-        emergency.name ||
-        emergency.contactPerson ||
-        scholarData.emergencyContact ||
-        userData.emergencyContact ||
-        "";
-
-    const emergencyRelationship =
-        emergency.relationship ||
-        scholarData.emergencyRelationship ||
-        userData.emergencyRelationship ||
-        "";
-
-    const emergencyNumber =
-        emergency.contactNumber ||
-        emergency.phone ||
-        scholarData.emergencyNumber ||
-        userData.emergencyNumber ||
-        "";
-
-    const emergencyAddress =
-        emergency.address ||
-        scholarData.emergencyAddress ||
-        userData.emergencyAddress ||
-        "";
-
+    /* =====================================
+       RETURN FINAL DATA
+    ===================================== */
 
     return {
 
         fullName,
+
         scholarId,
 
-        scholarshipProgram,
-        scholarshipType,
-        benefactor,
-        status,
         dateApproved,
-        schoolYear,
-        startDate,
-        remarks,
 
-        birthDate,
-        gender,
-        civilStatus,
-        citizenship,
-        birthplace,
-        contactNumber,
-        email,
-        address,
+        status,
 
         school,
-        schoolAddress,
-        studentId,
-        course,
-        yearLevel,
-        semester,
-        gpa,
-        graduation,
 
-        fatherName,
-        fatherOccupation,
-        motherName,
-        motherOccupation,
-        guardian,
-        familyIncome,
+        birthDate,
 
-        emergencyContact,
-        emergencyRelationship,
-        emergencyNumber,
-        emergencyAddress
+        gender,
+
+        civilStatus,
+
+        contactNumber,
+
+        email,
+
+        address
+
     };
 
 }
@@ -638,282 +633,168 @@ function buildProfileData() {
 function populateProfile(data) {
 
 
-    /* -------------------------------------
-       HEADER
-    ------------------------------------- */
+    /* =====================================
+       PROFILE HEADER
+    ===================================== */
 
-    displayName.textContent =
-        data.fullName;
+    if (displayName) {
 
-    displayScholarId.textContent =
-        data.scholarId;
+        displayName.textContent =
+            data.fullName ||
+            "Scholar";
 
-    profileFullName.textContent =
-        data.fullName;
-
-    profileScholarshipType.textContent =
-        data.scholarshipType ||
-        data.scholarshipProgram ||
-        "Scholar";
-
-    profileStatus.textContent =
-        String(data.status || "Active")
-            .replaceAll("_", " ")
-            .toUpperCase();
+    }
 
 
-    /* -------------------------------------
-       SCHOLAR SUMMARY
-    ------------------------------------- */
+    if (displayScholarId) {
 
-    scholarIdDisplay.textContent =
-        data.scholarId;
+        displayScholarId.textContent =
+            data.scholarId ||
+            "Not assigned";
 
-    scholarshipProgramDisplay.textContent =
-        data.scholarshipProgram ||
-        "Not specified";
-
-    statusDisplay.textContent =
-        String(data.status || "Active")
-            .replaceAll("_", " ")
-            .toUpperCase();
-
-    schoolDisplay.textContent =
-        data.school ||
-        "Not specified";
+    }
 
 
-    /* -------------------------------------
+    if (profileFullName) {
+
+        profileFullName.textContent =
+            data.fullName ||
+            "Scholar";
+
+    }
+
+
+    /*
+       Keep "Scholar" in the profile header.
+       Scholarship Program is no longer
+       displayed in Scholar Information.
+    */
+
+    if (profileScholarshipType) {
+
+        profileScholarshipType.textContent =
+            "Scholar";
+
+    }
+
+
+    if (profileStatus) {
+
+        profileStatus.textContent =
+            String(
+                data.status ||
+                "Active"
+            )
+                .replaceAll(
+                    "_",
+                    " "
+                )
+                .toUpperCase();
+
+    }
+
+
+    /* =====================================
+       SCHOLAR INFORMATION
+    ===================================== */
+
+    if (scholarIdDisplay) {
+
+        scholarIdDisplay.textContent =
+            data.scholarId ||
+            "Not assigned";
+
+    }
+
+
+    if (dateApprovedDisplay) {
+
+        dateApprovedDisplay.textContent =
+            formatDate(
+                data.dateApproved
+            );
+
+    }
+
+
+    if (statusDisplay) {
+
+        statusDisplay.textContent =
+            String(
+                data.status ||
+                "Active"
+            )
+                .replaceAll(
+                    "_",
+                    " "
+                )
+                .toUpperCase();
+
+    }
+
+
+    if (schoolDisplay) {
+
+        schoolDisplay.textContent =
+            data.school ||
+            "Not specified";
+
+    }
+
+
+    /* =====================================
        PERSONAL INFORMATION
-    ------------------------------------- */
+    ===================================== */
 
-    setValue("fullName", data.fullName);
+    setValue(
+        "fullName",
+        data.fullName
+    );
 
-    setValue("birthDate", data.birthDate);
+
+    setValue(
+        "birthDate",
+        formatDate(
+            data.birthDate
+        )
+    );
+
 
     setValue(
         "age",
-        calculateAge(data.birthDate)
+        calculateAge(
+            data.birthDate
+        )
     );
 
-    setValue("gender", data.gender);
+
+    setValue(
+        "gender",
+        data.gender
+    );
+
 
     setValue(
         "civilStatus",
         data.civilStatus
     );
 
-    setValue(
-        "citizenship",
-        data.citizenship
-    );
-
-    setValue(
-        "birthplace",
-        data.birthplace
-    );
 
     setValue(
         "contactNumber",
         data.contactNumber
     );
 
+
     setValue(
         "email",
         data.email
     );
 
+
     setValue(
         "address",
         data.address
-    );
-
-
-    /* -------------------------------------
-       EDUCATIONAL INFORMATION
-    ------------------------------------- */
-
-    setValue(
-        "schoolName",
-        data.school
-    );
-
-    setValue(
-        "schoolAddress",
-        data.schoolAddress
-    );
-
-    setValue(
-        "studentId",
-        data.studentId
-    );
-
-    setValue(
-        "course",
-        data.course
-    );
-
-    setValue(
-        "yearLevel",
-        data.yearLevel
-    );
-
-    setValue(
-        "semester",
-        data.semester
-    );
-
-    setValue(
-        "gpa",
-        data.gpa
-    );
-
-    setValue(
-        "graduation",
-        data.graduation
-    );
-
-
-    /* -------------------------------------
-       SCHOLARSHIP INFORMATION
-    ------------------------------------- */
-
-    setValue(
-        "scholarshipProgram",
-        data.scholarshipProgram
-    );
-
-    setValue(
-        "scholarshipType",
-        data.scholarshipType
-    );
-
-    setValue(
-        "benefactor",
-        data.benefactor
-    );
-
-    setValue(
-        "dateApproved",
-        formatDate(data.dateApproved)
-    );
-
-    setValue(
-        "scholarshipStatus",
-        String(data.status || "Active")
-            .replaceAll("_", " ")
-            .toUpperCase()
-    );
-
-    setValue(
-        "schoolYear",
-        data.schoolYear
-    );
-
-    setValue(
-        "startDate",
-        formatDate(data.startDate)
-    );
-
-    setValue(
-        "remarks",
-        data.remarks
-    );
-
-
-    /* -------------------------------------
-       FAMILY INFORMATION
-    ------------------------------------- */
-
-    setValue(
-        "fatherName",
-        data.fatherName
-    );
-
-    setValue(
-        "fatherOccupation",
-        data.fatherOccupation
-    );
-
-    setValue(
-        "motherName",
-        data.motherName
-    );
-
-    setValue(
-        "motherOccupation",
-        data.motherOccupation
-    );
-
-    setValue(
-        "guardian",
-        data.guardian
-    );
-
-    setValue(
-        "familyIncome",
-        data.familyIncome
-    );
-
-
-    /* -------------------------------------
-       EMERGENCY CONTACT
-    ------------------------------------- */
-
-    setValue(
-        "emergencyContact",
-        data.emergencyContact
-    );
-
-    setValue(
-        "emergencyRelationship",
-        data.emergencyRelationship
-    );
-
-    setValue(
-        "emergencyNumber",
-        data.emergencyNumber
-    );
-
-    setValue(
-        "emergencyAddress",
-        data.emergencyAddress
-    );
-
-
-    /* -------------------------------------
-       ACCOUNT INFORMATION
-    ------------------------------------- */
-
-    setValue(
-        "username",
-        data.scholarId
-    );
-
-    setValue(
-        "accountEmail",
-        data.email
-    );
-
-    setValue(
-        "lastLogin",
-        currentUser?.metadata?.lastSignInTime ||
-        "Available after login"
-    );
-
-    setValue(
-        "accountStatus",
-        "Active"
-    );
-
-
-    /* -------------------------------------
-       QR SCHOLAR ID
-    ------------------------------------- */
-
-    setValueText(
-        "qrScholarId",
-        data.scholarId
     );
 
 }
@@ -921,6 +802,7 @@ function populateProfile(data) {
 
 /* =========================================
    LOAD APPLICANT PHOTO
+   KEEP APPLICANT PHOTO AFTER BECOMING SCHOLAR
 ========================================= */
 
 async function loadApplicantPhoto() {
@@ -930,13 +812,12 @@ async function loadApplicantPhoto() {
         let storagePath = null;
 
 
-        /* -------------------------------------
-           APPLICATION PHOTO
-        ------------------------------------- */
+        /* =================================
+           1. APPLICANT PHOTO FROM APPLICATION
+        ================================= */
 
         const applicantPhoto =
             applicationData?.files?.applicantPhoto;
-
 
         if (applicantPhoto) {
 
@@ -946,13 +827,56 @@ async function loadApplicantPhoto() {
                 applicantPhoto.path ||
                 applicantPhoto.filePath ||
                 applicantPhoto.file_path ||
+                applicantPhoto.url ||
+                applicantPhoto.downloadURL ||
+                applicantPhoto.publicUrl ||
                 null;
+
         }
 
 
-        /* -------------------------------------
-           USER PHOTO FALLBACK
-        ------------------------------------- */
+        /* =================================
+           2. FALLBACK:
+              SCHOLAR PHOTO
+        ================================= */
+
+        if (!storagePath) {
+
+            const scholarPhoto =
+                scholarData?.applicantPhoto ||
+                scholarData?.photo ||
+                scholarData?.profilePhoto ||
+                scholarData?.photoURL;
+
+            if (
+                typeof scholarPhoto === "string"
+            ) {
+
+                storagePath =
+                    scholarPhoto;
+
+            } else if (scholarPhoto) {
+
+                storagePath =
+                    scholarPhoto.storagePath ||
+                    scholarPhoto.storage_path ||
+                    scholarPhoto.path ||
+                    scholarPhoto.filePath ||
+                    scholarPhoto.file_path ||
+                    scholarPhoto.url ||
+                    scholarPhoto.downloadURL ||
+                    scholarPhoto.publicUrl ||
+                    null;
+
+            }
+
+        }
+
+
+        /* =================================
+           3. FALLBACK:
+              USER PHOTO
+        ================================= */
 
         if (!storagePath) {
 
@@ -961,9 +885,12 @@ async function loadApplicantPhoto() {
                 userData?.profilePhoto ||
                 userData?.photoURL;
 
-            if (typeof userPhoto === "string") {
+            if (
+                typeof userPhoto === "string"
+            ) {
 
-                storagePath = userPhoto;
+                storagePath =
+                    userPhoto;
 
             } else if (userPhoto) {
 
@@ -971,35 +898,63 @@ async function loadApplicantPhoto() {
                     userPhoto.storagePath ||
                     userPhoto.storage_path ||
                     userPhoto.path ||
+                    userPhoto.filePath ||
+                    userPhoto.file_path ||
+                    userPhoto.url ||
+                    userPhoto.downloadURL ||
+                    userPhoto.publicUrl ||
                     null;
+
             }
+
         }
 
+
+        /* =================================
+           4. NO PHOTO FOUND
+        ================================= */
 
         if (!storagePath) {
 
             console.warn(
-                "No applicant photo storage path found."
+                "No applicant/scholar photo found."
             );
 
-            setProfileImage(DEFAULT_PHOTO);
+            /*
+             * Don't repeatedly request a
+             * missing user.png file.
+             */
+            if (profileAvatar) {
+                profileAvatar.removeAttribute("src");
+                profileAvatar.style.visibility =
+                    "hidden";
+            }
+
+            if (profileAvatarLarge) {
+                profileAvatarLarge.removeAttribute("src");
+                profileAvatarLarge.style.visibility =
+                    "hidden";
+            }
 
             return;
+
         }
 
 
         console.log(
-            "Applicant photo storage path:",
+            "Applicant/Scholar photo storage path:",
             storagePath
         );
 
 
-        /* -------------------------------------
-           CLEAN PATH
-        ------------------------------------- */
+        /* =================================
+           5. CLEAN SUPABASE PATH
+        ================================= */
 
         storagePath =
-            normalizeStoragePath(storagePath);
+            normalizeStoragePath(
+                storagePath
+            );
 
 
         console.log(
@@ -1008,20 +963,23 @@ async function loadApplicantPhoto() {
         );
 
 
-        /* -------------------------------------
-           SIGNED URL
-        ------------------------------------- */
+        /* =================================
+           6. CREATE SIGNED URL
+        ================================= */
 
         const {
             data,
             error
-        } = await supabase
-            .storage
-            .from(PHOTO_BUCKET)
-            .createSignedUrl(
-                storagePath,
-                3600
-            );
+        } =
+            await supabase
+                .storage
+                .from(
+                    PHOTO_BUCKET
+                )
+                .createSignedUrl(
+                    storagePath,
+                    3600
+                );
 
 
         if (error) {
@@ -1031,24 +989,31 @@ async function loadApplicantPhoto() {
                 error
             );
 
-            setProfileImage(DEFAULT_PHOTO);
-
             return;
+
         }
 
 
         if (!data?.signedUrl) {
 
-            setProfileImage(DEFAULT_PHOTO);
+            console.warn(
+                "No signed URL returned for applicant photo."
+            );
 
             return;
+
         }
 
 
         console.log(
-            "Profile photo loaded successfully."
+            "Applicant photo loaded successfully."
         );
 
+
+        /* =================================
+           7. DISPLAY SAME PHOTO
+              ON PROFILE
+        ================================= */
 
         setProfileImage(
             data.signedUrl
@@ -1058,17 +1023,13 @@ async function loadApplicantPhoto() {
     } catch (error) {
 
         console.error(
-            "Load photo error:",
+            "Load applicant photo error:",
             error
         );
 
-        setProfileImage(
-            DEFAULT_PHOTO
-        );
     }
 
 }
-
 
 /* =========================================
    NORMALIZE SUPABASE PATH
@@ -1076,42 +1037,67 @@ async function loadApplicantPhoto() {
 
 function normalizeStoragePath(path) {
 
-    if (!path) return "";
+    if (!path) {
+
+        return "";
+
+    }
+
 
     let cleanPath =
         String(path).trim();
 
 
-    /* Remove leading slash */
+    /* =====================================
+       REMOVE LEADING SLASH
+    ===================================== */
 
     cleanPath =
-        cleanPath.replace(/^\/+/, "");
+        cleanPath.replace(
+            /^\/+/,
+            ""
+        );
 
 
-    /* If full Supabase URL */
+    /* =====================================
+       FULL SUPABASE URL
+    ===================================== */
 
     if (
-        cleanPath.startsWith("http://") ||
-        cleanPath.startsWith("https://")
+        cleanPath.startsWith(
+            "http://"
+        ) ||
+        cleanPath.startsWith(
+            "https://"
+        )
     ) {
 
         try {
 
             const url =
-                new URL(cleanPath);
+                new URL(
+                    cleanPath
+                );
+
 
             const marker =
                 "/storage/v1/object/";
 
+
             const index =
-                url.pathname.indexOf(marker);
+                url.pathname.indexOf(
+                    marker
+                );
+
 
             if (index !== -1) {
 
                 cleanPath =
                     url.pathname.substring(
-                        index + marker.length
+                        index +
+                        marker.length
                     );
+
 
                 cleanPath =
                     cleanPath.replace(
@@ -1119,11 +1105,13 @@ function normalizeStoragePath(path) {
                         ""
                     );
 
+
                 cleanPath =
                     cleanPath.replace(
                         /^authenticated\/?/,
                         ""
                     );
+
 
                 cleanPath =
                     cleanPath.replace(
@@ -1133,16 +1121,21 @@ function normalizeStoragePath(path) {
 
             }
 
+
         } catch (error) {
 
             console.warn(
                 "Could not parse photo URL."
             );
+
         }
+
     }
 
 
-    /* Remove bucket prefix */
+    /* =====================================
+       REMOVE BUCKET PREFIX
+    ===================================== */
 
     if (
         cleanPath.startsWith(
@@ -1154,10 +1147,12 @@ function normalizeStoragePath(path) {
             cleanPath.substring(
                 PHOTO_BUCKET.length + 1
             );
+
     }
 
 
     return cleanPath;
+
 }
 
 
@@ -1167,9 +1162,15 @@ function normalizeStoragePath(path) {
 
 function setProfileImage(url) {
 
+    /* -------------------------------------
+       TOP PROFILE IMAGE
+    ------------------------------------- */
+
     if (profileAvatar) {
 
-        profileAvatar.src = url;
+        profileAvatar.src =
+            url;
+
 
         profileAvatar.onerror =
             () => {
@@ -1178,12 +1179,19 @@ function setProfileImage(url) {
                     DEFAULT_PHOTO;
 
             };
+
     }
 
 
+    /* -------------------------------------
+       LARGE PROFILE IMAGE
+    ------------------------------------- */
+
     if (profileAvatarLarge) {
 
-        profileAvatarLarge.src = url;
+        profileAvatarLarge.src =
+            url;
+
 
         profileAvatarLarge.onerror =
             () => {
@@ -1192,271 +1200,7 @@ function setProfileImage(url) {
                     DEFAULT_PHOTO;
 
             };
-    }
-}
 
-
-/* =========================================
-   LOAD DOCUMENTS
-========================================= */
-
-async function loadDocuments(uid) {
-
-    const tbody =
-        document.getElementById(
-            "documentsBody"
-        );
-
-    if (!tbody) return;
-
-
-    const requirements =
-        applicationData?.files?.requirements ||
-        applicationData?.requirements ||
-        {};
-
-
-    const entries =
-        Object.entries(requirements);
-
-
-    if (!entries.length) {
-
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="4"
-                    style="
-                        text-align:center;
-                        color:#6b7280;
-                        padding:20px;
-                    ">
-                    No documents available.
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    let html = "";
-
-
-    for (
-        const [key, value]
-        of entries
-    ) {
-
-        if (!value) continue;
-
-
-        const documentName =
-            value.name ||
-            value.documentName ||
-            value.label ||
-            formatDocumentName(key);
-
-
-        const status =
-            value.status ||
-            value.verificationStatus ||
-            "Pending";
-
-
-        const date =
-            value.uploadedAt ||
-            value.submittedAt ||
-            value.createdAt ||
-            applicationData.dateSubmitted ||
-            null;
-
-
-        const storagePath =
-            value.storagePath ||
-            value.storage_path ||
-            value.path ||
-            value.filePath ||
-            value.file_path ||
-            null;
-
-
-        const safeStatus =
-            String(status);
-
-
-        html += `
-            <tr>
-
-                <td>
-                    <strong>
-                        ${escapeHtml(documentName)}
-                    </strong>
-                </td>
-
-                <td>
-                    ${escapeHtml(
-                        formatDate(date)
-                    )}
-                </td>
-
-                <td>
-                    <span class="${
-                        safeStatus.toLowerCase()
-                            .includes("verified")
-                            ? "verified"
-                            : "pending"
-                    }">
-                        ${escapeHtml(safeStatus)}
-                    </span>
-                </td>
-
-                <td>
-                    ${
-                        storagePath
-                        ?
-                        `
-                        <button
-                            class="btn-view"
-                            data-storage-path="${escapeHtml(storagePath)}"
-                            type="button">
-                            <i class="fas fa-eye"></i>
-                            View
-                        </button>
-                        `
-                        :
-                        "N/A"
-                    }
-                </td>
-
-            </tr>
-        `;
-    }
-
-
-    if (!html) {
-
-        html = `
-            <tr>
-                <td colspan="4"
-                    style="
-                        text-align:center;
-                        color:#6b7280;
-                        padding:20px;
-                    ">
-                    No documents available.
-                </td>
-            </tr>
-        `;
-    }
-
-
-    tbody.innerHTML = html;
-
-
-    /* -------------------------------------
-       VIEW DOCUMENT
-    ------------------------------------- */
-
-    tbody
-        .querySelectorAll(".btn-view")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                async () => {
-
-                    const path =
-                        button.dataset.storagePath;
-
-                    await openDocument(path);
-                }
-            );
-
-        });
-
-}
-
-
-/* =========================================
-   OPEN DOCUMENT
-========================================= */
-
-async function openDocument(path) {
-
-    if (!path) {
-
-        showFeedback(
-            "Document path is missing.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    try {
-
-        const cleanPath =
-            normalizeStoragePath(
-                path
-            );
-
-
-        const {
-            data,
-            error
-        } = await supabase
-            .storage
-            .from("requirements")
-            .createSignedUrl(
-                cleanPath,
-                300
-            );
-
-
-        if (error) {
-
-            console.error(
-                "Document signed URL error:",
-                error
-            );
-
-            showFeedback(
-                "Unable to open this document.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if (!data?.signedUrl) {
-
-            showFeedback(
-                "Unable to open this document.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        window.open(
-            data.signedUrl,
-            "_blank"
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Open document error:",
-            error
-        );
-
-        showFeedback(
-            "Unable to open this document.",
-            "error"
-        );
     }
 
 }
@@ -1467,10 +1211,16 @@ async function openDocument(path) {
 ========================================= */
 
 document
-    .getElementById("saveProfileBtn")
+    .getElementById(
+        "saveProfileBtn"
+    )
     ?.addEventListener(
         "click",
         async () => {
+
+            /* -----------------------------
+               CHECK LOGIN
+            ----------------------------- */
 
             if (!currentUser) {
 
@@ -1480,6 +1230,7 @@ document
                 );
 
                 return;
+
             }
 
 
@@ -1488,13 +1239,27 @@ document
                     "saveProfileBtn"
                 );
 
+
+            if (!button) {
+
+                return;
+
+            }
+
+
             const original =
                 button.innerHTML;
 
 
             try {
 
-                button.disabled = true;
+                /* -------------------------
+                   LOADING BUTTON
+                ------------------------- */
+
+                button.disabled =
+                    true;
+
 
                 button.innerHTML = `
                     <i class="fas fa-spinner fa-spin"></i>
@@ -1502,116 +1267,136 @@ document
                 `;
 
 
+                /* -------------------------
+                   GET VALUES
+                ------------------------- */
+
+                const contactNumber =
+                    document
+                        .getElementById(
+                            "contactNumber"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                const address =
+                    document
+                        .getElementById(
+                            "address"
+                        )
+                        ?.value
+                        .trim() || "";
+
+
+                /* -------------------------
+                   UPDATE DATA
+                ------------------------- */
+
                 const updates = {
 
-                    contactNumber:
-                        document.getElementById(
-                            "contactNumber"
-                        )?.value.trim() || "",
+                    contactNumber,
 
-                    address:
-                        document.getElementById(
-                            "address"
-                        )?.value.trim() || "",
-
-                    emergencyContact:
-                        document.getElementById(
-                            "emergencyContact"
-                        )?.value.trim() || "",
-
-                    emergencyRelationship:
-                        document.getElementById(
-                            "emergencyRelationship"
-                        )?.value.trim() || "",
-
-                    emergencyNumber:
-                        document.getElementById(
-                            "emergencyNumber"
-                        )?.value.trim() || "",
-
-                    emergencyAddress:
-                        document.getElementById(
-                            "emergencyAddress"
-                        )?.value.trim() || "",
+                    address,
 
                     updatedAt:
                         serverTimestamp()
+
                 };
 
 
-                /* --------------------------------
+                /* =================================
                    SAVE TO USERS/{UID}
-                -------------------------------- */
+                ================================= */
 
                 await updateDoc(
+
                     doc(
                         db,
                         "users",
                         currentUser.uid
                     ),
+
                     updates
+
                 );
 
 
-                /* --------------------------------
+                /* =================================
                    SAVE TO APPLICATIONS/{UID}
-                -------------------------------- */
+                ================================= */
 
                 await updateDoc(
+
                     doc(
                         db,
                         "applications",
                         currentUser.uid
                     ),
+
                     {
 
                         "personalInformation.contactNumber":
-                            updates.contactNumber,
+                            contactNumber,
 
                         "personalInformation.completeAddress":
-                            updates.address,
-
-                        "emergencyContact.name":
-                            updates.emergencyContact,
-
-                        "emergencyContact.relationship":
-                            updates.emergencyRelationship,
-
-                        "emergencyContact.contactNumber":
-                            updates.emergencyNumber,
-
-                        "emergencyContact.address":
-                            updates.emergencyAddress,
+                            address,
 
                         updatedAt:
                             serverTimestamp()
+
                     }
+
                 );
 
 
-                /* Update local data */
+                /* =================================
+                   UPDATE LOCAL DATA
+                ================================= */
 
                 userData.contactNumber =
-                    updates.contactNumber;
+                    contactNumber;
+
 
                 userData.address =
-                    updates.address;
+                    address;
+
 
                 applicationData
                     .personalInformation =
                     applicationData
-                        .personalInformation || {};
+                        .personalInformation ||
+                    {};
+
 
                 applicationData
                     .personalInformation
                     .contactNumber =
-                    updates.contactNumber;
+                    contactNumber;
+
 
                 applicationData
                     .personalInformation
                     .completeAddress =
-                    updates.address;
+                    address;
 
+
+                /* =================================
+                   REFRESH PROFILE
+                ================================= */
+
+                const updatedProfile =
+                    buildProfileData();
+
+
+                populateProfile(
+                    updatedProfile
+                );
+
+
+                /* =================================
+                   SUCCESS
+                ================================= */
 
                 showFeedback(
                     "Profile updated successfully!",
@@ -1626,18 +1411,23 @@ document
                     error
                 );
 
+
                 showFeedback(
                     "Unable to save profile: " +
                     error.message,
                     "error"
                 );
 
+
             } finally {
 
-                button.disabled = false;
+                button.disabled =
+                    false;
+
 
                 button.innerHTML =
                     original;
+
             }
 
         }
@@ -1670,116 +1460,94 @@ window.printProfile =
 
 
 /* =========================================
-   VIEW QR
-========================================= */
-
-window.viewQR =
-    function () {
-
-        const scholarId =
-            document.getElementById(
-                "qrScholarId"
-            )?.textContent || "";
-
-        alert(
-            "Your permanent ScholarLink QR Code\n\n" +
-            "Scholar ID: " +
-            scholarId
-        );
-
-    };
-
-
-/* =========================================
-   DOWNLOAD QR
-========================================= */
-
-window.downloadQR =
-    function () {
-
-        const qrImage =
-            document.querySelector(
-                ".qr-image"
-            );
-
-        if (!qrImage) {
-
-            alert(
-                "QR Code is not available."
-            );
-
-            return;
-        }
-
-
-        const link =
-            document.createElement("a");
-
-        link.href =
-            qrImage.src;
-
-        link.download =
-            "ScholarLink-QR-Code.png";
-
-        link.click();
-
-    };
-
-
-/* =========================================
    CALCULATE AGE
 ========================================= */
 
-function calculateAge(dateValue) {
+function calculateAge(
+    dateValue
+) {
 
     if (!dateValue) {
 
         return "";
+
     }
 
 
-    const birth =
-        new Date(dateValue);
+    try {
+
+        /* -----------------------------
+           FIRESTORE TIMESTAMP
+        ----------------------------- */
+
+        if (
+            typeof dateValue ===
+                "object" &&
+            typeof dateValue.toDate ===
+                "function"
+        ) {
+
+            dateValue =
+                dateValue.toDate();
+
+        }
 
 
-    if (Number.isNaN(
-        birth.getTime()
-    )) {
+        const birth =
+            new Date(
+                dateValue
+            );
+
+
+        if (
+            Number.isNaN(
+                birth.getTime()
+            )
+        ) {
+
+            return "";
+
+        }
+
+
+        const today =
+            new Date();
+
+
+        let calculatedAge =
+            today.getFullYear() -
+            birth.getFullYear();
+
+
+        const month =
+            today.getMonth() -
+            birth.getMonth();
+
+
+        if (
+            month < 0 ||
+            (
+                month === 0 &&
+                today.getDate() <
+                birth.getDate()
+            )
+        ) {
+
+            calculatedAge--;
+
+        }
+
+
+        return calculatedAge >= 0
+            ? String(calculatedAge)
+            : "";
+
+    } catch {
 
         return "";
+
     }
 
-
-    const today =
-        new Date();
-
-
-    let calculatedAge =
-        today.getFullYear() -
-        birth.getFullYear();
-
-
-    const month =
-        today.getMonth() -
-        birth.getMonth();
-
-
-    if (
-        month < 0 ||
-        (
-            month === 0 &&
-            today.getDate() <
-            birth.getDate()
-        )
-    ) {
-
-        calculatedAge--;
-    }
-
-
-    return calculatedAge >= 0
-        ? String(calculatedAge)
-        : "";
 }
 
 
@@ -1787,26 +1555,53 @@ function calculateAge(dateValue) {
    FORMAT DATE
 ========================================= */
 
-function formatDate(value) {
+function formatDate(
+    value
+) {
 
-    if (!value) return "N/A";
+    if (!value) {
+
+        return "N/A";
+
+    }
 
 
     try {
 
+        /* -----------------------------
+           FIRESTORE TIMESTAMP
+        ----------------------------- */
+
         if (
-            typeof value === "object" &&
-            typeof value.toDate === "function"
+            typeof value ===
+                "object" &&
+            typeof value.toDate ===
+                "function"
         ) {
 
             return value
                 .toDate()
-                .toLocaleDateString();
+                .toLocaleDateString(
+                    "en-US",
+                    {
+                        year:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        day:
+                            "numeric"
+                    }
+                );
+
         }
 
 
         const date =
-            new Date(value);
+            new Date(
+                value
+            );
 
 
         if (
@@ -1815,32 +1610,36 @@ function formatDate(value) {
             )
         ) {
 
-            return String(value);
+            return String(
+                value
+            );
+
         }
 
 
-        return date.toLocaleDateString();
+        return date
+            .toLocaleDateString(
+                "en-US",
+                {
+                    year:
+                        "numeric",
+
+                    month:
+                        "long",
+
+                    day:
+                        "numeric"
+                }
+            );
+
 
     } catch {
 
-        return String(value);
-    }
-
-}
-
-
-/* =========================================
-   FORMAT DOCUMENT NAME
-========================================= */
-
-function formatDocumentName(key) {
-
-    return String(key)
-        .replace(/_/g, " ")
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, letter =>
-            letter.toUpperCase()
+        return String(
+            value
         );
+
+    }
 
 }
 
@@ -1849,48 +1648,26 @@ function formatDocumentName(key) {
    SET INPUT VALUE
 ========================================= */
 
-function setValue(id, value) {
+function setValue(
+    id,
+    value
+) {
 
     const element =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
-    if (!element) return;
+
+    if (!element) {
+
+        return;
+
+    }
+
 
     element.value =
         value ?? "";
-
-}
-
-
-/* =========================================
-   SET TEXT
-========================================= */
-
-function setValueText(id, value) {
-
-    const element =
-        document.getElementById(id);
-
-    if (!element) return;
-
-    element.textContent =
-        value ?? "";
-
-}
-
-
-/* =========================================
-   ESCAPE HTML
-========================================= */
-
-function escapeHtml(value) {
-
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
 
 }
 
@@ -1904,25 +1681,34 @@ function showFeedback(
     type
 ) {
 
-    if (!saveFeedback) return;
+    if (!saveFeedback) {
+
+        return;
+
+    }
 
 
     saveFeedback.textContent =
         message;
 
+
     saveFeedback.className =
         `save-feedback ${type}`;
+
 
     saveFeedback.style.display =
         "block";
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        saveFeedback.style.display =
-            "none";
+            saveFeedback.style.display =
+                "none";
 
-    }, 4000);
+        },
+        4000
+    );
 
 }
 
@@ -1939,80 +1725,49 @@ const currentPage =
 
 
 document
-    .querySelectorAll(".menu li")
-    .forEach(item => {
+    .querySelectorAll(
+        ".menu li"
+    )
+    .forEach(
+        item => {
 
-        const link =
-            item.querySelector("a");
-
-        if (!link) return;
-
-
-        const linkPage =
-            link
-                .getAttribute("href")
-                ?.split("/")
-                .pop()
-                .toLowerCase();
+            const link =
+                item.querySelector(
+                    "a"
+                );
 
 
-        item.classList.remove(
-            "active"
-        );
+            if (!link) {
+
+                return;
+
+            }
 
 
-        if (
-            linkPage === currentPage
-        ) {
+            const linkPage =
+                link
+                    .getAttribute(
+                        "href"
+                    )
+                    ?.split("/")
+                    .pop()
+                    .toLowerCase();
 
-            item.classList.add(
+
+            item.classList.remove(
                 "active"
             );
-        }
-
-    });
 
 
-/* =========================================
-   LOGOUT
-========================================= */
+            if (
+                linkPage ===
+                currentPage
+            ) {
 
-document
-    .getElementById("logoutLink")
-    ?.addEventListener(
-        "click",
-        async (event) => {
-
-            event.preventDefault();
-
-
-            const confirmed =
-                confirm(
-                    "Are you sure you want to logout?"
+                item.classList.add(
+                    "active"
                 );
 
-
-            if (!confirmed) return;
-
-
-            try {
-
-                await signOut(auth);
-
-                window.location.href =
-                    "../login/index.html";
-
-            } catch (error) {
-
-                console.error(
-                    "Logout error:",
-                    error
-                );
-
-                showFeedback(
-                    "Unable to logout.",
-                    "error"
-                );
             }
 
         }
@@ -2020,42 +1775,351 @@ document
 
 
 /* =========================================
+   LOGOUT
+   CUSTOM MODAL ONLY
+========================================= */
+
+const logoutLink =
+    document.getElementById("logoutLink") ||
+    document.getElementById("sidebarlogout");
+
+const logoutModal =
+    document.getElementById("logoutModal");
+
+const cancelLogout =
+    document.getElementById("cancelLogout");
+
+const confirmLogout =
+    document.getElementById("confirmLogout");
+
+
+/* =========================================
+   OPEN LOGOUT MODAL
+========================================= */
+
+if (logoutLink) {
+
+    logoutLink.addEventListener(
+        "click",
+        (event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            /*
+             * IMPORTANT:
+             * Do NOT use window.confirm().
+             * Always use the custom logout modal.
+             */
+
+            if (logoutModal) {
+
+                logoutModal.classList.add("active");
+
+                /*
+                 * Make sure the modal is centered
+                 * on the screen.
+                 */
+                logoutModal.style.position = "fixed";
+                logoutModal.style.inset = "0";
+                logoutModal.style.width = "100%";
+                logoutModal.style.height = "100%";
+                logoutModal.style.display = "flex";
+                logoutModal.style.alignItems = "center";
+                logoutModal.style.justifyContent = "center";
+                logoutModal.style.zIndex = "99999";
+
+                return;
+            }
+
+            /*
+             * If the modal cannot be found,
+             * do nothing instead of showing
+             * the browser confirm popup.
+             */
+            console.error(
+                "Logout modal (#logoutModal) was not found."
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CLOSE LOGOUT MODAL
+========================================= */
+
+function closeLogoutModal() {
+
+    if (!logoutModal) {
+        return;
+    }
+
+    logoutModal.classList.remove("active");
+
+    logoutModal.style.display = "";
+
+}
+
+
+/* =========================================
+   CANCEL LOGOUT
+========================================= */
+
+if (cancelLogout) {
+
+    cancelLogout.addEventListener(
+        "click",
+        (event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            closeLogoutModal();
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CONFIRM LOGOUT
+========================================= */
+
+if (confirmLogout) {
+
+    confirmLogout.addEventListener(
+        "click",
+        async (event) => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            await performLogout();
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   PERFORM LOGOUT
+========================================= */
+
+async function performLogout() {
+
+    try {
+
+        /*
+         * Prevent multiple clicks
+         */
+        if (confirmLogout) {
+
+            confirmLogout.disabled = true;
+
+            confirmLogout.innerHTML =
+                `<i class="fas fa-spinner fa-spin"></i> Logging out...`;
+
+        }
+
+
+        /*
+         * Firebase logout
+         */
+        await signOut(auth);
+
+
+        /*
+         * Clear ScholarLink local storage
+         */
+        localStorage.removeItem(
+            "scholarLinkLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "scholarLinkRole"
+        );
+
+        localStorage.removeItem(
+            "scholarLinkUID"
+        );
+
+        localStorage.removeItem(
+            "scholarLinkEmail"
+        );
+
+
+        /*
+         * Clear ScholarLink session storage
+         */
+        sessionStorage.removeItem(
+            "scholarLinkLoggedIn"
+        );
+
+        sessionStorage.removeItem(
+            "scholarLinkRole"
+        );
+
+        sessionStorage.removeItem(
+            "scholarLinkUID"
+        );
+
+        sessionStorage.removeItem(
+            "scholarLinkEmail"
+        );
+
+
+        /*
+         * Close custom modal
+         */
+        closeLogoutModal();
+
+
+        /*
+         * Redirect to login
+         */
+        window.location.replace(
+            "../login/index.html"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+
+        /*
+         * Restore button
+         */
+        if (confirmLogout) {
+
+            confirmLogout.disabled = false;
+
+            confirmLogout.innerHTML =
+                "Logout";
+
+        }
+
+
+        showFeedback(
+            "Unable to logout. Please try again.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================= */
+
+if (logoutModal) {
+
+    logoutModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                logoutModal
+            ) {
+
+                closeLogoutModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            logoutModal &&
+            logoutModal.classList.contains("active")
+        ) {
+
+            closeLogoutModal();
+
+        }
+
+    }
+);
+/* =========================================
    INPUT HIGHLIGHT
 ========================================= */
 
 document
-    .querySelectorAll("input")
-    .forEach(input => {
+    .querySelectorAll(
+        "input"
+    )
+    .forEach(
+        input => {
 
-        if (
-            input.hasAttribute(
-                "readonly"
-            )
-        ) return;
+            /* -----------------------------
+               READONLY INPUTS
+            ----------------------------- */
 
+            if (
+                input.hasAttribute(
+                    "readonly"
+                )
+            ) {
 
-        input.addEventListener(
-            "focus",
-            function () {
-
-                this.style.borderColor =
-                    "#2F80ED";
-
-            }
-        );
-
-
-        input.addEventListener(
-            "blur",
-            function () {
-
-                this.style.borderColor =
-                    "";
+                return;
 
             }
-        );
 
-    });
+
+            /* -----------------------------
+               FOCUS
+            ----------------------------- */
+
+            input.addEventListener(
+                "focus",
+                function () {
+
+                    this.style.borderColor =
+                        "#2F80ED";
+
+                }
+            );
+
+
+            /* -----------------------------
+               BLUR
+            ----------------------------- */
+
+            input.addEventListener(
+                "blur",
+                function () {
+
+                    this.style.borderColor =
+                        "";
+
+                }
+            );
+
+        }
+    );
 
 
 /* =========================================
@@ -2063,29 +2127,37 @@ document
 ========================================= */
 
 document
-    .querySelectorAll(".card")
+    .querySelectorAll(
+        ".card"
+    )
     .forEach(
         (card, index) => {
 
             card.style.opacity =
                 "0";
 
+
             card.style.transform =
                 "translateY(20px)";
 
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                card.style.transition =
-                    "0.5s ease";
+                    card.style.transition =
+                        "0.5s ease";
 
-                card.style.opacity =
-                    "1";
 
-                card.style.transform =
-                    "translateY(0)";
+                    card.style.opacity =
+                        "1";
 
-            }, index * 100);
+
+                    card.style.transform =
+                        "translateY(0)";
+
+                },
+                index * 100
+            );
 
         }
     );
@@ -2100,18 +2172,23 @@ document.addEventListener(
     event => {
 
         if (
-            (event.ctrlKey ||
-             event.metaKey) &&
-            event.key.toLowerCase() === "s"
+            (
+                event.ctrlKey ||
+                event.metaKey
+            ) &&
+            event.key.toLowerCase() ===
+            "s"
         ) {
 
             event.preventDefault();
+
 
             document
                 .getElementById(
                     "saveProfileBtn"
                 )
                 ?.click();
+
         }
 
     }

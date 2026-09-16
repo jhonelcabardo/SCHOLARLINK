@@ -3,355 +3,481 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<title>ScholarLink | Scholarship Status</title>
+    <title>ScholarLink | Scholarship Status</title>
 
-<link rel="stylesheet"
-href="../css2/scholarship-status.css">
+    <!-- EXISTING CSS - DO NOT CHANGE -->
+    <link
+        rel="stylesheet"
+        href="../css2/scholarship-status.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+    <!-- POPPINS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-<!-- ===================================
-SIDEBAR
-=================================== -->
+
+<!-- =====================================================
+     SIDEBAR - NAVBAR
+====================================================== -->
 
 <aside class="sidebar">
 
-<div class="logo">
 
-<i class="fas fa-graduation-cap"></i>
+    <div class="logo">
 
-<div>
+        <i class="fas fa-graduation-cap"></i>
 
-<h2>SCHOLARLINK</h2>
+        <div>
 
-<p>Scholar Dashboard</p>
+            <h2>SCHOLARLINK</h2>
 
-</div>
+            <p>Home</p>
 
-</div>
+        </div>
 
-<ul class="menu">
+    </div>
 
-<li>
 
-<a href="Home.html">
 
-<i class="fas fa-house"></i>
+    <ul class="menu">
 
-Home
 
-</a>
+        <!-- HOME -->
 
-</li>
+    <li>
 
-<li>
+            <a href="Home.html">
 
-<a href="profile.html">
+           <i class="fas fa-house"></i>
 
-<i class="fas fa-user"></i>
+            <span>Home</span>
 
-My Profile
-
-</a>
+    </a>
 
 </li>
 
-<li class="active">
 
-<a href="scholarship-status.html">
 
-<i class="fas fa-award"></i>
+        <!-- PROFILE -->
 
-Scholarship Status
+        <li>
 
-</a>
+            <a href="profile.html">
 
-</li>
+                <i class="fas fa-user"></i>
 
-<li>
+                <span>Profile</span>
 
-<a href="grades.html">
+            </a>
 
-<i class="fas fa-file-signature"></i>
+        </li>
 
-Submit Grades
 
-</a>
 
-</li>
+        <!-- ACADEMIC SUBMISSION -->
 
-<li>
+        <li>
 
-<a href="cor.html">
+            <a href="academic-submissions.html">
 
-<i class="fas fa-file-circle-check"></i>
+                <i class="fas fa-file-signature"></i>
 
-Submit COR
+                <span>Academic Submission</span>
 
-</a>
+            </a>
 
-</li>
+        </li>
 
-<li>
 
-<a href="schedule.html">
 
-<i class="fas fa-calendar-days"></i>
+        <!-- SCHOLARSHIP STATUS -->
 
-Schedule
+        <li class="active">
 
-</a>
+        <a href="scholarship-status.html">
 
-</li>
+        <i class="fas fa-award"></i>
 
-<li>
+        <span>Scholarship Status</span>
 
-<a href="announcements.html">
-
-<i class="fas fa-bullhorn"></i>
-
-Announcements
-
-</a>
+    </a>
 
 </li>
 
-<li>
 
-<a href="notifications.html">
 
-<i class="fas fa-bell"></i>
+        <!-- ANNOUNCEMENT -->
 
-Notifications
+        <li>
 
-</a>
+            <a href="announcements.html">
 
-</li>
+                <i class="fas fa-bullhorn"></i>
 
-<li>
+                <span>Announcement</span>
 
-<a href="qr-code.html">
+            </a>
 
-<i class="fas fa-qrcode"></i>
+        </li>
 
-My QR Code
 
-</a>
 
-</li>
+        <!-- NOTIFICATION -->
 
-<li>
+        <li>
 
-<a href="settings.html">
+            <a href="notifications.html">
 
-<i class="fas fa-gear"></i>
+                <i class="fas fa-bell"></i>
 
-Settings
+                <span>Notification</span>
 
-</a>
+            </a>
 
-</li>
+        </li>
 
-</ul>
 
-<div class="bottom-menu">
 
-<a href="../index.html">
+        <!-- MY QR CODE -->
 
-<i class="fas fa-right-from-bracket"></i>
+        <li>
 
-Logout
+            <a href="qr-code.html">
 
-</a>
+                <i class="fas fa-qrcode"></i>
 
-</div>
+                <span>My QR Code</span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- SETTINGS -->
+
+        <li>
+
+            <a href="settings.html">
+
+                <i class="fas fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <a
+                href="#"
+                id="sidebarlogout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+    <div class="bottom-menu"></div>
+
 
 </aside>
 
-<!-- ===================================
-MAIN CONTENT
-=================================== -->
+</aside>
+
+<!-- MOBILE MENU BUTTON -->
+<button class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- MOBILE SIDEBAR OVERLAY -->
+<div class="sidebar-overlay"
+     id="sidebarOverlay"></div>
+
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
 
 <main class="main-content">
 
+
+
+<!-- =====================================================
+     TOPBAR
+====================================================== -->
+
 <header class="topbar">
 
-<div>
 
-<h1>Scholarship Status</h1>
+    <div>
 
-<p>
+        <h1>
+            Scholarship Status
+        </h1>
 
-View your scholarship progress and academic standing.
+      
+    </div>
 
-</p>
 
-</div>
 
-<div class="profile-top">
-
-<img src="images/user.png">
-
-<div>
-
-<h4>Juan Dela Cruz</h4>
-
-<small>SCH-2026-001</small>
-
-</div>
-
-</div>
+    
 
 </header>
 
-<!-- ===================================
-SUMMARY CARDS
-=================================== -->
+
+
+<!-- =====================================================
+     SUMMARY CARDS
+====================================================== -->
 
 <section class="summary-grid">
 
-<div class="summary-card">
 
-<i class="fas fa-id-card"></i>
 
-<h4>Scholar ID</h4>
+    <!-- SCHOLAR ID -->
 
-<h2>SCH-2026-001</h2>
+    <div class="summary-card">
 
-</div>
+        <i class="fas fa-id-card"></i>
 
-<div class="summary-card">
+        <h4>
+            Scholar ID
+        </h4>
 
-<i class="fas fa-user-graduate"></i>
+        <h2 id="scholarId">
+            Loading...
+        </h2>
 
-<h4>Scholar Name</h4>
+    </div>
 
-<h2>Juan Dela Cruz</h2>
 
-</div>
 
-<div class="summary-card">
+    <!-- SCHOLAR NAME -->
 
-<i class="fas fa-graduation-cap"></i>
+    <div class="summary-card">
 
-<h4>Scholarship Program</h4>
+        <i class="fas fa-user-graduate"></i>
 
-<h2>College Scholarship</h2>
+        <h4>
+            Scholar Name
+        </h4>
 
-</div>
+        <h2 id="scholarName">
+            Loading...
+        </h2>
 
-<div class="summary-card active-card">
+    </div>
 
-<i class="fas fa-circle-check"></i>
 
-<h4>Status</h4>
 
-<h2>ACTIVE</h2>
+    <!-- SCHOLARSHIP PROGRAM -->
 
-</div>
+    <div class="summary-card">
+
+        <i class="fas fa-graduation-cap"></i>
+
+        <h4>
+            Scholarship Program
+        </h4>
+
+        <h2 id="scholarshipProgram">
+            Loading...
+        </h2>
+
+    </div>
+
+
+
+    <!-- SCHOLARSHIP STATUS -->
+
+    <div class="summary-card active-card">
+
+        <i class="fas fa-circle-check"></i>
+
+        <h4>
+            Status
+        </h4>
+
+        <h2 id="scholarshipStatus">
+            Loading...
+        </h2>
+
+    </div>
+
 
 </section>
 
-<!-- ===================================
-ACADEMIC INFORMATION
-=================================== -->
+
+
+<!-- =====================================================
+     ACADEMIC INFORMATION
+====================================================== -->
 
 <section class="academic-overview">
 
-<div class="overview-box">
 
-<i class="fas fa-calendar"></i>
 
-<div>
+    <!-- SCHOOL YEAR -->
 
-<h4>School Year</h4>
+    <div class="overview-box">
 
-<p>2026 - 2027</p>
+        <i class="fas fa-calendar"></i>
 
-</div>
+        <div>
 
-</div>
+            <h4>
+                School Year
+            </h4>
 
-<div class="overview-box">
+            <p id="schoolYear">
+                Loading...
+            </p>
 
-<i class="fas fa-book-open"></i>
+        </div>
 
-<div>
+    </div>
 
-<h4>Semester</h4>
 
-<p>1st Semester</p>
 
-</div>
+    <!-- SEMESTER -->
 
-</div>
+    <div class="overview-box">
 
-<div class="overview-box">
+        <i class="fas fa-book-open"></i>
 
-<i class="fas fa-school"></i>
+        <div>
 
-<div>
+            <h4>
+                Semester
+            </h4>
 
-<h4>School</h4>
+            <p id="semester">
+                Loading...
+            </p>
 
-<p>Naga College Foundation</p>
+        </div>
 
-</div>
+    </div>
 
-</div>
 
-<div class="overview-box">
 
-<i class="fas fa-laptop-code"></i>
+    <!-- SCHOOL -->
 
-<div>
+    <div class="overview-box">
 
-<h4>Course</h4>
+        <i class="fas fa-school"></i>
 
-<p>BS Information Technology</p>
+        <div>
 
-</div>
+            <h4>
+                School
+            </h4>
 
-</div>
+            <p id="schoolName">
+                Loading...
+            </p>
 
-<div class="overview-box">
+        </div>
 
-<i class="fas fa-user"></i>
+    </div>
 
-<div>
 
-<h4>Year Level</h4>
 
-<p>2nd Year</p>
+    <!-- COURSE -->
 
-</div>
+    <div class="overview-box">
 
-</div>
+        <i class="fas fa-laptop-code"></i>
+
+        <div>
+
+            <h4>
+                Course
+            </h4>
+
+            <p id="course">
+                Loading...
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- YEAR LEVEL -->
+
+    <div class="overview-box">
+
+        <i class="fas fa-user"></i>
+
+        <div>
+
+            <h4>
+                Year Level
+            </h4>
+
+            <p id="yearLevel">
+                Loading...
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
-<!-- ===================================
-PROGRESS + TIMELINE
-=================================== -->
+
+
+<!-- =====================================================
+     PROGRESS + TIMELINE
+====================================================== -->
 
 <section class="status-grid">
 
-    <!-- Scholarship Progress -->
+
+
+    <!-- =================================================
+         SCHOLARSHIP PROGRESS
+    ================================================== -->
 
     <div class="card">
 
@@ -363,39 +489,60 @@ PROGRESS + TIMELINE
 
         </h2>
 
+
+
         <div class="progress-section">
+
+
+            <!-- PROGRESS -->
 
             <div class="progress-circle">
 
-                <span>100%</span>
-
-            </div>
-
-            <div class="progress-info">
-
-                <h3>Requirements Completed</h3>
-
-                <p>
-
-                    Congratulations! All required
-                    documents for this semester have
-                    been successfully submitted.
-
-                </p>
-
-                <span class="badge success">
-
-                    Active Scholar
-
+                <span id="requirementsProgress">
+                    0%
                 </span>
 
             </div>
 
+
+
+            <!-- INFORMATION -->
+
+            <div class="progress-info">
+
+                <h3 id="requirementsTitle">
+                    Requirements
+                </h3>
+
+                <p id="requirementsMessage">
+                    Loading academic submission status...
+                </p>
+
+
+                <!-- DYNAMIC SCHOLAR STATUS -->
+
+                <span
+                    class="badge pending"
+                    id="scholarStatusBadge">
+
+                    Loading...
+
+                </span>
+
+
+            </div>
+
+
         </div>
+
 
     </div>
 
-    <!-- Scholarship Timeline -->
+
+
+    <!-- =================================================
+         SCHOLARSHIP TIMELINE
+    ================================================== -->
 
     <div class="card">
 
@@ -407,161 +554,155 @@ PROGRESS + TIMELINE
 
         </h2>
 
+
+
         <div class="timeline">
 
+
+            <!-- APPROVED -->
+
             <div class="timeline-item">
 
-                <div class="circle"></div>
+                <div
+                    class="circle"
+                    id="timelineApprovedCircle">
+                </div>
 
                 <div>
 
-                    <h4>Approved as Scholar</h4>
+                    <h4 id="timelineApprovedTitle">
+                        Scholarship Application
+                    </h4>
 
-                    <small>July 15, 2026</small>
+                    <small id="timelineApprovedDate">
+                        Waiting...
+                    </small>
 
                 </div>
 
             </div>
 
+
+
+            <!-- ORIENTATION -->
+
             <div class="timeline-item">
 
-                <div class="circle"></div>
+                <div
+                    class="circle"
+                    id="timelineOrientationCircle">
+                </div>
 
                 <div>
 
-                    <h4>Orientation Completed</h4>
+                    <h4 id="timelineOrientationTitle">
+                        Orientation
+                    </h4>
 
-                    <small>August 5, 2026</small>
+                    <small id="timelineOrientationDate">
+                        Waiting...
+                    </small>
 
                 </div>
 
             </div>
 
+
+
+            <!-- COR -->
+
             <div class="timeline-item">
 
-                <div class="circle"></div>
+                <div
+                    class="circle"
+                    id="timelineCORCircle">
+                </div>
 
                 <div>
 
-                    <h4>COR Submitted</h4>
+                    <h4 id="timelineCORTitle">
+                        COR Submission
+                    </h4>
 
-                    <small>August 10, 2026</small>
+                    <small id="timelineCORDate">
+                        Waiting...
+                    </small>
 
                 </div>
 
             </div>
 
+
+
+            <!-- GRADES -->
+
             <div class="timeline-item">
 
-                <div class="circle"></div>
+                <div
+                    class="circle"
+                    id="timelineGradesCircle">
+                </div>
 
                 <div>
 
-                    <h4>Grades Submitted</h4>
+                    <h4 id="timelineGradesTitle">
+                        Grades Submission
+                    </h4>
 
-                    <small>August 15, 2026</small>
+                    <small id="timelineGradesDate">
+                        Waiting...
+                    </small>
 
                 </div>
 
             </div>
 
+
+
+            <!-- VERIFIED -->
+
             <div class="timeline-item">
 
-                <div class="circle active"></div>
+                <div
+                    class="circle"
+                    id="timelineVerifiedCircle">
+                </div>
 
                 <div>
 
-                    <h4>Scholarship Verified</h4>
+                    <h4 id="timelineVerifiedTitle">
+                        Scholarship Verification
+                    </h4>
 
-                    <small>August 18, 2026</small>
+                    <small id="timelineVerifiedDate">
+                        Waiting...
+                    </small>
 
                 </div>
 
             </div>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
-<!-- ===================================
-ACADEMIC STANDING
-=================================== -->
+
+
+
+
+
+
+<!-- =====================================================
+     COMPLIANCE CHECKLIST
+====================================================== -->
 
 <section class="card">
 
-    <h2>
-
-        <i class="fas fa-graduation-cap"></i>
-
-        Academic Standing
-
-    </h2>
-
-    <div class="standing-grid">
-
-        <div class="standing-box">
-
-            <h4>Latest GPA</h4>
-
-            <h2>1.75</h2>
-
-        </div>
-
-        <div class="standing-box">
-
-            <h4>Required GPA</h4>
-
-            <h2>2.00</h2>
-
-        </div>
-
-        <div class="standing-box">
-
-            <h4>Result</h4>
-
-            <h2 class="passed">
-
-                PASSED
-
-            </h2>
-
-        </div>
-
-    </div>
-
-    <div class="remarks success-box">
-
-        <i class="fas fa-circle-check"></i>
-
-        <div>
-
-            <strong>
-
-                Excellent Academic Standing
-
-            </strong>
-
-            <p>
-
-                You have maintained the required GPA.
-                Continue submitting all semester
-                requirements on time.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===================================
-COMPLIANCE CHECKLIST
-=================================== -->
-
-<section class="card">
 
     <h2>
 
@@ -571,35 +712,47 @@ COMPLIANCE CHECKLIST
 
     </h2>
 
+
+
     <table class="checklist-table">
 
+
         <thead>
 
             <tr>
 
-                <th>Requirement</th>
+                <th>
+                    Requirement
+                </th>
 
-                <th>Status</th>
+                <th>
+                    Status
+                </th>
 
             </tr>
 
         </thead>
 
+
+
         <tbody>
+
+
+            <!-- COR -->
 
             <tr>
 
                 <td>
-
                     Certificate of Registration (COR)
-
                 </td>
 
                 <td>
 
-                    <span class="badge success">
+                    <span
+                        class="badge pending"
+                        id="corStatus">
 
-                        Submitted
+                        Loading...
 
                     </span>
 
@@ -607,19 +760,23 @@ COMPLIANCE CHECKLIST
 
             </tr>
 
+
+
+            <!-- GRADES -->
+
             <tr>
 
                 <td>
-
                     Grades
-
                 </td>
 
                 <td>
 
-                    <span class="badge success">
+                    <span
+                        class="badge pending"
+                        id="gradesStatus">
 
-                        Verified
+                        Loading...
 
                     </span>
 
@@ -627,19 +784,23 @@ COMPLIANCE CHECKLIST
 
             </tr>
 
+
+
+            <!-- ORIENTATION -->
+
             <tr>
 
                 <td>
-
                     Orientation
-
                 </td>
 
                 <td>
 
-                    <span class="badge success">
+                    <span
+                        class="badge pending"
+                        id="orientationStatus">
 
-                        Completed
+                        Loading...
 
                     </span>
 
@@ -647,19 +808,23 @@ COMPLIANCE CHECKLIST
 
             </tr>
 
+
+
+            <!-- ATTENDANCE -->
+
             <tr>
 
                 <td>
-
                     Attendance
-
                 </td>
 
                 <td>
 
-                    <span class="badge success">
+                    <span
+                        class="badge pending"
+                        id="attendanceStatus">
 
-                        Complete
+                        Loading...
 
                     </span>
 
@@ -667,249 +832,58 @@ COMPLIANCE CHECKLIST
 
             </tr>
 
+
+
+            <!-- RENEWAL -->
+
             <tr>
 
                 <td>
-
                     Scholarship Renewal
-
                 </td>
 
                 <td>
 
-                    <span class="badge pending">
+                    <span
+                        class="badge pending"
+                        id="renewalStatus">
 
-                        Upcoming
+                        Loading...
 
                     </span>
 
                 </td>
 
             </tr>
+
 
         </tbody>
 
-    </table>
-
-</section>
-
-<!-- ===================================
-SCHOLARSHIP BENEFITS
-=================================== -->
-
-<section class="card">
-
-    <h2>
-
-        <i class="fas fa-wallet"></i>
-
-        Scholarship Benefits
-
-    </h2>
-
-    <div class="benefits-grid">
-
-        <div class="benefit-card">
-
-            <i class="fas fa-money-bill-wave"></i>
-
-            <h3>Allowance</h3>
-
-            <h2>₱10,000</h2>
-
-            <p>Per Semester</p>
-
-        </div>
-
-        <div class="benefit-card">
-
-            <i class="fas fa-book"></i>
-
-            <h3>Book Allowance</h3>
-
-            <h2>Provided</h2>
-
-            <p>Every Semester</p>
-
-        </div>
-
-        <div class="benefit-card">
-
-            <i class="fas fa-school"></i>
-
-            <h3>Tuition Fee</h3>
-
-            <h2>Covered</h2>
-
-            <p>100% Subsidy</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===================================
-ADMIN REMARKS
-=================================== -->
-
-<section class="card">
-
-    <h2>
-
-        <i class="fas fa-comments"></i>
-
-        Administrator Remarks
-
-    </h2>
-
-    <div class="remarks-box">
-
-        <i class="fas fa-circle-check"></i>
-
-        <div>
-
-            <h3>Excellent Performance</h3>
-
-            <p>
-
-                Congratulations! You have successfully
-                maintained your scholarship requirements.
-
-                Continue maintaining a GPA of at least
-                <strong>2.00</strong> and submit all
-                semester requirements on time.
-
-            </p>
-
-            <small>
-
-                Last Updated:
-                August 18, 2026
-
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===================================
-SCHOLARSHIP HISTORY
-=================================== -->
-
-<section class="card">
-
-    <h2>
-
-        <i class="fas fa-clock-rotate-left"></i>
-
-        Scholarship History
-
-    </h2>
-
-    <table class="history-table">
-
-        <thead>
-
-            <tr>
-
-                <th>School Year</th>
-
-                <th>Semester</th>
-
-                <th>Status</th>
-
-                <th>GPA</th>
-
-                <th>Remarks</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr>
-
-                <td>2026 - 2027</td>
-
-                <td>1st Semester</td>
-
-                <td>
-
-                    <span class="badge success">
-
-                        Active
-
-                    </span>
-
-                </td>
-
-                <td>1.75</td>
-
-                <td>Good Standing</td>
-
-            </tr>
-
-            <tr>
-
-                <td>2025 - 2026</td>
-
-                <td>2nd Semester</td>
-
-                <td>
-
-                    <span class="badge success">
-
-                        Active
-
-                    </span>
-
-                </td>
-
-                <td>1.82</td>
-
-                <td>Good Standing</td>
-
-            </tr>
-
-            <tr>
-
-                <td>2025 - 2026</td>
-
-                <td>1st Semester</td>
-
-                <td>
-
-                    <span class="badge success">
-
-                        Active
-
-                    </span>
-
-                </td>
-
-                <td>1.90</td>
-
-                <td>Good Standing</td>
-
-            </tr>
-
-        </tbody>
 
     </table>
 
+
 </section>
 
-<!-- ===================================
-ACTION BUTTONS
-=================================== -->
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     ACTION BUTTONS
+====================================================== -->
 
 <section class="action-buttons">
 
-    <button class="btn-primary">
+
+    <button
+        class="btn-primary"
+        id="printStatusBtn">
 
         <i class="fas fa-print"></i>
 
@@ -917,7 +891,11 @@ ACTION BUTTONS
 
     </button>
 
-    <button class="btn-success">
+
+
+    <button
+        class="btn-success"
+        id="downloadReportBtn">
 
         <i class="fas fa-download"></i>
 
@@ -925,29 +903,127 @@ ACTION BUTTONS
 
     </button>
 
+
 </section>
 
-<!-- ===================================
-FOOTER
-=================================== -->
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer class="footer">
 
     <p>
 
         © 2026 ScholarLink |
-        Scholarship Management System
+
+        A Portal For Scholarship Management System
 
     </p>
 
 </footer>
 
+
 </main>
+
 
 </div>
 
-<script src="../js2/scholarship-status.js"></script>
 
+
+<!-- =====================================================
+     FIREBASE / SCHOLARSHIP STATUS JS
+====================================================== -->
+
+<script
+    type="module"
+    src="../js2/scholarship-status.js">
+</script>
+
+<!-- MOBILE SIDEBAR ONLY -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("mobileMenuBtn");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (!menuButton || !sidebar || !overlay) return;
+
+    menuButton.addEventListener("click", function () {
+
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-xmark"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        } else {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+    });
+
+
+    overlay.addEventListener("click", function () {
+
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+
+        menuButton.innerHTML =
+            '<i class="fas fa-bars"></i>';
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+    });
+
+
+    sidebar.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+        });
+
+    });
+
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+        }
+
+    });
+
+});
+</script>
 </body>
 
 </html>

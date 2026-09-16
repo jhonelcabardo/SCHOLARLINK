@@ -44,16 +44,10 @@ body {
 /* =========================================================
    CONTAINER
 ========================================================= */
-
 .container {
-
     min-height: 100vh;
-
     display: grid;
-
-    grid-template-columns:
-        250px 1fr;
-
+    grid-template-columns: 300px 1fr;
 }
 
 
@@ -62,15 +56,10 @@ body {
 ========================================================= */
 
 .sidebar {
-
     position: fixed;
-
     left: 0;
-
     top: 0;
-
-    width: 250px;
-
+    width: 300px;
     height: 100vh;
 
     background:
@@ -81,13 +70,9 @@ body {
         );
 
     color: white;
-
     display: flex;
-
     flex-direction: column;
-
     z-index: 1000;
-
 }
 
 
@@ -96,109 +81,74 @@ body {
 ========================================================= */
 
 .logo {
-
     display: flex;
-
     align-items: center;
-
-    gap: 12px;
-
-    padding:
-        25px 20px;
+    gap: 14px;
+    padding: 27px 28px;
 
     border-bottom:
         1px solid
         rgba(255,255,255,.15);
-
 }
 
-
 .logo > i {
-
-    font-size: 28px;
-
-    color: white;
-
+    font-size: 38px;
+    color: #FFD43B;
 }
 
 
 .logo h2 {
-
-    font-size: 18px;
-
-    letter-spacing: .5px;
-
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: .3px;
 }
-
 
 .logo p {
-
-    font-size: 11px;
-
-    opacity: .75;
-
-    margin-top: 3px;
-
+    font-size: 14px;
+    opacity: .9;
+    margin-top: 2px;
 }
-
 
 /* =========================================================
    MENU
 ========================================================= */
 
 .menu {
-
     list-style: none;
-
-    padding:
-        18px 12px;
-
+    padding: 20px 18px;
     flex: 1;
-
     overflow-y: auto;
-
 }
 
 
 .menu li {
-
-    margin-bottom: 5px;
-
+    margin-bottom: 7px;
 }
 
 
 .menu a {
-
     display: flex;
-
     align-items: center;
+    gap: 17px;
 
-    gap: 14px;
-
-    color:
-        rgba(255,255,255,.88);
-
+    color: rgba(255,255,255,.95);
     text-decoration: none;
 
-    padding:
-        13px 14px;
+    padding: 15px 18px;
+    border-radius: 12px;
 
-    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
 
-    font-size: 14px;
-
-    transition:
-        .25s ease;
-
+    transition: .25s ease;
 }
 
 
 .menu a i {
-
     width: 20px;
-
+    min-width: 20px;
     text-align: center;
-
+    font-size: 16px;
 }
 
 
@@ -2454,4 +2404,524 @@ body {
 
     }
 
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE OVERRIDE
+   QR CODE PAGE
+   ========================================================= */
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 12px;
+    background: #2F80ED;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10001;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 9998;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        display: block;
+        min-height: 100vh;
+    }
+
+    /* HAMBURGER */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* SIDEBAR OFF-CANVAS */
+    .sidebar {
+        position: fixed;
+        left: -310px;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        z-index: 10000;
+        transition: left .3s ease;
+        overflow-y: auto;
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+    /* KEEP ORIGINAL SIDEBAR DESIGN */
+    .logo {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+        overflow-y: auto;
+    }
+
+    .menu li {
+        margin-bottom: 7px;
+    }
+
+    .menu a {
+        display: flex;
+        font-size: 16px;
+    }
+
+    .menu a span {
+        display: inline;
+    }
+
+    .bottom-menu {
+        display: block;
+    }
+
+    /* MAIN */
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 78px 25px 25px;
+        grid-column: auto;
+    }
+
+    /* TOPBAR */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .topbar h1 {
+        font-size: 27px;
+    }
+
+    .topbar p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .profile-top {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* SUMMARY */
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .summary-card {
+        padding: 20px 15px;
+    }
+
+    /* QR CARD */
+    .qr-card {
+        padding: 22px;
+    }
+
+    .qr-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .qr-card-header h2 {
+        font-size: 21px;
+        line-height: 1.4;
+    }
+
+    .qr-card-header p {
+        line-height: 1.5;
+    }
+
+    .qr-main {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .qr-details {
+        padding: 0;
+        text-align: center;
+    }
+
+    .scholar-photo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail-item {
+        text-align: left;
+    }
+
+    /* QR FRAME */
+    .qr-frame {
+        width: min(350px, 100%);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        padding: 12px;
+    }
+
+    #scholarQR {
+        width: 100%;
+        height: 100%;
+    }
+
+    #scholarQR img,
+    #scholarQR canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* QR BUTTONS */
+    .qr-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .qr-actions button {
+        min-width: 150px;
+    }
+
+    /* INFORMATION GRID */
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    /* MODAL */
+    .qr-modal-box {
+        width: calc(100% - 30px);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 25px 18px;
+    }
+
+    .modal-qr-frame {
+        width: min(460px, 100%);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    #modalQRCode img,
+    #modalQRCode canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* LOGOUT MODAL */
+    .logout-modal-box {
+        width: calc(100% - 30px);
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .mobile-menu-btn {
+        top: 12px;
+        left: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .sidebar {
+        width: 285px;
+        left: -295px;
+    }
+
+    .main-content {
+        padding: 70px 14px 20px;
+    }
+
+    /* TOPBAR */
+    .topbar {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .topbar p {
+        font-size: 12px;
+    }
+
+    .profile-top {
+        padding: 7px 10px;
+    }
+
+    .profile-top img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* SUMMARY */
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .summary-card {
+        padding: 18px;
+    }
+
+    .summary-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 21px;
+    }
+
+    /* QR CARD */
+    .qr-card {
+        padding: 17px;
+        border-radius: 18px;
+    }
+
+    .qr-card-header h2 {
+        font-size: 19px;
+    }
+
+    .qr-card-header p {
+        font-size: 12px;
+    }
+
+    .permanent-badge {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    /* QR */
+    .qr-frame {
+        width: min(290px, 100%);
+        padding: 9px;
+        border-width: 8px;
+        border-radius: 18px;
+    }
+
+    .qr-scan-note {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    /* SCHOLAR DETAILS */
+    .qr-details > h2 {
+        font-size: 21px;
+    }
+
+    .scholar-id-display strong {
+        font-size: 17px;
+    }
+
+    .detail-item strong {
+        font-size: 12px;
+        word-break: break-word;
+    }
+
+    /* BUTTONS */
+    .qr-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .qr-actions button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* CARDS */
+    .card {
+        padding: 18px;
+        border-radius: 17px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    /* INFO */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .info-box input {
+        font-size: 12px;
+        padding: 11px 12px;
+    }
+
+    /* INSTRUCTIONS */
+    .instruction-item {
+        padding: 13px;
+        gap: 10px;
+    }
+
+    .step-number {
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .instruction-item h3 {
+        font-size: 13px;
+    }
+
+    .instruction-item p {
+        font-size: 11px;
+    }
+
+    /* SECURITY */
+    .security-box {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .security-box > i {
+        font-size: 20px;
+    }
+
+    .security-box h3 {
+        font-size: 14px;
+    }
+
+    .security-box p {
+        font-size: 11px;
+    }
+
+    /* MODAL */
+    .qr-modal {
+        padding: 10px;
+    }
+
+    .qr-modal-box {
+        width: 100%;
+        padding: 22px 12px;
+        border-radius: 18px;
+    }
+
+    .qr-modal-box h2 {
+        font-size: 19px;
+        margin-bottom: 15px;
+    }
+
+    .modal-qr-frame {
+        width: min(280px, 100%);
+    }
+
+    .qr-modal-box h3 {
+        font-size: 17px;
+    }
+
+    /* LOGOUT */
+    .logout-modal {
+        padding: 12px;
+    }
+
+    .logout-modal-box {
+        width: 100%;
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+
+    .logout-buttons {
+        flex-direction: column;
+    }
+
+    .logout-buttons button {
+        width: 100%;
+    }
+
+    /* FOOTER */
+    .footer {
+        font-size: 10px;
+        padding: 20px 5px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .main-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .qr-card {
+        padding: 14px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .qr-frame {
+        width: min(250px, 100%);
+    }
+
+    .summary-card h2 {
+        font-size: 19px;
+    }
+
+    .instruction-item {
+        padding: 11px;
+    }
 }

@@ -19,340 +19,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 
-    <!-- LOGOUT MODAL CSS -->
-    <style>
-
-        /* =========================================
-           SCHOLAR LOGOUT MODAL
-        ========================================= */
-
-        .logout-modal {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            z-index: 99999;
-        }
-
-        .logout-modal.active {
-            display: flex;
-        }
-
-
-        /* =========================================
-           BACKGROUND OVERLAY
-        ========================================= */
-
-        .logout-overlay {
-            position: absolute;
-
-            inset: 0;
-
-            background: rgba(25, 32, 50, 0.55);
-
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-
-        /* =========================================
-           MODAL BOX
-        ========================================= */
-
-        .logout-modal-content {
-            position: relative;
-
-            z-index: 2;
-
-            width: 460px;
-
-            max-width: calc(100% - 40px);
-
-            background: #ffffff;
-
-            border-radius: 26px;
-
-            padding: 38px 34px 36px;
-
-            text-align: center;
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.25);
-
-            animation:
-                logoutModalShow 0.25s ease;
-        }
-
-
-        @keyframes logoutModalShow {
-
-            from {
-                opacity: 0;
-
-                transform:
-                    scale(0.92)
-                    translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(0);
-            }
-
-        }
-
-
-        /* =========================================
-           LOGOUT ICON
-        ========================================= */
-
-        .logout-icon {
-
-            width: 80px;
-            height: 80px;
-
-            margin:
-                0 auto 22px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background: #ffe1e1;
-        }
-
-
-        .logout-icon i {
-
-            font-size: 34px;
-
-            color: #e52525;
-        }
-
-
-        /* =========================================
-           TITLE
-        ========================================= */
-
-        .logout-modal-content h2 {
-
-            margin:
-                0 0 12px;
-
-            font-family:
-                'Poppins',
-                sans-serif;
-
-            font-size: 26px;
-
-            font-weight: 700;
-
-            color: #202050;
-        }
-
-
-        /* =========================================
-           DESCRIPTION
-        ========================================= */
-
-        .logout-modal-content p {
-
-            margin:
-                0 auto 28px;
-
-            max-width: 360px;
-
-            font-family:
-                'Poppins',
-                sans-serif;
-
-            font-size: 15px;
-
-            line-height: 1.6;
-
-            color: #747b8c;
-        }
-
-
-        /* =========================================
-           BUTTONS
-        ========================================= */
-
-        .logout-buttons {
-
-            display: flex;
-
-            gap: 12px;
-
-            width: 100%;
-        }
-
-
-        .cancel-btn,
-        .confirm-logout-btn {
-
-            flex: 1;
-
-            height: 52px;
-
-            border: none;
-
-            border-radius: 12px;
-
-            font-family:
-                'Poppins',
-                sans-serif;
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-
-        /* =========================================
-           CANCEL
-        ========================================= */
-
-        .cancel-btn {
-
-            background: #f1f2f5;
-
-            color: #34374a;
-        }
-
-
-        .cancel-btn:hover {
-
-            background: #e7e8ec;
-
-            transform:
-                translateY(-1px);
-        }
-
-
-        /* =========================================
-           LOGOUT
-        ========================================= */
-
-        .confirm-logout-btn {
-
-            background: #e52525;
-
-            color: #ffffff;
-        }
-
-
-        .confirm-logout-btn:hover {
-
-            background: #cf1d1d;
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 8px 20px
-                rgba(229, 37, 37, 0.25);
-        }
-
-
-        .cancel-btn:active,
-        .confirm-logout-btn:active {
-
-            transform:
-                scale(0.98);
-        }
-
-
-        /* =========================================
-           LOADING
-        ========================================= */
-
-        .confirm-logout-btn.loading {
-
-            pointer-events: none;
-
-            opacity: 0.75;
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 600px) {
-
-            .logout-modal-content {
-
-                width:
-                    calc(100% - 30px);
-
-                padding:
-                    32px 22px 28px;
-
-                border-radius: 22px;
-            }
-
-
-            .logout-icon {
-
-                width: 70px;
-                height: 70px;
-            }
-
-
-            .logout-icon i {
-
-                font-size: 29px;
-            }
-
-
-            .logout-modal-content h2 {
-
-                font-size: 22px;
-            }
-
-
-            .logout-modal-content p {
-
-                font-size: 14px;
-            }
-
-
-            .logout-buttons {
-
-                flex-direction: column;
-            }
-
-
-            .cancel-btn,
-            .confirm-logout-btn {
-
-                width: 100%;
-            }
-
-        }
-
-    </style>
-
+  
 </head>
 
 
@@ -362,183 +29,175 @@
 <div class="container">
 
 
-    <!-- =====================================
-         SIDEBAR
-    ====================================== -->
+  <!-- =====================================================
+     SIDEBAR - NAVBAR
+====================================================== -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
+    <div class="logo">
 
-        <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
 
-            <i class="fas fa-graduation-cap"></i>
+        <div>
 
-            <div>
+            <h2>SCHOLARLINK</h2>
 
-                <h2>SCHOLARLINK</h2>
-
-                <p>Scholar Dashboard</p>
-
-            </div>
+            <p>Home</p>
 
         </div>
 
+    </div>
 
-        <ul class="menu">
 
+    <ul class="menu">
 
-            <li>
+      <li>
 
-                <a href="Home.html">
+    <a href="Home.html">
 
-                    <i class="fas fa-house"></i>
+        <i class="fas fa-house"></i>
 
-                    <span>Home</span>
+        <span>Home</span>
 
-                </a>
+    </a>
 
-            </li>
+</li>
 
+        <!-- PROFILE -->
+        <li>
 
-            <li>
+            <a href="profile.html">
 
-                <a href="profile.html">
+                <i class="fas fa-user"></i>
 
-                    <i class="fas fa-user"></i>
+                <span>Profile</span>
 
-                    <span>My Profile</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- ACADEMIC SUBMISSION -->
+        <li>
 
-            <li>
+            <a href="academic-submissions.html">
 
-                <a href="scholarship-status.html">
+                <i class="fas fa-file-signature"></i>
 
-                    <i class="fas fa-award"></i>
+                <span>Academic Submission</span>
 
-                    <span>Scholarship Status</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- SCHOLARSHIP STATUS -->
+        <li>
 
-            <li>
+            <a href="scholarship-status.html">
 
-                <a href="grades.html">
+                <i class="fas fa-award"></i>
 
-                    <i class="fas fa-file-signature"></i>
+                <span>Scholarship Status</span>
 
-                    <span>Submit Grades</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- ANNOUNCEMENT -->
+       <li class="active">
 
-            <li>
+    <a href="announcements.html">
 
-                <a href="cor.html">
+        <i class="fas fa-bullhorn"></i>
 
-                    <i class="fas fa-file-circle-check"></i>
+        <span>Announcement</span>
 
-                    <span>Submit COR</span>
+    </a>
 
-                </a>
+</li>
 
-            </li>
 
+        <!-- NOTIFICATION -->
+        <li>
 
-            <li>
+            <a href="notifications.html">
 
-                <a href="schedule.html">
+                <i class="fas fa-bell"></i>
 
-                    <i class="fas fa-calendar-days"></i>
+                <span>Notification</span>
 
-                    <span>Schedule</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- MY QR CODE -->
+        <li>
 
-            <li class="active">
+            <a href="qr-code.html">
 
-                <a href="announcements.html">
+                <i class="fas fa-qrcode"></i>
 
-                    <i class="fas fa-bullhorn"></i>
+                <span>My QR Code</span>
 
-                    <span>Announcements</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- SETTINGS -->
+        <li>
 
-            <li>
+            <a href="settings.html">
 
-                <a href="notifications.html">
+                <i class="fas fa-gear"></i>
 
-                    <i class="fas fa-bell"></i>
+                <span>Settings</span>
 
-                    <span>Notifications</span>
+            </a>
 
-                </a>
+        </li>
 
-            </li>
 
+        <!-- LOGOUT -->
+        <li>
 
-            <li>
+            <a href="#" id="sidebarlogout">
 
-                <a href="qr-code.html">
-
-                    <i class="fas fa-qrcode"></i>
-
-                    <span>My QR Code</span>
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="settings.html">
-
-                    <i class="fas fa-gear"></i>
-
-                    <span>Settings</span>
-
-                </a>
-
-            </li>
-
-
-        </ul>
-
-
-        <!-- =====================================
-             LOGOUT
-        ====================================== -->
-
-        <div class="bottom-menu">
-
-            <a href="#"
-               id="logoutLink">
-
-                <i class="fas fa-right-from-bracket"></i>
+                <i class="fas fa-sign-out-alt"></i>
 
                 <span>Logout</span>
 
             </a>
 
-        </div>
+        </li>
+
+    </ul>
 
 
-    </aside>
+    <div class="bottom-menu"></div>
+
+</aside>
+
+
+    
+
+<!-- =====================================
+     MOBILE MENU
+====================================== -->
+
+<button class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="sidebar-overlay"
+     id="sidebarOverlay"></div>
 
 
 
@@ -559,34 +218,11 @@
                     Announcements
                 </h1>
 
-                <p>
-                    Stay updated with the latest scholarship announcements.
-                </p>
-
+                
             </div>
 
 
-            <div class="profile-top">
-
-                <img
-                    src="../images/user.png"
-                    id="profileAvatar"
-                    alt="Scholar">
-
-                <div>
-
-                    <h4 id="profileName">
-                        Loading...
-                    </h4>
-
-                    <small id="scholarId">
-                        Loading...
-                    </small>
-
-                </div>
-
-            </div>
-
+         
         </header>
 
 
@@ -949,90 +585,7 @@
 
 
 
-        <!-- =====================================
-             SCHOLARSHIP OFFICE
-        ====================================== -->
-
-        <section class="card">
-
-            <h2>
-
-                <i class="fas fa-building"></i>
-
-                Scholarship Office
-
-            </h2>
-
-
-            <div class="office-card">
-
-                <img
-                    src="../images/admin.png"
-                    alt="Scholarship Office">
-
-
-                <div>
-
-                    <h3>
-                        City Government Scholarship Office
-                    </h3>
-
-                    <p>
-                        Naga City Hall
-                    </p>
-
-                    <p>
-                        📧 scholarship@naga.gov.ph
-                    </p>
-
-                    <p>
-                        ☎ +63 912 345 6789
-                    </p>
-
-                    <p>
-                        Monday - Friday
-                        8:00 AM - 5:00 PM
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             ACTION BUTTONS
-        ====================================== -->
-
-        <section class="action-buttons">
-
-            <button
-                class="btn-primary"
-                id="downloadAllBtn"
-                type="button">
-
-                <i class="fas fa-download"></i>
-
-                Download All Announcements
-
-            </button>
-
-
-            <button
-                class="btn-success"
-                id="printBtn"
-                type="button">
-
-                <i class="fas fa-print"></i>
-
-                Print Announcements
-
-            </button>
-
-        </section>
-
+        
 
 
         <!-- =====================================
@@ -1044,7 +597,7 @@
             <p>
 
                 © 2026 ScholarLink |
-                Scholarship Management System
+                A Portal For Scholarship Management System
 
             </p>
 
@@ -1133,9 +686,96 @@
      JAVASCRIPT
 ====================================== -->
 
-<script
-    type="module"
-    src="../js2/announcements.js">
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("mobileMenuBtn");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (!menuButton || !sidebar || !overlay) return;
+
+    menuButton.addEventListener("click", function () {
+
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-xmark"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        } else {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+    });
+
+
+    overlay.addEventListener("click", function () {
+
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+
+        menuButton.innerHTML =
+            '<i class="fas fa-bars"></i>';
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+    });
+
+
+    sidebar.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        });
+
+    });
+
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+
+    });
+
+});
 </script>
 
 

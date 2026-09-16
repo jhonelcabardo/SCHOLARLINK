@@ -1031,3 +1031,831 @@ SCROLLBAR
     background:#EEF5FF;
 
 }
+
+ 
+        /* =========================================
+           SCHOLAR LOGOUT MODAL
+        ========================================= */
+
+        .logout-modal {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 99999;
+        }
+
+        .logout-modal.active {
+            display: flex;
+        }
+
+
+        /* =========================================
+           BACKGROUND OVERLAY
+        ========================================= */
+
+        .logout-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background: rgba(25, 32, 50, 0.55);
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+
+        /* =========================================
+           MODAL BOX
+        ========================================= */
+
+        .logout-modal-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: 460px;
+
+            max-width: calc(100% - 40px);
+
+            background: #ffffff;
+
+            border-radius: 26px;
+
+            padding: 38px 34px 36px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.25);
+
+            animation:
+                logoutModalShow 0.25s ease;
+        }
+
+
+        @keyframes logoutModalShow {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(0.92)
+                    translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+
+        }
+
+
+        /* =========================================
+           LOGOUT ICON
+        ========================================= */
+
+        .logout-icon {
+
+            width: 80px;
+            height: 80px;
+
+            margin:
+                0 auto 22px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #ffe1e1;
+        }
+
+
+        .logout-icon i {
+
+            font-size: 34px;
+
+            color: #e52525;
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        .logout-modal-content h2 {
+
+            margin:
+                0 0 12px;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 26px;
+
+            font-weight: 700;
+
+            color: #202050;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .logout-modal-content p {
+
+            margin:
+                0 auto 28px;
+
+            max-width: 360px;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            color: #747b8c;
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        .logout-buttons {
+
+            display: flex;
+
+            gap: 12px;
+
+            width: 100%;
+        }
+
+
+        .cancel-btn,
+        .confirm-logout-btn {
+
+            flex: 1;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        /* =========================================
+           CANCEL
+        ========================================= */
+
+        .cancel-btn {
+
+            background: #f1f2f5;
+
+            color: #34374a;
+        }
+
+
+        .cancel-btn:hover {
+
+            background: #e7e8ec;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================
+           LOGOUT
+        ========================================= */
+
+        .confirm-logout-btn {
+
+            background: #e52525;
+
+            color: #ffffff;
+        }
+
+
+        .confirm-logout-btn:hover {
+
+            background: #cf1d1d;
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(229, 37, 37, 0.25);
+        }
+
+
+        .cancel-btn:active,
+        .confirm-logout-btn:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        /* =========================================
+           LOADING
+        ========================================= */
+
+        .confirm-logout-btn.loading {
+
+            pointer-events: none;
+
+            opacity: 0.75;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .logout-modal-content {
+
+                width:
+                    calc(100% - 30px);
+
+                padding:
+                    32px 22px 28px;
+
+                border-radius: 22px;
+            }
+
+
+            .logout-icon {
+
+                width: 70px;
+                height: 70px;
+            }
+
+
+            .logout-icon i {
+
+                font-size: 29px;
+            }
+
+
+            .logout-modal-content h2 {
+
+                font-size: 22px;
+            }
+
+
+            .logout-modal-content p {
+
+                font-size: 14px;
+            }
+
+
+            .logout-buttons {
+
+                flex-direction: column;
+            }
+
+
+            .cancel-btn,
+            .confirm-logout-btn {
+
+                width: 100%;
+            }
+
+        }
+
+        /* =========================================================
+   SCHOLARLINK ANNOUNCEMENTS
+   MOBILE RESPONSIVE SIDEBAR
+   RESPONSIVE ONLY - DO NOT CHANGE EXISTING FUNCTIONS
+========================================================= */
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn{
+    display:none;
+    position:fixed;
+    top:16px;
+    left:16px;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#ffffff;
+    color:#2F80ED;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(15,23,42,.12);
+    z-index:2001;
+}
+
+/* SIDEBAR OVERLAY */
+.sidebar-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.45);
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+    z-index:1998;
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+.sidebar-overlay.active{
+    display:block;
+    opacity:1;
+}
+
+
+/* =========================================================
+   TABLET + MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    html,
+    body{
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+    }
+
+    .container{
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+    }
+
+    /* MAIN CONTENT */
+    .main-content{
+        width:100%;
+        max-width:100%;
+        margin-left:0;
+        padding:82px 20px 30px;
+        overflow-x:hidden;
+    }
+
+    /* HAMBURGER */
+    .mobile-menu-btn{
+        display:flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+        display:flex;
+        width:270px;
+        height:100vh;
+        left:-285px;
+        top:0;
+        bottom:0;
+        transition:left .3s ease,
+                   box-shadow .3s ease;
+        z-index:2000;
+    }
+
+    /* OPEN SIDEBAR */
+    .sidebar.mobile-open{
+        left:0;
+        box-shadow:12px 0 35px rgba(15,23,42,.25);
+    }
+
+    /* LOGO */
+    .logo{
+        justify-content:flex-start;
+        padding:25px;
+    }
+
+    .logo h2,
+    .logo p{
+        display:block;
+    }
+
+    /* MENU */
+    .menu{
+        padding:20px 15px;
+    }
+
+    .menu li a{
+        justify-content:flex-start;
+        gap:15px;
+        padding:15px;
+        font-size:14px;
+    }
+
+    .menu li a span{
+        display:inline;
+    }
+
+    .menu li a i{
+        width:22px;
+        margin:0;
+        font-size:17px;
+    }
+
+
+    /* TOPBAR */
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+        margin-bottom:25px;
+    }
+
+    .topbar h1{
+        font-size:30px;
+    }
+
+    .profile-top{
+        width:100%;
+        max-width:100%;
+    }
+
+
+    /* SUMMARY CARDS */
+    .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .summary-card{
+        padding:20px;
+    }
+
+
+    /* SEARCH */
+    .search-box{
+        width:100%;
+    }
+
+    .search-box input{
+        min-width:0;
+    }
+
+
+    /* ANNOUNCEMENT CARD */
+    .announcement-card{
+        padding:22px;
+    }
+
+    .announcement-card h2{
+        font-size:21px;
+    }
+
+    .announcement-header{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .announcement-card p{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+
+    /* CATEGORY */
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .category-box{
+        padding:20px;
+    }
+
+
+    /* COMMON CARD */
+    .card{
+        padding:22px;
+    }
+
+
+    /* NOTICE */
+    .notice-box{
+        gap:15px;
+        padding:20px;
+    }
+
+
+    /* OFFICE */
+    .office-card{
+        flex-direction:column;
+        text-align:center;
+        padding:22px;
+    }
+
+
+    /* TABLE */
+    .table-responsive{
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .history-table{
+        min-width:650px;
+    }
+
+
+    /* ACTION BUTTONS */
+    .action-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .btn-primary,
+    .btn-success{
+        width:100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .main-content{
+        padding:76px 12px 25px;
+    }
+
+    .mobile-menu-btn{
+        width:42px;
+        height:42px;
+        top:14px;
+        left:14px;
+        font-size:18px;
+    }
+
+
+    /* TOPBAR */
+    .topbar{
+        gap:15px;
+    }
+
+    .topbar h1{
+        font-size:25px;
+        line-height:1.3;
+    }
+
+    .topbar p{
+        font-size:13px;
+        line-height:1.6;
+    }
+
+    .profile-top{
+        padding:10px 14px;
+        gap:10px;
+    }
+
+    .profile-top img{
+        width:48px;
+        height:48px;
+    }
+
+
+    /* SUMMARY */
+    .summary-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .summary-card{
+        padding:20px;
+    }
+
+    .summary-card i{
+        width:60px;
+        height:60px;
+        font-size:25px;
+    }
+
+
+    /* SEARCH */
+    .search-box{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .search-box input{
+        width:100%;
+        border-radius:12px;
+        padding:14px;
+    }
+
+    .search-box button{
+        width:100%;
+        border-radius:12px;
+        padding:14px;
+    }
+
+
+    /* ANNOUNCEMENTS */
+    .announcement-card{
+        padding:18px;
+        border-radius:16px;
+    }
+
+    .announcement-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .announcement-header small{
+        font-size:12px;
+    }
+
+    .badge{
+        font-size:11px;
+        padding:7px 12px;
+    }
+
+    .announcement-card h2{
+        font-size:19px;
+        line-height:1.4;
+    }
+
+    .announcement-card p{
+        font-size:13px;
+        line-height:1.7;
+    }
+
+    .announcement-footer{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .read-btn,
+    .download-btn{
+        width:100%;
+        padding:12px 18px;
+    }
+
+
+    /* CARD */
+    .card{
+        padding:18px;
+        border-radius:16px;
+    }
+
+    .card h2{
+        font-size:19px;
+        line-height:1.4;
+        gap:9px;
+    }
+
+
+    /* CATEGORY */
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category-box{
+        padding:20px;
+    }
+
+
+    /* NOTICE */
+    .notice-box{
+        flex-direction:column;
+        gap:12px;
+        padding:18px;
+    }
+
+    .notice-box i{
+        font-size:25px;
+    }
+
+    .notice-box p{
+        font-size:13px;
+        line-height:1.7;
+    }
+
+
+    /* OFFICE */
+    .office-card{
+        padding:18px;
+        gap:15px;
+    }
+
+    .office-card img{
+        width:75px;
+        height:75px;
+    }
+
+    .office-card h3{
+        font-size:17px;
+        line-height:1.4;
+    }
+
+    .office-card p{
+        font-size:13px;
+    }
+
+
+    /* ACTION BUTTONS */
+    .action-buttons{
+        gap:10px;
+        margin:25px 0;
+    }
+
+    .btn-primary,
+    .btn-success{
+        width:100%;
+        padding:13px 20px;
+        font-size:14px;
+    }
+
+
+    /* FOOTER */
+    .footer{
+        padding:20px 10px;
+        font-size:12px;
+        line-height:1.6;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    .main-content{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .topbar h1{
+        font-size:22px;
+    }
+
+    .summary-card{
+        padding:17px;
+    }
+
+    .summary-card h4{
+        font-size:14px;
+    }
+
+    .summary-card h2{
+        font-size:22px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .announcement-card{
+        padding:15px;
+    }
+
+    .announcement-card h2{
+        font-size:18px;
+    }
+
+    .category-box{
+        padding:17px;
+    }
+}

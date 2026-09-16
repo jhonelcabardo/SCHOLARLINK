@@ -23,314 +23,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 
 
-    <!-- =========================================
-         LOGOUT MODAL CSS
-    ========================================== -->
-
-    <style>
-
-        /* =========================================
-           LOGOUT MODAL
-        ========================================== */
-
-        .logout-modal {
-
-            position: fixed;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: rgba(15, 23, 42, 0.65);
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            pointer-events: none;
-
-            transition:
-                opacity 0.3s ease,
-                visibility 0.3s ease;
-
-            z-index: 99999;
-
-        }
-
-
-        .logout-modal.active {
-
-            opacity: 1;
-
-            visibility: visible;
-
-            pointer-events: auto;
-
-        }
-
-
-        /* =========================================
-           MODAL CONTENT
-        ========================================== */
-
-        .logout-modal-content {
-
-            width: 420px;
-
-            max-width: calc(100% - 40px);
-
-            background: #ffffff;
-
-            border-radius: 20px;
-
-            padding: 35px 30px;
-
-            text-align: center;
-
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.25);
-
-            transform: scale(0.85)
-                       translateY(20px);
-
-            transition:
-                transform 0.3s ease;
-
-        }
-
-
-        .logout-modal.active
-        .logout-modal-content {
-
-            transform: scale(1)
-                       translateY(0);
-
-        }
-
-
-        /* =========================================
-           LOGOUT ICON
-        ========================================== */
-
-        .logout-icon {
-
-            width: 75px;
-
-            height: 75px;
-
-            margin: 0 auto 20px;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: #eef2ff;
-
-            color: #4f46e5;
-
-            font-size: 30px;
-
-        }
-
-
-        /* =========================================
-           TITLE
-        ========================================== */
-
-        .logout-modal-content h2 {
-
-            margin: 0 0 10px;
-
-            color: #1e293b;
-
-            font-size: 24px;
-
-            font-weight: 700;
-
-        }
-
-
-        /* =========================================
-           DESCRIPTION
-        ========================================== */
-
-        .logout-modal-content p {
-
-            margin: 0 auto 28px;
-
-            max-width: 330px;
-
-            color: #64748b;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =========================================
-           BUTTON CONTAINER
-        ========================================== */
-
-        .logout-buttons {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 12px;
-
-        }
-
-
-        /* =========================================
-           BOTH BUTTONS
-        ========================================== */
-
-        .logout-buttons button {
-
-            min-width: 120px;
-
-            padding: 12px 22px;
-
-            border: none;
-
-            border-radius: 10px;
-
-            font-family: 'Poppins', sans-serif;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition: all 0.25s ease;
-
-        }
-
-
-        /* =========================================
-           CANCEL BUTTON
-        ========================================== */
-
-        .cancel-btn {
-
-            background: #f1f5f9;
-
-            color: #334155;
-
-        }
-
-
-        .cancel-btn:hover {
-
-            background: #e2e8f0;
-
-            transform: translateY(-1px);
-
-        }
-
-
-        /* =========================================
-           CONFIRM LOGOUT BUTTON
-        ========================================== */
-
-        .confirm-logout-btn {
-
-            background: #ef4444;
-
-            color: #ffffff;
-
-        }
-
-
-        .confirm-logout-btn:hover {
-
-            background: #dc2626;
-
-            transform: translateY(-1px);
-
-        }
-
-
-        .confirm-logout-btn:disabled {
-
-            opacity: 0.7;
-
-            cursor: not-allowed;
-
-            transform: none;
-
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================== */
-
-        @media (max-width: 480px) {
-
-            .logout-modal-content {
-
-                width: calc(100% - 30px);
-
-                padding: 30px 20px;
-
-                border-radius: 18px;
-
-            }
-
-
-            .logout-buttons {
-
-                flex-direction: column;
-
-                width: 100%;
-
-            }
-
-
-            .logout-buttons button {
-
-                width: 100%;
-
-            }
-
-
-            .logout-icon {
-
-                width: 65px;
-
-                height: 65px;
-
-                font-size: 26px;
-
-            }
-
-
-            .logout-modal-content h2 {
-
-                font-size: 21px;
-
-            }
-
-        }
-
-    </style>
+    
 
 </head>
 
@@ -341,209 +34,174 @@
 <div class="container">
 
 
-    <!-- =========================================
-         SIDEBAR
-    ========================================== -->
+   <!-- =====================================================
+     SIDEBAR - NAVBAR
+====================================================== -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
+    <div class="logo">
 
-        <!-- LOGO -->
+        <i class="fas fa-graduation-cap"></i>
 
-        <div class="logo">
+        <div>
 
-            <i class="fas fa-graduation-cap"></i>
+            <h2>SCHOLARLINK</h2>
 
-            <div>
-
-                <h2>SCHOLARLINK</h2>
-
-                <p>Scholar Dashboard</p>
-
-            </div>
+            <p>Home</p>
 
         </div>
 
+    </div>
 
-        <!-- =====================================
-             MENU
-        ====================================== -->
 
-        <ul class="menu">
+    <ul class="menu">
 
+        <li>
 
-            <!-- HOME -->
+    <a href="Home.html">
 
-            <li>
+        <i class="fas fa-house"></i>
 
-                <a href="Home.html">
+        <span>Home</span>
 
-                    <i class="fas fa-house"></i>
+    </a>
 
-                    Home
+</li>
 
-                </a>
 
-            </li>
+        <!-- PROFILE -->
+        <li>
 
+            <a href="profile.html">
 
-            <!-- PROFILE -->
+                <i class="fas fa-user"></i>
 
-            <li>
-
-                <a href="profile.html">
-
-                    <i class="fas fa-user"></i>
-
-                    My Profile
-
-                </a>
-
-            </li>
-
-
-            <!-- SCHOLARSHIP STATUS -->
-
-            <li>
-
-                <a href="scholarship-status.html">
-
-                    <i class="fas fa-award"></i>
-
-                    Scholarship Status
-
-                </a>
-
-            </li>
-
-
-            <!-- GRADES -->
-
-            <li>
-
-                <a href="grades.html">
-
-                    <i class="fas fa-file-signature"></i>
-
-                    Submit Grades
-
-                </a>
-
-            </li>
-
-
-            <!-- COR -->
-
-            <li>
-
-                <a href="cor.html">
-
-                    <i class="fas fa-file-circle-check"></i>
-
-                    Submit COR
-
-                </a>
-
-            </li>
-
-
-            <!-- SCHEDULE -->
-
-            <li>
-
-                <a href="schedule.html">
-
-                    <i class="fas fa-calendar-days"></i>
-
-                    Schedule
-
-                </a>
-
-            </li>
-
-
-            <!-- ANNOUNCEMENTS -->
-
-            <li>
-
-                <a href="announcements.html">
-
-                    <i class="fas fa-bullhorn"></i>
-
-                    Announcements
-
-                </a>
-
-            </li>
-
-
-            <!-- NOTIFICATIONS -->
-
-            <li class="active">
-
-                <a href="notifications.html">
-
-                    <i class="fas fa-bell"></i>
-
-                    Notifications
-
-                </a>
-
-            </li>
-
-
-            <!-- QR CODE -->
-
-            <li>
-
-                <a href="qr-code.html">
-
-                    <i class="fas fa-qrcode"></i>
-
-                    My QR Code
-
-                </a>
-
-            </li>
-
-
-            <!-- SETTINGS -->
-
-            <li>
-
-                <a href="settings.html">
-
-                    <i class="fas fa-gear"></i>
-
-                    Settings
-
-                </a>
-
-            </li>
-
-
-        </ul>
-
-
-        <!-- =====================================
-             LOGOUT
-        ====================================== -->
-
-        <div class="bottom-menu">
-
-            <a href="#"
-               id="sidebarlogout">
-
-                <i class="fas fa-right-from-bracket"></i>
-
-                Logout
+                <span>Profile</span>
 
             </a>
 
-        </div>
+        </li>
 
 
-    </aside>
+        <!-- ACADEMIC SUBMISSION -->
+        <li>
+
+            <a href="academic-submissions.html">
+
+                <i class="fas fa-file-signature"></i>
+
+                <span>Academic Submission</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- SCHOLARSHIP STATUS -->
+        <li>
+
+            <a href="scholarship-status.html">
+
+                <i class="fas fa-award"></i>
+
+                <span>Scholarship Status</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- ANNOUNCEMENT -->
+        <li>
+
+            <a href="announcements.html">
+
+                <i class="fas fa-bullhorn"></i>
+
+                <span>Announcement</span>
+
+            </a>
+
+        </li>
+
+
+     <!-- NOTIFICATION -->
+<li class="active">
+
+    <a href="notifications.html">
+
+        <i class="fas fa-bell"></i>
+
+        <span>Notification</span>
+
+    </a>
+
+</li>
+
+
+        <!-- MY QR CODE -->
+        <li>
+
+            <a href="qr-code.html">
+
+                <i class="fas fa-qrcode"></i>
+
+                <span>My QR Code</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- SETTINGS -->
+        <li>
+
+            <a href="settings.html">
+
+                <i class="fas fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- LOGOUT -->
+        <li>
+
+            <a href="#" id="sidebarlogout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <div class="bottom-menu"></div>
+
+</aside>
+
+
+<!-- =========================================
+     MOBILE MENU
+========================================== -->
+
+<button class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="sidebar-overlay"
+     id="sidebarOverlay"></div>
 
 
     <!-- =========================================
@@ -1513,8 +1171,113 @@
 ========================================= -->
 
 <script
+
     type="module"
+
     src="../js2/notifications.js">
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
+
+    if (!menuButton || !sidebar || !overlay) return;
+
+
+    /* OPEN / CLOSE SIDEBAR */
+    menuButton.addEventListener("click", function () {
+
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-xmark"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
+
+        } else {
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+    });
+
+
+    /* CLOSE WHEN CLICKING OVERLAY */
+    overlay.addEventListener("click", function () {
+
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+
+        menuButton.innerHTML =
+            '<i class="fas fa-bars"></i>';
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+    });
+
+
+    /* CLOSE AFTER CLICKING NAVIGATION */
+    sidebar.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        });
+
+    });
+
+
+    /* RESET WHEN RETURNING TO DESKTOP */
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML =
+                '<i class="fas fa-bars"></i>';
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+        }
+
+    });
+
+});
 </script>
 
 

@@ -1212,3 +1212,1086 @@ body {
     color: #fff;
 }
 }
+
+/* =========================================================
+   LOGOUT MODAL
+   ========================================================= */
+
+.logout-modal {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.logout-modal.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   LOGOUT OVERLAY
+   ========================================================= */
+
+.logout-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(25, 32, 50, 0.55);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   LOGOUT MODAL BOX
+   ========================================================= */
+
+.logout-modal-content {
+    position: relative;
+    z-index: 2;
+
+    width: 460px;
+    max-width: calc(100% - 40px);
+
+    padding: 38px 34px 36px;
+
+    background: #ffffff;
+
+    border-radius: 26px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+
+    animation: logoutModalShow 0.25s ease;
+}
+
+
+/* =========================================================
+   LOGOUT ANIMATION
+   ========================================================= */
+
+@keyframes logoutModalShow {
+
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT ICON
+   ========================================================= */
+
+.logout-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffe1e1;
+}
+
+.logout-icon i {
+    font-size: 34px;
+    color: #e52525;
+}
+
+
+/* =========================================================
+   LOGOUT TITLE
+   ========================================================= */
+
+.logout-modal-content h2 {
+    margin: 0 0 12px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    color: #202050;
+}
+
+
+/* =========================================================
+   LOGOUT DESCRIPTION
+   ========================================================= */
+
+.logout-modal-content p {
+    margin: 0 auto 28px;
+
+    max-width: 360px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: #747b8c;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON CONTAINER
+   ========================================================= */
+
+.logout-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   COMMON LOGOUT BUTTON
+   ========================================================= */
+
+.cancel-btn,
+.confirm-logout-btn {
+
+    flex: 1;
+
+    height: 52px;
+
+    border: none;
+    border-radius: 12px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-btn {
+    background: #f1f2f5;
+    color: #34374a;
+}
+
+.cancel-btn:hover {
+    background: #e7e8ec;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CONFIRM LOGOUT BUTTON
+   ========================================================= */
+
+.confirm-logout-btn {
+    background: #e52525;
+    color: #ffffff;
+}
+
+.confirm-logout-btn:hover {
+    background: #cf1d1d;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(229, 37, 37, 0.25);
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.cancel-btn:active,
+.confirm-logout-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON LOADING
+   ========================================================= */
+
+.confirm-logout-btn.loading {
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   LOGOUT MODAL RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .logout-modal-content {
+        width: calc(100% - 30px);
+
+        padding: 32px 22px 28px;
+
+        border-radius: 22px;
+    }
+
+
+    .logout-icon {
+        width: 70px;
+        height: 70px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .logout-icon i {
+        font-size: 29px;
+    }
+
+
+    .logout-modal-content h2 {
+        font-size: 22px;
+    }
+
+
+    .logout-modal-content p {
+        font-size: 14px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .logout-buttons {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .cancel-btn,
+    .confirm-logout-btn {
+        width: 100%;
+
+        height: 50px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .logout-modal-content {
+        width: calc(100% - 24px);
+
+        padding: 28px 18px 24px;
+
+        border-radius: 20px;
+    }
+
+
+    .logout-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+
+    .logout-icon i {
+        font-size: 26px;
+    }
+
+
+    .logout-modal-content h2 {
+        font-size: 20px;
+    }
+
+
+    .logout-modal-content p {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   SCHOLARLINK PROFILE
+   FINAL MOBILE RESPONSIVE
+   RESPONSIVE ONLY - NO FUNCTION CHANGES
+   ========================================================= */
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #2F80ED;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .12);
+
+    z-index: 2001;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.mobile-menu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, .18);
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    z-index: 1998;
+
+    opacity: 0;
+
+    transition: opacity .3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
+/* =========================================================
+   TABLET + MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* MAIN CONTENT */
+
+    .main-content {
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+
+        padding: 82px 20px 30px;
+
+        overflow-x: hidden;
+    }
+
+
+    /* HAMBURGER */
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+
+    /* =====================================================
+       SIDEBAR MOBILE
+       ===================================================== */
+
+    .sidebar {
+        display: flex;
+
+        width: 270px;
+
+        left: -285px;
+
+        top: 0;
+        bottom: 0;
+
+        height: 100vh;
+
+        padding: 0;
+
+        transition:
+            left .3s ease,
+            box-shadow .3s ease;
+
+        z-index: 2000;
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+
+        box-shadow:
+            12px 0 35px rgba(15, 23, 42, .25);
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        justify-content: flex-start;
+
+        padding: 25px;
+    }
+
+    .logo h2,
+    .logo p {
+        display: block;
+    }
+
+    .logo i {
+        font-size: 38px;
+    }
+
+
+    /* MENU */
+
+    .menu {
+        padding: 20px 15px;
+    }
+
+    .menu li a {
+        justify-content: flex-start;
+
+        padding: 14px 15px;
+
+        gap: 15px;
+
+        font-size: 13px;
+    }
+
+    .menu li a span {
+        display: inline;
+    }
+
+    .menu li a i {
+        width: 22px;
+
+        margin: 0;
+
+        font-size: 17px;
+    }
+
+
+    /* =====================================================
+       TOPBAR
+       ===================================================== */
+
+    .topbar {
+        width: 100%;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .topbar > div:first-child {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .topbar h1 {
+        font-size: 27px;
+
+        line-height: 1.3;
+    }
+
+    .topbar p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+    .topbar-right {
+        flex-shrink: 0;
+    }
+
+    .profile-top {
+        padding: 9px 14px;
+
+        gap: 10px;
+    }
+
+    .profile-top img {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    /* =====================================================
+       PROFILE HEADER
+       ===================================================== */
+
+    .profile-header {
+        width: 100%;
+
+        padding: 25px;
+
+        gap: 25px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .profile-photo-container {
+        flex: none;
+
+        width: 100%;
+    }
+
+    .profile-photo,
+    #profileAvatarLarge,
+    .profile-picture img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .profile-header-info {
+        width: 100%;
+
+        align-items: center;
+    }
+
+    .profile-header-info h2 {
+        font-size: 23px;
+    }
+
+
+    /* =====================================================
+       CARDS
+       ===================================================== */
+
+    .card {
+        width: 100%;
+
+        padding: 22px;
+
+        margin-bottom: 20px;
+    }
+
+    .card h2 {
+        font-size: 20px;
+
+        line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       SCHOLAR INFORMATION
+       ===================================================== */
+
+    .scholar-info {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+
+    .info-box {
+        padding: 17px;
+    }
+
+
+    /* =====================================================
+       PERSONAL INFORMATION
+       ===================================================== */
+
+    .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+
+    .info-grid input,
+    .info-grid textarea,
+    .info-grid select {
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       QR
+       ===================================================== */
+
+    .qr-content {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .qr-info {
+        width: 100%;
+        max-width: 100%;
+
+        text-align: center;
+    }
+
+    .qr-buttons {
+        justify-content: center;
+    }
+
+
+    /* =====================================================
+       TABLE
+       ===================================================== */
+
+    .table-container {
+        width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .action-buttons {
+        width: 100%;
+
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+        margin: 25px 0;
+    }
+
+    .action-buttons button {
+        flex: 1 1 200px;
+    }
+
+
+    /* =====================================================
+       LOADING
+       EXISTING LOADING FUNCTION PRESERVED
+       ===================================================== */
+
+    .loading-box {
+        width: min(420px, calc(100% - 40px));
+
+        padding: 30px 25px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE PHONE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .main-content {
+        padding: 76px 15px 25px;
+    }
+
+    .mobile-menu-btn {
+        top: 14px;
+        left: 14px;
+
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 18px;
+    }
+
+
+    /* TOPBAR */
+
+    .topbar {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+    .topbar p {
+        font-size: 11px;
+    }
+
+    .topbar-right {
+        gap: 8px;
+    }
+
+    .notification-btn {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+    }
+
+    .profile-top {
+        padding: 7px 9px;
+
+        border-radius: 12px;
+    }
+
+    .profile-top img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile-top h4 {
+        font-size: 10px;
+    }
+
+    .profile-top small {
+        font-size: 8px;
+    }
+
+
+    /* PROFILE HEADER */
+
+    .profile-header {
+        padding: 20px;
+
+        border-radius: 18px;
+
+        margin-bottom: 20px;
+    }
+
+    .profile-photo,
+    #profileAvatarLarge,
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-header-info h2 {
+        font-size: 20px;
+    }
+
+    .profile-header-info p {
+        font-size: 12px;
+    }
+
+    .status-badge {
+        font-size: 11px;
+
+        padding: 7px 15px;
+    }
+
+
+    /* CARDS */
+
+    .card {
+        padding: 18px;
+
+        border-radius: 17px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* SCHOLAR INFO */
+
+    .scholar-info {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .info-box {
+        padding: 15px;
+    }
+
+    .info-box h3 {
+        font-size: 12px;
+    }
+
+    .info-box p {
+        font-size: 15px;
+    }
+
+
+    /* PERSONAL INFO */
+
+    .info-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .info-grid label {
+        font-size: 12px;
+    }
+
+    .info-grid input,
+    .info-grid textarea,
+    .info-grid select {
+        padding: 12px 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* QR */
+
+    .qr-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .qr-info h3 {
+        font-size: 18px;
+    }
+
+    .qr-info p {
+        font-size: 12px;
+    }
+
+    .qr-info strong {
+        font-size: 15px;
+    }
+
+    .qr-buttons {
+        width: 100%;
+    }
+
+
+    /* ACTION BUTTONS */
+
+    .action-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .action-buttons .btn-primary,
+    .action-buttons .btn-success,
+    .action-buttons .btn-warning,
+    .action-buttons .btn-secondary {
+        width: 100%;
+    }
+
+
+    /* LOADING BOX */
+
+    .loading-box {
+        width: calc(100% - 40px);
+
+        padding: 28px 20px;
+
+        border-radius: 18px;
+    }
+
+    .loading-box p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-content {
+        padding: 72px 10px 22px;
+    }
+
+    .mobile-menu-btn {
+        top: 12px;
+        left: 12px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+
+    .topbar {
+        gap: 7px;
+    }
+
+    .topbar h1 {
+        font-size: 19px;
+    }
+
+    .topbar p {
+        font-size: 9px;
+    }
+
+    .notification-btn {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 10px;
+
+        font-size: 15px;
+    }
+
+    .profile-top {
+        padding: 5px 7px;
+    }
+
+    .profile-top img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .profile-top h4 {
+        font-size: 9px;
+    }
+
+    .profile-top small {
+        font-size: 7px;
+    }
+
+
+    .profile-header {
+        padding: 17px;
+
+        border-radius: 16px;
+    }
+
+    .profile-photo,
+    #profileAvatarLarge,
+    .profile-picture img {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profile-header-info h2 {
+        font-size: 18px;
+    }
+
+    .profile-header-info p {
+        font-size: 10px;
+    }
+
+
+    .card {
+        padding: 15px;
+
+        border-radius: 15px;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+
+
+    .info-box {
+        padding: 13px;
+    }
+
+    .info-box h3 {
+        font-size: 11px;
+    }
+
+    .info-box p {
+        font-size: 14px;
+    }
+
+
+    .info-grid input,
+    .info-grid textarea,
+    .info-grid select {
+        font-size: 12px;
+
+        padding: 11px 12px;
+    }
+
+
+    .qr-image {
+        width: 130px;
+        height: 130px;
+    }
+
+
+    .loading-box {
+        width: calc(100% - 30px);
+
+        padding: 25px 18px;
+    }
+
+    .loading-box p {
+        font-size: 12px;
+    }
+}

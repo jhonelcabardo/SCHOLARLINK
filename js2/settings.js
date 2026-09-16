@@ -44,18 +44,130 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /*=========================================
-      LOGOUT
+      LOGOUT MODAL
     =========================================*/
 
-    const logoutBtn = document.querySelector(".btn-danger");
+    const logoutModal =
+        document.getElementById("logoutModal");
 
-    if(logoutBtn){
+    const cancelLogout =
+        document.getElementById("cancelLogout");
 
-        logoutBtn.addEventListener("click",()=>{
+    const confirmLogout =
+        document.getElementById("confirmLogout");
 
-            if(confirm("Are you sure you want to logout?")){
+    const logoutBtn =
+        document.querySelector(".btn-danger");
 
-                window.location.href="../index.html";
+    const sidebarLogout =
+        document.getElementById("sidebarlogout");
+
+
+    /*=========================================
+      OPEN LOGOUT MODAL
+    =========================================*/
+
+    function openLogoutModal() {
+
+        if (logoutModal) {
+
+            logoutModal.classList.add("active");
+
+        }
+
+    }
+
+
+    /*=========================================
+      CLOSE LOGOUT MODAL
+    =========================================*/
+
+    function closeLogoutModal() {
+
+        if (logoutModal) {
+
+            logoutModal.classList.remove("active");
+
+        }
+
+    }
+
+
+    /*=========================================
+      ACCOUNT ACTION LOGOUT
+    =========================================*/
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", () => {
+
+            openLogoutModal();
+
+        });
+
+    }
+
+
+    /*=========================================
+      SIDEBAR LOGOUT
+    =========================================*/
+
+    if (sidebarLogout) {
+
+        sidebarLogout.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            console.log("Sidebar Logout clicked.");
+
+            openLogoutModal();
+
+        });
+
+    }
+
+
+    /*=========================================
+      CANCEL LOGOUT
+    =========================================*/
+
+    if (cancelLogout) {
+
+        cancelLogout.addEventListener("click", () => {
+
+            closeLogoutModal();
+
+        });
+
+    }
+
+
+    /*=========================================
+      CONFIRM LOGOUT
+    =========================================*/
+
+    if (confirmLogout) {
+
+        confirmLogout.addEventListener("click", () => {
+
+            window.location.href = "../index.html";
+
+        });
+
+    }
+
+
+    /*=========================================
+      CLOSE MODAL WHEN CLICKING OUTSIDE
+    =========================================*/
+
+    if (logoutModal) {
+
+        logoutModal.addEventListener("click", (event) => {
+
+            if (event.target === logoutModal) {
+
+                closeLogoutModal();
 
             }
 
@@ -63,11 +175,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     /*=========================================
       CHANGE PASSWORD VALIDATION
     =========================================*/
 
-    const passwordInputs = document.querySelectorAll("input[type='password']");
+    const passwordInputs =
+        document.querySelectorAll("input[type='password']");
 
     if(passwordInputs.length >= 3){
 
@@ -91,11 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     /*=========================================
       SHOW CHANGES
     =========================================*/
 
-    const inputs = document.querySelectorAll("input, select");
+    const inputs =
+        document.querySelectorAll("input, select");
 
     inputs.forEach(input=>{
 
@@ -107,19 +223,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
     /*=========================================
       DARK MODE (OPTIONAL)
     =========================================*/
 
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    const checkboxes =
+        document.querySelectorAll("input[type='checkbox']");
 
     checkboxes.forEach(box=>{
 
         box.addEventListener("change",()=>{
 
-            const label = box.parentElement.querySelector("label");
+            const label =
+                box.parentElement.querySelector("label");
 
-            if(label && label.textContent.includes("Dark Mode")){
+            if(label &&
+               label.textContent.includes("Dark Mode")){
 
                 if(box.checked){
 
@@ -139,11 +259,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
     /*=========================================
       OFFICE CARD EFFECT
     =========================================*/
 
-    const officeCard=document.querySelector(".office-card");
+    const officeCard =
+        document.querySelector(".office-card");
 
     if(officeCard){
 
@@ -161,11 +283,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     /*=========================================
       CARD ANIMATION
     =========================================*/
 
-    const cards=document.querySelectorAll(".card");
+    const cards =
+        document.querySelectorAll(".card");
 
     cards.forEach((card,index)=>{
 
@@ -184,11 +308,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
     /*=========================================
       ACTIVE SIDEBAR
     =========================================*/
 
-    const menuItems=document.querySelectorAll(".menu li");
+    const menuItems =
+        document.querySelectorAll(".menu li");
 
     menuItems.forEach(item=>{
 
@@ -205,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
 
     /*=========================================
       PAGE LOADED MESSAGE

@@ -1130,3 +1130,924 @@ border-radius:20px;
 background:#EEF5FF;
 
 }
+
+/* =========================================================
+   SCHOLARLINK
+   SCHOLARSHIP STATUS
+   FINAL MOBILE RESPONSIVE
+   RESPONSIVE ONLY
+   EXISTING FUNCTIONS/DESIGN PRESERVED
+   ========================================================= */
+
+.mobile-menu-btn {
+    display: none;
+
+    position: fixed;
+    top: 16px;
+    left: 16px;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #2F80ED;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .12);
+
+    z-index: 2001;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.mobile-menu-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, .18);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    z-index: 1998;
+
+    opacity: 0;
+
+    transition: opacity .3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
+/* =========================================================
+   TABLET + MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* MAIN CONTENT */
+
+    .main-content {
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+
+        padding: 82px 20px 30px;
+
+        overflow-x: hidden;
+    }
+
+
+    /* HAMBURGER */
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+
+    /* =====================================================
+       MOBILE SIDEBAR
+       ===================================================== */
+
+    .sidebar {
+        display: flex;
+
+        width: 270px;
+
+        left: -285px;
+
+        top: 0;
+        bottom: 0;
+
+        height: 100vh;
+
+        transition:
+            left .3s ease,
+            box-shadow .3s ease;
+
+        z-index: 2000;
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+
+        box-shadow:
+            12px 0 35px rgba(15, 23, 42, .25);
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        justify-content: flex-start;
+        padding: 25px;
+    }
+
+    .logo h2,
+    .logo p {
+        display: block;
+    }
+
+    .logo i {
+        font-size: 42px;
+    }
+
+
+    /* SIDEBAR MENU */
+
+    .menu {
+        padding: 20px 15px;
+    }
+
+    .menu li a {
+        justify-content: flex-start;
+
+        gap: 15px;
+
+        padding: 15px;
+
+        font-size: 14px;
+    }
+
+    .menu li a span {
+        display: inline;
+    }
+
+    .menu li a i {
+        width: 22px;
+
+        margin: 0;
+
+        font-size: 17px;
+    }
+
+
+    /* =====================================================
+       TOPBAR
+       ===================================================== */
+
+    .topbar {
+        width: 100%;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .topbar > div:first-child {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .topbar h1 {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .topbar p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .profile-top {
+        flex-shrink: 0;
+
+        padding: 9px 14px;
+
+        gap: 10px;
+    }
+
+    .profile-top img {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    /* =====================================================
+       SUMMARY CARDS
+       ===================================================== */
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .summary-card {
+        padding: 20px;
+    }
+
+    .summary-card i {
+        width: 58px;
+        height: 58px;
+
+        font-size: 24px;
+
+        margin-bottom: 12px;
+    }
+
+    .summary-card h4 {
+        font-size: 12px;
+    }
+
+    .summary-card h2 {
+        font-size: 19px;
+
+        word-break: break-word;
+    }
+
+
+    /* =====================================================
+       ACADEMIC OVERVIEW
+       ===================================================== */
+
+    .academic-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .overview-box {
+        padding: 18px;
+
+        min-width: 0;
+    }
+
+    .overview-box i {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 19px;
+    }
+
+    .overview-box h4 {
+        font-size: 12px;
+    }
+
+    .overview-box p {
+        font-size: 12px;
+
+        word-break: break-word;
+    }
+
+
+    /* =====================================================
+       STATUS GRID
+       ===================================================== */
+
+    .status-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .card {
+        width: 100%;
+
+        padding: 22px;
+
+        border-radius: 18px;
+    }
+
+    .card h2 {
+        font-size: 19px;
+    }
+
+
+    /* =====================================================
+       PROGRESS
+       ===================================================== */
+
+    .progress-section {
+        display: flex;
+
+        align-items: center;
+
+        gap: 25px;
+    }
+
+    .progress-circle {
+        width: 130px;
+        height: 130px;
+
+        min-width: 130px;
+    }
+
+    .progress-circle::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-circle span {
+        font-size: 24px;
+    }
+
+    .progress-info {
+        min-width: 0;
+    }
+
+    .progress-info h3 {
+        font-size: 17px;
+    }
+
+    .progress-info p {
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       TIMELINE
+       ===================================================== */
+
+    .timeline {
+        margin-left: 10px;
+    }
+
+    .timeline-item {
+        gap: 15px;
+
+        margin-bottom: 24px;
+    }
+
+    .timeline-item h4 {
+        font-size: 13px;
+    }
+
+    .timeline-item small {
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       ACADEMIC STANDING
+       ===================================================== */
+
+    .standing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 12px;
+    }
+
+    .standing-box {
+        padding: 18px;
+    }
+
+    .standing-box h4 {
+        font-size: 11px;
+    }
+
+    .standing-box h2 {
+        font-size: 25px;
+    }
+
+
+    /* =====================================================
+       REMARKS
+       ===================================================== */
+
+    .remarks-box {
+        padding: 20px;
+
+        gap: 15px;
+    }
+
+    .remarks-box i {
+        font-size: 25px;
+
+        min-width: 25px;
+    }
+
+    .remarks-box h3 {
+        font-size: 15px;
+    }
+
+    .remarks-box p {
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       TABLES
+       ===================================================== */
+
+    .checklist-table,
+    .history-table {
+        width: 100%;
+    }
+
+    .checklist-table {
+        min-width: 600px;
+    }
+
+    .history-table {
+        min-width: 650px;
+    }
+
+    .card:has(.checklist-table),
+    .card:has(.history-table) {
+        overflow-x: auto;
+    }
+
+
+    /* =====================================================
+       BENEFITS
+       ===================================================== */
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .benefit-card {
+        padding: 20px;
+    }
+
+    .benefit-card i {
+        width: 58px;
+        height: 58px;
+
+        font-size: 24px;
+    }
+
+    .benefit-card h3 {
+        font-size: 13px;
+    }
+
+    .benefit-card h2 {
+        font-size: 23px;
+
+        word-break: break-word;
+    }
+
+    .benefit-card p {
+        font-size: 11px;
+    }
+
+
+    /* =====================================================
+       ACTION BUTTONS
+       ===================================================== */
+
+    .action-buttons {
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-success {
+        flex: 1 1 200px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE PHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .main-content {
+        padding: 76px 12px 25px;
+    }
+
+    .mobile-menu-btn {
+        top: 14px;
+        left: 14px;
+
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 18px;
+    }
+
+
+    /* TOPBAR */
+
+    .topbar {
+        align-items: flex-start;
+
+        gap: 9px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .topbar p {
+        font-size: 10px;
+    }
+
+    .profile-top {
+        padding: 6px 8px;
+
+        border-radius: 12px;
+    }
+
+    .profile-top img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-top h4 {
+        font-size: 9px;
+    }
+
+    .profile-top small {
+        font-size: 7px;
+    }
+
+
+    /* SUMMARY */
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .summary-card {
+        padding: 14px 10px;
+
+        border-radius: 15px;
+    }
+
+    .summary-card i {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 17px;
+
+        margin-bottom: 9px;
+    }
+
+    .summary-card h4 {
+        font-size: 9px;
+    }
+
+    .summary-card h2 {
+        font-size: 14px;
+    }
+
+
+    /* ACADEMIC OVERVIEW */
+
+    .academic-overview {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .overview-box {
+        padding: 15px;
+
+        border-radius: 15px;
+    }
+
+    .overview-box i {
+        width: 42px;
+        height: 42px;
+
+        min-width: 42px;
+
+        font-size: 17px;
+    }
+
+    .overview-box h4 {
+        font-size: 10px;
+    }
+
+    .overview-box p {
+        font-size: 11px;
+    }
+
+
+    /* CARDS */
+
+    .card {
+        padding: 15px;
+
+        border-radius: 15px;
+
+        margin-bottom: 15px;
+    }
+
+    .card h2 {
+        font-size: 15px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* PROGRESS */
+
+    .progress-section {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 18px;
+    }
+
+    .progress-circle {
+        width: 125px;
+        height: 125px;
+
+        min-width: 125px;
+    }
+
+    .progress-circle::before {
+        width: 96px;
+        height: 96px;
+    }
+
+    .progress-circle span {
+        font-size: 23px;
+    }
+
+    .progress-info h3 {
+        font-size: 15px;
+    }
+
+    .progress-info p {
+        font-size: 10px;
+
+        line-height: 1.6;
+    }
+
+
+    /* TIMELINE */
+
+    .timeline {
+        margin-left: 4px;
+    }
+
+    .timeline-item {
+        gap: 11px;
+
+        margin-bottom: 20px;
+    }
+
+    .timeline-item h4 {
+        font-size: 10px;
+    }
+
+    .timeline-item small {
+        font-size: 8px;
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+
+        min-width: 15px;
+    }
+
+
+    /* ACADEMIC STANDING */
+
+    .standing-grid {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+    .standing-box {
+        padding: 15px;
+    }
+
+    .standing-box h4 {
+        font-size: 10px;
+    }
+
+    .standing-box h2 {
+        font-size: 22px;
+    }
+
+
+    /* REMARKS */
+
+    .remarks-box {
+        padding: 15px;
+
+        gap: 10px;
+    }
+
+    .remarks-box i {
+        font-size: 20px;
+        min-width: 20px;
+    }
+
+    .remarks-box h3 {
+        font-size: 12px;
+    }
+
+    .remarks-box p {
+        font-size: 9px;
+
+        line-height: 1.6;
+    }
+
+    .remarks-box small {
+        font-size: 8px;
+    }
+
+
+    /* BENEFITS */
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .benefit-card {
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+    .benefit-card i {
+        width: 45px;
+        height: 45px;
+
+        font-size: 18px;
+
+        border-radius: 12px;
+    }
+
+    .benefit-card h3 {
+        font-size: 11px;
+    }
+
+    .benefit-card h2 {
+        font-size: 19px;
+    }
+
+    .benefit-card p {
+        font-size: 9px;
+    }
+
+
+    /* TABLE */
+
+    .checklist-table,
+    .history-table {
+        min-width: 600px;
+    }
+
+    .checklist-table th,
+    .checklist-table td,
+    .history-table th,
+    .history-table td {
+        padding: 12px;
+
+        font-size: 10px;
+    }
+
+
+    /* BUTTONS */
+
+    .action-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-success {
+        width: 100%;
+
+        flex: none;
+
+        font-size: 12px;
+
+        padding: 12px 20px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        padding: 18px 8px;
+
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .main-content {
+        padding: 72px 10px 20px;
+    }
+
+    .mobile-menu-btn {
+        top: 12px;
+        left: 12px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+    .topbar h1 {
+        font-size: 18px;
+    }
+
+    .topbar p {
+        font-size: 8px;
+    }
+
+    .profile-top img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .profile-top h4 {
+        font-size: 8px;
+    }
+
+    .profile-top small {
+        font-size: 7px;
+    }
+
+    .summary-card h2 {
+        font-size: 13px;
+    }
+
+    .overview-box {
+        padding: 13px;
+    }
+
+    .card {
+        padding: 13px;
+    }
+
+    .card h2 {
+        font-size: 14px;
+    }
+
+}

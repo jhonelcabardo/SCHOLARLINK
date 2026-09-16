@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarLink | Academic Submissions</title>
+
+    <link rel="stylesheet" href="../css2/academic-submissions.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+
+            <div>
+                <h2>SCHOLARLINK</h2>
+                <p>Scholar Dashboard</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="Home.html">
+                    <i class="fas fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+
+
+            <li class="active">
+                <a href="academic-submissions.html">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Academic Submissions</span>
+                </a>
+            </li>
+
+                
+            <li>
+                <a href="scholarship-status.html">
+                    <i class="fas fa-award"></i>
+                    <span>Scholarship Status</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="announcements.html">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="notifications.html">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="qr-code.html">
+                    <i class="fas fa-qrcode"></i>
+                    <span>My QR Code</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <!-- LOGOUT -->
+        <li>
+
+            <a href="#" id="sidebarlogout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </li>
+
+        </ul>
+
+        
+
+    </aside>
+
+
+
+
+<!-- MOBILE MENU BUTTON -->
+<button class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button"
+        aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- MOBILE SIDEBAR OVERLAY -->
+<div class="sidebar-overlay"
+     id="sidebarOverlay"></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <h1>Academic Submissions</h1>
+
+               
+            </div>
+
+           
+
+        </header>
+
+
+       
+
+
+        <!-- =================================================
+             SUBMISSION TABS
+        ================================================== -->
+
+        <section class="submission-tabs">
+
+            <button
+                class="submission-tab active"
+                data-target="gradesSection">
+
+                <i class="fas fa-file-signature"></i>
+
+                <span>
+                    Submit Grades
+                </span>
+
+            </button>
+
+
+            <button
+                class="submission-tab"
+                data-target="corSection">
+
+                <i class="fas fa-file-circle-check"></i>
+
+                <span>
+                    Submit COR
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             GRADES SECTION
+        ================================================== -->
+
+        <section
+            class="submission-panel active"
+            id="gradesSection">
+
+
+            <!-- SUMMARY -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <i class="fas fa-file-signature"></i>
+
+                    <h4>
+                        Submission Status
+                    </h4>
+
+                    <h2 id="gradesStatus">
+                        Pending
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-calendar"></i>
+
+                    <h4>
+                        Deadline
+                    </h4>
+
+                    <h2 id="gradesDeadline">
+                        —
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-school"></i>
+
+                    <h4>
+                        Semester
+                    </h4>
+
+                    <h2 id="gradesSemester">
+                        —
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-circle-check"></i>
+
+                    <h4>
+                        Verification
+                    </h4>
+
+                    <h2 id="gradesVerification">
+                        Waiting
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- UPLOAD GRADES -->
+
+            <section class="upload-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            <i class="fas fa-upload"></i>
+                            Upload Report of Grades
+                        </h2>
+
+                        <p>
+                            Submit your official Report of Grades
+                            for the current semester.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="upload-area"
+                    id="gradesDropArea">
+
+                    <i class="fas fa-cloud-upload-alt"></i>
+
+                    <h3>
+                        Drag & Drop Grades PDF Here
+                    </h3>
+
+                    <p>
+                        or
+                    </p>
+
+
+                    <label
+                        class="choose-file-btn"
+                        for="gradesFile">
+
+                        <i class="fas fa-folder-open"></i>
+                        Choose PDF File
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="gradesFile"
+                        accept="application/pdf,.pdf"
+                        hidden>
+
+
+                    <div
+                        class="selected-file"
+                        id="gradesSelectedFile">
+
+                        <i class="fas fa-file-pdf"></i>
+
+                        <span>
+                            No file selected
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        id="uploadGradesBtn">
+
+                        <i class="fas fa-cloud-arrow-up"></i>
+                        Upload Grades
+
+                    </button>
+
+
+                    <small>
+                        Only PDF files are accepted.
+                        Maximum file size: 10MB.
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            
+
+
+            <!-- GRADES HISTORY -->
+
+            <section class="card">
+
+                <div class="card-heading">
+
+                    <h2>
+                        <i class="fas fa-history"></i>
+                        Grades Submission History
+                    </h2>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="history-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date Submitted
+                                </th>
+
+                                <th>
+                                    Semester
+                                </th>
+
+                                <th>
+                                    School Year
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="gradesHistoryBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty-row">
+
+                                    No previous grades submission.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+
+
+          
+            <!-- GRADES INFORMATION -->
+
+            <section class="card">
+
+                <h2>
+                    <i class="fas fa-circle-info"></i>
+                    Submission Information
+                </h2>
+
+
+                <div class="info-grid">
+
+                    <div>
+
+                        <label>
+                            Submitted By
+                        </label>
+
+                        <input
+                            id="gradesSubmittedBy"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Scholar ID
+                        </label>
+
+                        <input
+                            id="gradesScholarId"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Submission Date
+                        </label>
+
+                        <input
+                            id="gradesSubmissionDate"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Verification Date
+                        </label>
+
+                        <input
+                            id="gradesVerificationDate"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Verified By
+                        </label>
+
+                        <input
+                            id="gradesVerifiedBy"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Status
+                        </label>
+
+                        <input
+                            id="gradesSubmissionStatus"
+                            type="text"
+                            value="Pending"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            
+
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 ScholarLink |
+                A Portal For Scholarship Management System
+            </p>
+
+        </footer>
+
+
+        <!-- =================================================
+             COR SECTION
+        ================================================== -->
+
+        <section
+            class="submission-panel"
+            id="corSection">
+
+
+            <!-- COR SUMMARY -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <i class="fas fa-file-circle-check"></i>
+
+                    <h4>
+                        Submission Status
+                    </h4>
+
+                    <h2 id="corStatus">
+                        Pending
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-calendar"></i>
+
+                    <h4>
+                        Deadline
+                    </h4>
+
+                    <h2 id="corDeadline">
+                        —
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-school"></i>
+
+                    <h4>
+                        Semester
+                    </h4>
+
+                    <h2 id="corSemester">
+                        —
+                    </h2>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <i class="fas fa-circle-check"></i>
+
+                    <h4>
+                        Verification
+                    </h4>
+
+                    <h2 id="corVerification">
+                        Waiting
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- UPLOAD COR -->
+
+            <section class="upload-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            <i class="fas fa-upload"></i>
+                            Upload Certificate of Registration
+                        </h2>
+
+                        <p>
+                            Submit your current semester
+                            Certificate of Registration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="upload-area"
+                    id="corDropArea">
+
+                    <i class="fas fa-cloud-upload-alt"></i>
+
+                    <h3>
+                        Drag & Drop COR PDF Here
+                    </h3>
+
+                    <p>
+                        or
+                    </p>
+
+
+                    <label
+                        class="choose-file-btn"
+                        for="corFile">
+
+                        <i class="fas fa-folder-open"></i>
+                        Choose PDF File
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="corFile"
+                        accept="application/pdf,.pdf"
+                        hidden>
+
+
+                    <div
+                        class="selected-file"
+                        id="corSelectedFile">
+
+                        <i class="fas fa-file-pdf"></i>
+
+                        <span>
+                            No file selected
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        id="uploadCorBtn">
+
+                        <i class="fas fa-cloud-arrow-up"></i>
+                        Upload COR
+
+                    </button>
+
+
+                    <small>
+                        Accepted Format: PDF
+                        <br>
+                        Maximum Size: 10MB
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- COR HISTORY -->
+
+            <section class="card">
+
+                <h2>
+                    <i class="fas fa-history"></i>
+                    COR Submission History
+                </h2>
+
+
+                <div class="table-wrapper">
+
+                    <table class="history-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date Submitted
+                                </th>
+
+                                <th>
+                                    Semester
+                                </th>
+
+                                <th>
+                                    School Year
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="corHistoryBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty-row">
+
+                                    No previous COR submission.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- CURRENT REGISTRATION -->
+
+            <section class="card">
+
+                <h2>
+                    <i class="fas fa-school"></i>
+                    Current Registration Information
+                </h2>
+
+
+                <div class="info-grid">
+
+                    <div>
+
+                        <label>
+                            School Name
+                        </label>
+
+                        <input
+                            id="schoolName"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Student ID
+                        </label>
+
+                        <input
+                            id="studentId"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Course
+                        </label>
+
+                        <input
+                            id="course"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Year Level
+                        </label>
+
+                        <input
+                            id="yearLevel"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Semester
+                        </label>
+
+                        <input
+                            id="registrationSemester"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            School Year
+                        </label>
+
+                        <input
+                            id="schoolYear"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+               
+
+          
+            
+
+            <!-- COR INFORMATION -->
+
+            <section class="card">
+
+                <h2>
+                    <i class="fas fa-circle-info"></i>
+                    Submission Details
+                </h2>
+
+
+                <div class="info-grid">
+
+                    <div>
+
+                        <label>
+                            Scholar ID
+                        </label>
+
+                        <input
+                            id="corScholarId"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Scholar Name
+                        </label>
+
+                        <input
+                            id="corScholarName"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Submission Date
+                        </label>
+
+                        <input
+                            id="corSubmissionDate"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Verification Date
+                        </label>
+
+                        <input
+                            id="corVerificationDate"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Verified By
+                        </label>
+
+                        <input
+                            id="corVerifiedBy"
+                            type="text"
+                            value="—"
+                            readonly>
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Status
+                        </label>
+
+                        <input
+                            id="corSubmissionStatus"
+                            type="text"
+                            value="Pending"
+                            readonly>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+           
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 ScholarLink |
+                A Portal For Scholarship Management System
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     LOGOUT MODAL
+====================================================== -->
+
+<div class="logout-modal"
+     id="logoutModal">
+
+    <div class="logout-modal-box">
+
+        <div class="logout-icon">
+
+            <i class="fas fa-sign-out-alt"></i>
+
+        </div>
+
+
+        <h2>
+            Confirm Logout
+        </h2>
+
+
+        <p>
+            Are you sure you want to logout from your Scholar account?
+        </p>
+
+
+        <div class="logout-buttons">
+
+            <button class="cancel-btn"
+                    id="cancelLogout"
+                    type="button">
+
+                Cancel
+
+            </button>
+
+
+            <button class="confirm-logout-btn"
+                    id="confirmLogout"
+                    type="button">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<script
+    type="module"
+    src="../js2/academic-submissions.js">
+</script>
+
+
+<!-- MOBILE SIDEBAR ONLY -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("mobileMenuBtn");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (!menuButton || !sidebar || !overlay) return;
+
+    menuButton.addEventListener("click", function () {
+
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+            menuButton.innerHTML = '<i class="fas fa-xmark"></i>';
+            menuButton.setAttribute("aria-label", "Close menu");
+        } else {
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.setAttribute("aria-label", "Open menu");
+        }
+
+    });
+
+    overlay.addEventListener("click", function () {
+
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+
+        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+        menuButton.setAttribute("aria-label", "Open menu");
+
+    });
+
+    sidebar.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.setAttribute("aria-label", "Open menu");
+
+        });
+
+    });
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 900) {
+
+            sidebar.classList.remove("mobile-open");
+            overlay.classList.remove("active");
+
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.setAttribute("aria-label", "Open menu");
+
+        }
+
+    });
+
+});
+</script>
+
+
+</body>
+
+
+</html>
