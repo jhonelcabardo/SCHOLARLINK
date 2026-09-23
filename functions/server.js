@@ -17,15 +17,35 @@ let serviceAccount;
 try {
 
     if (!process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
-
         throw new Error(
             "FIREBASE_SERVICE_ACCOUNT_JSON environment variable is missing."
         );
-
     }
 
     serviceAccount = JSON.parse(
         process.env.FIREBASE_SERVICE_ACCOUNT_JSON
+    );
+
+    // Normalize private key newlines
+    if (serviceAccount.private_key) {
+        serviceAccount.private_key =
+            serviceAccount.private_key.replace(/\\n/g, "\n");
+    }
+
+    // Validate required Firebase service account fields
+    if (
+        !serviceAccount.project_id ||
+        !serviceAccount.client_email ||
+        !serviceAccount.private_key
+    ) {
+        throw new Error(
+            "Firebase service account is missing project_id, client_email, or private_key."
+        );
+    }
+
+    console.log(
+        "Firebase service account loaded for project:",
+        serviceAccount.project_id
     );
 
 }
@@ -37,22 +57,17 @@ catch (error) {
     );
 
     process.exit(1);
-
 }
 
 
 admin.initializeApp({
-    credential: admin.credential.cert(
-        serviceAccount
-    )
+    credential: admin.credential.cert(serviceAccount)
 });
 
 
-const db =
-    admin.firestore();
+const db = admin.firestore();
 
-const adminAuth =
-    admin.auth();
+const adminAuth = admin.auth();
 
 
 // ============================================================
