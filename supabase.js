@@ -1,11 +1,18 @@
 /* =========================================================
    SCHOLARLINK
    SUPABASE CONFIGURATION
+   Firebase = Authentication
+   Firebase = Firestore
+   Supabase = Photo & Requirements Storage
 ========================================================= */
 
 import {
     createClient
 } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+import {
+    auth
+} from "./firebase.js";
 
 
 /* =========================================================
@@ -26,7 +33,38 @@ const SUPABASE_KEY =
 const supabase =
     createClient(
         SUPABASE_URL,
-        SUPABASE_KEY
+        SUPABASE_KEY,
+        {
+            accessToken: async () => {
+
+                const user = auth.currentUser;
+
+                if (!user) {
+                    console.warn(
+                        "No Firebase user is currently signed in."
+                    );
+
+                    return null;
+                }
+
+                try {
+
+                    const token =
+                        await user.getIdToken(false);
+
+                    return token;
+
+                } catch (error) {
+
+                    console.error(
+                        "Failed to get Firebase ID token:",
+                        error
+                    );
+
+                    return null;
+                }
+            }
+        }
     );
 
 
@@ -37,14 +75,3 @@ const supabase =
 export {
     supabase
 };
-
-
-
-
-
-
-
-
-
-
-

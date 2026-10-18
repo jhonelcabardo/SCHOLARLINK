@@ -33,6 +33,8 @@
 
 
     <!-- QR Code CSS -->
+
+    <link rel="stylesheet"href="../css2/Home.css">
     <link rel="stylesheet"
           href="../css2/qr-code.css">
 
@@ -44,167 +46,126 @@
 
 <div class="container">
 
-<!-- =====================================================
-     SIDEBAR - NAVBAR
-====================================================== -->
+
+<!-- =========================================
+     SCHOLARLINK STANDARD SIDEBAR
+     MY QR CODE PAGE
+========================================== -->
 
 <aside class="sidebar">
 
+    <!-- LOGO -->
     <div class="logo">
+        <img
+            src="../login/images/logotop.png"
+            alt="ScholarLink Logo"
+        >
+    </div>
 
-        <i class="fas fa-graduation-cap"></i>
+    <!-- NAVIGATION -->
+    <div class="sidebar-navigation">
 
-        <div>
+        <!-- MAIN -->
+        <div class="menu-section">
 
-            <h2>SCHOLARLINK</h2>
+            <div class="menu-section-title">
+                <span>MAIN</span>
+            </div>
 
-            <p>Home</p>
+            <ul class="menu">
 
+                <li>
+                    <a href="Home.html">
+                        <i class="fas fa-house"></i>
+                        <span>Home</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="academic-submissions.html">
+                        <i class="fas fa-file-signature"></i>
+                        <span>Academic Submission</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- SCHOLAR SERVICES -->
+        <div class="menu-section scholar-services">
+
+            <div class="menu-section-title">
+                <span>SCHOLAR SERVICES</span>
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="announcements.html">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcement</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="notifications.html">
+                        <i class="fas fa-bell"></i>
+                        <span>Notification</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+                <!-- ACTIVE PAGE -->
+                <li class="active">
+                    <a href="qr-code.html">
+                        <i class="fas fa-qrcode"></i>
+                        <span>My QR Code</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
+                    </a>
+                </li>
+
+            </ul>
         </div>
 
     </div>
 
-
-    <ul class="menu">
-
-        <!-- HOME -->
-        <li class="active">
-
-            <a href="Home.html">
-
-                <i class="fas fa-house"></i>
-
-                <span>Home</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- PROFILE -->
-        <li>
-
-            <a href="profile.html">
-
-                <i class="fas fa-user"></i>
-
-                <span>Profile</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- ACADEMIC SUBMISSION -->
-        <li>
-
-            <a href="academic-submissions.html">
-
-                <i class="fas fa-file-signature"></i>
-
-                <span>Academic Submission</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- SCHOLARSHIP STATUS -->
-        <li>
-
-            <a href="scholarship-status.html">
-
-                <i class="fas fa-award"></i>
-
-                <span>Scholarship Status</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- ANNOUNCEMENT -->
-        <li>
-
-            <a href="announcements.html">
-
-                <i class="fas fa-bullhorn"></i>
-
-                <span>Announcement</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- NOTIFICATION -->
-        <li>
-
-            <a href="notifications.html">
-
-                <i class="fas fa-bell"></i>
-
-                <span>Notification</span>
-
-            </a>
-
-        </li>
-
-    <!-- MY QR CODE -->
-    <li class="active">
-
-        <a href="qr-code.html">
-            <i class="fas fa-qrcode"></i>
-            <span>My QR Code</span>
+    <!-- LOGOUT -->
+    <div class="sidebar-logout">
+        <a href="#" id="sidebarlogout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+            <i class="fas fa-chevron-right menu-arrow"></i>
         </a>
-
-    </li>
-
-        <!-- SETTINGS -->
-        <li>
-
-            <a href="settings.html">
-
-                <i class="fas fa-gear"></i>
-
-                <span>Settings</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- LOGOUT -->
-        <li>
-
-            <a href="#" id="sidebarlogout">
-
-                <i class="fas fa-sign-out-alt"></i>
-
-                <span>Logout</span>
-
-            </a>
-
-        </li>
-
-    </ul>
-
-
-    <div class="bottom-menu"></div>
+    </div>
 
 </aside>
 
-
 <!-- MOBILE MENU BUTTON -->
-<button class="mobile-menu-btn"
-        id="mobileMenuBtn"
-        type="button"
-        aria-label="Open menu">
+<button
+    class="mobile-menu-btn"
+    id="mobileMenuBtn"
+    type="button"
+    aria-label="Open menu"
+>
     <i class="fas fa-bars"></i>
 </button>
 
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<!-- MOBILE OVERLAY -->
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay">
+</div>
 
 
     <!-- =====================================================

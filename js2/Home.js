@@ -1,7 +1,8 @@
-/*=========================================================
-  SCHOLARLINK
-  SCHOLAR DASHBOARD - FULL FIREBASE + SUPABASE VERSION
-=========================================================*/
+/* =========================================================
+   SCHOLARLINK
+   HOME PAGE + SCHOLAR COMMUNITY
+   FIREBASE AUTH + FIRESTORE + SUPABASE
+   ========================================================= */
 
 import { auth, db } from "../firebase.js";
 
@@ -12,48 +13,50 @@ import {
 
 import {
     doc,
-    getDoc,
-    collection,
-    getDocs,
-    updateDoc,
-    addDoc,
-    serverTimestamp
+    getDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 import { supabase } from "../supabase.js";
 
 
-/*=========================================================
-  GLOBAL
-=========================================================*/
+/* =========================================================
+   GLOBAL STATE
+   ========================================================= */
 
 let currentUser = null;
 let currentUserData = {};
 let currentApplication = {};
 let currentScholar = {};
 
+let communityPosts = [];
+let realtimeChannel = null;
 
-/*=========================================================
-  DOM READY
-=========================================================*/
+let currentSearch = "";
+
+let isPublishing = false;
+
+
+/* =========================================================
+   DOM READY
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("ScholarLink Home Ready");
+    console.log("ScholarLink Home / Community Ready");
 
     setupSidebar();
-    setupQuickActions();
+    setupMobileCommunity();
     setupLogout();
-    setupUploads();
-    setupQRButtons();
-    setupCardAnimation();
+
+    setupCommunityComposer();
+    setupCommunitySearch();
 
 });
 
 
-/*=========================================================
-  AUTHENTICATION
-=========================================================*/
+/* =========================================================
+   AUTHENTICATION
+   ========================================================= */
 
 onAuthStateChanged(auth, async (user) => {
 
@@ -66,6 +69,7 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
+
     currentUser = user;
 
     console.log(
@@ -73,41 +77,54 @@ onAuthStateChanged(auth, async (user) => {
         user.uid
     );
 
+
     try {
 
-        /*
-         * IMPORTANT:
-         * Correct function name is loadScholarDashboard()
-         */
-        await loadScholarDashboard(user.uid);
+        await loadCurrentUser();
+
+        await loadCommunity();
+
+        setupRealtimeCommunity();
 
     } catch (error) {
 
         console.error(
-            "Dashboard loading error:",
+            "Home loading error:",
             error
         );
 
-        showDashboardError();
+        showCommunityError(
+            "Unable to load the ScholarLink Community."
+        );
 
     }
 
 });
 
 
-/*=========================================================
-  LOAD DASHBOARD
-=========================================================*/
+/* =========================================================
+   LOAD CURRENT USER
+   ========================================================= */
 
-async function loadScholarDashboard(uid) {
+async function loadCurrentUser() {
 
-    /*------------------------------------------
-      LOAD USER
-    ------------------------------------------*/
+    if (!currentUser) {
+        return;
+    }
+
+
+    /* -----------------------------------------------------
+       FIRESTORE USER
+       ----------------------------------------------------- */
 
     const userSnap = await getDoc(
-        doc(db, "users", uid)
+        doc(
+            db,
+            "users",
+            currentUser.uid
+        )
     );
+
 
     if (!userSnap.exists()) {
 
@@ -115,61 +132,6 @@ async function loadScholarDashboard(uid) {
             "User document not found."
         );
 
-        alert(
-            "Your account information could not be found."
-        );
-
-        await signOut(auth);
-
-        window.location.href =
-            "../login/index.html";
-
-        return;
-    }
-
-    currentUserData = userSnap.data();
-
-
-    /*------------------------------------------
-      CHECK SCHOLAR ROLE
-    ------------------------------------------*/
-
-    const role = String(
-        currentUserData.role || ""
-    ).toLowerCase();
-
-    const scholarConfirmed =
-        currentUserData.scholarConfirmed === true;
-
-    const scholarStatus =
-        String(
-            currentUserData.scholarStatus ||
-            currentUserData.applicationStatus ||
-            ""
-        ).toLowerCase();
-
-    const isActiveScholar =
-        role === "scholar" &&
-        (
-            scholarConfirmed ||
-            scholarStatus === "active" ||
-            scholarStatus === "confirmed"
-        );
-
-
-    if (
-        role !== "scholar" ||
-        !isActiveScholar
-    ) {
-
-        console.warn(
-            "Unauthorized scholar account."
-        );
-
-        alert(
-            "Your account is not authorized as an active scholar."
-        );
-
         await signOut(auth);
 
         window.location.href =
@@ -179,17 +141,23 @@ async function loadScholarDashboard(uid) {
     }
 
 
-    /*------------------------------------------
-      LOAD APPLICATION
-    ------------------------------------------*/
+    currentUserData =
+        userSnap.data();
 
-    const applicationSnap = await getDoc(
-        doc(
-            db,
-            "applications",
-            uid
-        )
-    );
+
+    /* -----------------------------------------------------
+       APPLICATION
+       ----------------------------------------------------- */
+
+    const applicationSnap =
+        await getDoc(
+            doc(
+                db,
+                "applications",
+                currentUser.uid
+            )
+        );
+
 
     if (applicationSnap.exists()) {
 
@@ -203,17 +171,19 @@ async function loadScholarDashboard(uid) {
     }
 
 
-    /*------------------------------------------
-      LOAD SCHOLAR RECORD
-    ------------------------------------------*/
+    /* -----------------------------------------------------
+       SCHOLAR
+       ----------------------------------------------------- */
 
-    const scholarSnap = await getDoc(
-        doc(
-            db,
-            "scholars",
-            uid
-        )
-    );
+    const scholarSnap =
+        await getDoc(
+            doc(
+                db,
+                "scholars",
+                currentUser.uid
+            )
+        );
+
 
     if (scholarSnap.exists()) {
 
@@ -227,50 +197,16 @@ async function loadScholarDashboard(uid) {
     }
 
 
-    console.log(
-        "User:",
-        currentUserData
-    );
-
-    console.log(
-        "Application:",
-        currentApplication
-    );
-
-    console.log(
-        "Scholar:",
-        currentScholar
-    );
-
-
-    /*------------------------------------------
-      UPDATE DASHBOARD
-    ------------------------------------------*/
-
     updateScholarHeader();
 
-    updateStatistics();
-
     await loadApplicantPhoto();
-
-    await loadNotifications();
-
-    await loadAnnouncements();
-
-    updateSubmissionStatus();
-
-    updateSchedule();
-
-    updateQRCode();
-
-    await loadRecentActivity();
 
 }
 
 
-/*=========================================================
-  FULL NAME
-=========================================================*/
+/* =========================================================
+   USER INFORMATION
+   ========================================================= */
 
 function getFullName() {
 
@@ -279,11 +215,13 @@ function getFullName() {
         currentApplication.personal_info ||
         {};
 
+
     const first =
         personal.firstName ||
         personal.firstname ||
         currentUserData.firstName ||
         "";
+
 
     const middle =
         personal.middleName ||
@@ -291,27 +229,30 @@ function getFullName() {
         currentUserData.middleName ||
         "";
 
+
     const last =
         personal.lastName ||
         personal.lastname ||
         currentUserData.lastName ||
         "";
 
+
     const suffix =
         personal.suffix ||
         currentUserData.suffix ||
         "";
 
-    const assembled =
-        [
-            first,
-            middle,
-            last,
-            suffix
-        ]
-            .filter(Boolean)
-            .join(" ")
-            .trim();
+
+    const assembled = [
+        first,
+        middle,
+        last,
+        suffix
+    ]
+        .filter(Boolean)
+        .join(" ")
+        .trim();
+
 
     return (
         currentScholar.fullName ||
@@ -320,15 +261,16 @@ function getFullName() {
         currentUserData.name ||
         assembled ||
         currentUser?.displayName ||
+        currentUser?.email ||
         "Scholar"
     );
 
 }
 
 
-/*=========================================================
-  SCHOLAR ID
-=========================================================*/
+/* =========================================================
+   SCHOLAR ID
+   ========================================================= */
 
 function getScholarId() {
 
@@ -345,95 +287,9 @@ function getScholarId() {
 }
 
 
-/*=========================================================
-  SCHOLAR STATUS
-=========================================================*/
-
-function getScholarStatus() {
-
-    return (
-        currentScholar.scholarStatus ||
-        currentScholar.status ||
-        currentApplication.scholarStatus ||
-        currentApplication.status ||
-        currentUserData.scholarStatus ||
-        currentUserData.applicationStatus ||
-        "Active"
-    );
-
-}
-
-
-/*=========================================================
-  UPDATE HEADER
-=========================================================*/
-
-function updateScholarHeader() {
-
-    const name =
-        getFullName();
-
-    const scholarId =
-        getScholarId();
-
-
-    const welcome =
-        document.querySelector(
-            ".topbar h1"
-        );
-
-    if (welcome) {
-
-        welcome.innerHTML =
-            `Welcome, ${escapeHtml(name)}! 👋`;
-
-    }
-
-
-    const profileName =
-        document.getElementById(
-            "headerScholarId"
-        );
-
-    if (profileName) {
-
-        profileName.textContent =
-            scholarId;
-
-    }
-
-
-    const profileProgram =
-        document.getElementById(
-            "headerProgram"
-        );
-
-    if (profileProgram) {
-
-        profileProgram.textContent =
-            getScholarshipProgram();
-
-    }
-
-
-    const qrTitle =
-        document.getElementById(
-            "qrScholarId"
-        );
-
-    if (qrTitle) {
-
-        qrTitle.textContent =
-            scholarId;
-
-    }
-
-}
-
-
-/*=========================================================
-  SCHOLARSHIP PROGRAM
-=========================================================*/
+/* =========================================================
+   PROGRAM
+   ========================================================= */
 
 function getScholarshipProgram() {
 
@@ -442,212 +298,107 @@ function getScholarshipProgram() {
         currentApplication.scholarship_info ||
         {};
 
+
     return (
         currentScholar.scholarshipProgram ||
         currentScholar.program ||
         currentApplication.scholarshipProgram ||
         scholarship.scholarshipProgram ||
         scholarship.program ||
-        "Scholarship Program"
+        currentUserData.program ||
+        "Scholar"
     );
 
 }
 
 
-/*=========================================================
-  STATISTICS
-=========================================================*/
+/* =========================================================
+   ROLE
+   ========================================================= */
 
-function updateStatistics() {
+function getUserRole() {
 
-    const status =
-        String(getScholarStatus())
-            .replace(/_/g, " ")
-            .replace(
-                /\b\w/g,
-                c => c.toUpperCase()
-            );
+    return (
+        currentScholar.role ||
+        currentUserData.role ||
+        "scholar"
+    );
+
+}
 
 
-    const statusCard =
+/* =========================================================
+   UPDATE HEADER
+   ========================================================= */
+
+function updateScholarHeader() {
+
+    const scholarId =
         document.getElementById(
-            "scholarStatus"
+            "headerScholarId"
         );
 
-    if (statusCard) {
 
-        statusCard.textContent =
-            status;
+    if (scholarId) {
+
+        scholarId.textContent =
+            getScholarId();
 
     }
 
 
-    const academic =
-        currentApplication.academicInformation ||
-        currentApplication.academic_info ||
-        {};
-
-
-    const latestGPA =
-        currentScholar.latestGPA ||
-        currentScholar.gpa ||
-        currentScholar.GPA ||
-        currentApplication.latestGPA ||
-        academic.gpa ||
-        academic.GPA ||
-        academic.generalAverage ||
-        academic.general_average ||
-        "Not available";
-
-
-    const gpaCard =
+    const program =
         document.getElementById(
-            "latestGPA"
+            "headerProgram"
         );
 
-    if (gpaCard) {
 
-        gpaCard.textContent =
-            latestGPA;
+    if (program) {
+
+        program.textContent =
+            getScholarshipProgram();
 
     }
 
 
-    const gradesStatus =
-        getDocumentStatus(
-            currentScholar.grades,
-            currentApplication.grades,
-            currentApplication.files?.scholarDocuments?.grades
-        );
-
-
-    const gradesCard =
+    const profileAvatar =
         document.getElementById(
-            "gradesStatus"
-        );
-
-    if (gradesCard) {
-
-        gradesCard.textContent =
-            formatStatus(gradesStatus);
-
-    }
-
-
-    const corStatus =
-        getDocumentStatus(
-            currentScholar.cor,
-            currentApplication.cor,
-            currentApplication.files?.scholarDocuments?.cor
+            "profileAvatar"
         );
 
 
-    const corCard =
+    const composerAvatar =
         document.getElementById(
-            "corStatus"
+            "composerAvatar"
         );
 
-    if (corCard) {
 
-        corCard.textContent =
-            formatStatus(corStatus);
+    const photo =
+        currentUserData.photo ||
+        currentUserData.photoURL ||
+        currentScholar.photo ||
+        currentScholar.photoURL ||
+        currentUser?.photoURL;
 
-    }
 
+    if (photo) {
 
-    const qrCard =
-        document.getElementById(
-            "qrStatus"
-        );
+        if (profileAvatar) {
+            profileAvatar.src = photo;
+        }
 
-    if (qrCard) {
-
-        qrCard.textContent =
-            "Active";
+        if (composerAvatar) {
+            composerAvatar.src = photo;
+        }
 
     }
 
 }
 
 
-/*=========================================================
-  DOCUMENT STATUS
-=========================================================*/
-
-function getDocumentStatus(...objects) {
-
-    for (const obj of objects) {
-
-        if (!obj) continue;
-
-
-        if (typeof obj === "string") {
-
-            return obj;
-
-        }
-
-
-        if (obj.status) {
-
-            return obj.status;
-
-        }
-
-
-        if (obj.verificationStatus) {
-
-            return obj.verificationStatus;
-
-        }
-
-
-        if (obj.verified === true) {
-
-            return "verified";
-
-        }
-
-
-        if (
-            obj.url ||
-            obj.storagePath ||
-            obj.path
-        ) {
-
-            return "submitted";
-
-        }
-
-    }
-
-
-    return "pending";
-
-}
-
-
-/*=========================================================
-  FORMAT STATUS
-=========================================================*/
-
-function formatStatus(status) {
-
-    return String(
-        status || "pending"
-    )
-        .replace(/_/g, " ")
-        .replace(
-            /\b\w/g,
-            c => c.toUpperCase()
-        );
-
-}
-
-
-/*=========================================================
-  LOAD APPLICANT PHOTO
-=========================================================*/
+/* =========================================================
+   APPLICANT PHOTO FROM SUPABASE
+   ========================================================= */
 
 async function loadApplicantPhoto() {
 
@@ -660,9 +411,7 @@ async function loadApplicantPhoto() {
 
 
     if (!photo) {
-
         return;
-
     }
 
 
@@ -676,16 +425,12 @@ async function loadApplicantPhoto() {
 
 
     if (!path) {
-
         return;
-
     }
 
 
     path =
-        normalizeStoragePath(
-            path
-        );
+        normalizeStoragePath(path);
 
 
     try {
@@ -698,46 +443,46 @@ async function loadApplicantPhoto() {
                 .from("applicant-photos")
                 .createSignedUrl(
                     path,
-                    300
+                    3600
                 );
 
 
         if (error) {
 
             console.error(
-                "Photo URL error:",
+                "Applicant photo error:",
                 error
             );
 
             return;
-
         }
 
 
         if (!data?.signedUrl) {
-
             return;
-
         }
 
 
         const images =
             document.querySelectorAll(
-                ".profile img, #profileAvatar, .profile-photo, .scholar-photo"
+                "#profileAvatar, #composerAvatar"
             );
 
 
-        images.forEach(img => {
+        images.forEach(
+            image => {
 
-            img.src =
-                data.signedUrl;
+                image.src =
+                    data.signedUrl;
 
-        });
+            }
+        );
+
 
     } catch (error) {
 
         console.error(
-            "Applicant photo error:",
+            "Photo loading error:",
             error
         );
 
@@ -746,22 +491,21 @@ async function loadApplicantPhoto() {
 }
 
 
-/*=========================================================
-  STORAGE PATH NORMALIZER
-=========================================================*/
+/* =========================================================
+   STORAGE PATH NORMALIZER
+   ========================================================= */
 
 function normalizeStoragePath(path) {
 
-    if (!path) return "";
+    if (!path) {
+        return "";
+    }
+
 
     path =
-        String(path).trim();
-
-    path =
-        path.replace(
-            /^\/+/,
-            ""
-        );
+        String(path)
+            .trim()
+            .replace(/^\/+/, "");
 
 
     path =
@@ -782,8 +526,10 @@ function normalizeStoragePath(path) {
             const url =
                 new URL(path);
 
+
             const marker =
                 "/storage/v1/object/";
+
 
             const index =
                 url.pathname.indexOf(
@@ -850,393 +596,1366 @@ function normalizeStoragePath(path) {
 }
 
 
-/*=========================================================
-  NOTIFICATIONS
-=========================================================*/
+/* =========================================================
+   COMMUNITY INITIALIZATION
+   ========================================================= */
 
-async function loadNotifications() {
+async function loadCommunity() {
 
-    const container =
+    const feed =
         document.getElementById(
-            "dashboardNotifications"
+            "communityFeed"
         );
 
 
-    if (!container) return;
+    if (!feed) {
+        return;
+    }
 
 
-    container.innerHTML = "";
+    feed.innerHTML = `
+        <div class="community-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Loading community...</span>
+        </div>
+    `;
 
 
-    let notifications = [];
+    await loadCommunityPosts();
 
+}
+
+
+/* =========================================================
+   LOAD POSTS
+   ========================================================= */
+
+async function loadCommunityPosts() {
 
     try {
 
-        const snap =
-            await getDocs(
-                collection(
-                    db,
-                    "notifications"
-                )
-            );
-
-
-        snap.forEach(
-            docSnap => {
-
-                const data =
-                    docSnap.data();
-
-
-                const recipient =
-                    data.userId ||
-                    data.recipientId ||
-                    data.scholarId ||
-                    data.uid ||
-                    data.applicantId;
-
-
-                if (
-                    !recipient ||
-                    recipient ===
-                    currentUser.uid
-                ) {
-
-                    notifications.push({
-                        id: docSnap.id,
-                        ...data
-                    });
-
-                }
-
-            }
-        );
-
-
-        notifications.sort(
-            (a, b) => {
-
-                return (
-                    getTimestamp(
-                        b.createdAt
-                    ) -
-                    getTimestamp(
-                        a.createdAt
-                    )
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("community_posts")
+                .select("*")
+                .eq("is_deleted", false)
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
                 );
 
-            }
-        );
 
+        if (error) {
 
-        notifications =
-            notifications.slice(
-                0,
-                3
+            console.error(
+                "Community posts error:",
+                error
             );
+
+            throw error;
+
+        }
+
+
+        communityPosts =
+            Array.isArray(data)
+                ? data
+                : [];
+
+
+        renderCommunityPosts();
+
+
+        await loadPinnedPosts();
+
 
     } catch (error) {
 
         console.error(
-            "Notification loading error:",
+            "Unable to load community posts:",
             error
+        );
+
+
+        showCommunityError(
+            "Community posts could not be loaded."
         );
 
     }
 
+}
 
-    if (!notifications.length) {
 
-        container.innerHTML = `
-            <div class="notification-item">
+/* =========================================================
+   RENDER COMMUNITY POSTS
+   ========================================================= */
 
-                <i class="fas fa-circle-info"></i>
+async function renderCommunityPosts() {
 
-                <div>
+    const feed =
+        document.getElementById(
+            "communityFeed"
+        );
 
-                    <h4>
-                        No notifications
-                    </h4>
 
-                    <p>
-                        You're all caught up.
-                    </p>
+    const empty =
+        document.getElementById(
+            "communityEmpty"
+        );
 
+
+    if (!feed) {
+        return;
+    }
+
+
+    let posts =
+        [...communityPosts];
+
+
+    if (currentSearch.trim()) {
+
+        const search =
+            currentSearch
+                .trim()
+                .toLowerCase();
+
+
+        posts =
+            posts.filter(
+                post => {
+
+                    const message =
+                        String(
+                            post.message ||
+                            ""
+                        ).toLowerCase();
+
+
+                    const author =
+                        String(
+                            post.author_name ||
+                            ""
+                        ).toLowerCase();
+
+
+                    return (
+                        message.includes(search) ||
+                        author.includes(search)
+                    );
+
+                }
+            );
+
+    }
+
+
+    if (!posts.length) {
+
+        feed.innerHTML = "";
+
+
+        if (empty) {
+
+            empty.classList.remove(
+                "hidden"
+            );
+
+            empty.innerHTML = `
+                <div class="empty-icon">
+                    <i class="fas fa-comments"></i>
                 </div>
 
-            </div>
-        `;
+                <h3>
+                    ${
+                        currentSearch
+                            ? "No matching posts"
+                            : "No community posts yet"
+                    }
+                </h3>
+
+                <p>
+                    ${
+                        currentSearch
+                            ? "Try another search."
+                            : "Be the first scholar to share something with the community."
+                    }
+                </p>
+            `;
+
+        }
 
         return;
 
     }
 
 
-    notifications.forEach(
-        notification => {
+    if (empty) {
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+        empty.classList.add(
+            "hidden"
+        );
 
-
-            item.className =
-                "notification-item";
+    }
 
 
-            const title =
-                notification.title ||
-                notification.subject ||
-                "Notification";
+    feed.innerHTML = "";
 
 
-            const message =
-                notification.message ||
-                notification.description ||
-                "";
+    for (
+        const post of posts
+    ) {
 
-
-            item.innerHTML = `
-                <i class="fas fa-bell"></i>
-
-                <div>
-
-                    <h4>
-                        ${escapeHtml(title)}
-                    </h4>
-
-                    <p>
-                        ${escapeHtml(message)}
-                    </p>
-
-                </div>
-            `;
-
-
-            container.appendChild(
-                item
+        const postElement =
+            await createPostElement(
+                post
             );
 
-        }
-    );
+
+        feed.appendChild(
+            postElement
+        );
+
+    }
 
 }
 
 
-/*=========================================================
-  ANNOUNCEMENTS
-=========================================================*/
+/* =========================================================
+   CREATE POST ELEMENT
+   ========================================================= */
 
-async function loadAnnouncements() {
+async function createPostElement(post) {
 
-    const container =
-        document.getElementById(
-            "dashboardAnnouncements"
+    const article =
+        document.createElement(
+            "article"
         );
 
 
-    if (!container) return;
+    article.className =
+        "community-post";
 
 
-    container.innerHTML = "";
+    article.dataset.postId =
+        post.id;
 
 
-    let announcements = [];
+    const authorName =
+        post.author_name ||
+        "Scholar";
+
+
+    const role =
+        formatRole(
+            post.role ||
+            "scholar"
+        );
+
+
+    const message =
+        post.message ||
+        "";
+
+
+    const time =
+        formatRelativeTime(
+            post.created_at
+        );
+
+
+    const isOwner =
+        currentUser &&
+        post.firebase_uid ===
+        currentUser.uid;
+
+
+    const isPinned =
+        post.is_pinned === true;
+
+
+    const avatar =
+        post.author_photo ||
+        "../images/user.png";
+
+
+    article.innerHTML = `
+
+        <div class="post-header">
+
+            <div class="post-author">
+
+                <img
+                    src="${escapeAttribute(avatar)}"
+                    alt="Profile"
+                    class="post-avatar"
+                >
+
+                <div class="post-author-info">
+
+                    <strong>
+                        ${escapeHtml(authorName)}
+                    </strong>
+
+                    <span class="post-role">
+                        ${escapeHtml(role)}
+                    </span>
+
+                    <small>
+                        ${escapeHtml(time)}
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="post-header-actions">
+
+                ${
+                    isPinned
+                        ? `
+                            <span
+                                class="pinned-badge"
+                                title="Pinned post"
+                            >
+                                <i class="fas fa-thumbtack"></i>
+                                Pinned
+                            </span>
+                        `
+                        : ""
+                }
+
+
+                ${
+                    isOwner
+                        ? `
+                            <button
+                                class="post-menu-btn"
+                                type="button"
+                                data-action="delete"
+                                title="Delete post"
+                            >
+                                <i class="fas fa-ellipsis"></i>
+                            </button>
+                        `
+                        : ""
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="post-body">
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+        </div>
+
+
+        <div
+            class="post-actions"
+            data-actions="${post.id}"
+        >
+
+            <button
+                type="button"
+                class="post-action like-post-btn"
+                data-action="like"
+                data-post-id="${escapeAttribute(post.id)}"
+            >
+                <i class="far fa-heart"></i>
+                <span>Like</span>
+                <b class="like-count">0</b>
+            </button>
+
+
+            <button
+                type="button"
+                class="post-action comment-post-btn"
+                data-action="comment"
+                data-post-id="${escapeAttribute(post.id)}"
+            >
+                <i class="far fa-comment"></i>
+                <span>Comment</span>
+                <b class="comment-count">0</b>
+            </button>
+
+        </div>
+
+
+        <div
+            class="post-comments"
+            data-comments="${escapeAttribute(post.id)}"
+            hidden
+        >
+
+            <div class="comments-list"></div>
+
+
+            <form class="comment-form">
+
+                <input
+                    type="text"
+                    class="comment-input"
+                    maxlength="500"
+                    placeholder="Write a comment..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="submit"
+                    title="Send comment"
+                >
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+    `;
+
+
+    setupPostActions(
+        article,
+        post
+    );
+
+
+    await updatePostCounters(
+        article,
+        post.id
+    );
+
+
+    return article;
+
+}
+
+
+/* =========================================================
+   POST ACTIONS
+   ========================================================= */
+
+function setupPostActions(
+    article,
+    post
+) {
+
+    const likeButton =
+        article.querySelector(
+            ".like-post-btn"
+        );
+
+
+    const commentButton =
+        article.querySelector(
+            ".comment-post-btn"
+        );
+
+
+    const deleteButton =
+        article.querySelector(
+            '[data-action="delete"]'
+        );
+
+
+    if (likeButton) {
+
+        likeButton.addEventListener(
+            "click",
+            async () => {
+
+                await toggleReaction(
+                    post.id,
+                    likeButton
+                );
+
+            }
+        );
+
+    }
+
+
+    if (commentButton) {
+
+        commentButton.addEventListener(
+            "click",
+            async () => {
+
+                const commentsBox =
+                    article.querySelector(
+                        ".post-comments"
+                    );
+
+
+                if (!commentsBox) {
+                    return;
+                }
+
+
+                const isHidden =
+                    commentsBox.hidden;
+
+
+                commentsBox.hidden =
+                    !isHidden;
+
+
+                if (isHidden) {
+
+                    await loadComments(
+                        post.id,
+                        article
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (deleteButton) {
+
+        deleteButton.addEventListener(
+            "click",
+            async () => {
+
+                await deleteCommunityPost(
+                    post.id
+                );
+
+            }
+        );
+
+    }
+
+
+    const commentForm =
+        article.querySelector(
+            ".comment-form"
+        );
+
+
+    if (commentForm) {
+
+        commentForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+
+                const input =
+                    commentForm.querySelector(
+                        ".comment-input"
+                    );
+
+
+                const message =
+                    input?.value.trim();
+
+
+                if (!message) {
+                    return;
+                }
+
+
+                await addComment(
+                    post.id,
+                    message,
+                    input,
+                    article
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LIKE / REACTION
+   ========================================================= */
+
+async function toggleReaction(
+    postId,
+    button
+) {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    button.disabled = true;
 
 
     try {
 
-        const snap =
-            await getDocs(
-                collection(
-                    db,
-                    "announcements"
+        const {
+            data: existing,
+            error: checkError
+        } =
+            await supabase
+                .from("community_reactions")
+                .select("id")
+                .eq(
+                    "post_id",
+                    postId
                 )
+                .eq(
+                    "firebase_uid",
+                    currentUser.uid
+                )
+                .maybeSingle();
+
+
+        if (checkError) {
+            throw checkError;
+        }
+
+
+        if (existing) {
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("community_reactions")
+                    .delete()
+                    .eq(
+                        "id",
+                        existing.id
+                    );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            button.classList.remove(
+                "active"
             );
 
 
-        snap.forEach(
-            docSnap => {
-
-                const data =
-                    docSnap.data();
-
-
-                const status =
-                    String(
-                        data.status ||
-                        "published"
-                    ).toLowerCase();
+            const icon =
+                button.querySelector(
+                    "i"
+                );
 
 
-                if (
-                    status !== "published" &&
-                    status !== "active"
-                ) {
+            if (icon) {
 
-                    return;
+                icon.className =
+                    "far fa-heart";
 
-                }
+            }
 
 
-                /*
-                 * Audience filtering
-                 */
-                const audience =
-                    String(
-                        data.audience ||
-                        data.recipient ||
-                        data.recipients ||
-                        "all"
-                    ).toLowerCase();
+        } else {
+
+            const {
+                error
+            } =
+                await supabase
+                    .from("community_reactions")
+                    .insert({
+
+                        post_id:
+                            postId,
+
+                        firebase_uid:
+                            currentUser.uid,
+
+                        reaction:
+                            "like"
+
+                    });
 
 
-                const isScholarAnnouncement =
-                    audience === "all" ||
-                    audience === "everyone" ||
-                    audience === "scholar" ||
-                    audience === "scholars" ||
-                    audience === "all_scholars" ||
-                    audience === "approved_scholars" ||
-                    audience === "approved_scholar" ||
-                    audience === "approved_scholars_only" ||
-                    audience === "all_users" ||
-                    audience === "all users" ||
-                    audience.includes("scholar");
+            if (error) {
+                throw error;
+            }
 
 
-                if (
-                    !isScholarAnnouncement
-                ) {
-
-                    return;
-
-                }
+            button.classList.add(
+                "active"
+            );
 
 
-                /*
-                 * End date
-                 */
-                if (data.endDate) {
-
-                    const end =
-                        new Date(
-                            data.endDate
-                        ).getTime();
+            const icon =
+                button.querySelector(
+                    "i"
+                );
 
 
-                    if (
-                        end &&
-                        Date.now() > end
-                    ) {
+            if (icon) {
 
-                        return;
+                icon.className =
+                    "fas fa-heart";
+
+            }
+
+        }
+
+
+        const article =
+            button.closest(
+                ".community-post"
+            );
+
+
+        await updatePostCounters(
+            article,
+            postId
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Reaction error:",
+            error
+        );
+
+        alert(
+            "Unable to update reaction."
+        );
+
+    } finally {
+
+        button.disabled = false;
+
+    }
+
+}
+
+
+/* =========================================================
+   POST COUNTERS
+   ========================================================= */
+
+async function updatePostCounters(
+    article,
+    postId
+) {
+
+    if (!article) {
+        return;
+    }
+
+
+    try {
+
+        const {
+            count: likes
+        } =
+            await supabase
+                .from("community_reactions")
+                .select(
+                    "*",
+                    {
+                        count: "exact",
+                        head: true
+                    }
+                )
+                .eq(
+                    "post_id",
+                    postId
+                );
+
+
+        const {
+            count: comments
+        } =
+            await supabase
+                .from("community_comments")
+                .select(
+                    "*",
+                    {
+                        count: "exact",
+                        head: true
+                    }
+                )
+                .eq(
+                    "post_id",
+                    postId
+                );
+
+
+        const likeCount =
+            article.querySelector(
+                ".like-count"
+            );
+
+
+        const commentCount =
+            article.querySelector(
+                ".comment-count"
+            );
+
+
+        if (likeCount) {
+
+            likeCount.textContent =
+                likes || 0;
+
+        }
+
+
+        if (commentCount) {
+
+            commentCount.textContent =
+                comments || 0;
+
+        }
+
+
+        if (currentUser) {
+
+            const {
+                data: myReaction
+            } =
+                await supabase
+                    .from("community_reactions")
+                    .select("id")
+                    .eq(
+                        "post_id",
+                        postId
+                    )
+                    .eq(
+                        "firebase_uid",
+                        currentUser.uid
+                    )
+                    .maybeSingle();
+
+
+            const likeButton =
+                article.querySelector(
+                    ".like-post-btn"
+                );
+
+
+            if (likeButton) {
+
+                const icon =
+                    likeButton.querySelector(
+                        "i"
+                    );
+
+
+                if (myReaction) {
+
+                    likeButton.classList.add(
+                        "active"
+                    );
+
+
+                    if (icon) {
+
+                        icon.className =
+                            "fas fa-heart";
+
+                    }
+
+                } else {
+
+                    likeButton.classList.remove(
+                        "active"
+                    );
+
+
+                    if (icon) {
+
+                        icon.className =
+                            "far fa-heart";
 
                     }
 
                 }
 
-
-                announcements.push({
-                    id: docSnap.id,
-                    ...data
-                });
-
             }
-        );
 
-
-        announcements.sort(
-            (a, b) => {
-
-                return (
-                    getTimestamp(
-                        b.createdAt ||
-                        b.publishDate
-                    ) -
-                    getTimestamp(
-                        a.createdAt ||
-                        a.publishDate
-                    )
-                );
-
-            }
-        );
-
-
-        announcements =
-            announcements.slice(
-                0,
-                3
-            );
+        }
 
     } catch (error) {
 
-        console.error(
-            "Announcement loading error:",
+        /*
+         * Do not destroy the feed if
+         * reaction/comment tables are
+         * temporarily unavailable.
+         */
+
+        console.warn(
+            "Counter loading skipped:",
             error
         );
 
     }
 
+}
 
-    if (!announcements.length) {
 
-        container.innerHTML = `
-            <div class="announcement-item">
+/* =========================================================
+   COMMENTS
+   ========================================================= */
 
-                <h4>
-                    No announcements
-                </h4>
+async function loadComments(
+    postId,
+    article
+) {
 
-                <p>
-                    No new announcements at this time.
-                </p>
+    const list =
+        article.querySelector(
+            ".comments-list"
+        );
 
+
+    if (!list) {
+        return;
+    }
+
+
+    list.innerHTML = `
+        <div class="comments-loading">
+            Loading comments...
+        </div>
+    `;
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("community_comments")
+                .select("*")
+                .eq(
+                    "post_id",
+                    postId
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data?.length) {
+
+            list.innerHTML = `
+                <div class="no-comments">
+                    No comments yet.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        list.innerHTML = "";
+
+
+        data.forEach(
+            comment => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "community-comment";
+
+
+                const isOwner =
+                    currentUser &&
+                    comment.firebase_uid ===
+                    currentUser.uid;
+
+
+                item.innerHTML = `
+
+                    <img
+                        src="${
+                            escapeAttribute(
+                                comment.author_photo ||
+                                "../images/user.png"
+                            )
+                        }"
+                        alt="Profile"
+                    >
+
+
+                    <div class="comment-content">
+
+                        <div class="comment-top">
+
+                            <strong>
+                                ${
+                                    escapeHtml(
+                                        comment.author_name ||
+                                        "Scholar"
+                                    )
+                                }
+                            </strong>
+
+                            ${
+                                isOwner
+                                    ? `
+                                        <button
+                                            type="button"
+                                            class="delete-comment"
+                                            title="Delete comment"
+                                        >
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    `
+                                    : ""
+                            }
+
+                        </div>
+
+
+                        <p>
+                            ${
+                                escapeHtml(
+                                    comment.message ||
+                                    ""
+                                )
+                            }
+                        </p>
+
+
+                        <small>
+                            ${
+                                escapeHtml(
+                                    formatRelativeTime(
+                                        comment.created_at
+                                    )
+                                )
+                            }
+                        </small>
+
+                    </div>
+
+                `;
+
+
+                const deleteButton =
+                    item.querySelector(
+                        ".delete-comment"
+                    );
+
+
+                if (deleteButton) {
+
+                    deleteButton.addEventListener(
+                        "click",
+                        async () => {
+
+                            await deleteComment(
+                                comment.id,
+                                postId,
+                                article
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                list.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Comments error:",
+            error
+        );
+
+
+        list.innerHTML = `
+            <div class="no-comments">
+                Comments are currently unavailable.
             </div>
         `;
 
+    }
+
+}
+
+
+/* =========================================================
+   ADD COMMENT
+   ========================================================= */
+
+async function addComment(
+    postId,
+    message,
+    input,
+    article
+) {
+
+    if (!currentUser) {
         return;
+    }
+
+
+    try {
+
+        const payload = {
+
+            post_id:
+                postId,
+
+            firebase_uid:
+                currentUser.uid,
+
+            author_name:
+                getFullName(),
+
+            author_photo:
+                await getCurrentPhotoUrl(),
+
+            role:
+                getUserRole(),
+
+            message:
+                message
+
+        };
+
+
+        const {
+            error
+        } =
+            await supabase
+                .from("community_comments")
+                .insert(
+                    payload
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        input.value = "";
+
+
+        await loadComments(
+            postId,
+            article
+        );
+
+
+        await updatePostCounters(
+            article,
+            postId
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Add comment error:",
+            error
+        );
+
+
+        alert(
+            "Unable to post your comment."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DELETE COMMENT
+   ========================================================= */
+
+async function deleteComment(
+    commentId,
+    postId,
+    article
+) {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Delete this comment?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        const {
+            error
+        } =
+            await supabase
+                .from("community_comments")
+                .delete()
+                .eq(
+                    "id",
+                    commentId
+                )
+                .eq(
+                    "firebase_uid",
+                    currentUser.uid
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        await loadComments(
+            postId,
+            article
+        );
+
+
+        await updatePostCounters(
+            article,
+            postId
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Delete comment error:",
+            error
+        );
+
+
+        alert(
+            "Unable to delete comment."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE POST
+   ========================================================= */
+
+function setupCommunityComposer() {
+
+    const textarea =
+        document.getElementById(
+            "postMessage"
+        );
+
+
+    const publishButton =
+        document.getElementById(
+            "publishPostBtn"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "characterCount"
+        );
+
+
+    if (!textarea) {
+        return;
+    }
+
+
+    textarea.addEventListener(
+        "input",
+        () => {
+
+            const length =
+                textarea.value.length;
+
+
+            if (counter) {
+
+                counter.textContent =
+                    `${length} / 1000`;
+
+            }
+
+        }
+    );
+
+
+    if (publishButton) {
+
+        publishButton.addEventListener(
+            "click",
+            publishCommunityPost
+        );
 
     }
 
 
-    announcements.forEach(
-        announcement => {
+    textarea.addEventListener(
+        "keydown",
+        event => {
 
-            const item =
-                document.createElement(
-                    "div"
-                );
+            if (
+                (event.ctrlKey ||
+                 event.metaKey) &&
+                event.key === "Enter"
+            ) {
 
+                event.preventDefault();
 
-            item.className =
-                "announcement-item";
+                publishCommunityPost();
 
-
-            item.innerHTML = `
-                <h4>
-                    ${escapeHtml(
-                        announcement.title ||
-                        "Announcement"
-                    )}
-                </h4>
-
-                <p>
-                    ${escapeHtml(
-                        announcement.message ||
-                        announcement.description ||
-                        ""
-                    )}
-                </p>
-            `;
-
-
-            container.appendChild(
-                item
-            );
+            }
 
         }
     );
@@ -1244,392 +1963,533 @@ async function loadAnnouncements() {
 }
 
 
-/*=========================================================
-  SUBMISSION STATUS
-=========================================================*/
+/* =========================================================
+   PUBLISH POST
+   ========================================================= */
 
-function updateSubmissionStatus() {
+async function publishCommunityPost() {
 
-    const gradesStatus =
-        getDocumentStatus(
-            currentScholar.grades,
-            currentApplication.grades,
-            currentApplication.files?.scholarDocuments?.grades
+    if (isPublishing) {
+        return;
+    }
+
+
+    if (!currentUser) {
+
+        alert(
+            "Please log in first."
         );
-
-
-    const corStatus =
-        getDocumentStatus(
-            currentScholar.cor,
-            currentApplication.cor,
-            currentApplication.files?.scholarDocuments?.cor
-        );
-
-
-    const scholarshipStatus =
-        getScholarStatus();
-
-
-    setElementText(
-        "gradesStatus",
-        formatStatus(gradesStatus)
-    );
-
-
-    setElementText(
-        "corStatus",
-        formatStatus(corStatus)
-    );
-
-
-    setElementText(
-        "scholarStatus",
-        formatStatus(scholarshipStatus)
-    );
-
-
-    setStatusCell(
-        document.getElementById(
-            "gradesStatusTable"
-        ),
-        gradesStatus
-    );
-
-
-    setStatusCell(
-        document.getElementById(
-            "corStatusTable"
-        ),
-        corStatus
-    );
-
-
-    setStatusCell(
-        document.getElementById(
-            "scholarshipStatusTable"
-        ),
-        scholarshipStatus
-    );
-
-}
-
-
-/*=========================================================
-  STATUS CELL
-=========================================================*/
-
-function setStatusCell(
-    cell,
-    status
-) {
-
-    if (!cell) return;
-
-
-    const formatted =
-        formatStatus(status);
-
-
-    cell.textContent =
-        formatted;
-
-
-    cell.className =
-        getStatusClass(status);
-
-}
-
-
-/*=========================================================
-  STATUS CLASS
-=========================================================*/
-
-function getStatusClass(status) {
-
-    const value =
-        String(status || "")
-            .toLowerCase();
-
-
-    if (
-        value.includes("verified") ||
-        value.includes("approved") ||
-        value.includes("active") ||
-        value.includes("submitted") ||
-        value.includes("passed")
-    ) {
-
-        return "verified";
-
-    }
-
-
-    if (
-        value.includes("reject") ||
-        value.includes("failed")
-    ) {
-
-        return "rejected";
-
-    }
-
-
-    return "pending";
-
-}
-
-
-/*=========================================================
-  SCHEDULE
-=========================================================*/
-
-function updateSchedule() {
-
-    const list =
-        document.getElementById(
-            "dashboardSchedule"
-        );
-
-
-    if (!list) return;
-
-
-    list.innerHTML = "";
-
-
-    const schedules = [];
-
-
-    /*------------------------------------------
-      EXAM
-    ------------------------------------------*/
-
-    if (
-        currentApplication.examDate ||
-        currentApplication.examSchedule
-    ) {
-
-        schedules.push({
-
-            title:
-                "Scholarship Exam",
-
-            date:
-                currentApplication.examDate ||
-                currentApplication.examSchedule
-
-        });
-
-    }
-
-
-    /*------------------------------------------
-      EXAM TIME
-    ------------------------------------------*/
-
-    if (
-        currentApplication.examTime
-    ) {
-
-        schedules.push({
-
-            title:
-                `Exam Time: ${currentApplication.examTime}`,
-
-            date:
-                currentApplication.examDate ||
-                "Scheduled"
-
-        });
-
-    }
-
-
-    /*------------------------------------------
-      EXAM VENUE
-    ------------------------------------------*/
-
-    if (
-        currentApplication.examVenue
-    ) {
-
-        schedules.push({
-
-            title:
-                `Venue: ${currentApplication.examVenue}`,
-
-            date:
-                currentApplication.examDate ||
-                "Scheduled"
-
-        });
-
-    }
-
-
-    /*------------------------------------------
-      CUSTOM SCHEDULE
-    ------------------------------------------*/
-
-    const customSchedules =
-        currentScholar.schedules ||
-        currentApplication.schedules ||
-        [];
-
-
-    if (
-        Array.isArray(
-            customSchedules
-        )
-    ) {
-
-        customSchedules.forEach(
-            schedule => {
-
-                schedules.push({
-
-                    title:
-                        schedule.title ||
-                        schedule.name ||
-                        "Schedule",
-
-                    date:
-                        schedule.date ||
-                        schedule.datetime ||
-                        ""
-
-                });
-
-            }
-        );
-
-    }
-
-
-    if (!schedules.length) {
-
-        list.innerHTML = `
-            <li>
-                No upcoming schedules
-                <span>—</span>
-            </li>
-        `;
 
         return;
+    }
+
+
+    const textarea =
+        document.getElementById(
+            "postMessage"
+        );
+
+
+    const button =
+        document.getElementById(
+            "publishPostBtn"
+        );
+
+
+    if (!textarea) {
+        return;
+    }
+
+
+    const message =
+        textarea.value.trim();
+
+
+    if (!message) {
+
+        alert(
+            "Please write something before posting."
+        );
+
+        textarea.focus();
+
+        return;
+    }
+
+
+    if (message.length > 1000) {
+
+        alert(
+            "Your post cannot exceed 1000 characters."
+        );
+
+        return;
+    }
+
+
+    isPublishing = true;
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.innerHTML = `
+            <i class="fas fa-spinner fa-spin"></i>
+            Posting...
+        `;
 
     }
 
 
-    schedules
-        .slice(0, 5)
-        .forEach(
-            schedule => {
+    try {
 
-                const li =
-                    document.createElement(
-                        "li"
+        const photo =
+            await getCurrentPhotoUrl();
+
+
+        const postData = {
+
+            firebase_uid:
+                currentUser.uid,
+
+            author_name:
+                getFullName(),
+
+            author_photo:
+                photo,
+
+            role:
+                getUserRole(),
+
+            scholar_id:
+                getScholarId(),
+
+            program:
+                getScholarshipProgram(),
+
+            message:
+                message,
+
+            is_pinned:
+                false,
+
+            is_deleted:
+                false
+
+        };
+
+
+        const {
+            data,
+            error
+        } =
+            await supabase
+                .from("community_posts")
+                .insert(
+                    postData
+                )
+                .select()
+                .single();
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        textarea.value = "";
+
+
+        const counter =
+            document.getElementById(
+                "characterCount"
+            );
+
+
+        if (counter) {
+
+            counter.textContent =
+                "0 / 1000";
+
+        }
+
+
+        /*
+         * Realtime normally adds the post.
+         * This fallback makes the new post
+         * appear immediately if realtime
+         * has a short delay.
+         */
+
+        if (data) {
+
+            const exists =
+                communityPosts.some(
+                    post =>
+                        post.id === data.id
+                );
+
+
+            if (!exists) {
+
+                communityPosts.unshift(
+                    data
+                );
+
+                await renderCommunityPosts();
+
+            }
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Publish post error:",
+            error
+        );
+
+
+        alert(
+            "Unable to publish your post. Please try again."
+        );
+
+    } finally {
+
+        isPublishing = false;
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.innerHTML = `
+                <i class="fas fa-paper-plane"></i>
+                Post
+            `;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   DELETE POST
+   ========================================================= */
+
+async function deleteCommunityPost(
+    postId
+) {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this post?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        /*
+         * Soft delete instead of permanently
+         * deleting the record.
+         */
+
+        const {
+            error
+        } =
+            await supabase
+                .from("community_posts")
+                .update({
+
+                    is_deleted:
+                        true
+
+                })
+                .eq(
+                    "id",
+                    postId
+                )
+                .eq(
+                    "firebase_uid",
+                    currentUser.uid
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        communityPosts =
+            communityPosts.filter(
+                post =>
+                    post.id !== postId
+            );
+
+
+        await renderCommunityPosts();
+
+
+    } catch (error) {
+
+        console.error(
+            "Delete post error:",
+            error
+        );
+
+
+        alert(
+            "Unable to delete this post."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function setupCommunitySearch() {
+
+    const searchInput =
+        document.getElementById(
+            "communitySearch"
+        );
+
+
+    if (!searchInput) {
+        return;
+    }
+
+
+    let timer;
+
+
+    searchInput.addEventListener(
+        "input",
+        () => {
+
+            clearTimeout(timer);
+
+
+            timer =
+                setTimeout(
+                    async () => {
+
+                        currentSearch =
+                            searchInput.value;
+
+
+                        await renderCommunityPosts();
+
+                    },
+                    250
+                );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   REALTIME COMMUNITY
+   ========================================================= */
+
+function setupRealtimeCommunity() {
+
+    if (realtimeChannel) {
+
+        supabase.removeChannel(
+            realtimeChannel
+        );
+
+        realtimeChannel = null;
+
+    }
+
+
+    realtimeChannel =
+        supabase
+            .channel(
+                "scholarlink-community-posts"
+            )
+            .on(
+                "postgres_changes",
+                {
+                    event: "*",
+                    schema: "public",
+                    table: "community_posts"
+                },
+                async payload => {
+
+                    console.log(
+                        "Community realtime event:",
+                        payload
                     );
 
 
-                li.innerHTML = `
-                    ${escapeHtml(
-                        schedule.title
-                    )}
+                    if (
+                        payload.eventType ===
+                        "INSERT"
+                    ) {
 
-                    <span>
-                        ${escapeHtml(
-                            formatDate(
-                                schedule.date
-                            )
-                        )}
-                    </span>
-                `;
+                        const post =
+                            payload.new;
 
 
-                list.appendChild(
-                    li
-                );
+                        if (
+                            post.is_deleted ===
+                            true
+                        ) {
+                            return;
+                        }
 
-            }
-        );
+
+                        const exists =
+                            communityPosts.some(
+                                item =>
+                                    item.id ===
+                                    post.id
+                            );
+
+
+                        if (!exists) {
+
+                            communityPosts.unshift(
+                                post
+                            );
+
+                        }
+
+
+                        await renderCommunityPosts();
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        payload.eventType ===
+                        "UPDATE"
+                    ) {
+
+                        const index =
+                            communityPosts.findIndex(
+                                item =>
+                                    item.id ===
+                                    payload.new.id
+                            );
+
+
+                        if (
+                            payload.new.is_deleted
+                        ) {
+
+                            if (
+                                index !== -1
+                            ) {
+
+                                communityPosts.splice(
+                                    index,
+                                    1
+                                );
+
+                            }
+
+                        } else {
+
+                            if (
+                                index !== -1
+                            ) {
+
+                                communityPosts[index] =
+                                    payload.new;
+
+                            } else {
+
+                                communityPosts.unshift(
+                                    payload.new
+                                );
+
+                            }
+
+                        }
+
+
+                        await renderCommunityPosts();
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        payload.eventType ===
+                        "DELETE"
+                    ) {
+
+                        communityPosts =
+                            communityPosts.filter(
+                                item =>
+                                    item.id !==
+                                    payload.old.id
+                            );
+
+
+                        await renderCommunityPosts();
+
+                    }
+
+                }
+            )
+            .subscribe(
+                status => {
+
+                    console.log(
+                        "Community realtime status:",
+                        status
+                    );
+
+                }
+            );
 
 }
 
 
-/*=========================================================
-  QR CODE
-=========================================================*/
+/* =========================================================
+   PINNED POSTS
+   ========================================================= */
 
-function updateQRCode() {
+async function loadPinnedPosts() {
 
-    const qrImage =
+    const container =
         document.getElementById(
-            "scholarQR"
+            "pinnedPosts"
         );
 
 
-    const qrId =
-        document.getElementById(
-            "qrScholarId"
-        );
-
-
-    const qrPath =
-        currentScholar.qrCodePath ||
-        currentScholar.qrPath ||
-        currentUserData.qrCodePath ||
-        currentApplication.qrCodePath;
-
-
-    if (qrId) {
-
-        qrId.textContent =
-            getScholarId();
-
-    }
-
-
-    if (!qrPath) {
-
-        console.log(
-            "No QR storage path found."
-        );
-
+    if (!container) {
         return;
-
-    }
-
-
-    const path =
-        normalizeStoragePath(
-            qrPath
-        );
-
-
-    loadQRFromStorage(
-        path,
-        qrImage
-    );
-
-}
-
-
-/*=========================================================
-  LOAD QR
-=========================================================*/
-
-async function loadQRFromStorage(
-    path,
-    imageElement
-) {
-
-    if (
-        !path ||
-        !imageElement
-    ) {
-
-        return;
-
     }
 
 
@@ -1639,210 +2499,331 @@ async function loadQRFromStorage(
             data,
             error
         } =
-            await supabase.storage
-                .from("applicant-photos")
-                .createSignedUrl(
-                    path,
-                    300
-                );
+            await supabase
+                .from("community_posts")
+                .select("*")
+                .eq(
+                    "is_deleted",
+                    false
+                )
+                .eq(
+                    "is_pinned",
+                    true
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                )
+                .limit(5);
 
 
         if (error) {
+            throw error;
+        }
 
-            console.error(
-                "QR loading error:",
-                error
-            );
+
+        if (!data?.length) {
+
+            container.innerHTML = `
+                <div class="side-empty">
+                    <i class="fas fa-thumbtack"></i>
+                    <span>No pinned posts.</span>
+                </div>
+            `;
 
             return;
 
         }
 
 
-        if (data?.signedUrl) {
+        container.innerHTML = "";
 
-            imageElement.src =
-                data.signedUrl;
 
-        }
+        data.forEach(
+            post => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "pinned-post-item";
+
+
+                item.innerHTML = `
+
+                    <strong>
+                        ${escapeHtml(
+                            post.author_name ||
+                            "ScholarLink"
+                        )}
+                    </strong>
+
+                    <p>
+                        ${escapeHtml(
+                            truncateText(
+                                post.message ||
+                                "",
+                                100
+                            )
+                        )}
+                    </p>
+
+                    <small>
+                        ${escapeHtml(
+                            formatRelativeTime(
+                                post.created_at
+                            )
+                        )}
+                    </small>
+
+                `;
+
+
+                item.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            document.querySelector(
+                                `[data-post-id="${CSS.escape(
+                                    post.id
+                                )}"]`
+                            );
+
+
+                        if (target) {
+
+                            target.scrollIntoView({
+                                behavior:
+                                    "smooth",
+                                block:
+                                    "center"
+                            });
+
+
+                            target.classList.add(
+                                "post-highlight"
+                            );
+
+
+                            setTimeout(
+                                () => {
+
+                                    target.classList.remove(
+                                        "post-highlight"
+                                    );
+
+                                },
+                                1800
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
 
     } catch (error) {
 
-        console.error(
-            "QR storage error:",
+        console.warn(
+            "Pinned posts unavailable:",
             error
         );
+
+
+        container.innerHTML = `
+            <div class="side-empty">
+                No pinned posts.
+            </div>
+        `;
 
     }
 
 }
 
 
-/*=========================================================
-  RECENT ACTIVITY
-=========================================================*/
+/* =========================================================
+   ONLINE COMMUNITY
+   ========================================================= */
 
-async function loadRecentActivity() {
+async function loadOnlineCommunity() {
 
-    const list =
+    const countElement =
         document.getElementById(
-            "recentActivity"
+            "onlineCount"
         );
 
 
-    if (!list) return;
+    const membersElement =
+        document.getElementById(
+            "onlineMembers"
+        );
 
 
-    list.innerHTML = "";
-
-
-    const activities = [];
-
-
-    /*------------------------------------------
-      APPLICATION
-    ------------------------------------------*/
-
-    if (
-        currentApplication.createdAt
-    ) {
-
-        activities.push({
-
-            text:
-                "Scholarship application submitted.",
-
-            date:
-                currentApplication.createdAt
-
-        });
-
+    if (!countElement || !membersElement) {
+        return;
     }
 
 
-    /*------------------------------------------
-      UPDATED APPLICATION
-    ------------------------------------------*/
+    /*
+     * This function intentionally does
+     * not invent online users.
+     *
+     * It uses a Supabase presence channel.
+     */
 
-    if (
-        currentApplication.updatedAt
-    ) {
-
-        activities.push({
-
-            text:
-                "Scholarship application updated.",
-
-            date:
-                currentApplication.updatedAt
-
-        });
-
-    }
-
-
-    /*------------------------------------------
-      GRADES
-    ------------------------------------------*/
-
-    if (
-        currentApplication.grades ||
-        currentScholar.grades ||
-        currentApplication.files?.scholarDocuments?.grades
-    ) {
-
-        const grades =
-            currentApplication.grades ||
-            currentScholar.grades ||
-            currentApplication.files?.scholarDocuments?.grades;
+    const channel =
+        supabase.channel(
+            "scholarlink-online-community",
+            {
+                config: {
+                    presence: {
+                        key:
+                            currentUser?.uid ||
+                            crypto.randomUUID()
+                    }
+                }
+            }
+        );
 
 
-        activities.push({
+    channel
+        .on(
+            "presence",
+            {
+                event: "sync"
+            },
+            () => {
 
-            text:
-                "Grades submission recorded.",
-
-            date:
-                grades?.uploadedAt ||
-                currentApplication.updatedAt
-
-        });
-
-    }
+                const state =
+                    channel.presenceState();
 
 
-    /*------------------------------------------
-      COR
-    ------------------------------------------*/
-
-    if (
-        currentApplication.cor ||
-        currentScholar.cor ||
-        currentApplication.files?.scholarDocuments?.cor
-    ) {
-
-        const cor =
-            currentApplication.cor ||
-            currentScholar.cor ||
-            currentApplication.files?.scholarDocuments?.cor;
+                const users = [];
 
 
-        activities.push({
+                Object.values(state)
+                    .forEach(
+                        entries => {
 
-            text:
-                "COR submission recorded.",
+                            entries.forEach(
+                                entry => {
 
-            date:
-                cor?.uploadedAt ||
-                currentApplication.updatedAt
+                                    users.push(
+                                        entry
+                                    );
 
-        });
+                                }
+                            );
 
-    }
-
-
-    /*------------------------------------------
-      SCHOLAR CONFIRMATION
-    ------------------------------------------*/
-
-    if (
-        currentApplication.scholarConfirmed === true ||
-        currentUserData.scholarConfirmed === true
-    ) {
-
-        activities.push({
-
-            text:
-                "Scholar account activated.",
-
-            date:
-                currentScholar.createdAt ||
-                currentApplication.updatedAt
-
-        });
-
-    }
+                        }
+                    );
 
 
-    activities.sort(
-        (a, b) => {
+                renderOnlineMembers(
+                    users,
+                    countElement,
+                    membersElement
+                );
 
-            return (
-                getTimestamp(b.date) -
-                getTimestamp(a.date)
-            );
+            }
+        )
+        .subscribe(
+            async status => {
+
+                if (
+                    status ===
+                    "SUBSCRIBED"
+                ) {
+
+                    await channel.track({
+
+                        uid:
+                            currentUser.uid,
+
+                        name:
+                            getFullName(),
+
+                        role:
+                            getUserRole(),
+
+                        photo:
+                            await getCurrentPhotoUrl()
+
+                    });
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   RENDER ONLINE MEMBERS
+   ========================================================= */
+
+function renderOnlineMembers(
+    users,
+    countElement,
+    membersElement
+) {
+
+    const unique =
+        new Map();
+
+
+    users.forEach(
+        user => {
+
+            if (
+                user.uid &&
+                !unique.has(
+                    user.uid
+                )
+            ) {
+
+                unique.set(
+                    user.uid,
+                    user
+                );
+
+            }
 
         }
     );
 
 
-    if (!activities.length) {
+    const members =
+        [...unique.values()];
 
-        list.innerHTML = `
-            <li>
-                No recent activity.
-                <span>—</span>
-            </li>
+
+    countElement.textContent =
+        `${members.length} online`;
+
+
+    membersElement.innerHTML = "";
+
+
+    if (!members.length) {
+
+        membersElement.innerHTML = `
+            <div class="side-empty">
+                No scholars online.
+            </div>
         `;
 
         return;
@@ -1850,34 +2831,64 @@ async function loadRecentActivity() {
     }
 
 
-    activities
-        .slice(0, 5)
+    members
+        .slice(0, 10)
         .forEach(
-            activity => {
+            member => {
 
-                const li =
+                const item =
                     document.createElement(
-                        "li"
+                        "div"
                     );
 
 
-                li.innerHTML = `
-                    ${escapeHtml(
-                        activity.text
-                    )}
+                item.className =
+                    "online-member";
 
-                    <span>
-                        ${escapeHtml(
-                            relativeDate(
-                                activity.date
-                            )
-                        )}
-                    </span>
+
+                item.innerHTML = `
+
+                    <div class="online-avatar-wrap">
+
+                        <img
+                            src="${
+                                escapeAttribute(
+                                    member.photo ||
+                                    "../images/user.png"
+                                )
+                            }"
+                            alt="Profile"
+                        >
+
+                        <span
+                            class="online-dot"
+                        ></span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ${
+                                escapeHtml(
+                                    member.name ||
+                                    "Scholar"
+                                )
+                            }
+                        </strong>
+
+                        <small>
+                            Online
+                        </small>
+
+                    </div>
+
                 `;
 
 
-                list.appendChild(
-                    li
+                membersElement.appendChild(
+                    item
                 );
 
             }
@@ -1886,577 +2897,26 @@ async function loadRecentActivity() {
 }
 
 
-/*=========================================================
-  UPLOAD GRADES / COR
-=========================================================*/
-
-function setupUploads() {
-
-    const gradesInput =
-        document.getElementById(
-            "gradesFile"
-        );
-
-
-    const corInput =
-        document.getElementById(
-            "corFile"
-        );
-
-
-    const gradesButton =
-        document.getElementById(
-            "uploadGradesBtn"
-        );
-
-
-    const corButton =
-        document.getElementById(
-            "uploadCORBtn"
-        );
-
-
-    if (
-        gradesButton &&
-        gradesInput
-    ) {
-
-        gradesButton.addEventListener(
-            "click",
-            async () => {
-
-                if (
-                    !gradesInput.files ||
-                    !gradesInput.files.length
-                ) {
-
-                    alert(
-                        "Please select your grades file first."
-                    );
-
-                    return;
-
-                }
-
-
-                try {
-
-                    gradesButton.disabled =
-                        true;
-
-                    gradesButton.innerHTML =
-                        "Uploading...";
-
-
-                    await uploadScholarDocument(
-                        gradesInput.files[0],
-                        "grades"
-                    );
-
-
-                    gradesInput.value = "";
-
-
-                    alert(
-                        "Grades uploaded successfully."
-                    );
-
-
-                    await loadScholarDashboard(
-                        currentUser.uid
-                    );
-
-                } catch (error) {
-
-                    console.error(
-                        "Grades upload error:",
-                        error
-                    );
-
-                    alert(
-                        error.message ||
-                        "Grades upload failed."
-                    );
-
-                } finally {
-
-                    gradesButton.disabled =
-                        false;
-
-                    gradesButton.innerHTML =
-                        `<i class="fas fa-upload"></i>
-                         Upload Grades`;
-
-                }
-
-            }
-        );
-
-    }
-
-
-    if (
-        corButton &&
-        corInput
-    ) {
-
-        corButton.addEventListener(
-            "click",
-            async () => {
-
-                if (
-                    !corInput.files ||
-                    !corInput.files.length
-                ) {
-
-                    alert(
-                        "Please select your COR file first."
-                    );
-
-                    return;
-
-                }
-
-
-                try {
-
-                    corButton.disabled =
-                        true;
-
-                    corButton.innerHTML =
-                        "Uploading...";
-
-
-                    await uploadScholarDocument(
-                        corInput.files[0],
-                        "cor"
-                    );
-
-
-                    corInput.value = "";
-
-
-                    alert(
-                        "Certificate of Registration uploaded successfully."
-                    );
-
-
-                    await loadScholarDashboard(
-                        currentUser.uid
-                    );
-
-                } catch (error) {
-
-                    console.error(
-                        "COR upload error:",
-                        error
-                    );
-
-                    alert(
-                        error.message ||
-                        "COR upload failed."
-                    );
-
-                } finally {
-
-                    corButton.disabled =
-                        false;
-
-                    corButton.innerHTML =
-                        `<i class="fas fa-upload"></i>
-                         Upload COR`;
-
-                }
-
-            }
-        );
-
-    }
-
-}
-
-
-/*=========================================================
-  UPLOAD SCHOLAR DOCUMENT
-=========================================================*/
-
-async function uploadScholarDocument(
-    file,
-    documentType
-) {
+/* =========================================================
+   START ONLINE PRESENCE
+   ========================================================= */
+
+async function setupOnlineCommunity() {
 
     if (!currentUser) {
-
-        throw new Error(
-            "You are not logged in."
-        );
-
-    }
-
-
-    const allowedTypes = [
-
-        "application/pdf",
-
-        "image/jpeg",
-
-        "image/png"
-
-    ];
-
-
-    if (
-        !allowedTypes.includes(
-            file.type
-        )
-    ) {
-
-        throw new Error(
-            "Only PDF, JPG, JPEG, and PNG files are allowed."
-        );
-
-    }
-
-
-    const maxSize =
-        10 * 1024 * 1024;
-
-
-    if (
-        file.size > maxSize
-    ) {
-
-        throw new Error(
-            "File size must not exceed 10MB."
-        );
-
-    }
-
-
-    /*------------------------------------------
-      STORAGE PATH
-    ------------------------------------------*/
-
-    const extension =
-        getFileExtension(
-            file.name
-        );
-
-
-    const path =
-        `${currentUser.uid}/${documentType}_${Date.now()}.${extension}`;
-
-
-    const {
-        error: uploadError
-    } =
-        await supabase.storage
-            .from("requirements")
-            .upload(
-                path,
-                file,
-                {
-                    upsert: true,
-                    contentType: file.type
-                }
-            );
-
-
-    if (uploadError) {
-
-        console.error(
-            "Supabase upload error:",
-            uploadError
-        );
-
-        throw new Error(
-            "Unable to upload the file. Please check your storage configuration."
-        );
-
-    }
-
-
-    /*------------------------------------------
-      FIRESTORE METADATA
-    ------------------------------------------*/
-
-    const documentData = {
-
-        name:
-            file.name,
-
-        originalName:
-            file.name,
-
-        storagePath:
-            path,
-
-        bucket:
-            "requirements",
-
-        contentType:
-            file.type,
-
-        size:
-            file.size,
-
-        status:
-            "pending",
-
-        verificationStatus:
-            "pending",
-
-        uploadedAt:
-            new Date().toISOString()
-
-    };
-
-
-    const existingFiles =
-        currentApplication.files ||
-        {};
-
-
-    const currentDocuments =
-        existingFiles.scholarDocuments ||
-        {};
-
-
-    currentDocuments[documentType] =
-        documentData;
-
-
-    const updatedFiles = {
-
-        ...existingFiles,
-
-        scholarDocuments:
-            currentDocuments
-
-    };
-
-
-    await updateDoc(
-
-        doc(
-            db,
-            "applications",
-            currentUser.uid
-        ),
-
-        {
-
-            files:
-                updatedFiles,
-
-            [`files.scholarDocuments.${documentType}`]:
-                documentData,
-
-            updatedAt:
-                serverTimestamp()
-
-        }
-
-    );
-
-
-    /*
-     * Try to notify admin.
-     * If Firestore rules do not allow this,
-     * it will not break the upload.
-     */
-
-    try {
-
-        await addDoc(
-
-            collection(
-                db,
-                "notifications"
-            ),
-
-            {
-
-                userId:
-                    currentUser.uid,
-
-                applicantId:
-                    currentUser.uid,
-
-                title:
-                    documentType === "grades"
-                        ? "Grades Submitted"
-                        : "COR Submitted",
-
-                message:
-                    documentType === "grades"
-                        ? "A scholar has submitted grades for verification."
-                        : "A scholar has submitted a Certificate of Registration for verification.",
-
-                type:
-                    "document_submission",
-
-                documentType:
-                    documentType,
-
-                read:
-                    false,
-
-                createdAt:
-                    serverTimestamp()
-
-            }
-
-        );
-
-    } catch (notificationError) {
-
-        console.warn(
-            "Admin notification could not be created:",
-            notificationError
-        );
-
-    }
-
-}
-
-
-/*=========================================================
-  QR BUTTONS
-=========================================================*/
-
-function setupQRButtons() {
-
-    const viewQR =
-        document.getElementById(
-            "viewQRBtn"
-        );
-
-
-    if (viewQR) {
-
-        viewQR.addEventListener(
-            "click",
-            () => {
-
-                window.location.href =
-                    "qr-code.html";
-
-            }
-        );
-
-    }
-
-
-    const downloadQR =
-        document.getElementById(
-            "downloadQRBtn"
-        );
-
-
-    if (downloadQR) {
-
-        downloadQR.addEventListener(
-            "click",
-            downloadQRCode
-        );
-
-    }
-
-}
-
-
-/*=========================================================
-  DOWNLOAD QR
-=========================================================*/
-
-async function downloadQRCode() {
-
-    const image =
-        document.getElementById(
-            "scholarQR"
-        );
-
-
-    if (
-        !image ||
-        !image.src
-    ) {
-
-        alert(
-            "QR Code is not available."
-        );
-
         return;
-
     }
 
 
     try {
 
-        const response =
-            await fetch(
-                image.src
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Unable to download QR."
-            );
-
-        }
-
-
-        const blob =
-            await response.blob();
-
-
-        const url =
-            URL.createObjectURL(
-                blob
-            );
-
-
-        const link =
-            document.createElement(
-                "a"
-            );
-
-
-        link.href =
-            url;
-
-
-        link.download =
-            `${getScholarId()}-QR.png`;
-
-
-        document.body.appendChild(
-            link
-        );
-
-
-        link.click();
-
-
-        link.remove();
-
-
-        URL.revokeObjectURL(
-            url
-        );
+        await loadOnlineCommunity();
 
     } catch (error) {
 
-        console.error(
-            "QR download error:",
+        console.warn(
+            "Online community unavailable:",
             error
-        );
-
-        alert(
-            "Unable to download the QR Code."
         );
 
     }
@@ -2464,60 +2924,20 @@ async function downloadQRCode() {
 }
 
 
-/*=========================================================
-  QUICK ACTIONS
-=========================================================*/
-
-function setupQuickActions() {
-
-    const actionCards =
-        document.querySelectorAll(
-            ".action-card"
-        );
-
-
-    actionCards.forEach(
-        card => {
-
-            card.addEventListener(
-                "click",
-                event => {
-
-                    const link =
-                        card.getAttribute(
-                            "href"
-                        );
-
-
-                    /*
-                     * Let normal HTML links work.
-                     */
-                    if (link) {
-
-                        return;
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/*=========================================================
-  SIDEBAR
-=========================================================*/
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 function setupSidebar() {
 
-    const menuItems =
-        document.querySelectorAll(
-            ".menu li"
-        );
+    const sidebar = document.querySelector(".sidebar");
 
+    if (!sidebar) {
+        console.warn("Sidebar element not found.");
+        return;
+    }
+
+    const sidebarLinks = sidebar.querySelectorAll("a");
 
     const currentPage =
         window.location.pathname
@@ -2525,58 +2945,190 @@ function setupSidebar() {
             .pop()
             .toLowerCase();
 
+    sidebarLinks.forEach(link => {
 
-    menuItems.forEach(
-        item => {
+        const href =
+            link.getAttribute("href");
 
-            const link =
-                item.querySelector(
-                    "a"
-                );
+        if (!href) {
+            return;
+        }
+
+        const linkPage =
+            href
+                .split("/")
+                .pop()
+                .split("?")[0]
+                .split("#")[0]
+                .toLowerCase();
+
+        if (
+            linkPage &&
+            linkPage === currentPage
+        ) {
+            link.classList.add("active");
+        }
+
+        link.addEventListener("click", () => {
+
+            sidebarLinks.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            link.classList.add("active");
+
+        });
+
+    });
+
+}
 
 
-            if (!link) return;
+/* =========================================================
+   MOBILE COMMUNITY
+   ========================================================= */
+
+function setupMobileCommunity() {
+
+    const menuButton =
+        document.getElementById(
+            "mobileMenuBtn"
+        );
 
 
-            const href =
-                link.getAttribute(
-                    "href"
-                ) || "";
+    const sidebar =
+        document.querySelector(
+            ".sidebar"
+        );
 
 
-            const linkPage =
-                href
-                    .split("/")
-                    .pop()
-                    .toLowerCase();
+    const overlay =
+        document.getElementById(
+            "sidebarOverlay"
+        );
 
 
-            /*
-             * Do NOT activate logout.
-             */
+    if (
+        !menuButton ||
+        !sidebar ||
+        !overlay
+    ) {
+
+        return;
+
+    }
+
+
+    function openSidebar() {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+
+        overlay.classList.add(
+            "active"
+        );
+
+
+        menuButton.innerHTML =
+            '<i class="fas fa-xmark"></i>';
+
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close menu"
+        );
+
+    }
+
+
+    function closeSidebar() {
+
+        sidebar.classList.remove(
+            "mobile-open"
+        );
+
+
+        overlay.classList.remove(
+            "active"
+        );
+
+
+        menuButton.innerHTML =
+            '<i class="fas fa-bars"></i>';
+
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
             if (
-                link.id ===
-                "sidebarlogout"
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
             ) {
 
-                return;
+                closeSidebar();
+
+            } else {
+
+                openSidebar();
 
             }
 
+        }
+    );
 
-            item.classList.remove(
-                "active"
-            );
 
+    overlay.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    sidebar
+        .querySelectorAll("a")
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        if (
+                            window.innerWidth <=
+                            900
+                        ) {
+
+                            closeSidebar();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+    window.addEventListener(
+        "resize",
+        () => {
 
             if (
-                linkPage &&
-                linkPage === currentPage
+                window.innerWidth > 900
             ) {
 
-                item.classList.add(
-                    "active"
-                );
+                closeSidebar();
 
             }
 
@@ -2586,20 +3138,12 @@ function setupSidebar() {
 }
 
 
-/*=========================================================
-  LOGOUT
-=========================================================*/
+/* =========================================================
+   LOGOUT
+   ========================================================= */
 
 function setupLogout() {
 
-    /*
-     * IMPORTANT:
-     * Your HTML uses lowercase:
-     *
-     * id="sidebarlogout"
-     *
-     * IDs are case-sensitive.
-     */
     const logout =
         document.getElementById(
             "sidebarlogout"
@@ -2618,37 +3162,16 @@ function setupLogout() {
         );
 
 
-    const confirm =
+    const confirmButton =
         document.getElementById(
             "confirmLogout"
         );
 
 
     if (!logout) {
-
-        console.error(
-            "Logout button not found: #sidebarlogout"
-        );
-
         return;
-
     }
 
-
-    if (!modal) {
-
-        console.error(
-            "Logout modal not found: #logoutModal"
-        );
-
-        return;
-
-    }
-
-
-    /*------------------------------------------
-      OPEN MODAL
-    ------------------------------------------*/
 
     logout.addEventListener(
         "click",
@@ -2656,17 +3179,18 @@ function setupLogout() {
 
             event.preventDefault();
 
-            modal.classList.add(
-                "active"
-            );
+
+            if (modal) {
+
+                modal.classList.add(
+                    "active"
+                );
+
+            }
 
         }
     );
 
-
-    /*------------------------------------------
-      CANCEL
-    ------------------------------------------*/
 
     if (cancel) {
 
@@ -2674,7 +3198,7 @@ function setupLogout() {
             "click",
             () => {
 
-                modal.classList.remove(
+                modal?.classList.remove(
                     "active"
                 );
 
@@ -2684,70 +3208,63 @@ function setupLogout() {
     }
 
 
-    /*------------------------------------------
-      CONFIRM LOGOUT
-    ------------------------------------------*/
+    if (confirmButton) {
 
-    if (confirm) {
-
-        confirm.addEventListener(
+        confirmButton.addEventListener(
             "click",
             async () => {
 
                 try {
 
-                    confirm.disabled =
+                    confirmButton.disabled =
                         true;
 
-                    confirm.textContent =
+
+                    confirmButton.textContent =
                         "Logging out...";
 
 
-                    /*
-                     * Clear local application
-                     * storage first.
-                     */
                     localStorage.removeItem(
                         "scholarLinkLoggedIn"
                     );
+
 
                     localStorage.removeItem(
                         "scholarLinkRole"
                     );
 
+
                     localStorage.removeItem(
                         "scholarLinkUID"
                     );
+
 
                     localStorage.removeItem(
                         "scholarLinkEmail"
                     );
 
 
-                    /*
-                     * IMPORTANT:
-                     * Firebase session is
-                     * actually terminated here.
-                     */
-                    await signOut(auth);
+                    if (realtimeChannel) {
+
+                        await supabase
+                            .removeChannel(
+                                realtimeChannel
+                            );
+
+                        realtimeChannel =
+                            null;
+
+                    }
 
 
-                    console.log(
-                        "Scholar successfully logged out."
+                    await signOut(
+                        auth
                     );
 
 
-                    /*
-                     * IMPORTANT:
-                     * Do NOT redirect to Home.html.
-                     *
-                     * Home.html is the dashboard.
-                     *
-                     * Go back to your actual
-                     * login page.
-                     */
                     window.location.href =
                         "../login/index.html";
+
 
                 } catch (error) {
 
@@ -2757,11 +3274,11 @@ function setupLogout() {
                     );
 
 
-                    confirm.disabled =
+                    confirmButton.disabled =
                         false;
 
 
-                    confirm.textContent =
+                    confirmButton.textContent =
                         "Logout";
 
 
@@ -2777,45 +3294,39 @@ function setupLogout() {
     }
 
 
-    /*------------------------------------------
-      CLICK OUTSIDE MODAL
-    ------------------------------------------*/
+    if (modal) {
 
-    modal.addEventListener(
-        "click",
-        event => {
+        modal.addEventListener(
+            "click",
+            event => {
 
-            if (
-                event.target ===
-                modal
-            ) {
+                if (
+                    event.target ===
+                    modal
+                ) {
 
-                modal.classList.remove(
-                    "active"
-                );
+                    modal.classList.remove(
+                        "active"
+                    );
+
+                }
 
             }
+        );
 
-        }
-    );
+    }
 
-
-    /*------------------------------------------
-      ESC KEY
-    ------------------------------------------*/
 
     document.addEventListener(
         "keydown",
         event => {
 
             if (
-                event.key === "Escape" &&
-                modal.classList.contains(
-                    "active"
-                )
+                event.key ===
+                "Escape"
             ) {
 
-                modal.classList.remove(
+                modal?.classList.remove(
                     "active"
                 );
 
@@ -2827,213 +3338,144 @@ function setupLogout() {
 }
 
 
-/*=========================================================
-  CARD ANIMATION
-=========================================================*/
+/* =========================================================
+   CURRENT PHOTO URL
+   ========================================================= */
 
-function setupCardAnimation() {
+async function getCurrentPhotoUrl() {
 
-    const cards =
-        document.querySelectorAll(
-            ".card, .dashboard-card, .action-card"
-        );
-
-
-    cards.forEach(
-        (card, index) => {
-
-            card.style.opacity =
-                "0";
-
-            card.style.transform =
-                "translateY(20px)";
+    const directPhoto =
+        currentUserData.photoURL ||
+        currentUserData.photo ||
+        currentScholar.photoURL ||
+        currentScholar.photo;
 
 
-            setTimeout(
-                () => {
+    if (directPhoto) {
 
-                    card.style.transition =
-                        "0.5s ease";
-
-                    card.style.opacity =
-                        "1";
-
-                    card.style.transform =
-                        "translateY(0)";
-
-                },
-                index * 80
-            );
-
-
-            card.addEventListener(
-                "mouseenter",
-                () => {
-
-                    card.style.transform =
-                        "translateY(-5px)";
-
-                }
-            );
-
-
-            card.addEventListener(
-                "mouseleave",
-                () => {
-
-                    card.style.transform =
-                        "translateY(0)";
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/*=========================================================
-  ERROR DISPLAY
-=========================================================*/
-
-function showDashboardError() {
-
-    const welcome =
-        document.querySelector(
-            ".topbar h1"
-        );
-
-
-    if (welcome) {
-
-        welcome.textContent =
-            "Unable to load dashboard";
+        return directPhoto;
 
     }
 
+
+    const photo =
+        currentApplication.files?.applicantPhoto ||
+        currentApplication.applicantPhoto ||
+        currentScholar.applicantPhoto;
+
+
+    if (!photo) {
+
+        return "../images/user.png";
+
+    }
+
+
+    let path =
+        photo.storagePath ||
+        photo.storage_path ||
+        photo.path ||
+        photo.filePath ||
+        photo.file_path ||
+        "";
+
+
+    if (!path) {
+
+        return "../images/user.png";
+
+    }
+
+
+    path =
+        normalizeStoragePath(
+            path
+        );
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabase.storage
+                .from("applicant-photos")
+                .createSignedUrl(
+                    path,
+                    3600
+                );
+
+
+        if (
+            !error &&
+            data?.signedUrl
+        ) {
+
+            return data.signedUrl;
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Could not get profile photo:",
+            error
+        );
+
+    }
+
+
+    return "../images/user.png";
+
 }
 
 
-/*=========================================================
-  SET ELEMENT TEXT
-=========================================================*/
+/* =========================================================
+   FORMAT ROLE
+   ========================================================= */
 
-function setElementText(
-    id,
+function formatRole(role) {
+
+    return String(
+        role ||
+        "scholar"
+    )
+        .replace(
+            /_/g,
+            " "
+        )
+        .replace(
+            /\b\w/g,
+            char =>
+                char.toUpperCase()
+        );
+
+}
+
+
+/* =========================================================
+   RELATIVE TIME
+   ========================================================= */
+
+function formatRelativeTime(
     value
 ) {
 
-    const element =
-        document.getElementById(
-            id
-        );
-
-
-    if (element) {
-
-        element.textContent =
-            value ?? "—";
-
+    if (!value) {
+        return "Recently";
     }
 
-}
 
-
-/*=========================================================
-  TIMESTAMP HELPER
-=========================================================*/
-
-function getTimestamp(value) {
-
-    if (!value) return 0;
+    const date =
+        new Date(value);
 
 
     if (
-        typeof value.toMillis ===
-        "function"
+        Number.isNaN(
+            date.getTime()
+        )
     ) {
-
-        return value.toMillis();
-
-    }
-
-
-    if (
-        value.seconds !== undefined
-    ) {
-
-        return (
-            value.seconds * 1000
-        );
-
-    }
-
-
-    if (
-        value instanceof Date
-    ) {
-
-        return value.getTime();
-
-    }
-
-
-    const parsed =
-        new Date(
-            value
-        ).getTime();
-
-
-    return isNaN(parsed)
-        ? 0
-        : parsed;
-
-}
-
-
-/*=========================================================
-  DATE FORMAT
-=========================================================*/
-
-function formatDate(value) {
-
-    const timestamp =
-        getTimestamp(value);
-
-
-    if (!timestamp) {
-
-        return "—";
-
-    }
-
-
-    return new Date(
-        timestamp
-    ).toLocaleDateString(
-        "en-US",
-        {
-            month: "short",
-            day: "numeric",
-            year: "numeric"
-        }
-    );
-
-}
-
-
-/*=========================================================
-  RELATIVE DATE
-=========================================================*/
-
-function relativeDate(value) {
-
-    const timestamp =
-        getTimestamp(value);
-
-
-    if (!timestamp) {
 
         return "Recently";
 
@@ -3042,20 +3484,18 @@ function relativeDate(value) {
 
     const diff =
         Date.now() -
-        timestamp;
+        date.getTime();
+
+
+    if (diff < 60000) {
+        return "Just now";
+    }
 
 
     const minutes =
         Math.floor(
             diff / 60000
         );
-
-
-    if (minutes < 1) {
-
-        return "Just now";
-
-    }
 
 
     if (minutes < 60) {
@@ -3086,43 +3526,137 @@ function relativeDate(value) {
 
     if (days < 7) {
 
-        return `${days} day${days > 1 ? "s" : ""} ago`;
+        return `${days} day${
+            days === 1
+                ? ""
+                : "s"
+        } ago`;
 
     }
 
 
-    return formatDate(
-        value
+    return date.toLocaleDateString(
+        "en-US",
+        {
+            month: "short",
+            day: "numeric",
+            year: "numeric"
+        }
     );
 
 }
 
 
-/*=========================================================
-  FILE EXTENSION
-=========================================================*/
+/* =========================================================
+   TRUNCATE TEXT
+   ========================================================= */
 
-function getFileExtension(
-    filename
+function truncateText(
+    text,
+    max
 ) {
 
-    const parts =
-        String(filename)
-            .split(".");
+    const value =
+        String(
+            text ||
+            ""
+        );
+
+
+    if (
+        value.length <=
+        max
+    ) {
+
+        return value;
+
+    }
 
 
     return (
-        parts.length > 1
-            ? parts.pop().toLowerCase()
-            : "file"
+        value.substring(
+            0,
+            max
+        ) +
+        "..."
     );
 
 }
 
 
-/*=========================================================
-  HTML ESCAPE
-=========================================================*/
+/* =========================================================
+   COMMUNITY ERROR
+   ========================================================= */
+
+function showCommunityError(
+    message
+) {
+
+    const feed =
+        document.getElementById(
+            "communityFeed"
+        );
+
+
+    if (!feed) {
+        return;
+    }
+
+
+    feed.innerHTML = `
+
+        <div class="community-error">
+
+            <div class="error-icon">
+                <i class="fas fa-circle-exclamation"></i>
+            </div>
+
+            <h3>
+                Something went wrong
+            </h3>
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+            <button
+                type="button"
+                id="retryCommunityBtn"
+            >
+                <i class="fas fa-rotate-right"></i>
+                Try Again
+            </button>
+
+        </div>
+
+    `;
+
+
+    const retry =
+        document.getElementById(
+            "retryCommunityBtn"
+        );
+
+
+    if (retry) {
+
+        retry.addEventListener(
+            "click",
+            async () => {
+
+                await loadCommunityPosts();
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
 function escapeHtml(
     value
@@ -3153,3 +3687,69 @@ function escapeHtml(
         );
 
 }
+
+
+/* =========================================================
+   ESCAPE ATTRIBUTE
+   ========================================================= */
+
+function escapeAttribute(
+    value
+) {
+
+    return escapeHtml(
+        value
+    );
+
+}
+
+
+/* =========================================================
+   CLEANUP
+   ========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        if (realtimeChannel) {
+
+            supabase.removeChannel(
+                realtimeChannel
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START ONLINE PRESENCE AFTER AUTH
+   ========================================================= */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if (!user) {
+            return;
+        }
+
+
+        /*
+         * Small delay so Firebase user
+         * information is already loaded.
+         */
+
+        setTimeout(
+            () => {
+
+                setupOnlineCommunity();
+
+            },
+            800
+        );
+
+    }
+);

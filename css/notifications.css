@@ -1245,3 +1245,174 @@ CUSTOM SCROLLBAR
     background:#1B67D1;
 
 }
+
+
+/* =========================================
+   SCHOLARLINK STANDARD SIDEBAR
+   NOTIFICATIONS PAGE
+========================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 290px;
+    min-width: 290px;
+    height: 100vh;
+    z-index: 1000;
+
+    background: linear-gradient(180deg, #0A1D5C, #1F4DB8);
+    color: #FFFFFF;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+/* LOGO */
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 145px;
+    padding: 18px 15px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .logo img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: 110px;
+
+    object-fit: contain;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+.sidebar .logo h2,
+.sidebar .logo span {
+    display: none;
+}
+
+/* MENU */
+.sidebar .menu {
+    list-style: none;
+    margin: 0;
+    padding: 16px 14px 24px;
+}
+
+.sidebar .menu li {
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+/* SECTION LABELS */
+.sidebar .menu li.menu-section {
+    margin: 20px 0 8px;
+    padding: 0 12px;
+
+    color: #55E6FF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+}
+
+/* LINKS */
+.sidebar .menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+/* LEFT ICON */
+.sidebar .menu li a > i:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    min-width: 22px;
+    font-size: 16px;
+}
+
+/* MENU TEXT */
+.sidebar .menu li a span {
+    flex: 1;
+    min-width: 0;
+}
+
+/* RIGHT CHEVRON */
+.sidebar .menu li a .menu-chevron {
+    width: auto;
+    min-width: auto;
+    margin-left: auto;
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+/* HOVER */
+.sidebar .menu li:not(.menu-section) a:hover {
+    background: rgba(255, 255, 255, 0.13);
+}
+
+/* ACTIVE PAGE */
+.sidebar .menu li.active > a {
+    background: linear-gradient(90deg, #3978F6, #7655E8);
+    color: #FFFFFF;
+}
+
+.sidebar .menu li.active > a .menu-chevron {
+    opacity: 1;
+}
+
+/* LOGOUT */
+.sidebar .menu li.logout {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* MOBILE SIDEBAR */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        width: 290px;
+        min-width: 290px;
+        height: 100vh;
+    }
+
+    .sidebar.show {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+}

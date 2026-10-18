@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ScholarLink | My Profile</title>
 
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
@@ -24,9 +18,9 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
 
     <!-- Scholar Profile CSS -->
+     <link rel="stylesheet"href="../css2/Home.css">
     <link rel="stylesheet"
           href="../css2/profile.css">
-
 </head>
 
 <body>
@@ -57,7 +51,6 @@
          id="saveFeedback">
     </div>
 
-    
 
     <!-- ==========================================
          MAIN CONTAINER
@@ -65,173 +58,208 @@
 
     <div class="container">
 
-<!-- =====================================================
-     SIDEBAR - NAVBAR
-====================================================== -->
+        <!-- =====================================================
+             SCHOLARLINK SIDEBAR
+        ====================================================== -->
 
-<aside class="sidebar">
+        <aside class="sidebar">
 
-    <div class="logo">
+            <!-- LOGO -->
+            <div class="logo">
 
-        <i class="fas fa-graduation-cap"></i>
+                <img
+                    src="../login/images/logotop.png"
+                    alt="ScholarLink Logo"
+                >
 
-        <div>
+            </div>
 
-            <h2>SCHOLARLINK</h2>
 
-            <p>Home</p>
+            <!-- SIDEBAR NAVIGATION -->
+            <div class="sidebar-navigation">
 
+                <!-- =========================
+                     MAIN
+                ========================== -->
+
+                <div class="menu-section">
+
+                    <span class="menu-section-title">
+                        MAIN
+                    </span>
+
+                    <ul class="menu">
+
+                        <!-- HOME -->
+                        <li>
+
+                            <a href="Home.html">
+
+                                <i class="fas fa-house"></i>
+
+                                <span>
+                                    Home
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- PROFILE -->
+                        <li class="active">
+
+                            <a href="profile.html">
+
+                                <i class="fas fa-user"></i>
+
+                                <span>
+                                    Profile
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- ACADEMIC SUBMISSION -->
+                        <li>
+
+                            <a href="academic-submissions.html">
+
+                                <i class="fas fa-file-signature"></i>
+
+                                <span>
+                                    Academic Submission
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- =========================
+                     SCHOLAR SERVICES
+                ========================== -->
+
+                <div class="menu-section scholar-services">
+
+                    <span class="menu-section-title">
+                        SCHOLAR SERVICES
+                    </span>
+
+                    <ul class="menu">
+
+                        <!-- ANNOUNCEMENT -->
+                        <li>
+
+                            <a href="announcements.html">
+
+                                <i class="fas fa-bullhorn"></i>
+
+                                <span>
+                                    Announcement
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- NOTIFICATION -->
+                        <li>
+
+                            <a href="notifications.html">
+
+                                <i class="fas fa-bell"></i>
+
+                                <span>
+                                    Notification
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+
+                        <!-- MY QR CODE -->
+                        <li>
+
+                            <a href="qr-code.html">
+
+                                <i class="fas fa-qrcode"></i>
+
+                                <span>
+                                    My QR Code
+                                </span>
+
+                                <i class="fas fa-chevron-right menu-arrow"></i>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 LOGOUT
+            ========================== -->
+
+            <div class="sidebar-logout">
+
+                <a href="#" id="sidebarlogout">
+
+                    <i class="fas fa-right-from-bracket"></i>
+
+                    <span>
+                        Logout
+                    </span>
+
+                    <i class="fas fa-chevron-right menu-arrow"></i>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button"
+                aria-label="Open menu">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+
+        <!-- MOBILE SIDEBAR OVERLAY -->
+
+        <div class="sidebar-overlay"
+             id="sidebarOverlay">
         </div>
-
-    </div>
-
-
-    <ul class="menu">
-
-        <!-- HOME -->
-        <li class="active">
-
-            <a href="Home.html">
-
-                <i class="fas fa-house"></i>
-
-                <span>Home</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- PROFILE -->
-        <li>
-
-            <a href="profile.html">
-
-                <i class="fas fa-user"></i>
-
-                <span>Profile</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- ACADEMIC SUBMISSION -->
-        <li>
-
-            <a href="academic-submissions.html">
-
-                <i class="fas fa-file-signature"></i>
-
-                <span>Academic Submission</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- SCHOLARSHIP STATUS -->
-        <li>
-
-            <a href="scholarship-status.html">
-
-                <i class="fas fa-award"></i>
-
-                <span>Scholarship Status</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- ANNOUNCEMENT -->
-        <li>
-
-            <a href="announcements.html">
-
-                <i class="fas fa-bullhorn"></i>
-
-                <span>Announcement</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- NOTIFICATION -->
-        <li>
-
-            <a href="notifications.html">
-
-                <i class="fas fa-bell"></i>
-
-                <span>Notification</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- MY QR CODE -->
-        <li>
-
-            <a href="qr-code.html">
-
-                <i class="fas fa-qrcode"></i>
-
-                <span>My QR Code</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- SETTINGS -->
-        <li>
-
-            <a href="settings.html">
-
-                <i class="fas fa-gear"></i>
-
-                <span>Settings</span>
-
-            </a>
-
-        </li>
-
-
-        <!-- LOGOUT -->
-        <li>
-
-            <a href="#" id="sidebarlogout">
-
-                <i class="fas fa-sign-out-alt"></i>
-
-                <span>Logout</span>
-
-            </a>
-
-        </li>
-
-    </ul>
-
-
-    <div class="bottom-menu"></div>
-
-</aside>
-
-<!-- MOBILE MENU BUTTON -->
-<button class="mobile-menu-btn"
-        id="mobileMenuBtn"
-        type="button"
-        aria-label="Open menu">
-    <i class="fas fa-bars"></i>
-</button>
-
-<!-- MOBILE SIDEBAR OVERLAY -->
-<div class="sidebar-overlay"
-     id="sidebarOverlay"></div>
-
 
 
         <!-- ======================================
@@ -249,9 +277,9 @@
 
                 <div>
 
-                    <h1>My Profile</h1>
-
-                   
+                    <h1>
+                        My Profile
+                    </h1>
 
                 </div>
 
@@ -259,6 +287,7 @@
                 <div class="topbar-right">
 
                     <!-- NOTIFICATION -->
+
                     <button class="notification-btn"
                             type="button"
                             onclick="window.location.href='notifications.html'">
@@ -267,8 +296,6 @@
 
                     </button>
 
-
-                    
                 </div>
 
             </header>
@@ -280,19 +307,22 @@
 
             <section class="profile-header">
 
-
                 <!-- PROFILE PHOTO -->
+
                 <div class="profile-photo-container">
 
-                    <img src="../images/user.png"
-                         id="profileAvatarLarge"
-                         class="profile-photo"
-                         alt="Scholar Profile">
+                    <img
+                        src="../images/user.png"
+                        id="profileAvatarLarge"
+                        class="profile-photo"
+                        alt="Scholar Profile"
+                    >
 
                 </div>
 
 
                 <!-- PROFILE BASIC INFORMATION -->
+
                 <div class="profile-header-info">
 
                     <h2 id="profileFullName">
@@ -332,8 +362,8 @@
 
                 <div class="scholar-info">
 
-
                     <!-- SCHOLAR ID -->
+
                     <div class="info-box">
 
                         <h3>
@@ -348,6 +378,7 @@
 
 
                     <!-- DATE APPROVED -->
+
                     <div class="info-box">
 
                         <h3>
@@ -362,6 +393,7 @@
 
 
                     <!-- SCHOLAR STATUS -->
+
                     <div class="info-box">
 
                         <h3>
@@ -376,6 +408,7 @@
 
 
                     <!-- SCHOOL -->
+
                     <div class="info-box">
 
                         <h3>
@@ -410,86 +443,103 @@
 
                 <div class="info-grid">
 
-
                     <!-- FULL NAME -->
+
                     <div>
 
                         <label>
                             Full Name
                         </label>
 
-                        <input type="text"
-                               id="fullName"
-                               readonly>
+                        <input
+                            type="text"
+                            id="fullName"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- DATE OF BIRTH -->
+
                     <div>
 
                         <label>
                             Date of Birth
                         </label>
 
-                        <input type="text"
-                               id="birthDate"
-                               readonly>
+                        <input
+                            type="text"
+                            id="birthDate"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- AGE -->
+
                     <div>
 
                         <label>
                             Age
                         </label>
 
-                        <input type="text"
-                               id="age"
-                               readonly>
+                        <input
+                            type="text"
+                            id="age"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- SEX -->
+
                     <div>
 
                         <label>
                             Sex
                         </label>
 
-                        <input type="text"
-                               id="gender"
-                               readonly>
+                        <input
+                            type="text"
+                            id="gender"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- CIVIL STATUS -->
+
                     <div>
 
                         <label>
                             Civil Status
                         </label>
 
-                        <input type="text"
-                               id="civilStatus"
-                               readonly>
+                        <input
+                            type="text"
+                            id="civilStatus"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- CONTACT NUMBER -->
+
                     <div class="editable-field">
 
                         <label>
                             Contact Number
                         </label>
 
-                        <input type="text"
-                               id="contactNumber">
+                        <input
+                            type="text"
+                            id="contactNumber"
+                        >
 
                         <span class="edit-hint">
                             Editable
@@ -499,28 +549,34 @@
 
 
                     <!-- EMAIL -->
+
                     <div>
 
                         <label>
                             Email Address
                         </label>
 
-                        <input type="email"
-                               id="email"
-                               readonly>
+                        <input
+                            type="email"
+                            id="email"
+                            readonly
+                        >
 
                     </div>
 
 
                     <!-- COMPLETE ADDRESS -->
+
                     <div class="editable-field">
 
                         <label>
                             Complete Address
                         </label>
 
-                        <input type="text"
-                               id="address">
+                        <input
+                            type="text"
+                            id="address"
+                        >
 
                         <span class="edit-hint">
                             Editable
@@ -539,8 +595,8 @@
 
             <section class="action-buttons">
 
-
                 <!-- SAVE -->
+
                 <button class="btn-primary"
                         type="button"
                         id="saveProfileBtn">
@@ -553,6 +609,7 @@
 
 
                 <!-- CHANGE PASSWORD -->
+
                 <button class="btn-warning"
                         type="button"
                         onclick="changePassword()">
@@ -565,6 +622,7 @@
 
 
                 <!-- PRINT -->
+
                 <button class="btn-secondary"
                         type="button"
                         onclick="printProfile()">
@@ -595,112 +653,136 @@
 
     </div>
 
-  <!-- ==========================================
-     LOGOUT MODAL
-=========================================== -->
 
-<div class="logout-modal" id="logoutModal">
+    <!-- ==========================================
+         LOGOUT MODAL
+    =========================================== -->
 
-    <div class="logout-overlay"></div>
+    <div class="logout-modal"
+         id="logoutModal">
 
-    <div class="logout-modal-content">
+        <div class="logout-overlay"></div>
 
-        <div class="logout-icon">
-            <i class="fas fa-right-from-bracket"></i>
-        </div>
+        <div class="logout-modal-content">
 
-        <h2>
-            Confirm Logout
-        </h2>
+            <div class="logout-icon">
 
-        <p>
-            Are you sure you want to logout from your
-            ScholarLink account?
-        </p>
+                <i class="fas fa-right-from-bracket"></i>
 
-        <div class="logout-buttons">
+            </div>
 
-            <button
-                type="button"
-                id="cancelLogout"
-                class="cancel-btn">
+            <h2>
+                Confirm Logout
+            </h2>
 
-                Cancel
+            <p>
+                Are you sure you want to logout from your
+                ScholarLink account?
+            </p>
 
-            </button>
+            <div class="logout-buttons">
 
-            <button
-                type="button"
-                id="confirmLogout"
-                class="confirm-logout-btn">
+                <button
+                    type="button"
+                    id="cancelLogout"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </button>
 
-                Logout
+                <button
+                    type="button"
+                    id="confirmLogout"
+                    class="confirm-logout-btn"
+                >
+                    Logout
+                </button>
 
-            </button>
+            </div>
 
         </div>
 
     </div>
 
-</div>
 
     <!-- ==========================================
          SCHOLAR PROFILE JAVASCRIPT
     =========================================== -->
 
-    <script type="module"
-
-            src="../js2/profile.js">
-
+    <script
+        type="module"
+        src="../js2/profile.js">
     </script>
 
 
-<!-- MOBILE SIDEBAR ONLY -->
+    <!-- MOBILE SIDEBAR ONLY -->
 
-<script>
-const menuButton = document.getElementById("mobileMenuBtn");
-const sidebar = document.querySelector(".sidebar");
-const overlay = document.getElementById("sidebarOverlay");
+    <script>
 
-if (menuButton && sidebar && overlay) {
+        const menuButton =
+            document.getElementById("mobileMenuBtn");
 
-    menuButton.addEventListener("click", function () {
+        const sidebar =
+            document.querySelector(".sidebar");
 
-        sidebar.classList.toggle("mobile-open");
-        overlay.classList.toggle("active");
+        const overlay =
+            document.getElementById("sidebarOverlay");
 
-        if (sidebar.classList.contains("mobile-open")) {
-            menuButton.innerHTML = '<i class="fas fa-xmark"></i>';
-        } else {
-            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+
+        if (menuButton && sidebar && overlay) {
+
+            menuButton.addEventListener("click", function () {
+
+                sidebar.classList.toggle("mobile-open");
+
+                overlay.classList.toggle("active");
+
+
+                if (sidebar.classList.contains("mobile-open")) {
+
+                    menuButton.innerHTML =
+                        '<i class="fas fa-xmark"></i>';
+
+                } else {
+
+                    menuButton.innerHTML =
+                        '<i class="fas fa-bars"></i>';
+
+                }
+
+            });
+
+
+            overlay.addEventListener("click", function () {
+
+                sidebar.classList.remove("mobile-open");
+
+                overlay.classList.remove("active");
+
+                menuButton.innerHTML =
+                    '<i class="fas fa-bars"></i>';
+
+            });
+
+
+            sidebar.querySelectorAll("a").forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    sidebar.classList.remove("mobile-open");
+
+                    overlay.classList.remove("active");
+
+                    menuButton.innerHTML =
+                        '<i class="fas fa-bars"></i>';
+
+                });
+
+            });
+
         }
 
-    });
+    </script>
 
-    overlay.addEventListener("click", function () {
-
-        sidebar.classList.remove("mobile-open");
-        overlay.classList.remove("active");
-
-        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-
-    });
-
-    sidebar.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            sidebar.classList.remove("mobile-open");
-            overlay.classList.remove("active");
-
-            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-
-        });
-
-    });
-
-}
-</script>
 </body>
-
 </html>

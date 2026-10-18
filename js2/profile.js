@@ -53,12 +53,20 @@ const loadingOverlay =
         "loadingOverlay"
     );
 
+/* =========================================
+   DISABLE PROFILE LOADING OVERLAY
+   Profile opens immediately
+========================================= */
+
+if (loadingOverlay) {
+    loadingOverlay.classList.remove("show");
+    loadingOverlay.style.display = "none";
+}
+
 const saveFeedback =
     document.getElementById(
         "saveFeedback"
     );
-
-
 /* -----------------------------------------
    TOP PROFILE
 ----------------------------------------- */

@@ -1,8 +1,4 @@
-/* =========================================================
-   SCHOLARLINK LOGIN PAGE
-   PREMIUM ENHANCED DESIGN
-   ORIGINAL FORMATION PRESERVED
-========================================================= */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -934,48 +930,50 @@ body {
 
 /* =========================================================
    SCHOLARLINK LOGO - RIGHT SIDE
+   ENHANCED SIZE & CLARITY
 ========================================================= */
 
 .login-logo {
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    margin:
-        0 auto 8px;
+    /* slightly more breathing room */
+    margin: 0 auto 12px;
 }
 
 .login-logo img {
-    width: 125px;
-
+    width: 190px;
     height: auto;
 
     max-width: 100%;
 
     object-fit: contain;
-
     display: block;
 
     filter:
         drop-shadow(
-            0 7px 12px
-            rgba(40,55,110,.14)
+            0 7px 14px
+            rgba(40,55,110,.16)
         );
 
     transition:
-        transform .3s ease;
+        transform .3s ease,
+        filter .3s ease;
 }
 
 .login-logo img:hover {
     transform:
         translateY(-2px)
         scale(1.02);
-}
 
+    filter:
+        drop-shadow(
+            0 9px 17px
+            rgba(40,55,110,.20)
+        );
+}
 
 /* =========================================================
    LOGIN TITLE

@@ -1,1496 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>ScholarLink | Grade &amp; COR Verification</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    
+<link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link rel="stylesheet" href="../css/grade-cor-verification.css">
 
-<title>ScholarLink | Grade & COR Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
-<link rel="stylesheet"
-href="../css/grade-cor-verification.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-
 <div class="dashboard">
 
-<!-- ===========================
-SIDEBAR
-=========================== -->
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="../login/images/adminlogotop.png"
+                 alt="ScholarLink Admin Portal">
+        </div>
 
-<aside class="sidebar">
+        <ul class="menu">
+            <li class="menu-section">MAIN</li>
 
-<div class="logo">
+            <li><a href="admin-dashboard.html">
+                <i class="fas fa-house"></i><span>Dashboard</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
 
-<img src="../images/scholarlink-logo.png">
+            <li><a href="applicants.html">
+                <i class="fas fa-users"></i><span>Applicants</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
 
-<div>
+            <li><a href="applications.html">
+                <i class="fas fa-file-lines"></i><span>Applications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
 
-<h2>ScholarLink</h2>
+            <li><a href="scholars.html">
+                <i class="fas fa-user-graduate"></i><span>Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
 
-<span>Scholarship Management System</span>
+            <li><a href="requirements.html">
+                <i class="fas fa-folder-open"></i><span>Requirements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
 
+            <li class="menu-section">COMMUNICATION</li>
+
+            <li><a href="announcements.html">
+                <i class="fas fa-bullhorn"></i><span>Announcements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li><a href="notifications.html">
+                <i class="fas fa-bell"></i><span>Notifications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li class="menu-section">MONITORING</li>
+
+            <li><a href="monitoring-scholars.html">
+                <i class="fas fa-chart-line"></i><span>Monitoring Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li class="menu-section">MANAGEMENT</li>
+
+            <li><a href="user-management.html">
+                <i class="fas fa-users-cog"></i><span>User Management</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li><a href="document-verification.html">
+                <i class="fas fa-file-circle-check"></i><span>Document Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li class="active"><a href="grade-cor-verification.html">
+                <i class="fas fa-award"></i><span>Grade &amp; COR Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+
+            <li class="menu-section">SYSTEM</li>
+
+            <li class="logout"><a href="../index.html">
+                <i class="fas fa-right-from-bracket"></i><span>Logout</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a></li>
+        </ul>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="top-left">
+                <button id="menuToggle" type="button" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <h2>Grade &amp; COR Verification</h2>
+                    <p>Review academic documents submitted by confirmed scholars.</p>
+                </div>
+            </div>
+
+            <div class="top-right">
+                <a class="notification-btn"
+                   id="notificationBtn"
+                   href="notifications.html"
+                   aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge" id="notificationBadge">0</span>
+                </a>
+
+                <div class="profile-box">
+                    <img src="../images/admin.png"
+                         id="adminProfileImage"
+                         alt="Administrator">
+
+                    <div>
+                        <h4 id="adminDisplayName">Administrator</h4>
+                        <span id="adminDisplayRole">Scholarship Office</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- PAGE INTRO -->
+        <section class="page-intro">
+            <div>
+                <h1>Academic Document Verification</h1>
+                <p>
+                    Review submitted Grades and Certificate of Registration
+                    before processing scholarship renewal.
+                </p>
+            </div>
+
+            <span class="page-status">
+                <i class="fas fa-circle-check"></i>
+                Confirmed Scholars Only
+            </span>
+        </section>
+
+
+        <!-- DYNAMIC SUMMARY CARDS -->
+        <section class="summary-cards">
+
+            <article class="summary-card">
+                <div class="summary-icon pending-icon">
+                    <i class="fas fa-file-signature"></i>
+                </div>
+                <div>
+                    <h3>Pending Grades</h3>
+                    <h2 id="pendingGradesCount">—</h2>
+                    <p>Awaiting verification</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon cor-icon">
+                    <i class="fas fa-file-circle-check"></i>
+                </div>
+                <div>
+                    <h3>Pending COR</h3>
+                    <h2 id="pendingCorCount">—</h2>
+                    <p>Awaiting verification</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon verified-icon">
+                    <i class="fas fa-circle-check"></i>
+                </div>
+                <div>
+                    <h3>Verified Documents</h3>
+                    <h2 id="verifiedScholarsCount">—</h2>
+                    <p>Successfully verified</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon review-icon">
+                    <i class="fas fa-rotate"></i>
+                </div>
+                <div>
+                    <h3>Resubmission Required</h3>
+                    <h2 id="forReviewCount">—</h2>
+                    <p>Needs correction</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon total-icon">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <div>
+                    <h3>Total Submissions</h3>
+                    <h2 id="totalScholarsCount">—</h2>
+                    <p>Grades and COR files</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon renewed-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div>
+                    <h3>Renewed Scholars</h3>
+                    <h2 id="renewedScholarsCount">—</h2>
+                    <p>Renewal approved</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon hold-icon">
+                    <i class="fas fa-pause-circle"></i>
+                </div>
+                <div>
+                    <h3>On Hold</h3>
+                    <h2 id="onHoldCount">—</h2>
+                    <p>Temporarily on hold</p>
+                </div>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon school-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div>
+                    <h3>Schools Submitted</h3>
+                    <h2 id="schoolsSubmittedCount">—</h2>
+                    <p>Schools represented</p>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- VERIFICATION WORKSPACE -->
+        <section class="verification-workspace">
+
+            <!-- SCHOLAR TABLE -->
+            <div class="verification-table">
+                <div class="table-card">
+
+                    <div class="table-header">
+                        <div>
+                            <h2>
+                                <i class="fas fa-user-graduate"></i>
+                                Scholar Submissions
+                            </h2>
+                            <p>Select a scholar to review their Grades and COR.</p>
+                        </div>
+
+                        <button class="btn-export"
+                                type="button"
+                                id="exportReportBtn">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+
+
+                    <!-- SEARCH AND FILTERS -->
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input id="scholarSearch"
+                                   type="search"
+                                   placeholder="Search name, scholar ID, school or course..."
+                                   aria-label="Search scholars">
+                        </div>
+
+                        <select id="statusFilter" aria-label="Filter by status">
+                            <option value="all">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="verified">Verified</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="resubmission_required">Resubmission Required</option>
+                            <option value="not-submitted">Not Submitted</option>
+                        </select>
+
+                        <select id="schoolFilter" aria-label="Filter by school">
+                            <option value="all">All Schools</option>
+                        </select>
+
+                        <select id="courseFilter" aria-label="Filter by course">
+                            <option value="all">All Courses</option>
+                        </select>
+
+                        <select id="semesterFilter" aria-label="Filter by semester">
+                            <option value="all">All Semesters</option>
+                            <option value="1st Semester">1st Semester</option>
+                            <option value="2nd Semester">2nd Semester</option>
+                            <option value="Summer">Summer</option>
+                        </select>
+                    </div>
+
+                    <div id="pageMessage"
+                         class="page-message"
+                         role="status"
+                         aria-live="polite"
+                         hidden></div>
+
+
+                    <!-- JAVASCRIPT POPULATES THIS TABLE -->
+                    <div class="table-responsive">
+                        <table class="scholar-table">
+                            <thead>
+                                <tr>
+                                    <th>Scholar ID</th>
+                                    <th>Scholar</th>
+                                    <th>School</th>
+                                    <th>School Year</th>
+                                    <th>Semester</th>
+                                    <th>Grades</th>
+                                    <th>COR</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="scholarTableBody">
+                                <tr>
+                                    <td colspan="8" class="loading-cell">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Loading confirmed scholars...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <p id="tableFooterText">Loading submissions...</p>
+
+                        <div class="pagination">
+                            <button type="button"
+                                    id="previousPageBtn"
+                                    aria-label="Previous page"
+                                    disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <span id="currentPage">1</span>
+
+                            <button type="button"
+                                    id="nextPageBtn"
+                                    aria-label="Next page"
+                                    disabled>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- SCHOLAR DETAILS -->
+            <aside class="verification-details" id="scholarDetailsPanel">
+                <div class="details-card">
+
+                    <div class="details-header">
+                        <div>
+                            <h2>Scholar Details</h2>
+                            <p>Academic documents and verification</p>
+                        </div>
+
+                        <button type="button"
+                                id="closeDetailsBtn"
+                                class="close-details-btn"
+                                aria-label="Close details">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div id="detailsEmptyState" class="details-empty-state">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>No Scholar Selected</h3>
+                        <p>Select a scholar from the table to view their submitted academic documents.</p>
+                    </div>
+
+
+                    <!-- POPULATED WHEN A SCHOLAR IS SELECTED -->
+                    <div id="scholarDetailsContent" hidden>
+
+                        <section class="profile-card">
+                            <div class="profile-heading">
+                                <div class="profile-image-wrapper">
+                                    <img src="../images/student-placeholder.png"
+                                         class="profile-image"
+                                         id="detailPhoto"
+                                         alt="Scholar profile photo">
+                                    <span id="detailPhotoFallback">S</span>
+                                </div>
+
+                                <div>
+                                    <h2 id="detailScholarName">—</h2>
+                                    <p class="scholar-id">
+                                        <span id="detailScholarId">—</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="profile-info">
+                                <p><i class="fas fa-school"></i><strong>School:</strong><span id="detailSchool">—</span></p>
+                                <p><i class="fas fa-graduation-cap"></i><strong>Course:</strong><span id="detailCourse">—</span></p>
+                                <p><i class="fas fa-calendar"></i><strong>Year Level:</strong><span id="detailYearLevel">—</span></p>
+                                <p><i class="fas fa-calendar-days"></i><strong>Semester:</strong><span id="detailSemester">—</span></p>
+                                <p><i class="fas fa-phone"></i><strong>Contact:</strong><span id="detailContact">—</span></p>
+                                <p><i class="fas fa-envelope"></i><strong>Email:</strong><span id="detailEmail">—</span></p>
+                            </div>
+                        </section>
+
+
+                        <section class="academic-card">
+                            <h2><i class="fas fa-chart-line"></i> Academic Performance</h2>
+
+                            <div class="academic-stats">
+                                <div><span>Previous GPA</span><strong id="detailPreviousGpa">—</strong></div>
+                                <div><span>Current GPA</span><strong id="detailCurrentGpa">—</strong></div>
+                                <div><span>Units Enrolled</span><strong id="detailUnits">—</strong></div>
+                            </div>
+
+                            <div class="academic-info-row"><span>Semester</span><strong id="detailAcademicSemester">—</strong></div>
+                            <div class="academic-info-row"><span>Academic Year</span><strong id="detailAcademicYear">—</strong></div>
+                            <div class="academic-info-row"><span>Scholarship Status</span><strong id="detailScholarshipStatus">—</strong></div>
+                        </section>
+
+
+                        <!-- GRADES -->
+                        <section class="document-card" id="gradesDocumentCard">
+                            <div class="document-heading">
+                                <div class="document-heading-icon grades-icon">
+                                    <i class="fas fa-file-lines"></i>
+                                </div>
+
+                                <div class="document-heading-text">
+                                    <h3>Grades / Report Card</h3>
+                                    <p id="gradesFileName">No file submitted</p>
+                                </div>
+
+                                <span id="gradesDocumentStatus"
+                                      class="status-badge not-submitted">Not Submitted</span>
+                            </div>
+
+                            <div class="document-preview" id="gradesPreview">
+                                <div class="document-placeholder">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <p>No Grades document available.</p>
+                                </div>
+                            </div>
+
+                            <div class="document-actions">
+                                <button type="button"
+                                        id="downloadGradesBtn"
+                                        class="btn-secondary"
+                                        disabled>
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+
+                                <button type="button"
+                                        id="openGradesBtn"
+                                        class="btn-outline"
+                                        disabled>
+                                    <i class="fas fa-expand"></i> View Full Screen
+                                </button>
+                            </div>
+                        </section>
+
+
+                        <!-- COR -->
+                        <section class="document-card" id="corDocumentCard">
+                            <div class="document-heading">
+                                <div class="document-heading-icon cor-icon">
+                                    <i class="fas fa-file-circle-check"></i>
+                                </div>
+
+                                <div class="document-heading-text">
+                                    <h3>Certificate of Registration (COR)</h3>
+                                    <p id="corFileName">No file submitted</p>
+                                </div>
+
+                                <span id="corDocumentStatus"
+                                      class="status-badge not-submitted">Not Submitted</span>
+                            </div>
+
+                            <div class="document-preview" id="corPreview">
+                                <div class="document-placeholder">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <p>No COR document available.</p>
+                                </div>
+                            </div>
+
+                            <div class="document-actions">
+                                <button type="button"
+                                        id="downloadCorBtn"
+                                        class="btn-secondary"
+                                        disabled>
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+
+                                <button type="button"
+                                        id="openCorBtn"
+                                        class="btn-outline"
+                                        disabled>
+                                    <i class="fas fa-expand"></i> View Full Screen
+                                </button>
+                            </div>
+                        </section>
+
+
+                        <!-- VERIFICATION -->
+                        <section class="verification-card">
+                            <h2><i class="fas fa-clipboard-check"></i> Verification Decision</h2>
+                            <p class="section-description">Review the selected document before saving your decision.</p>
+
+                            <div class="form-group">
+                                <label for="documentTypeSelect">Document to Verify</label>
+                                <select id="documentTypeSelect">
+                                    <option value="grades">Grades / Report Card</option>
+                                    <option value="cor">Certificate of Registration</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="verificationResult">Verification Result</label>
+                                <select id="verificationResult">
+                                    <option value="pending">Pending Review</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="rejected">Rejected</option>
+                                    <option value="resubmission_required">Request Resubmission</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="administratorRemarks">Administrator Remarks</label>
+                                <textarea id="administratorRemarks"
+                                          rows="4"
+                                          maxlength="1000"
+                                          placeholder="Enter remarks or explain required corrections..."></textarea>
+                            </div>
+
+                            <div id="verificationPanelMessage"
+                                 class="verification-message"
+                                 role="status"
+                                 aria-live="polite">
+                                Select a document and review it carefully.
+                            </div>
+
+                            <button type="button"
+                                    class="btn-primary btn-block"
+                                    id="saveDocumentVerificationBtn">
+                                <i class="fas fa-floppy-disk"></i>
+                                Save Verification Decision
+                            </button>
+
+                            <hr>
+
+                            <h3 class="renewal-heading">Scholarship Renewal</h3>
+                            <p class="section-description">Take action after evaluating the scholar's academic documents.</p>
+
+                            <div class="renewal-actions">
+                                <button type="button"
+                                        class="btn-success"
+                                        id="approveRenewalBtn">
+                                    <i class="fas fa-check"></i> Approve Renewal
+                                </button>
+
+                                <button type="button"
+                                        class="btn-warning"
+                                        id="putOnHoldBtn">
+                                    <i class="fas fa-pause"></i> Put On Hold
+                                </button>
+                            </div>
+                        </section>
+
+
+                        <!-- HISTORY -->
+                        <section class="history-card">
+                            <h2><i class="fas fa-clock-rotate-left"></i> Verification History</h2>
+                            <div id="verificationHistory">
+                                <p class="empty-history">No verification history available.</p>
+                            </div>
+                        </section>
+
+
+                        <!-- NOTIFICATION -->
+                        <section class="notification-card">
+                            <h2><i class="fas fa-bell"></i> Notification Preview</h2>
+
+                            <div id="notificationPreview" class="notification-preview">
+                                A verification update will appear here.
+                            </div>
+
+                            <button type="button"
+                                    class="btn-primary btn-block"
+                                    id="sendNotificationBtn">
+                                <i class="fas fa-paper-plane"></i> Send Notification
+                            </button>
+                        </section>
+
+
+                        <!-- QUICK ACTIONS -->
+                        <section class="action-card">
+                            <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+
+                            <div class="action-buttons">
+                                <button type="button" class="btn-primary" id="viewScholarProfileBtn">
+                                    <i class="fas fa-user"></i> View Scholar Profile
+                                </button>
+
+                                <button type="button" class="btn-success" id="quickApproveRenewalBtn">
+                                    <i class="fas fa-check-circle"></i> Approve Renewal
+                                </button>
+
+                                <button type="button" class="btn-warning" id="quickNotifyScholarBtn">
+                                    <i class="fas fa-bell"></i> Notify Scholar
+                                </button>
+
+                                <button type="button" class="btn-danger" id="quickPutOnHoldBtn">
+                                    <i class="fas fa-pause-circle"></i> Put On Hold
+                                </button>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+
+        <footer class="dashboard-footer">
+            <p>© <span id="currentYear">2026</span> ScholarLink | Scholarship Management System</p>
+        </footer>
+    </main>
 </div>
 
+
+<!-- FULL-SCREEN DOCUMENT PREVIEW -->
+<div class="document-modal"
+     id="documentModal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="documentModalTitle"
+     hidden>
+
+    <div class="document-modal-content">
+        <div class="document-modal-header">
+            <div>
+                <h2 id="documentModalTitle">Document Preview</h2>
+                <p id="documentModalFileName">PDF document</p>
+            </div>
+
+            <button type="button" id="closeDocumentModalBtn" aria-label="Close preview">
+                <i class="fas fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="documentModalBody" class="document-modal-body">
+            <p>Select a document to preview it here.</p>
+        </div>
+
+        <div class="document-modal-footer">
+            <a href="#"
+               id="documentModalDownloadBtn"
+               class="btn-primary"
+               hidden>
+                <i class="fas fa-download"></i> Download
+            </a>
+
+            <button type="button"
+                    id="closeDocumentModalFooterBtn"
+                    class="btn-secondary">Close</button>
+        </div>
+    </div>
 </div>
 
-<ul class="menu">
-
-<li>
-
-<a href="admin-dashboard.html">
-
-<i class="fas fa-house"></i>
-
-Dashboard
-
-</a>
-
-</li>
-
-<li>
-
-<a href="applicants.html">
-
-<i class="fas fa-users"></i>
-
-Applicants
-
-</a>
-
-</li>
-
-
-<li>
-    <a href="applications.html">
-        <i class="fas fa-file-lines"></i>
-        Applications
-    </a>
-</li>
-
-
-<li>
-
-<a href="scholars.html">
-
-<i class="fas fa-user-graduate"></i>
-
-Scholars
-
-</a>
-
-</li>
-
-
-<li>
-
-<a href="requirements.html">
-
-<i class="fas fa-folder-open"></i>
-
-Requirements
-
-</a>
-
-</li>
-
-<li>
-
-<a href="announcements.html">
-
-<i class="fas fa-bullhorn"></i>
-
-Announcements
-
-</a>
-
-</li>
-
-<li>
-
-<a href="notifications.html">
-
-<i class="fas fa-paper-plane"></i>
-
-Notification Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="monitoring-scholars.html">
-
-<i class="fas fa-chart-line"></i>
-
-Monitoring Scholars
-
-</a>
-
-</li>
-
-<li>
-
-<a href="qr-management.html">
-
-<i class="fas fa-qrcode"></i>
-
-QR Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="user-management.html">
-
-<i class="fas fa-users-cog"></i>
-
-User Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="document-verification.html">
-
-<i class="fas fa-file-circle-check"></i>
-
-Document Verification
-
-</a>
-
-</li>
-
-<li class="active">
-
-<a href="grade-cor-verification.html">
-
-<i class="fas fa-award"></i>
-
-Grade & COR Verification
-
-</a>
-
-</li>
-
-
-
-<li class="logout">
-
-<a href="../index.html">
-
-<i class="fas fa-right-from-bracket"></i>
-
-Logout
-
-</a>
-
-</li>
-
-</ul>
-
-</aside>
-
-<!-- ===========================
-MAIN CONTENT
-=========================== -->
-
-<main class="main-content">
-
-<header class="topbar">
-
-<div class="top-left">
-
-<button id="menuToggle">
-
-<i class="fas fa-bars"></i>
-
-</button>
-
-<h2>
-
-Grade & COR Verification
-
-</h2>
-
-</div>
-
-<div class="top-right">
-
-<button class="notification-btn">
-
-<i class="fas fa-bell"></i>
-
-<span class="badge">
-
-8
-
-</span>
-
-</button>
-
-<div class="profile-box">
-
-<img src="../images/admin.png">
-
-<div>
-
-<h4>
-
-Administrator
-
-</h4>
-
-<span>
-
-Scholarship Office
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-
-<!-- ===========================
-HERO
-=========================== -->
-
-
-
-<!-- ===========================
-SUMMARY CARDS
-=========================== -->
-
-<section class="summary-cards">
-
-<div class="summary-card">
-
-<i class="fas fa-file-signature"></i>
-
-<h3>
-
-Pending Grade Verification
-
-</h3>
-
-<h2>
-
-48
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-file-circle-check"></i>
-
-<h3>
-
-Pending COR Verification
-
-</h3>
-
-<h2>
-
-35
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-circle-check"></i>
-
-<h3>
-
-Verified Scholars
-
-</h3>
-
-<h2 class="green">
-
-182
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-user-clock"></i>
-
-<h3>
-
-For Review
-
-</h3>
-
-<h2 class="orange">
-
-17
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-user-check"></i>
-
-<h3>
-
-Renewed Scholars
-
-</h3>
-
-<h2 class="blue">
-
-173
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-user-slash"></i>
-
-<h3>
-
-On Hold
-
-</h3>
-
-<h2 class="red">
-
-9
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-school"></i>
-
-<h3>
-
-Schools Submitted
-
-</h3>
-
-<h2>
-
-12
-
-</h2>
-
-</div>
-
-<div class="summary-card">
-
-<i class="fas fa-calendar-days"></i>
-
-<h3>
-
-Current Semester
-
-</h3>
-
-<h2>
-
-1st Sem AY 2026–2027
-
-</h2>
-
-</div>
-
-</section>
-
-<!-- ===========================
-SEARCH & FILTER
-=========================== -->
-
-<section class="toolbar">
-
-<div class="search-box">
-
-<i class="fas fa-search"></i>
-
-<input
-type="text"
-placeholder="Search scholar by name, ID, school or course...">
-
-</div>
-
-<select>
-
-<option>All Scholars</option>
-
-<option>Pending</option>
-
-<option>Verified</option>
-
-<option>Renewed</option>
-
-<option>On Hold</option>
-
-<option>For Review</option>
-
-</select>
-
-<select>
-
-<option>All Schools</option>
-
-<option>Cebu Technological University</option>
-
-<option>University of Cebu</option>
-
-<option>Cebu Normal University</option>
-
-<option>University of San Carlos</option>
-
-</select>
-
-<select>
-
-<option>All Courses</option>
-
-<option>BS Information Technology</option>
-
-<option>BS Computer Science</option>
-
-<option>BS Education</option>
-
-<option>BS Accountancy</option>
-
-</select>
-
-<button class="btn-export">
-
-<i class="fas fa-download"></i>
-
-Export Report
-
-</button>
-
-</section>
-
-<!-- Continue in Part 2 -->
-
-<section class="verification-table">
-
-    <div class="table-card">
-
-<div class="table-header">
-
-<div>
-
-<h2>
-
-<i class="fas fa-user-graduate"></i>
-
-Scholar Renewal Verification
-
-</h2>
-
-<p>
-
-Review scholars' Grades and Certificate of Registration (COR) before approving their scholarship renewal.
-
-</p>
-
-</div>
-
-</div>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Scholar ID</th>
-
-<th>Scholar</th>
-
-<th>School</th>
-
-<th>Course</th>
-
-<th>GPA</th>
-
-<th>COR</th>
-
-<th>Grades</th>
-
-<th>Status</th>
-
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<!-- SCHOLAR 1 -->
-
-<tr>
-
-<td>SCH-001</td>
-
-<td>
-
-<div class="user-info">
-
-<img src="../images/student1.jpg">
-
-<div>
-
-<h4>Juan Dela Cruz</h4>
-
-<span>3rd Year</span>
-
-</div>
-
-</div>
-
-</td>
-
-<td>Cebu Technological University</td>
-
-<td>BS Information Technology</td>
-
-<td>
-
-<span class="gpa excellent">
-
-1.25
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-renewed">
-
-Ready for Renewal
-
-</span>
-
-</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-grades">
-
-<i class="fas fa-file-lines"></i>
-
-</button>
-
-<button class="btn-cor">
-
-<i class="fas fa-file-circle-check"></i>
-
-</button>
-
-<button class="btn-renew">
-
-<i class="fas fa-check"></i>
-
-</button>
-
-<button class="btn-notify">
-
-<i class="fas fa-bell"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<!-- SCHOLAR 2 -->
-
-<tr>
-
-<td>SCH-002</td>
-
-<td>
-
-<div class="user-info">
-
-<img src="../images/student2.jpg">
-
-<div>
-
-<h4>Maria Santos</h4>
-
-<span>2nd Year</span>
-
-</div>
-
-</div>
-
-</td>
-
-<td>University of Cebu</td>
-
-<td>BS Computer Science</td>
-
-<td>
-
-<span class="gpa good">
-
-1.75
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-pending">
-
-Pending
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-review">
-
-For Review
-
-</span>
-
-</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-grades">
-
-<i class="fas fa-file-lines"></i>
-
-</button>
-
-<button class="btn-cor">
-
-<i class="fas fa-file-circle-check"></i>
-
-</button>
-
-<button class="btn-renew">
-
-<i class="fas fa-check"></i>
-
-</button>
-
-<button class="btn-notify">
-
-<i class="fas fa-bell"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<!-- SCHOLAR 3 -->
-
-<tr>
-
-<td>SCH-003</td>
-
-<td>
-
-<div class="user-info">
-
-<img src="../images/student3.jpg">
-
-<div>
-
-<h4>Carlo Mendoza</h4>
-
-<span>4th Year</span>
-
-</div>
-
-</div>
-
-</td>
-
-<td>Cebu Normal University</td>
-
-<td>BS Education</td>
-
-<td>
-
-<span class="gpa warning">
-
-2.75
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-hold">
-
-On Hold
-
-</span>
-
-</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-grades">
-
-<i class="fas fa-file-lines"></i>
-
-</button>
-
-<button class="btn-cor">
-
-<i class="fas fa-file-circle-check"></i>
-
-</button>
-
-<button class="btn-hold">
-
-<i class="fas fa-ban"></i>
-
-</button>
-
-<button class="btn-notify">
-
-<i class="fas fa-bell"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<!-- SCHOLAR 4 -->
-
-<tr>
-
-<td>SCH-004</td>
-
-<td>
-
-<div class="user-info">
-
-<img src="../images/student4.jpg">
-
-<div>
-
-<h4>Sophia Garcia</h4>
-
-<span>1st Year</span>
-
-</div>
-
-</div>
-
-</td>
-
-<td>University of San Carlos</td>
-
-<td>BS Accountancy</td>
-
-<td>
-
-<span class="gpa excellent">
-
-1.40
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-pending">
-
-Pending
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-pending">
-
-Pending
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-pending">
-
-Pending Verification
-
-</span>
-
-</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-grades">
-
-<i class="fas fa-file-lines"></i>
-
-</button>
-
-<button class="btn-cor">
-
-<i class="fas fa-file-circle-check"></i>
-
-</button>
-
-<button class="btn-renew">
-
-<i class="fas fa-check"></i>
-
-</button>
-
-<button class="btn-notify">
-
-<i class="fas fa-bell"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<!-- SCHOLAR 5 -->
-
-<tr>
-
-<td>SCH-005</td>
-
-<td>
-
-<div class="user-info">
-
-<img src="../images/student5.jpg">
-
-<div>
-
-<h4>Angela Reyes</h4>
-
-<span>3rd Year</span>
-
-</div>
-
-</div>
-
-</td>
-
-<td>Cebu Technological University</td>
-
-<td>BS Information Technology</td>
-
-<td>
-
-<span class="gpa good">
-
-1.60
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-approved">
-
-Verified
-
-</span>
-
-</td>
-
-<td>
-
-<span class="status-renewed">
-
-Renewed
-
-</span>
-
-</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-grades">
-
-<i class="fas fa-file-lines"></i>
-
-</button>
-
-<button class="btn-cor">
-
-<i class="fas fa-file-circle-check"></i>
-
-</button>
-
-<button class="btn-renew">
-
-<i class="fas fa-check"></i>
-
-</button>
-
-<button class="btn-notify">
-
-<i class="fas fa-bell"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<!-- Continue in Part 3 -->
-
-<section class="verification-details">
-
-    <div class="details-grid">
-
-<!-- =====================================
-SCHOLAR PROFILE
-===================================== -->
-
-<div class="profile-card">
-
-<img src="../images/student1.jpg" class="profile-image">
-
-<h2>Juan Dela Cruz</h2>
-
-<p class="scholar-id">
-
-Scholar ID : SCH-001
-
-</p>
-
-<div class="profile-info">
-
-<p><strong>School :</strong> Cebu Technological University</p>
-
-<p><strong>Course :</strong> BS Information Technology</p>
-
-<p><strong>Year Level :</strong> 3rd Year</p>
-
-<p><strong>Semester :</strong> 1st Semester AY 2026-2027</p>
-
-<p><strong>Contact :</strong> 09123456789</p>
-
-<p><strong>Email :</strong> juan@gmail.com</p>
-
-</div>
-
-</div>
-
-<!-- =====================================
-ACADEMIC PERFORMANCE
-===================================== -->
-
-<div class="academic-card">
-
-<h2>
-
-<i class="fas fa-chart-line"></i>
-
-Academic Performance
-
-</h2>
-
-<table>
-
-<tr>
-
-<th>Previous GPA</th>
-
-<td>1.35</td>
-
-</tr>
-
-<tr>
-
-<th>Current GPA</th>
-
-<td>1.25</td>
-
-</tr>
-
-<tr>
-
-<th>Units Enrolled</th>
-
-<td>24 Units</td>
-
-</tr>
-
-<tr>
-
-<th>Semester</th>
-
-<td>1st Semester</td>
-
-</tr>
-
-<tr>
-
-<th>Academic Year</th>
-
-<td>2026 - 2027</td>
-
-</tr>
-
-<tr>
-
-<th>Scholarship Status</th>
-
-<td>
-
-<span class="status-renewed">
-
-Qualified for Renewal
-
-</span>
-
-</td>
-
-</tr>
-
-</table>
-
-</div>
-
-<!-- =====================================
-GRADES PREVIEW
-===================================== -->
-
-<div class="grades-card">
-
-<h2>
-
-<i class="fas fa-file-lines"></i>
-
-Grades Preview
-
-</h2>
-
-<div class="document-preview">
-
-<img src="../images/sample-grades.jpg">
-
-</div>
-
-<button class="btn-view-grades">
-
-<i class="fas fa-eye"></i>
-
-Open Grades
-
-</button>
-
-</div>
-
-<!-- =====================================
-COR PREVIEW
-===================================== -->
-
-<div class="cor-card">
-
-<h2>
-
-<i class="fas fa-file-circle-check"></i>
-
-Certificate of Registration
-
-</h2>
-
-<div class="document-preview">
-
-<img src="../images/sample-cor.jpg">
-
-</div>
-
-<button class="btn-view-cor">
-
-<i class="fas fa-eye"></i>
-
-Open COR
-
-</button>
-
-</div>
-
-<!-- =====================================
-VERIFICATION PANEL
-===================================== -->
-
-<div class="verification-card">
-
-<h2>
-
-<i class="fas fa-check-circle"></i>
-
-Verification Panel
-
-</h2>
-
-<label>Verification Result</label>
-
-<select>
-
-<option>Pending</option>
-
-<option>Verified</option>
-
-<option>Renew Scholarship</option>
-
-<option>On Hold</option>
-
-</select>
-
-<label>Administrator Remarks</label>
-
-<textarea
-rows="6"
-placeholder="Enter remarks..."></textarea>
-
-<div class="verification-buttons">
-
-<button class="btn-verify">
-
-<i class="fas fa-check"></i>
-
-Verify Grades
-
-</button>
-
-<button class="btn-cor-verify">
-
-<i class="fas fa-file-circle-check"></i>
-
-Verify COR
-
-</button>
-
-<button class="btn-renew">
-
-<i class="fas fa-award"></i>
-
-Approve Renewal
-
-</button>
-
-<button class="btn-hold">
-
-<i class="fas fa-ban"></i>
-
-Put On Hold
-
-</button>
-
-</div>
-
-</div>
-
-<!-- =====================================
-RENEWAL HISTORY
-===================================== -->
-
-<div class="history-card">
-
-<h2>
-
-<i class="fas fa-clock-rotate-left"></i>
-
-Renewal History
-
-</h2>
-
-<ul>
-
-<li>
-
-<strong>1st Semester 2025-2026</strong>
-
-<br>
-
-<span>Renewed Successfully</span>
-
-</li>
-
-<li>
-
-<strong>2nd Semester 2025-2026</strong>
-
-<br>
-
-<span>Renewed Successfully</span>
-
-</li>
-
-<li>
-
-<strong>1st Semester 2026-2027</strong>
-
-<br>
-
-<span>Pending Verification</span>
-
-</li>
-
-</ul>
-
-</div>
-
-<!-- =====================================
-NOTIFICATION PREVIEW
-===================================== -->
-
-<div class="notification-card">
-
-<h2>
-
-<i class="fas fa-bell"></i>
-
-Notification Preview
-
-</h2>
-
-<textarea rows="8" readonly>
-
-Congratulations!
-
-Your Grades and Certificate of Registration have been verified.
-
-Your scholarship has been successfully renewed for this semester.
-
-ScholarLink Scholarship Office
-
-</textarea>
-
-<button class="btn-send">
-
-<i class="fas fa-paper-plane"></i>
-
-Send Notification
-
-</button>
-
-</div>
-
-<!-- =====================================
-QUICK ACTIONS
-===================================== -->
-
-<div class="action-card">
-
-<h2>
-
-<i class="fas fa-bolt"></i>
-
-Quick Actions
-
-</h2>
-
-<div class="action-buttons">
-
-<button class="btn-primary">
-
-<i class="fas fa-eye"></i>
-
-View Scholar Profile
-
-</button>
-
-<button class="btn-success">
-
-<i class="fas fa-check-circle"></i>
-
-Renew Scholarship
-
-</button>
-
-<button class="btn-warning">
-
-<i class="fas fa-bell"></i>
-
-Notify Scholar
-
-</button>
-
-<button class="btn-danger">
-
-<i class="fas fa-user-slash"></i>
-
-Put On Hold
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =====================================
-FOOTER
-===================================== -->
-
-<footer class="dashboard-footer">
-
-<p>
-
-© 2026 ScholarLink | Scholarship Management System | Grade & COR Verification
-
-</p>
-
-</footer>
-
-</main>
-
-</div>
+<script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
 
 <script src="../js/grade-cor-verification.js"></script>
-
 </body>
-
 </html>

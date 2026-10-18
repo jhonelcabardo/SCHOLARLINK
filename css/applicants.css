@@ -1218,3 +1218,229 @@ border-radius:20px;
 background:#1C6ED5;
 
 }
+
+
+/* ==========================================
+   SCHOLARLINK APPLICANTS
+   MATCH ADMIN DASHBOARD SIDEBAR
+   ========================================== */
+
+/* Sidebar background and fixed position */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    /* Keep the same width as the admin dashboard */
+    width: 290px;
+    min-width: 290px;
+    max-width: 290px;
+    height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #10296f 0%,
+        #123b91 55%,
+        #1f4db8 100%
+    );
+
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Logo container */
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 188px;
+    min-height: 188px;
+    padding: 16px 18px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+}
+
+/* Use the same complete logo image */
+.sidebar .logo img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: 155px;
+
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+}
+
+/* Sidebar menu layout */
+.sidebar .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    list-style: none;
+    margin: 0;
+    padding: 18px 16px 22px;
+}
+
+/* Remove old spacing */
+.sidebar .menu li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Section headings: MAIN, COMMUNICATION, etc. */
+.sidebar .menu li.menu-label {
+    display: block;
+    padding: 10px 7px 9px;
+    margin-top: 7px;
+    margin-bottom: 4px;
+
+    color: #16caff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Menu links */
+.sidebar .menu li a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+
+    color: #f5f7ff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Consistent icon alignment */
+.sidebar .menu li a > i:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    min-width: 22px;
+    font-size: 16px;
+}
+
+/* Right chevron */
+.sidebar .menu li a .menu-chevron {
+    margin-left: auto;
+    width: auto;
+    min-width: auto;
+
+    font-size: 12px;
+    color: #dce8ff;
+}
+
+/* Hover */
+.sidebar .menu li:not(.menu-label) a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Active menu — blue to purple gradient */
+.sidebar .menu li.active > a {
+    position: relative;
+
+    color: #fff;
+    font-weight: 600;
+
+    background: linear-gradient(
+        100deg,
+        #168bff 0%,
+        #376bff 55%,
+        #843bff 100%
+    );
+
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* White active indicator */
+.sidebar .menu li.active > a::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    bottom: 9px;
+    left: 0;
+
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+    background: #fff;
+}
+
+/* Logout */
+.sidebar .menu li.logout {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .menu li.logout > a {
+    color: #ffe4e4;
+}
+
+/* Scrollbar similar to admin sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+
+/* Main content aligns beside the fixed sidebar */
+.main-content {
+    margin-left: 290px;
+    width: calc(100% - 290px);
+    min-width: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 290px;
+        min-width: 290px;
+        max-width: 85vw;
+
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}

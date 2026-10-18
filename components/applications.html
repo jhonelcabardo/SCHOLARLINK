@@ -10,26 +10,36 @@
 
     <title>ScholarLink | Applications</title>
 
+
     <!-- ADMIN DASHBOARD CSS -->
     <link rel="stylesheet"
           href="../css/admin-dashboard.css">
+
 
     <!-- APPLICATIONS CSS -->
     <link rel="stylesheet"
           href="../css/applications.css">
 
+
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+
+    <!-- SHEETJS
+         Used for CSV / XLSX / XLS files -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
 </head>
 
 
 <body>
+
 
 <div class="dashboard">
 
@@ -38,206 +48,133 @@
          SIDEBAR
     ====================================================== -->
 
-    <aside class="sidebar">
+   
+<aside class="sidebar">
+
+    <div class="logo">
+        <img src="../login/images/adminlogotop.png"
+             alt="ScholarLink Admin Portal">
+    </div>
+
+    <ul class="menu">
+
+        <li class="menu-label">MAIN</li>
+
+        <li>
+            <a href="admin-dashboard.html">
+                <i class="fas fa-house"></i>
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="applicants.html">
+                <i class="fas fa-users"></i>
+                <span>Applicants</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="applications.html" aria-current="page">
+                <i class="fas fa-file-lines"></i>
+                <span>Applications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="scholars.html">
+                <i class="fas fa-user-graduate"></i>
+                <span>Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="requirements.html">
+                <i class="fas fa-folder-open"></i>
+                <span>Requirements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="menu-label">COMMUNICATION</li>
+
+        <li>
+            <a href="announcements.html">
+                <i class="fas fa-bullhorn"></i>
+                <span>Announcements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="notifications.html">
+                <i class="fas fa-bell"></i>
+                <span>Notifications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="menu-label">MONITORING</li>
+
+        <li>
+            <a href="monitoring-scholars.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Monitoring Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="menu-label">MANAGEMENT</li>
+
+        <li>
+            <a href="user-management.html">
+                <i class="fas fa-users-gear"></i>
+                <span>User Management</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="document-verification.html">
+                <i class="fas fa-file-circle-check"></i>
+                <span>Document Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="grade-cor-verification.html">
+                <i class="fas fa-award"></i>
+                <span>Grade &amp; COR Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="menu-label">SYSTEM</li>
+
+        <li>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span>Settings</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="logout">
+            <a href="#" id="logoutLink">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+    </ul>
+</aside>
 
-        <div class="logo">
-
-            <img src="../images/scholarlink-logo.png"
-                 alt="ScholarLink">
-
-            <div>
-
-                <h2>ScholarLink</h2>
-
-                <span>Admin Portal</span>
-
-            </div>
-
-        </div>
-
-
-        <ul class="menu">
-
-            <li>
-
-                <a href="admin-dashboard.html">
-
-                    <i class="fas fa-house"></i>
-
-                    Dashboard
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="applicants.html">
-
-                    <i class="fas fa-users"></i>
-
-                    Applicants
-
-                </a>
-
-            </li>
-<li>
-    <a href="applications.html">
-        <i class="fas fa-file-lines"></i>
-        Applications
-    </a>
-</li>
-
-
-            <li>
-
-                <a href="scholars.html">
-
-                    <i class="fas fa-user-graduate"></i>
-
-                    Scholars
-
-                </a>
-
-            </li>
-
-
-
-
-            <li>
-
-                <a href="requirements.html">
-
-                    <i class="fas fa-folder-open"></i>
-
-                    Requirements
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="announcements.html">
-
-                    <i class="fas fa-bullhorn"></i>
-
-                    Announcements
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="notifications.html">
-
-                    <i class="fas fa-bell"></i>
-
-                    Notifications
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="monitoring-scholars.html">
-
-                    <i class="fas fa-chart-line"></i>
-
-                    Monitoring Scholars
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="qr-management.html">
-
-                    <i class="fas fa-qrcode"></i>
-
-                    QR Management
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="user-management.html">
-
-                    <i class="fas fa-users-cog"></i>
-
-                    User Management
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="document-verification.html">
-
-                    <i class="fas fa-file-circle-check"></i>
-
-                    Document Verification
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="grade-cor-verification.html">
-
-                    <i class="fas fa-award"></i>
-
-                    Grade & COR Verification
-
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="backup.html">
-
-                    <i class="fas fa-database"></i>
-
-                    Backup & Recovery
-
-                </a>
-
-            </li>
-
-
-            <li class="logout">
-
-                <a href="#"
-                   id="logoutLink">
-
-                    <i class="fas fa-right-from-bracket"></i>
-
-                    Logout
-
-                </a>
-
-            </li>
-
-        </ul>
-
-    </aside>
 
 
 
@@ -251,6 +188,7 @@
         <!-- TOPBAR -->
 
         <header class="topbar">
+
 
             <div class="top-left">
 
@@ -270,7 +208,9 @@
             </div>
 
 
+
             <div class="top-right">
+
 
                 <button class="notification-btn"
                         id="notificationBtn">
@@ -284,6 +224,7 @@
 
                     <img src="../images/admin.png"
                          alt="Administrator">
+
 
                     <div>
 
@@ -311,6 +252,7 @@
             <!-- PAGE HEADER -->
 
             <div class="page-header">
+
 
                 <div>
 
@@ -354,6 +296,7 @@
 
                     <i class="fas fa-search"></i>
 
+
                     <input
                         type="text"
                         id="searchApplication"
@@ -363,8 +306,10 @@
                 </div>
 
 
+
                 <select id="statusFilter"
                         class="status-filter">
+
 
                     <option value="all">
 
@@ -400,7 +345,189 @@
 
                     </option>
 
+
+                    <option value="exam_taken">
+
+                        Exam Taken
+
+                    </option>
+
+
+                    <option value="passed">
+
+                        Passed
+
+                    </option>
+
+
+                    <option value="failed">
+
+                        Failed
+
+                    </option>
+
+
                 </select>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EXAM RESULT IMPORT
+            ================================================== -->
+
+            <div class="exam-result-card">
+
+
+                <div class="exam-result-header">
+
+
+                    <div class="exam-result-title">
+
+
+                        <div class="exam-icon">
+
+                            <i class="fas fa-file-import"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+
+                                Exam Result Import
+
+                            </h2>
+
+
+                            <p>
+
+                                Upload the list of applicants who passed
+                                the examination.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="exam-result-content">
+
+
+                    <!-- FILE INFORMATION -->
+
+                    <div class="import-instruction">
+
+
+                        <div class="instruction-icon">
+
+                            <i class="fas fa-circle-info"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+
+                                Required column:
+
+                            </strong>
+
+
+                            <span>
+
+                                Applicant ID
+
+                            </span>
+
+
+                            <p>
+
+                                Full Name and Gmail are optional.
+                                Applicant ID is used as the matching key.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FILE INPUT -->
+
+                    <div class="file-upload-area">
+
+
+                        <input
+                            type="file"
+                            id="examResultFile"
+                            accept=".csv,.xlsx,.xls"
+                            hidden
+                        >
+
+
+                        <label
+                            for="examResultFile"
+                            class="choose-file-btn"
+                        >
+
+                            <i class="fas fa-cloud-arrow-up"></i>
+
+                            Choose CSV / Excel File
+
+                        </label>
+
+
+                        <div
+                            id="selectedExamFile"
+                            class="selected-file"
+                        >
+
+                            <i class="fas fa-file"></i>
+
+                            No file selected
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROCESS BUTTON -->
+
+                    <button
+                        type="button"
+                        id="processExamResults"
+                        class="process-results-btn"
+                    >
+
+                        <i class="fas fa-check-double"></i>
+
+                        Process Exam Results
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- IMPORT RESULT -->
+
+                <div
+                    id="examImportStatus"
+                    class="exam-import-status"
+                ></div>
+
 
             </div>
 
@@ -412,52 +539,104 @@
 
             <div class="applications-table">
 
+
                 <table>
+
 
                     <thead>
 
+
                         <tr>
 
-                            <th>Application ID</th>
 
-                            <th>Applicant</th>
+                            <th>
 
-                            <th>School</th>
+                                Application ID
 
-                            <th>Student ID</th>
+                            </th>
 
-                            <th>Date Submitted</th>
 
-                            <th>Status</th>
+                            <th>
 
-                            <th>Action</th>
+                                Applicant
+
+                            </th>
+
+
+                            <th>
+
+                                School
+
+                            </th>
+
+
+                            <th>
+
+                                Student ID
+
+                            </th>
+
+
+                            <th>
+
+                                Date Submitted
+
+                            </th>
+
+
+                            <th>
+
+                                Status
+
+                            </th>
+
+
+                            <th>
+
+                                Action
+
+                            </th>
+
 
                         </tr>
+
 
                     </thead>
 
 
+
                     <tbody id="applicationsTableBody">
+
 
                         <tr>
 
+
                             <td colspan="7">
+
 
                                 <div class="loading">
 
+
                                     <i class="fas fa-spinner fa-spin"></i>
+
 
                                     Loading applications...
 
+
                                 </div>
+
 
                             </td>
 
+
                         </tr>
+
 
                     </tbody>
 
+
                 </table>
+
 
             </div>
 
@@ -468,6 +647,7 @@
     </main>
 
 </div>
+
 
 
 <!-- =========================================================

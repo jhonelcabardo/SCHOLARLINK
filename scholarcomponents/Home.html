@@ -8,10 +8,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Home</title>
+    <title>ScholarLink Community</title>
 
-    <link rel="stylesheet"
-          href="../css2/Home.css">
+    <link rel="stylesheet"href="../css2/Home.css">
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
@@ -24,169 +23,232 @@
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-  <!-- =====================================================
-     SIDEBAR - NAVBAR
+
+    <!-- =====================================================
+     SIDEBAR
 ====================================================== -->
 
 <aside class="sidebar">
 
+    <!-- =================================================
+         SIDEBAR BRAND
+    ================================================== -->
+
     <div class="logo">
 
-    <img src="../login/images/logotop.png"
-         alt="ScholarLink Logo">
+        <img
+            src="../login/images/logotop.png"
+            alt="ScholarLink Logo"
+        >
 
-</div>
+    </div>
 
-    <ul class="menu">
 
-        <!-- HOME -->
-        <li class="active">
+    <!-- =================================================
+         SIDEBAR NAVIGATION
+    ================================================== -->
 
-            <a href="Home.html">
+    <div class="sidebar-navigation">
 
-                <i class="fas fa-house"></i>
 
-                <span>Home</span>
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
-            </a>
+        <div class="menu-section">
 
-        </li>
+            <div class="menu-section-title">
+                <span>MAIN</span>
+            </div>
 
 
-        <!-- PROFILE -->
-        <li>
+            <ul class="menu">
 
-            <a href="profile.html">
+                <!-- HOME -->
+                <li class="active">
 
-                <i class="fas fa-user"></i>
+                    <a href="Home.html">
 
-                <span>Profile</span>
+                        <i class="fas fa-house"></i>
 
-            </a>
+                        <span>
+                            Home
+                        </span>
 
-        </li>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
+                    </a>
 
-        <!-- ACADEMIC SUBMISSION -->
-        <li>
+                </li>
 
-            <a href="academic-submissions.html">
 
-                <i class="fas fa-file-signature"></i>
+                <!-- PROFILE -->
+                <li>
 
-                <span>Academic Submission</span>
+                    <a href="profile.html">
 
-            </a>
+                        <i class="fas fa-user"></i>
 
-        </li>
+                        <span>
+                            Profile
+                        </span>
 
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
-        <!-- SCHOLARSHIP STATUS -->
-        <li>
+                    </a>
 
-            <a href="scholarship-status.html">
+                </li>
 
-                <i class="fas fa-award"></i>
 
-                <span>Scholarship Status</span>
+                <!-- ACADEMIC SUBMISSION -->
+                <li>
 
-            </a>
+                    <a href="academic-submissions.html">
 
-        </li>
+                        <i class="fas fa-file-signature"></i>
 
+                        <span>
+                            Academic Submission
+                        </span>
 
-        <!-- ANNOUNCEMENT -->
-        <li>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
-            <a href="announcements.html">
+                    </a>
 
-                <i class="fas fa-bullhorn"></i>
+                </li>
 
-                <span>Announcement</span>
+            </ul>
 
-            </a>
+        </div>
 
-        </li>
 
 
-        <!-- NOTIFICATION -->
-        <li>
+        <!-- =================================================
+             SCHOLAR SERVICES
+        ================================================== -->
 
-            <a href="notifications.html">
+        <div class="menu-section scholar-services">
 
-                <i class="fas fa-bell"></i>
+            <div class="menu-section-title">
+                <span>SCHOLAR SERVICES</span>
+            </div>
 
-                <span>Notification</span>
 
-            </a>
+            <ul class="menu">
 
-        </li>
+                <!-- ANNOUNCEMENT -->
+                <li>
 
+                    <a href="announcements.html">
 
-        <!-- MY QR CODE -->
-        <li>
+                        <i class="fas fa-bullhorn"></i>
 
-            <a href="qr-code.html">
+                        <span>
+                            Announcement
+                        </span>
 
-                <i class="fas fa-qrcode"></i>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
-                <span>My QR Code</span>
+                    </a>
 
-            </a>
+                </li>
 
-        </li>
 
+                <!-- NOTIFICATION -->
+                <li>
 
-        <!-- SETTINGS -->
-        <li>
+                    <a href="notifications.html">
 
-            <a href="settings.html">
+                        <i class="fas fa-bell"></i>
 
-                <i class="fas fa-gear"></i>
+                        <span>
+                            Notification
+                        </span>
 
-                <span>Settings</span>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
-            </a>
+                    </a>
 
-        </li>
+                </li>
 
 
-        <!-- LOGOUT -->
-        <li>
+                <!-- MY QR CODE -->
+                <li>
 
-            <a href="#" id="sidebarlogout">
+                    <a href="qr-code.html">
 
-                <i class="fas fa-sign-out-alt"></i>
+                        <i class="fas fa-qrcode"></i>
 
-                <span>Logout</span>
+                        <span>
+                            My QR Code
+                        </span>
 
-            </a>
+                        <i class="fas fa-chevron-right menu-arrow"></i>
 
-        </li>
+                    </a>
 
-    </ul>
+                </li>
 
+            </ul>
 
-    <div class="bottom-menu"></div>
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         LOGOUT
+    ================================================== -->
+
+    <div class="sidebar-logout">
+
+        <a
+            href="#"
+            id="sidebarlogout"
+        >
+
+            <i class="fas fa-sign-out-alt"></i>
+
+            <span>
+                Logout
+            </span>
+
+            <i class="fas fa-chevron-right menu-arrow"></i>
+
+        </a>
+
+    </div>
 
 </aside>
 
-    </aside>
 
-<!-- MOBILE MENU BUTTON -->
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu">
-        
-         <i class="fas fa-bars"></i>
-            </button>
+    <!-- =====================================================
+         MOBILE MENU
+    ====================================================== -->
 
-    <!-- MOBILE SIDEBAR OVERLAY -->
+    <button class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            type="button"
+            aria-label="Open menu">
 
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <i class="fas fa-bars"></i>
+
+    </button>
+
+
+    <div class="sidebar-overlay"
+         id="sidebarOverlay">
+    </div>
+
+
 
     <!-- =====================================================
          MAIN CONTENT
@@ -195,638 +257,480 @@
     <main class="main-content">
 
 
-        <!-- TOPBAR -->
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
 
         <header class="topbar">
 
-            <div>
 
-                <h1>
-                    Welcome, Scholar! 👋
-                </h1>
+            <div class="topbar-left">
 
-              
+
+                <span class="community-label">
+
+                    SCHOLAR COMMUNITY
+
+                </span>
+
+
+                
+
+
+                <p>
+
+                    Connect, share, and stay informed with fellow scholars.
+
+                </p>
+
+
             </div>
 
-  
+
+
+            <!-- CURRENT USER -->
+
             <div class="profile">
 
+
                 <img src="../images/user.png"
-                     id="profileAvatar"
-                     alt="Scholar">
+                  id="composerAvatar"
+                  alt="Your profile">
 
 
                 <div>
 
+
                     <h4 id="headerScholarId">
+
                         Loading...
+
                     </h4>
 
+
                     <small id="headerProgram">
+
                         Loading...
+
                     </small>
+
 
                 </div>
 
+
             </div>
+
 
         </header>
 
 
 
-        <!-- =====================================================
-             STATISTICS
-        ====================================================== -->
+        <!-- =================================================
+             COMMUNITY CONTENT
+        ================================================== -->
 
-        <section class="cards">
-
-
-            <div class="card blue">
-
-                <i class="fas fa-award"></i>
-
-                <h3 id="scholarStatus">
-                    Loading...
-                </h3>
-
-                <p>
-                    Scholarship Status
-                </p>
-
-            </div>
-
-
-            <div class="card green">
-
-                <i class="fas fa-chart-line"></i>
-
-                <h3 id="latestGPA">
-                    —
-                </h3>
-
-                <p>
-                    Latest GPA
-                </p>
-
-            </div>
-
-
-            <div class="card orange">
-
-                <i class="fas fa-file-signature"></i>
-
-                <h3 id="gradesStatus">
-                    Loading...
-                </h3>
-
-                <p>
-                    Grades
-                </p>
-
-            </div>
-
-
-            <div class="card purple">
-
-                <i class="fas fa-file-circle-check"></i>
-
-                <h3 id="corStatus">
-                    Loading...
-                </h3>
-
-                <p>
-                    COR
-                </p>
-
-            </div>
-
-
-            <div class="card cyan">
-
-                <i class="fas fa-qrcode"></i>
-
-                <h3 id="qrStatus">
-                    Active
-                </h3>
-
-                <p>
-                    QR Login
-                </p>
-
-            </div>
-
-        </section>
+        <section class="community-layout">
 
 
 
-        <!-- =====================================================
-             NOTIFICATIONS / ANNOUNCEMENTS
-        ====================================================== -->
+            <!-- =================================================
+                 MAIN COMMUNITY FEED
+            ================================================== -->
 
-        <section class="dashboard-grid">
-
-
-            <!-- NOTIFICATIONS -->
-
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h2>
-
-                        <i class="fas fa-bell"></i>
-
-                        Notifications
-
-                    </h2>
+            <div class="community-main">
 
 
-                    <a href="notifications.html">
-                        View All
-                    </a>
 
-                </div>
+                <!-- COMMUNITY HEADER -->
+
+                <div class="community-header-card">
 
 
-                <div id="dashboardNotifications">
+                    <div class="community-header-icon">
 
-                    <div class="notification-item">
-
-                        <i class="fas fa-spinner fa-spin"></i>
-
-                        <div>
-
-                            <h4>
-                                Loading notifications...
-                            </h4>
-
-                            <p>
-                                Please wait.
-                            </p>
-
-                        </div>
+                        <i class="fas fa-users"></i>
 
                     </div>
 
-                </div>
 
-            </div>
+                    <div>
 
+                        <h2>
 
+                            ScholarLink Community
 
-            <!-- ANNOUNCEMENTS -->
+                        </h2>
 
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h2>
-
-                        <i class="fas fa-bullhorn"></i>
-
-                        Announcements
-
-                    </h2>
-
-
-                    <a href="announcements.html">
-                        View All
-                    </a>
-
-                </div>
-
-
-                <div id="dashboardAnnouncements">
-
-                    <div class="announcement-item">
-
-                        <h4>
-                            Loading announcements...
-                        </h4>
 
                         <p>
-                            Please wait.
+
+                            A shared space for scholars and
+                            ScholarLink administrators.
+
                         </p>
 
                     </div>
 
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             SUBMISSION / SCHEDULE
-        ====================================================== -->
-
-        <section class="dashboard-grid">
-
-
-            <!-- SUBMIT GRADES -->
-
-            <div class="dashboard-card">
-
-                <h2>
-
-                    <i class="fas fa-file-signature"></i>
-
-                    Submit Grades
-
-                </h2>
-
-
-                <p class="card-description">
-
-                    Upload your official grades.
-
-                </p>
-
-
-                <input type="file"
-                       id="gradesFile"
-                       accept=".pdf,.jpg,.jpeg,.png">
-
-
-                <button class="upload-btn"
-                        id="uploadGradesBtn"
-                        type="button">
-
-                    <i class="fas fa-upload"></i>
-
-                    Upload Grades
-
-                </button>
-
-            </div>
-
-
-
-            <!-- SUBMIT COR -->
-
-            <div class="dashboard-card">
-
-                <h2>
-
-                    <i class="fas fa-file-circle-check"></i>
-
-                    Submit COR
-
-                </h2>
-
-
-                <p class="card-description">
-
-                    Upload your Certificate of Registration.
-
-                </p>
-
-
-                <input type="file"
-                       id="corFile"
-                       accept=".pdf,.jpg,.jpeg,.png">
-
-
-                <button class="upload-btn"
-                        id="uploadCORBtn"
-                        type="button">
-
-                    <i class="fas fa-upload"></i>
-
-                    Upload COR
-
-                </button>
-
-            </div>
-
-
-
-            <!-- SCHEDULE -->
-
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h2>
-
-                        <i class="fas fa-calendar-days"></i>
-
-                        Schedule
-
-                    </h2>
-
-
-                    <a href="schedule.html">
-                        View All
-                    </a>
 
                 </div>
 
 
-                <ul class="schedule-list"
-                    id="dashboardSchedule">
 
-                    <li>
+                <!-- SEARCH -->
+
+                <div class="community-search">
+
+
+                    <i class="fas fa-search"></i>
+
+
+                    <input type="search"
+                           id="communitySearch"
+                           placeholder="Search community posts...">
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CREATE POST
+                ================================================== -->
+
+                <div class="create-post-card">
+
+
+                    <div class="create-post-user">
+
+
+                        <img src="../images/user.png"
+                             id="composerAvatar"
+                             alt="Your profile">
+
+
+                    </div>
+
+
+
+                    <div class="create-post-content">
+
+
+                        <textarea id="postMessage"
+                                  rows="3"
+                                  maxlength="1000"
+                                  placeholder="Write something to the ScholarLink community..."></textarea>
+
+
+
+                        <div class="composer-bottom">
+
+
+                            <span id="characterCount">
+
+                                0 / 1000
+
+                            </span>
+
+
+
+                            <button id="publishPostBtn"
+                                    class="publish-btn"
+                                    type="button">
+
+
+                                <i class="fas fa-paper-plane"></i>
+
+
+                                Post
+
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COMMUNITY FEED
+                ================================================== -->
+
+                <div id="communityFeed"
+                     class="community-feed">
+
+
+                    <div class="community-loading">
+
 
                         <i class="fas fa-spinner fa-spin"></i>
 
-                        Loading schedule...
 
-                    </li>
+                        <span>
 
-                </ul>
+                            Loading community posts...
 
-            </div>
-
-        </section>
+                        </span>
 
 
+                    </div>
 
-        <!-- =====================================================
-             QR / SUBMISSION STATUS
-        ====================================================== -->
-
-        <section class="dashboard-grid">
-
-
-            <!-- QR CODE -->
-
-            <div class="dashboard-card">
-
-                <div class="card-header">
-
-                    <h2>
-
-                        <i class="fas fa-qrcode"></i>
-
-                        My QR Code
-
-                    </h2>
-
-
-                    <a href="qr-code.html">
-                        View
-                    </a>
 
                 </div>
 
 
-                <div class="qr-container">
 
-                    <img src="../images/sample-qr.png"
-                         id="scholarQR"
-                         alt="Scholar QR"
-                         class="qr-image">
+                <!-- EMPTY COMMUNITY -->
+
+                <div id="communityEmpty"
+                     class="community-empty hidden">
 
 
-                    <h3 id="qrScholarId">
-                        Loading...
+                    <div class="empty-icon">
+
+                        <i class="fas fa-comments"></i>
+
+                    </div>
+
+
+                    <h3>
+
+                        No community posts yet
+
                     </h3>
 
 
                     <p>
-                        Permanent QR Login
+
+                        Be the first scholar to start a conversation.
+
                     </p>
 
 
-                    <div class="qr-buttons">
-
-                        <button class="view-btn"
-                                id="viewQRBtn"
-                                type="button">
-
-                            <i class="fas fa-eye"></i>
-
-                            View
-
-                        </button>
+                </div>
 
 
-                        <button class="download-btn"
-                                id="downloadQRBtn"
-                                type="button">
+            </div>
 
-                            <i class="fas fa-download"></i>
 
-                            Download
 
-                        </button>
+            <!-- =================================================
+                 RIGHT COMMUNITY SIDEBAR
+            ================================================== -->
+
+            <aside class="community-right">
+
+
+
+                <!-- ONLINE SCHOLARS -->
+
+                <div class="community-side-card">
+
+
+                    <div class="side-card-header">
+
+
+                        <h3>
+
+                            <i class="fas fa-circle online-icon"></i>
+
+                            Online Community
+
+                        </h3>
+
+
+                        <p id="onlineCount">
+
+                            Loading...
+
+                        </p>
+
 
                     </div>
 
+
+
+                    <div id="onlineMembers"
+                         class="online-members">
+
+
+                        <div class="side-loading">
+
+                            <i class="fas fa-spinner fa-spin"></i>
+
+                            Loading...
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
 
-            </div>
+
+
+                <!-- PINNED POSTS -->
+
+                <div class="community-side-card">
+
+
+                    <div class="side-card-header">
+
+
+                        <h3>
+
+                            <i class="fas fa-thumbtack"></i>
+
+                            Important
+
+                        </h3>
+
+
+                    </div>
 
 
 
-            <!-- SUBMISSION STATUS -->
+                    <div id="pinnedPosts"
+                         class="pinned-posts">
 
-            <div class="dashboard-card">
 
-                <div class="card-header">
+                        <div class="side-empty">
 
-                    <h2>
+                            <i class="fas fa-thumbtack"></i>
 
-                        <i class="fas fa-list-check"></i>
+                            <p>
 
-                        Submission Status
+                                No pinned posts yet.
 
-                    </h2>
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
 
                 </div>
 
 
-                <table class="status-table">
 
-                    <tbody>
+                <!-- QUICK ACCESS -->
 
-                        <tr>
-
-                            <td>
-                                Grades
-                            </td>
-
-                            <td>
-
-                                <span class="pending"
-                                      id="gradesStatusTable">
-
-                                    Loading...
-
-                                </span>
-
-                            </td>
-
-                        </tr>
+                <div class="community-side-card">
 
 
-                        <tr>
-
-                            <td>
-                                COR
-                            </td>
-
-                            <td>
-
-                                <span class="pending"
-                                      id="corStatusTable">
-
-                                    Loading...
-
-                                </span>
-
-                            </td>
-
-                        </tr>
+                    <div class="side-card-header">
 
 
-                        <tr>
+                        <h3>
 
-                            <td>
-                                Scholarship
-                            </td>
+                            <i class="fas fa-bolt"></i>
 
-                            <td>
+                            Quick Access
 
-                                <span class="active-status"
-                                      id="scholarshipStatusTable">
+                        </h3>
 
-                                    Loading...
 
-                                </span>
+                    </div>
 
-                            </td>
 
-                        </tr>
 
-                    </tbody>
+                    <div class="quick-links">
 
-                </table>
 
-            </div>
+                        <a href="profile.html">
+
+                            <i class="fas fa-user"></i>
+
+                            <span>
+                                My Profile
+                            </span>
+
+                            <i class="fas fa-chevron-right"></i>
+
+                        </a>
+
+
+
+                        <a href="academic-submissions.html">
+
+                            <i class="fas fa-file-signature"></i>
+
+                            <span>
+                                Academic Submission
+                            </span>
+
+                            <i class="fas fa-chevron-right"></i>
+
+                        </a>
+
+
+
+                        <a href="scholarship-status.html">
+
+                            <i class="fas fa-award"></i>
+
+                            <span>
+                                Scholarship Status
+                            </span>
+
+                            <i class="fas fa-chevron-right"></i>
+
+                        </a>
+
+
+
+                        <a href="notifications.html">
+
+                            <i class="fas fa-bell"></i>
+
+                            <span>
+                                Notifications
+                            </span>
+
+                            <i class="fas fa-chevron-right"></i>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </aside>
+
 
         </section>
 
 
 
-        <!-- =====================================================
-             RECENT ACTIVITY
-        ====================================================== -->
-
-        <section class="dashboard-card">
-
-            <div class="card-header">
-
-                <h2>
-
-                    <i class="fas fa-clock"></i>
-
-                    Recent Activity
-
-                </h2>
-
-            </div>
-
-
-            <ul class="activity-list"
-                id="recentActivity">
-
-                <li>
-
-                    <i class="fas fa-spinner fa-spin"></i>
-
-                    Loading recent activity...
-
-                </li>
-
-            </ul>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             QUICK ACTIONS
-        ====================================================== -->
-
-        <section class="quick-actions">
-
-            <h2>
-                Quick Actions
-            </h2>
-
-
-            <div class="action-grid">
-
-
-                <a href="grades.html"
-                   class="action-card">
-
-                    <i class="fas fa-upload"></i>
-
-                    <h4>
-                        Submit Grades
-                    </h4>
-
-                </a>
-
-
-                <a href="cor.html"
-                   class="action-card">
-
-                    <i class="fas fa-file-circle-check"></i>
-
-                    <h4>
-                        Submit COR
-                    </h4>
-
-                </a>
-
-
-                <a href="qr-code.html"
-                   class="action-card">
-
-                    <i class="fas fa-qrcode"></i>
-
-                    <h4>
-                        My QR Code
-                    </h4>
-
-                </a>
-
-
-                <a href="notifications.html"
-                   class="action-card">
-
-                    <i class="fas fa-bell"></i>
-
-                    <h4>
-                        Notifications
-                    </h4>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- FOOTER -->
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
         <footer class="footer">
 
+
             <p>
-                © 2026 ScholarLink | Scholar Dashboard
+
+                © 2026 ScholarLink | Scholar Community
+
             </p>
+
 
         </footer>
 
 
     </main>
+
 
 </div>
 
@@ -839,7 +743,9 @@
 <div class="logout-modal"
      id="logoutModal">
 
+
     <div class="logout-modal-box">
+
 
         <div class="logout-icon">
 
@@ -849,16 +755,21 @@
 
 
         <h2>
+
             Confirm Logout
+
         </h2>
 
 
         <p>
+
             Are you sure you want to logout from your Scholar account?
+
         </p>
 
 
         <div class="logout-buttons">
+
 
             <button class="cancel-btn"
                     id="cancelLogout"
@@ -869,6 +780,7 @@
             </button>
 
 
+
             <button class="confirm-logout-btn"
                     id="confirmLogout"
                     type="button">
@@ -877,104 +789,195 @@
 
             </button>
 
+
         </div>
 
+
     </div>
+
 
 </div>
 
 
-<!-- MOBILE SIDEBAR SCRIPT -->
+
+<!-- =====================================================
+     MOBILE SIDEBAR
+====================================================== -->
+
 <script>
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuButton = document.getElementById("mobileMenuBtn");
-    const sidebar = document.querySelector(".sidebar");
-    const overlay = document.getElementById("sidebarOverlay");
 
-    if (!menuButton || !sidebar || !overlay) return;
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        return;
+
+    }
+
+
 
     function openSidebar() {
+
+
         sidebar.classList.add("mobile-open");
+
+
         overlay.classList.add("active");
+
 
         menuButton.innerHTML =
             '<i class="fas fa-xmark"></i>';
+
 
         menuButton.setAttribute(
             "aria-label",
             "Close menu"
         );
+
+
     }
 
+
+
     function closeSidebar() {
+
+
         sidebar.classList.remove("mobile-open");
+
+
         overlay.classList.remove("active");
+
 
         menuButton.innerHTML =
             '<i class="fas fa-bars"></i>';
+
 
         menuButton.setAttribute(
             "aria-label",
             "Open menu"
         );
+
+
     }
 
-    menuButton.addEventListener("click", function () {
-
-        if (sidebar.classList.contains("mobile-open")) {
-            closeSidebar();
-        } else {
-            openSidebar();
-        }
-
-    });
-
-    overlay.addEventListener("click", function () {
-        closeSidebar();
-    });
 
 
-    /* Close menu after clicking a navigation link */
+    menuButton.addEventListener(
+        "click",
+        function () {
 
-    sidebar.querySelectorAll("a").forEach(function (link) {
 
-        link.addEventListener("click", function () {
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
 
-            if (window.innerWidth <= 900) {
                 closeSidebar();
+
+            } else {
+
+                openSidebar();
+
             }
+
+
+        }
+    );
+
+
+
+    overlay.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+
+    sidebar
+        .querySelectorAll("a")
+        .forEach(function (link) {
+
+
+            link.addEventListener(
+                "click",
+                function () {
+
+
+                    if (
+                        window.innerWidth <= 900
+                    ) {
+
+                        closeSidebar();
+
+                    }
+
+
+                }
+            );
+
 
         });
 
-    });
 
 
-    /* Restore desktop state */
+    window.addEventListener(
+        "resize",
+        function () {
 
-    window.addEventListener("resize", function () {
 
-        if (window.innerWidth > 900) {
+            if (
+                window.innerWidth > 900
+            ) {
 
-            sidebar.classList.remove("mobile-open");
-            overlay.classList.remove("active");
 
-            menuButton.innerHTML =
-                '<i class="fas fa-bars"></i>';
+                sidebar.classList.remove(
+                    "mobile-open"
+                );
+
+
+                overlay.classList.remove(
+                    "active"
+                );
+
+
+                menuButton.innerHTML =
+                    '<i class="fas fa-bars"></i>';
+
+
+            }
+
+
         }
+    );
 
-    });
 
 });
+
 </script>
 
 
-<!-- EXISTING HOME.JS — AYAW HILABTI -->
+
+<!-- =====================================================
+     EXISTING HOME.JS
+====================================================== -->
+
 <script type="module"
         src="../js2/Home.js"></script>
 
-</body>
-</html>
 
 </body>
 

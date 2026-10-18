@@ -34,7 +34,8 @@ import {
 
 import {
     doc,
-    getDoc
+    getDoc,
+    onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 
@@ -347,10 +348,9 @@ function setBadge(
     }
 }
 
-
-/* =========================================================
-   LOAD APPLICANT PHOTO
-========================================================= */
+// =========================================================
+// LOAD APPLICANT PHOTO
+// =========================================================
 
 async function loadApplicantPhoto(
     application,
@@ -358,118 +358,131 @@ async function loadApplicantPhoto(
 ) {
 
     const image =
-        getElement(
-            "applicantPhoto"
-        );
+        getElement("applicantPhoto");
 
     const defaultIcon =
-        getElement(
-            "defaultApplicantIcon"
-        );
+        getElement("defaultApplicantIcon");
 
     if (!image) {
-
         console.warn(
             "Applicant photo element not found."
         );
-
         return;
     }
 
-    /* =====================================================
-       APPLICATION FILE STRUCTURE
 
-       applications/{uid}
-
-       files: {
-           applicantPhoto: {
-               fileName: "...",
-               storagePath: "uid/profile.jpg",
-               uploadedAt: "..."
-           }
-       }
-    ===================================================== */
+    // =====================================================
+    // GET SAVED PHOTO INFORMATION
+    // =====================================================
 
     const photo =
         application?.files?.applicantPhoto ||
         null;
 
 
-    /* =====================================================
-       NO PHOTO
-    ===================================================== */
+    // =====================================================
+    // BUILD POSSIBLE STORAGE PATHS
+    // =====================================================
 
+    const possiblePaths = [];
+
+
+    // If Firestore already has the exact path
     if (
-        !photo ||
-        !photo.storagePath
+        photo &&
+        photo.storagePath
     ) {
 
-        image.style.display = "none";
+        possiblePaths.push(
+            photo.storagePath
+        );
+    }
+
+
+    // Fallback paths
+    // This helps if the photo was uploaded but
+    // the storagePath was not saved properly.
+    if (uid) {
+
+        possiblePaths.push(
+            `${uid}/profile.jpg`
+        );
+
+        possiblePaths.push(
+            `${uid}/profile.png`
+        );
+    }
+
+
+    // Remove duplicate paths
+    const uniquePaths =
+        [...new Set(possiblePaths)];
+
+
+    if (
+        uniquePaths.length === 0
+    ) {
+
+        image.style.display =
+            "none";
 
         if (defaultIcon) {
-            defaultIcon.style.display = "block";
+            defaultIcon.style.display =
+                "block";
         }
-
-        console.log(
-            "No applicant photo found."
-        );
 
         return;
     }
 
 
-    /* =====================================================
-       LOAD PHOTO FROM PRIVATE SUPABASE BUCKET
-    ===================================================== */
+    // =====================================================
+    // TRY EACH POSSIBLE PHOTO PATH
+    // =====================================================
 
-    try {
+    for (
+        const storagePath
+        of uniquePaths
+    ) {
 
-        console.log(
-            "Loading applicant photo:",
-            photo.storagePath
-        );
+        try {
 
-        const {
-            data,
-            error
-        } =
-            await supabase.storage
-                .from("applicant-photos")
-                .createSignedUrl(
-                    photo.storagePath,
-                    300
-                );
-
-
-        /* =================================================
-           SUPABASE ERROR
-        ================================================= */
-
-        if (error) {
-
-            console.error(
-                "Applicant photo URL error:",
-                error
+            console.log(
+                "Trying applicant photo:",
+                storagePath
             );
 
-            image.style.display = "none";
 
-            if (defaultIcon) {
-                defaultIcon.style.display = "block";
+            const {
+                data,
+                error
+            } =
+                await supabase.storage
+                    .from(
+                        "applicant-photos"
+                    )
+                    .createSignedUrl(
+                        storagePath,
+                        3600
+                    );
+
+
+            if (
+                error ||
+                !data?.signedUrl
+            ) {
+
+                console.log(
+                    "Photo not found at:",
+                    storagePath
+                );
+
+                continue;
             }
 
-            return;
-        }
 
-
-        /* =================================================
-           SIGNED URL SUCCESS
-        ================================================= */
-
-        if (
-            data &&
-            data.signedUrl
-        ) {
+            // =================================================
+            // DISPLAY ACTUAL PHOTO
+            // =================================================
 
             image.src =
                 data.signedUrl;
@@ -483,33 +496,50 @@ async function loadApplicantPhoto(
             image.style.opacity =
                 "1";
 
+
             if (defaultIcon) {
+
                 defaultIcon.style.display =
                     "none";
             }
 
+
             console.log(
-                "Applicant photo displayed successfully."
+                "Applicant photo displayed successfully:",
+                storagePath
             );
-        }
 
-    } catch (error) {
+            return;
 
-        console.error(
-            "Applicant photo loading error:",
-            error
-        );
+        } catch (error) {
 
-        image.style.display =
-            "none";
+            console.error(
+                "Error checking photo:",
+                storagePath,
+                error
+            );
 
-        if (defaultIcon) {
-            defaultIcon.style.display =
-                "block";
         }
     }
-}
 
+
+    // =====================================================
+    // NO PHOTO FOUND
+    // =====================================================
+
+    image.style.display =
+        "none";
+
+    if (defaultIcon) {
+
+        defaultIcon.style.display =
+            "block";
+    }
+
+    console.log(
+        "No applicant photo found in Supabase."
+    );
+}
 
 /* =========================================================
    BUILD FULL NAME
@@ -746,6 +776,46 @@ async function loadApplication(user) {
                 uid
             );
 
+            /* =================================================
+   REAL-TIME EXAM SCHEDULE UPDATE
+================================================= */
+
+onSnapshot(
+    applicationRef,
+    (updatedSnapshot) => {
+
+        if (!updatedSnapshot.exists()) {
+            return;
+        }
+
+        const updatedApplication =
+            updatedSnapshot.data();
+
+        console.log(
+            "REAL-TIME EXAM SCHEDULE UPDATE:",
+            updatedApplication
+        );
+
+        /*
+         * Update ONLY the status/exam display.
+         * Other application functions remain unchanged.
+         */
+        loadApplicationStatus(
+            updatedApplication,
+            userData
+        );
+
+    },
+    (error) => {
+
+        console.error(
+            "Real-time exam schedule listener error:",
+            error
+        );
+
+    }
+);
+
         const applicationSnapshot =
             await getDoc(
                 applicationRef
@@ -981,6 +1051,8 @@ async function loadApplication(user) {
         );
 
     }
+
+    
 
     catch (error) {
 
@@ -1247,6 +1319,13 @@ function loadApplicationStatus(
             "SCHEDULED",
             "scheduled"
         );
+
+        const examDetails =
+    getElement("examDetails");
+
+if (examDetails) {
+    examDetails.style.display = "block";
+}
 
 
         if (

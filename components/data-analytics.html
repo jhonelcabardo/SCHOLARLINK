@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Analytics | ScholarLink</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Admin Dashboard CSS -->
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+
+    <!-- Data Analytics CSS -->
+    <link rel="stylesheet" href="../css/data-analytics.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+
+            <div class="logo-text">
+                <h2>ScholarLink</h2>
+                <span>Admin Portal</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="applicants.html">
+                <i class="fas fa-users"></i>
+                <span>Applicants</span>
+            </a>
+
+            <a href="scholars.html">
+                <i class="fas fa-user-graduate"></i>
+                <span>Scholars</span>
+            </a>
+
+            <a href="applications.html">
+                <i class="fas fa-file-alt"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="requirements.html">
+                <i class="fas fa-folder-open"></i>
+                <span>Requirements</span>
+            </a>
+
+            <a href="announcements.html">
+                <i class="fas fa-bullhorn"></i>
+                <span>Announcements</span>
+            </a>
+
+            <a href="notifications.html">
+                <i class="fas fa-bell"></i>
+                <span>Notifications</span>
+            </a>
+
+            <a href="monitoring-scholars.html">
+                <i class="fas fa-user-check"></i>
+                <span>Monitoring Scholars</span>
+            </a>
+
+            <a href="qr-management.html">
+                <i class="fas fa-qrcode"></i>
+                <span>QR Management</span>
+            </a>
+
+            <a href="user-management.html">
+                <i class="fas fa-user-cog"></i>
+                <span>User Management</span>
+            </a>
+
+            <a href="document-verification.html">
+                <i class="fas fa-file-circle-check"></i>
+                <span>Document Verification</span>
+            </a>
+
+            <a href="grade-cor-verification.html">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Grade & COR Verification</span>
+            </a>
+
+            <!-- DATA ANALYTICS -->
+            <a href="data-analytics.html" class="active">
+                <i class="fas fa-chart-pie"></i>
+                <span>Data Analytics</span>
+            </a>
+
+            <a href="backup.html">
+                <i class="fas fa-database"></i>
+                <span>Backup</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Data Analytics</h1>
+                    <p>Scholarship Management System Analytics</p>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button id="refreshAnalytics" class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <div class="admin-info">
+                        <strong id="adminName">Administrator</strong>
+                        <span>System Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             CONTENT
+        ========================================== -->
+        <section class="analytics-content">
+
+            <!-- LOADING -->
+            <div id="analyticsLoading" class="analytics-loading">
+
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+
+                <p>Loading analytics...</p>
+
+            </div>
+
+
+            <!-- ERROR -->
+            <div id="analyticsError" class="analytics-error" style="display:none;">
+
+                <i class="fas fa-triangle-exclamation"></i>
+
+                <div>
+                    <strong>Unable to load analytics</strong>
+                    <p id="analyticsErrorMessage">
+                        Something went wrong while loading the data.
+                    </p>
+                </div>
+
+                <button id="retryAnalytics">
+                    <i class="fas fa-rotate-right"></i>
+                    Retry
+                </button>
+
+            </div>
+
+
+            <!-- ANALYTICS -->
+            <div id="analyticsDashboard" style="display:none;">
+
+                <!-- =========================================
+                     ROW 1
+                ========================================== -->
+                <div class="analytics-grid two-columns">
+
+                    <!-- APPLICATION STATUS -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    APPLICATION STATUS
+                                </span>
+
+                                <h2>Application Status</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-file-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="applicationStatusChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEX DISTRIBUTION -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    APPLICANTS
+                                </span>
+
+                                <h2>Sex Distribution</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-venus-mars"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="sexDistributionChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ROW 2
+                ========================================== -->
+                <div class="analytics-grid two-columns">
+
+                    <!-- BARANGAY -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    LOCATION
+                                </span>
+
+                                <h2>Applicants by Barangay</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container large">
+                            <canvas id="barangayChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCHOOL -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    EDUCATION
+                                </span>
+
+                                <h2>Applicants by School</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container large">
+                            <canvas id="schoolChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ROW 3
+                ========================================== -->
+                <div class="analytics-grid two-columns">
+
+                    <!-- HOUSEHOLD INCOME -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    HOUSEHOLD
+                                </span>
+
+                                <h2>Household Monthly Income</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-peso-sign"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="incomeChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <!-- HOUSING STATUS -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    HOUSEHOLD
+                                </span>
+
+                                <h2>Housing Status</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-house"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="housingChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ROW 4
+                ========================================== -->
+                <div class="analytics-grid two-columns">
+
+                    <!-- SOURCE OF INCOME -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    HOUSEHOLD
+                                </span>
+
+                                <h2>Source of Family Income</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-money-bill-trend-up"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container large">
+                            <canvas id="incomeSourceChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <!-- REQUIREMENTS -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    DOCUMENTS
+                                </span>
+
+                                <h2>Requirement Submission</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container large">
+                            <canvas id="requirementsChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ROW 5
+                ========================================== -->
+                <div class="analytics-grid two-columns">
+
+                    <!-- EXAM RESULTS -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    EXAMINATION
+                                </span>
+
+                                <h2>Examination Results</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-pen-to-square"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="examResultsChart"></canvas>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCHOLAR STATISTICS -->
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+                                <span class="analytics-label">
+                                    SCHOLARS
+                                </span>
+
+                                <h2>Scholar Statistics</h2>
+                            </div>
+
+                            <div class="analytics-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="scholarStatisticsChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     CHART.JS
+========================================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- =========================================
+     DATA ANALYTICS JS
+========================================== -->
+<script type="module" src="../js/data-analytics.js"></script>
+
+</body>
+</html>

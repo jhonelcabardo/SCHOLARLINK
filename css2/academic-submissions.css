@@ -2143,3 +2143,424 @@ button:disabled{
     }
 
 }
+
+
+/* =====================================================
+   SCHOLARLINK ACADEMIC SUBMISSION
+   STANDARD SIDEBAR — MATCH HOME & PROFILE
+   Design only; preserve existing functions
+===================================================== */
+
+@media (min-width: 901px) {
+
+    .sidebar {
+        width: 315px !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                #071b5c 0%,
+                #0b2d82 48%,
+                #174bb8 100%
+            ) !important;
+
+        color: #fff !important;
+        z-index: 2000 !important;
+        overflow: hidden !important;
+
+        box-shadow:
+            8px 0 30px rgba(7, 27, 92, 0.14) !important;
+
+        transform: translateX(0) !important;
+    }
+
+    /* Logo */
+    .sidebar .logo {
+        width: 100% !important;
+        height: 220px !important;
+        min-height: 220px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 25px 30px !important;
+        flex-shrink: 0 !important;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, .13) !important;
+    }
+
+    .sidebar .logo img {
+        width: 285px !important;
+        max-width: 100% !important;
+        height: auto !important;
+
+        display: block !important;
+        object-fit: contain !important;
+        transform: scale(1.15) !important;
+    }
+
+    /* Navigation area */
+    .sidebar .sidebar-navigation {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        padding: 25px 17px 15px !important;
+
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,.2) transparent;
+    }
+
+    /* Section headings */
+    .sidebar .menu-section {
+        width: 100% !important;
+    }
+
+    .sidebar .menu-section-title {
+        display: flex !important;
+        align-items: center !important;
+
+        padding: 0 17px 11px !important;
+
+        color: #879ed0 !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+    }
+
+    .sidebar .menu-section.scholar-services {
+        margin-top: 22px !important;
+        padding-top: 20px !important;
+
+        border-top:
+            1px solid rgba(255,255,255,.13) !important;
+    }
+
+    /* Menu list */
+    .sidebar .menu {
+        width: 100% !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .sidebar .menu li {
+        width: 100% !important;
+        margin: 4px 0 !important;
+        padding: 0 !important;
+    }
+
+    .sidebar .menu li a {
+        position: relative !important;
+
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+
+        width: 100% !important;
+        min-height: 55px !important;
+        padding: 12px 16px !important;
+
+        color: #dce6ff !important;
+        background: transparent !important;
+
+        border: 1px solid transparent !important;
+        border-radius: 16px !important;
+
+        text-decoration: none !important;
+        white-space: normal !important;
+
+        font-size: 14px !important;
+        font-weight: 600 !important;
+
+        transition:
+            background .22s ease,
+            transform .22s ease,
+            box-shadow .22s ease !important;
+    }
+
+    /* Left icons */
+    .sidebar .menu li a > i:first-child {
+        width: 25px !important;
+        min-width: 25px !important;
+
+        color: #e0e9ff !important;
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+
+    /* Menu text */
+    .sidebar .menu li a span {
+        display: block !important;
+        flex: 1 1 auto !important;
+
+        color: inherit !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+    }
+
+    /* Only one right-side arrow */
+    .sidebar .menu li a .menu-arrow {
+        display: block !important;
+        flex: 0 0 auto !important;
+
+        width: auto !important;
+        min-width: auto !important;
+        margin-left: auto !important;
+
+        color: #dce6ff !important;
+        font-size: 13px !important;
+
+        opacity: .9 !important;
+        transform: none !important;
+    }
+
+    /* Remove any CSS-generated duplicate arrows */
+    .sidebar .menu li a::after {
+        content: none !important;
+    }
+
+    .sidebar .menu li a::before {
+        content: none;
+    }
+
+    /* Hover */
+    .sidebar .menu li a:hover {
+        background: rgba(255,255,255,.10) !important;
+        transform: translateX(2px);
+    }
+
+    /* Active item */
+    .sidebar .menu li.active > a {
+        color: #fff !important;
+
+        background:
+            linear-gradient(
+                105deg,
+                #3184f5 0%,
+                #3475ed 100%
+            ) !important;
+
+        border-color:
+            rgba(255,255,255,.12) !important;
+
+        box-shadow:
+            0 8px 20px rgba(25, 89, 210, .24) !important;
+    }
+
+    .sidebar .menu li.active > a::before {
+        content: "" !important;
+
+        position: absolute !important;
+        left: 0 !important;
+        top: 11px !important;
+        bottom: 11px !important;
+
+        width: 4px !important;
+        border-radius: 0 5px 5px 0 !important;
+        background: #fff !important;
+    }
+
+    .sidebar .menu li.active > a > i,
+    .sidebar .menu li.active > a > span {
+        color: #fff !important;
+    }
+
+    /* Logout at the bottom */
+    .sidebar .sidebar-logout {
+        flex: 0 0 auto !important;
+
+        padding: 15px 24px 20px !important;
+
+        border-top:
+            1px solid rgba(255,255,255,.13) !important;
+
+        background: transparent !important;
+    }
+
+    .sidebar .sidebar-logout a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+
+        width: 100% !important;
+        min-height: 58px !important;
+        padding: 12px 16px !important;
+
+        color: #fff !important;
+        background: rgba(255,255,255,.07) !important;
+
+        border: 1px solid rgba(255,255,255,.06) !important;
+        border-radius: 15px !important;
+
+        text-decoration: none !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+
+        transition: background .22s ease !important;
+    }
+
+    .sidebar .sidebar-logout a > i:first-child {
+        width: 25px !important;
+        min-width: 25px !important;
+        font-size: 18px !important;
+    }
+
+    .sidebar .sidebar-logout a span {
+        display: block !important;
+        flex: 1 !important;
+    }
+
+    .sidebar .sidebar-logout .menu-arrow {
+        display: block !important;
+        margin-left: auto !important;
+    }
+
+    .sidebar .sidebar-logout a::after {
+        content: none !important;
+    }
+
+    .sidebar .sidebar-logout a:hover {
+        background: rgba(255,255,255,.14) !important;
+    }
+
+    /* Main content alignment */
+    .main-content {
+        width: calc(100% - 315px) !important;
+        margin-left: 315px !important;
+    }
+}
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: auto !important;
+        left: 0 !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        width: 285px !important;
+        max-width: 88vw !important;
+        height: 100vh !important;
+
+        background:
+            linear-gradient(
+                180deg,
+                #071b5c 0%,
+                #0b2d82 48%,
+                #174bb8 100%
+            ) !important;
+
+        z-index: 2000 !important;
+        overflow: hidden !important;
+
+        transform: translateX(-100%);
+        transition: transform .28s ease !important;
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0) !important;
+
+        box-shadow:
+            12px 0 35px rgba(15,23,42,.25) !important;
+    }
+
+    .sidebar .logo {
+        height: 205px !important;
+        min-height: 205px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 25px !important;
+        flex-shrink: 0 !important;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.13) !important;
+    }
+
+    .sidebar .logo img {
+        width: 205px !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    .sidebar .sidebar-navigation {
+        display: block !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+
+        padding: 20px 17px 15px !important;
+    }
+
+    .sidebar .menu li a {
+        min-height: 55px !important;
+        font-size: 14px !important;
+    }
+
+    .sidebar .menu li a span,
+    .sidebar .sidebar-logout a span {
+        display: block !important;
+    }
+
+    .sidebar .sidebar-logout {
+        flex: 0 0 auto !important;
+        padding: 15px 17px 20px !important;
+        border-top: 1px solid rgba(255,255,255,.13) !important;
+    }
+
+    .main-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .sidebar-overlay.active {
+        display: block !important;
+        position: fixed !important;
+        inset: 0 !important;
+
+        background: rgba(7,16,38,.55) !important;
+        z-index: 1500 !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .sidebar {
+        width: 285px !important;
+        max-width: 88vw !important;
+    }
+
+    .sidebar .logo {
+        height: 190px !important;
+        min-height: 190px !important;
+    }
+
+    .sidebar .logo img {
+        width: 190px !important;
+    }
+}

@@ -108,11 +108,7 @@
                     Complete Your Application
                 </h2>
 
-                <p>
-                    Please provide accurate information and upload
-                    all required documents.
-                </p>
-
+              
             </div>
 
         </div>
@@ -1136,22 +1132,6 @@
 
 
 
-                    <!-- FATHER EMPLOYER -->
-
-                    <div class="form-group">
-
-                        <label>
-                            Employer
-                        </label>
-
-                        <input
-                            type="text"
-                            id="fatherEmployer"
-                        >
-
-                    </div>
-
-
 
                     <!-- FATHER INCOME -->
 
@@ -1250,21 +1230,6 @@
 
 
 
-                    <!-- MOTHER EMPLOYER -->
-
-                    <div class="form-group">
-
-                        <label>
-                            Employer
-                        </label>
-
-                        <input
-                            type="text"
-                            id="motherEmployer"
-                        >
-
-                    </div>
-
 
 
                     <!-- MOTHER INCOME -->
@@ -1316,10 +1281,7 @@
 
                     Guardian Information
 
-                    <span>
-                        (If Applicable)
-                    </span>
-
+                    
                 </h4>
 
 
@@ -1633,130 +1595,345 @@
             </section>
 
 
+<!-- =================================================
+     SCHOLARSHIP REQUIREMENTS
+================================================== -->
 
-            <!-- =================================================
-                 SCHOLARSHIP REQUIREMENTS
-            ================================================== -->
+<section class="form-card requirements-card">
 
-            <section class="form-card">
+    <!-- REQUIREMENTS HEADER -->
+    <div class="requirements-header">
+
+        <div class="requirements-title">
+
+            <div class="requirements-main-icon">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+
+            <div>
+                <h3>Scholarship Requirements</h3>
+
+                <p>
+                    Upload the required documents to complete your application.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="requirements-count">
+            5 Requirements
+        </div>
+
+    </div>
 
 
-                <div class="section-header">
+    <!-- REQUIREMENTS -->
+    <div class="requirements-grid">
 
-                    <div class="section-icon">
 
-                        <i class="fa-solid fa-file-arrow-up"></i>
+        <!-- ==========================================
+             1. BIRTH CERTIFICATE
+        =========================================== -->
 
-                    </div>
+        <div class="upload-box">
 
-                    <div>
+            <div class="requirement-top">
 
-                        <h3>
-                            Scholarship Requirements
-                        </h3>
+                <div class="requirement-icon birth">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
 
-                        <p>
-                            Upload the required documents.
-                        </p>
+                <div class="requirement-info">
 
-                    </div>
+                    <h4>
+                        Birth Certificate
+                    </h4>
+
+                    <span class="upload-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Click Choose File to upload
+                    </span>
 
                 </div>
 
+                <div class="requirement-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </div>
 
 
-                <div class="requirements-grid">
+            <div class="requirement-bottom">
 
+                <label
+                    for="birthCertificate"
+                    class="upload-button"
+                >
+                    Choose File
+                </label>
 
-                    <!-- BIRTH CERTIFICATE -->
+                <input
+                    type="file"
+                    id="birthCertificate"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                    hidden
+                >
 
-                    <div class="upload-box">
+                <span class="file-info">
+                    JPG or PNG<br>
+                    <small>Max 10 MB</small>
+                </span>
 
-                        <div class="upload-icon">
+            </div>
 
-                            <i class="fa-solid fa-file-lines"></i>
-
-                        </div>
-
-                        <h4>
-                            Birth Certificate
-                        </h4>
-
-                        <p>
-                            JPG, PNG, or PDF
-                        </p>
-
-                        <input
-                            type="file"
-                            id="birthCertificate"
-                            accept=".pdf,.jpg,.jpeg,.png"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <!-- REGISTRATION CERTIFICATE -->
-
-                    <div class="upload-box">
-
-                        <div class="upload-icon">
-
-                            <i class="fa-solid fa-file-certificate"></i>
-
-                        </div>
-
-                        <h4>
-                            Certificate of Registration
-                        </h4>
-
-                        <p>
-                            JPG or PNG
-                        </p>
-
-                        <input
-                            type="file"
-                            id="registrationCertificate"
-                            accept=".jpeg,.png"
-                            required
-                        >
-
-                    </div>
+        </div>
 
 
 
-                    <!-- OTHER REQUIREMENT -->
+        <!-- ==========================================
+             2. GOOD MORAL CHARACTER
+        =========================================== -->
 
-                    <div class="upload-box">
+        <div class="upload-box">
 
-                        <div class="upload-icon">
+            <div class="requirement-top">
 
-                            <i class="fa-solid fa-file-invoice"></i>
+                <div class="requirement-icon moral">
+                    <i class="fa-solid fa-award"></i>
+                </div>
 
-                        </div>
+                <div class="requirement-info">
 
-                        <h4>
-                            Other Requirement
-                        </h4>
+                    <h4>
+                        Good Moral Character
+                    </h4>
 
-                        <p>
-                            JPG or PNG
-                        </p>
-
-                        <input
-                            type="file"
-                            id="otherRequirement"
-                            accept=".jpeg,.png"
-                        >
-
-                    </div>
-
+                    <span class="upload-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Click Choose File to upload
+                    </span>
 
                 </div>
 
-            </section>
+                <div class="requirement-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
 
+            </div>
+
+
+            <div class="requirement-bottom">
+
+                <label
+                    for="goodMoral"
+                    class="upload-button"
+                >
+                    Choose File
+                </label>
+
+                <input
+                    type="file"
+                    id="goodMoral"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                    hidden
+                >
+
+                <span class="file-info">
+                    JPG or PNG<br>
+                    <small>Max 10 MB</small>
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             3. BIR
+        =========================================== -->
+
+        <div class="upload-box">
+
+            <div class="requirement-top">
+
+                <div class="requirement-icon bir">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+
+                <div class="requirement-info">
+
+                    <h4>
+                        BIR
+                    </h4>
+
+                    <span class="upload-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Click Choose File to upload
+                    </span>
+
+                </div>
+
+                <div class="requirement-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </div>
+
+
+            <div class="requirement-bottom">
+
+                <label
+                    for="bir"
+                    class="upload-button"
+                >
+                    Choose File
+                </label>
+
+                <input
+                    type="file"
+                    id="bir"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                    hidden
+                >
+
+                <span class="file-info">
+                    JPG or PNG<br>
+                    <small>Max 10 MB</small>
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             4. REPORT CARD
+        =========================================== -->
+
+        <div class="upload-box">
+
+            <div class="requirement-top">
+
+                <div class="requirement-icon report">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div class="requirement-info">
+
+                    <h4>
+                        Report Card
+                    </h4>
+
+                    <span class="upload-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Click Choose File to upload
+                    </span>
+
+                </div>
+
+                <div class="requirement-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </div>
+
+
+            <div class="requirement-bottom">
+
+                <label
+                    for="reportCard"
+                    class="upload-button"
+                >
+                    Choose File
+                </label>
+
+                <input
+                    type="file"
+                    id="reportCard"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                    hidden
+                >
+
+                <span class="file-info">
+                    JPG or PNG<br>
+                    <small>Max 10 MB</small>
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             5. BARANGAY CERTIFICATE
+        =========================================== -->
+
+        <div class="upload-box">
+
+            <div class="requirement-top">
+
+                <div class="requirement-icon barangay">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <div class="requirement-info">
+
+                    <h4>
+                        Barangay Certificate
+                        of Residency
+                    </h4>
+
+                    <span class="upload-status">
+                        <i class="fa-solid fa-circle"></i>
+                        Click Choose File to upload
+                    </span>
+
+                </div>
+
+                <div class="requirement-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+            </div>
+
+
+            <div class="requirement-bottom">
+
+                <label
+                    for="barangayCertificate"
+                    class="upload-button"
+                >
+                    Choose File
+                </label>
+
+                <input
+                    type="file"
+                    id="barangayCertificate"
+                    accept=".jpg,.jpeg,.png"
+                    required
+                    hidden
+                >
+
+                <span class="file-info">
+                    JPG or PNG<br>
+                    <small>Max 10 MB</small>
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
             <!-- =================================================

@@ -3,922 +3,1162 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>ScholarLink | Notification Management</title>
+    <title>ScholarLink | Notification Management</title>
+  
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link rel="stylesheet"href="../css/notifications.css">
 
-<link rel="stylesheet" href="../css/notifications.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
 
 </head>
+
 
 <body>
 
 <div class="dashboard">
 
-<!-- ======================================
-SIDEBAR
-======================================= -->
 
+    <!-- ======================================
+         SIDEBAR
+    ======================================= -->
+```html
 <aside class="sidebar">
 
-<div class="logo">
-
-<img src="../images/scholarlink-logo.png">
-
-<div>
-
-<h2>ScholarLink</h2>
-
-<span>Scholarship Management System</span>
-
-</div>
-
-</div>
-
-<ul class="menu">
-
-<li>
-
-<a href="admin-dashboard.html">
-
-<i class="fas fa-house"></i>
-
-Dashboard
-
-</a>
-
-</li>
-
-<li>
-
-<a href="applicants.html">
-
-<i class="fas fa-users"></i>
-
-Applicants
-
-</a>
-
-</li>
-
-
-<li>
-    <a href="applications.html">
-        <i class="fas fa-file-lines"></i>
-        Applications
-    </a>
-</li>
-
-
-<li>
-
-<a href="scholars.html">
-
-<i class="fas fa-user-graduate"></i>
-
-Scholars
-
-</a>
-
-</li>
-
-
-<li>
-
-<a href="requirements.html">
-
-<i class="fas fa-folder-open"></i>
-
-Requirements
-
-</a>
-
-</li>
-
-<li>
-
-<a href="announcements.html">
-
-<i class="fas fa-bullhorn"></i>
-
-Announcements
-
-</a>
-
-</li>
-
-<li class="active">
-
-<a href="notifications.html">
-
-<i class="fas fa-paper-plane"></i>
-
-Notification Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="monitoring-scholars.html">
-
-<i class="fas fa-chart-line"></i>
-
-Monitoring Scholars
-
-</a>
-
-</li>
-
-<li>
-
-<a href="qr-management.html">
-
-<i class="fas fa-qrcode"></i>
-
-QR Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="user-management.html">
-
-<i class="fas fa-users-cog"></i>
-
-User Management
-
-</a>
-
-</li>
-
-<li>
-
-<a href="document-verification.html">
-
-<i class="fas fa-file-circle-check"></i>
-
-Document Verification
-
-</a>
-
-</li>
-
-<li>
-
-<a href="grade-cor-verification.html">
-
-<i class="fas fa-award"></i>
-
-Grade & COR Verification
-
-</a>
-
-</li>
-
-
-<li class="logout">
-
-<a href="../index.html">
-
-<i class="fas fa-right-from-bracket"></i>
-
-Logout
-
-</a>
-
-</li>
-
-</ul>
-
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="../login/images/adminlogotop.png"
+             alt="ScholarLink">
+    </div>
+
+    <ul class="menu">
+
+        <!-- MAIN -->
+        <li class="menu-section">MAIN</li>
+
+        <li>
+            <a href="admin-dashboard.html">
+                <i class="fas fa-house"></i>
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="applicants.html">
+                <i class="fas fa-users"></i>
+                <span>Applicants</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="applications.html">
+                <i class="fas fa-file-lines"></i>
+                <span>Applications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="scholars.html">
+                <i class="fas fa-user-graduate"></i>
+                <span>Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="requirements.html">
+                <i class="fas fa-folder-open"></i>
+                <span>Requirements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <!-- COMMUNICATION -->
+        <li class="menu-section">COMMUNICATION</li>
+
+        <li>
+            <a href="announcements.html">
+                <i class="fas fa-bullhorn"></i>
+                <span>Announcements</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="notifications.html">
+                <i class="fas fa-bell"></i>
+                <span>Notifications</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <!-- MONITORING -->
+        <li class="menu-section">MONITORING</li>
+
+        <li>
+            <a href="monitoring-scholars.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Monitoring Scholars</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <!-- MANAGEMENT -->
+        <li class="menu-section">MANAGEMENT</li>
+
+        <li>
+            <a href="user-management.html">
+                <i class="fas fa-users-cog"></i>
+                <span>User Management</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="document-verification.html">
+                <i class="fas fa-file-circle-check"></i>
+                <span>Document Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="grade-cor-verification.html">
+                <i class="fas fa-award"></i>
+                <span>Grade &amp; COR Verification</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <!-- SYSTEM -->
+        <li class="menu-section">SYSTEM</li>
+
+        <li>
+            <a href="settings.html">
+                <i class="fas fa-gear"></i>
+                <span>Settings</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+        <li class="logout">
+            <a href="../index.html">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>Logout</span>
+                <i class="fas fa-chevron-right menu-chevron"></i>
+            </a>
+        </li>
+
+    </ul>
 </aside>
+```
+
+
+    <!-- ======================================
+         MAIN CONTENT
+    ======================================= -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="topbar">
+
+
+            <div class="top-left">
+
+                <button
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Toggle Menu"
+                >
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+
+                <h2>
+                    Notification Management
+                </h2>
+
+            </div>
+
+
+
+            <div class="top-right">
+
+
+                <!-- NOTIFICATION BUTTON -->
+
+                <button
+                    class="notification-btn"
+                    type="button"
+                    aria-label="Notifications"
+                >
+
+                    <i class="fas fa-bell"></i>
+
+                    <!--
+                        This number can be updated
+                        by JavaScript later.
+                    -->
+
+                    <span
+                        class="badge"
+                        id="notificationBadge"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+
+                <!-- ADMIN PROFILE -->
+
+                <div class="profile-box">
+
+                    <img
+                        src="../images/admin.png"
+                        alt="Administrator"
+                    >
+
+                    <div>
+
+                        <h4>
+                            Administrator
+                        </h4>
+
+                        <span>
+                            System Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             HERO
+        ======================================= -->
+
+        <section class="hero-section">
+
+            <!--
+                Existing hero space/design retained.
+                No additional feature added.
+            -->
+
+        </section>
+
+
+
+        <!-- ======================================
+             SUMMARY
+        ======================================= -->
+
+        <section class="summary-cards">
+
+
+            <!-- TOTAL SENT -->
+
+            <div class="summary-card">
+
+                <h3>
+                    Total Sent
+                </h3>
+
+                <h2 id="totalSent">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- READ -->
+
+            <div class="summary-card">
+
+                <h3>
+                    Read
+                </h3>
+
+                <h2
+                    class="read"
+                    id="totalRead"
+                >
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- UNREAD -->
+
+            <div class="summary-card">
+
+                <h3>
+                    Unread
+                </h3>
+
+                <h2
+                    class="unread"
+                    id="totalUnread"
+                >
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- RECIPIENTS -->
+
+            <div class="summary-card">
+
+                <h3>
+                    Recipients
+                </h3>
+
+                <h2
+                    class="recipient"
+                    id="totalRecipients"
+                >
+                    0
+                </h2>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             CREATE NOTIFICATION
+        ======================================= -->
+
+        <section class="notification-form">
+
+
+            <div class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-paper-plane"></i>
+
+                    Create New Notification
+
+                </h2>
+
+
+
+                <div class="form-grid">
+
+
+                    <!-- ==================================
+                         RECIPIENT TYPE
+                    =================================== -->
+
+                    <div class="form-group">
+
+                        <label for="recipientType">
+
+                            Recipient Type
+
+                        </label>
+
+
+                        <select
+                            id="recipientType"
+                        >
+
+                            <option value="">
+                                Select Recipient
+                            </option>
+
+                            <option value="Applicant">
+                                Applicant
+                            </option>
+
+                            <option value="Scholar">
+                                Scholar
+                            </option>
+
+                            <option value="All Applicants">
+                                All Applicants
+                            </option>
+
+                            <option value="All Scholars">
+                                All Scholars
+                            </option>
+
+                            <option value="Everyone">
+                                Everyone
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         SELECT RECIPIENT
+                    =================================== -->
+
+                    <div class="form-group">
+
+                        <label for="recipientName">
+
+                            Select Recipient
+
+                        </label>
+
+
+                        <select
+                            id="recipientName"
+                        >
+
+                            <!--
+                                JavaScript will load
+                                actual users from Firestore.
+                            -->
+
+                            <option value="">
+                                Select User
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         CATEGORY
+                    =================================== -->
+
+                    <div class="form-group">
+
+                        <label for="notificationCategory">
+
+                            Notification Category
+
+                        </label>
+
+
+                        <select
+                            id="notificationCategory"
+                        >
+
+                            <option value="Missing Requirements">
+                                Missing Requirements
+                            </option>
+
+                            <option value="Application Approved">
+                                Application Approved
+                            </option>
+
+                            <option value="Application Rejected">
+                                Application Rejected
+                            </option>
+
+                            <option value="Document Verification">
+                                Document Verification
+                            </option>
+
+                            <option value="Grade Verification">
+                                Grade Verification
+                            </option>
+
+                            <option value="COR Verification">
+                                COR Verification
+                            </option>
+
+                            <option value="Scholarship Reminder">
+                                Scholarship Reminder
+                            </option>
+
+                            <option value="Interview Schedule">
+                                Interview Schedule
+                            </option>
+
+                            <option value="Orientation">
+                                Orientation
+                            </option>
+
+                            <option value="General Announcement">
+                                General Announcement
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         PRIORITY
+                    =================================== -->
+
+                    <div class="form-group">
+
+                        <label for="notificationPriority">
+
+                            Priority
+
+                        </label>
+
+
+                        <select
+                            id="notificationPriority"
+                        >
+
+                            <option value="Normal">
+                                Normal
+                            </option>
+
+                            <option value="Important">
+                                Important
+                            </option>
+
+                            <option value="Urgent">
+                                Urgent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         TITLE
+                    =================================== -->
+
+                    <div class="form-group full">
+
+                        <label for="notificationTitle">
+
+                            Notification Title
+
+                        </label>
+
+
+                        <input
+                            id="notificationTitle"
+                            type="text"
+                            placeholder="Example: Missing Requirements"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         MESSAGE
+                    =================================== -->
+
+                    <div class="form-group full">
+
+                        <label for="notificationMessage">
+
+                            Notification Message
+
+                        </label>
+
+
+                        <textarea
+                            id="notificationMessage"
+                            rows="10"
+                            placeholder="Write your notification here..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         ATTACHMENT
+                    =================================== -->
+
+                    <div class="form-group full">
+
+                        <label for="notificationAttachment">
+
+                            Attachment (Optional)
+
+                        </label>
+
+
+                        <input
+                            id="notificationAttachment"
+                            type="file"
+                        >
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         NOTIFICATION OPTIONS
+                    =================================== -->
+
+                    <div class="form-group full check-group">
+
+
+                        <label>
+
+                            <input
+                                id="sendDashboardNotification"
+                                type="checkbox"
+                                checked
+                            >
+
+                            Send Dashboard Notification
+
+                        </label>
+
+
+
+                        <label>
+
+                            <input
+                                id="sendEmailNotification"
+                                type="checkbox"
+                            >
+
+                            Send Email Notification
+
+                        </label>
+
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         BUTTONS
+                    =================================== -->
+
+                    <div class="form-buttons">
+
+
+                        <button
+                            class="btn-template"
+                            type="button"
+                        >
+
+                            <i class="fas fa-copy"></i>
+
+                            Use Template
+
+                        </button>
+
+
+
+                        <button
+                            class="btn-preview"
+                            type="button"
+                        >
+
+                            <i class="fas fa-eye"></i>
+
+                            Preview
+
+                        </button>
+
+
+
+                        <button
+                            class="btn-send"
+                            type="button"
+                        >
+
+                            <i class="fas fa-paper-plane"></i>
+
+                            Send Notification
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SENT NOTIFICATIONS
+        ======================================= -->
+
+        <section class="notification-history">
+
+
+            <div class="card">
+
+
+                <div class="card-header">
+
+
+                    <h2>
+
+                        <i class="fas fa-clock-rotate-left"></i>
+
+                        Sent Notifications
+
+                    </h2>
+
+
+
+                    <input
+                        type="text"
+                        class="search-history"
+                        placeholder="Search notification..."
+                        autocomplete="off"
+                    >
+
+
+                </div>
+
+
+
+                <div class="table-responsive">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Recipient
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Title
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <!--
+                            IMPORTANT:
+
+                            No hardcoded notification rows.
+
+                            notifications.js will load
+                            real records from Firestore.
+                        -->
+
+                        <tbody>
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             NOTIFICATION TEMPLATES
+        ======================================= -->
+
+        <section class="notification-templates">
+
+
+            <div class="card">
+
+
+                <h2>
+
+                    <i class="fas fa-layer-group"></i>
+
+                    Notification Templates
+
+                </h2>
+
+
+
+                <div class="template-grid">
+
+
+                    <!-- MISSING REQUIREMENTS -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-folder-open"></i>
+
+
+                        <h3>
+                            Missing Requirements
+                        </h3>
+
+
+                        <p>
+                            Notify applicants to submit
+                            missing or incomplete requirements.
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- APPLICATION APPROVED -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-circle-check"></i>
+
+
+                        <h3>
+                            Application Approved
+                        </h3>
+
+
+                        <p>
+                            Inform applicants that their
+                            scholarship application has been approved.
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- APPLICATION REJECTED -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-circle-xmark"></i>
+
+
+                        <h3>
+                            Application Rejected
+                        </h3>
+
+
+                        <p>
+                            Inform applicants that their
+                            scholarship application has not been approved.
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- SUBMIT GRADES -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-graduation-cap"></i>
+
+
+                        <h3>
+                            Submit Grades
+                        </h3>
+
+
+                        <p>
+                            Remind scholars to upload
+                            their grades before the deadline.
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- SUBMIT COR -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-file-circle-check"></i>
+
+
+                        <h3>
+                            Submit COR
+                        </h3>
+
+
+                        <p>
+                            Request scholars to upload
+                            their Certificate of Registration (COR).
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- ORIENTATION -->
+
+                    <div class="template-card">
+
+
+                        <i class="fas fa-calendar-days"></i>
+
+
+                        <h3>
+                            Scholarship Orientation
+                        </h3>
+
+
+                        <p>
+                            Invite approved scholars to attend
+                            the scholarship orientation.
+                        </p>
+
+
+                        <button
+                            class="btn-template-use"
+                            type="button"
+                        >
+
+                            Use Template
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             ADMIN GUIDE
+        ======================================= -->
+
+        <section class="tips-section">
+
+
+            <div class="tips-card">
+
+
+                <h2>
+
+                    <i class="fas fa-lightbulb"></i>
+
+                    Notification Guidelines
+
+                </h2>
+
+
+                <ul>
+
+
+                    <li>
+                        ✔ Notify applicants immediately
+                        when requirements are incomplete.
+                    </li>
+
+
+                    <li>
+                        ✔ Inform scholars about grade
+                        and COR submission deadlines.
+                    </li>
+
+
+                    <li>
+                        ✔ Send approval or rejection notices
+                        after application review.
+                    </li>
+
+
+                    <li>
+                        ✔ Remind scholars about orientation
+                        schedules and important events.
+                    </li>
+
+
+                    <li>
+                        ✔ Keep messages clear,
+                        professional, and concise.
+                    </li>
+
+
+                    <li>
+                        ✔ Use templates to save time
+                        and ensure consistency.
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="dashboard-footer">
+
+
+            <p>
+
+                © 2026 ScholarLink |
+                Scholarship Management System |
+                Notification Management
+
+            </p>
+
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
 
 <!-- ======================================
-MAIN CONTENT
+     JAVASCRIPT
 ======================================= -->
 
-<main class="main-content">
+<script
+    type="module"
+    src="../js/notifications.js"
+></script>
 
-<header class="topbar">
-
-<div class="top-left">
-
-<button id="menuToggle">
-
-<i class="fas fa-bars"></i>
-
-</button>
-
-<h2>
-
-Notification Management
-
-</h2>
-
-</div>
-
-<div class="top-right">
-
-<button class="notification-btn">
-
-<i class="fas fa-bell"></i>
-
-<span class="badge">12</span>
-
-</button>
-
-<div class="profile-box">
-
-<img src="../images/admin.png">
-
-<div>
-
-<h4>Administrator</h4>
-
-<span>System Administrator</span>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-
-<!-- ======================================
-HERO
-======================================= -->
-
-
-
-<!-- ======================================
-SUMMARY
-======================================= -->
-
-<section class="summary-cards">
-
-<div class="summary-card">
-
-<h3>Total Sent</h3>
-
-<h2>128</h2>
-
-</div>
-
-<div class="summary-card">
-
-<h3>Read</h3>
-
-<h2 class="read">96</h2>
-
-</div>
-
-<div class="summary-card">
-
-<h3>Unread</h3>
-
-<h2 class="unread">32</h2>
-
-</div>
-
-<div class="summary-card">
-
-<h3>Recipients</h3>
-
-<h2 class="recipient">254</h2>
-
-</div>
-
-</section>
-
-<!-- ======================================
-CREATE NOTIFICATION
-======================================= -->
-
-<section class="notification-form">
-
-<div class="card">
-
-<h2>
-
-<i class="fas fa-paper-plane"></i>
-
-Create New Notification
-
-</h2>
-
-<div class="form-grid">
-
-    <div class="form-group">
-
-<label>
-
-Recipient Type
-
-</label>
-
-<select id="recipientType">
-
-<option>Select Recipient</option>
-
-<option>Applicant</option>
-
-<option>Scholar</option>
-
-<option>All Applicants</option>
-
-<option>All Scholars</option>
-
-<option>Everyone</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Select Recipient
-
-</label>
-
-<select id="recipientName">
-
-<option>Select User</option>
-
-<option>Juan Dela Cruz</option>
-
-<option>Maria Santos</option>
-
-<option>Carlo Mendoza</option>
-
-<option>Sophia Garcia</option>
-
-<option>Ana Reyes</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Notification Category
-
-</label>
-
-<select>
-
-<option>Missing Requirements</option>
-
-<option>Application Approved</option>
-
-<option>Application Rejected</option>
-
-<option>Document Verification</option>
-
-<option>Grade Verification</option>
-
-<option>COR Verification</option>
-
-<option>Scholarship Reminder</option>
-
-<option>Interview Schedule</option>
-
-<option>Orientation</option>
-
-<option>Allowance Release</option>
-
-<option>General Announcement</option>
-
-<option>Other</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-
-<label>
-
-Priority
-
-</label>
-
-<select>
-
-<option>Normal</option>
-
-<option>Important</option>
-
-<option>Urgent</option>
-
-</select>
-
-</div>
-
-<div class="form-group full">
-
-<label>
-
-Notification Title
-
-</label>
-
-<input
-type="text"
-placeholder="Example: Missing Requirements">
-
-</div>
-
-<div class="form-group full">
-
-<label>
-
-Notification Message
-
-</label>
-
-<textarea
-rows="10"
-placeholder="Write your notification here..."></textarea>
-
-</div>
-
-<div class="form-group full">
-
-<label>
-
-Attachment (Optional)
-
-</label>
-
-<input
-type="file">
-
-</div>
-
-<div class="form-group full check-group">
-
-<label>
-
-<input
-type="checkbox"
-checked>
-
-Send Dashboard Notification
-
-</label>
-
-<label>
-
-<input
-type="checkbox">
-
-Send Email Notification
-
-</label>
-
-</div>
-
-<div class="form-buttons">
-
-<button class="btn-template">
-
-<i class="fas fa-copy"></i>
-
-Use Template
-
-</button>
-
-<button class="btn-preview">
-
-<i class="fas fa-eye"></i>
-
-Preview
-
-</button>
-
-<button class="btn-send">
-
-<i class="fas fa-paper-plane"></i>
-
-Send Notification
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ======================================
-SENT NOTIFICATIONS
-======================================= -->
-
-<section class="notification-history">
-
-<div class="card">
-
-<div class="card-header">
-
-<h2>
-
-<i class="fas fa-clock-rotate-left"></i>
-
-Sent Notifications
-
-</h2>
-
-<input
-type="text"
-class="search-history"
-placeholder="Search notification...">
-
-</div>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Recipient</th>
-
-<th>Category</th>
-
-<th>Title</th>
-
-<th>Status</th>
-
-<th>Date</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>Juan Dela Cruz</td>
-
-<td>Missing Requirements</td>
-
-<td>Incomplete Requirements</td>
-
-<td>
-
-<span class="status read">
-
-Read
-
-</span>
-
-</td>
-
-<td>Aug 05, 2026</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-copy">
-
-<i class="fas fa-copy"></i>
-
-</button>
-
-<button class="btn-delete">
-
-<i class="fas fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>Maria Santos</td>
-
-<td>Application</td>
-
-<td>Application Approved</td>
-
-<td>
-
-<span class="status unread">
-
-Unread
-
-</span>
-
-</td>
-
-<td>Aug 05, 2026</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-copy">
-
-<i class="fas fa-copy"></i>
-
-</button>
-
-<button class="btn-delete">
-
-<i class="fas fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>All Scholars</td>
-
-<td>Reminder</td>
-
-<td>Submit Grades</td>
-
-<td>
-
-<span class="status unread">
-
-Unread
-
-</span>
-
-</td>
-
-<td>Aug 04, 2026</td>
-
-<td>
-
-<button class="btn-view">
-
-<i class="fas fa-eye"></i>
-
-</button>
-
-<button class="btn-copy">
-
-<i class="fas fa-copy"></i>
-
-</button>
-
-<button class="btn-delete">
-
-<i class="fas fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</section>
-
-<!-- Continue in Part 3 -->
-
-<section class="notification-templates">
-
-    <div class="card">
-
-<h2>
-
-<i class="fas fa-layer-group"></i>
-
-Notification Templates
-
-</h2>
-
-<div class="template-grid">
-
-<div class="template-card">
-
-<i class="fas fa-folder-open"></i>
-
-<h3>Missing Requirements</h3>
-
-<p>
-
-Notify applicants to submit missing or incomplete requirements.
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-<div class="template-card">
-
-<i class="fas fa-circle-check"></i>
-
-<h3>Application Approved</h3>
-
-<p>
-
-Inform applicants that their scholarship application has been approved.
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-<div class="template-card">
-
-<i class="fas fa-circle-xmark"></i>
-
-<h3>Application Rejected</h3>
-
-<p>
-
-Inform applicants that their scholarship application has not been approved.
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-<div class="template-card">
-
-<i class="fas fa-graduation-cap"></i>
-
-<h3>Submit Grades</h3>
-
-<p>
-
-Remind scholars to upload their grades before the deadline.
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-<div class="template-card">
-
-<i class="fas fa-file-circle-check"></i>
-
-<h3>Submit COR</h3>
-
-<p>
-
-Request scholars to upload their Certificate of Registration (COR).
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-<div class="template-card">
-
-<i class="fas fa-calendar-days"></i>
-
-<h3>Scholarship Orientation</h3>
-
-<p>
-
-Invite approved scholars to attend the scholarship orientation.
-
-</p>
-
-<button class="btn-template-use">
-
-Use Template
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ======================================
-ADMIN GUIDE
-======================================= -->
-
-<section class="tips-section">
-
-<div class="tips-card">
-
-<h2>
-
-<i class="fas fa-lightbulb"></i>
-
-Notification Guidelines
-
-</h2>
-
-<ul>
-
-<li>✔ Notify applicants immediately when requirements are incomplete.</li>
-
-<li>✔ Inform scholars about grade and COR submission deadlines.</li>
-
-<li>✔ Send approval or rejection notices after application review.</li>
-
-<li>✔ Remind scholars about orientation schedules and important events.</li>
-
-<li>✔ Keep messages clear, professional, and concise.</li>
-
-<li>✔ Use templates to save time and ensure consistency.</li>
-
-</ul>
-
-</div>
-
-</section>
-
-<!-- ======================================
-FOOTER
-======================================= -->
-
-<footer class="dashboard-footer">
-
-<p>
-
-© 2026 ScholarLink | Scholarship Management System | Notification Management
-
-</p>
-
-</footer>
-
-</main>
-
-</div>
-
-<!-- ======================================
-JAVASCRIPT
-======================================= -->
-
-<script src="../js/notifications.js"></script>
 
 </body>
 

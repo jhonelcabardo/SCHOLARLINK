@@ -1240,3 +1240,162 @@ SCROLLBAR
     background:#1B67D1;
 
 }
+
+
+/* =========================================
+   SCHOLARLINK STANDARD ADMIN SIDEBAR
+   REQUIREMENTS PAGE
+========================================= */
+
+/* Sidebar layout */
+.sidebar {
+    width: 290px;
+    min-width: 290px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, #0A1D5C, #1F4DB8);
+    color: #fff;
+    overflow-y: auto;
+}
+
+/* Logo */
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .logo img {
+    width: 100%;
+    max-width: 230px;
+    height: 120px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+/* Hide old branding text */
+.sidebar .logo h2,
+.sidebar .logo span {
+    display: none;
+}
+
+/* Menu list */
+.sidebar .menu {
+    list-style: none;
+    padding: 16px 14px 24px;
+    margin: 0;
+}
+
+.sidebar .menu li {
+    margin-bottom: 5px;
+}
+
+/* Section headings */
+.sidebar .menu li.menu-section {
+    margin: 20px 0 8px;
+    padding: 0 12px;
+    color: #55E6FF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+}
+
+/* Menu links */
+.sidebar .menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+/* Menu icons */
+.sidebar .menu li a > i:first-child {
+    width: 22px;
+    min-width: 22px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Menu labels */
+.sidebar .menu li a span {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Right chevron */
+.sidebar .menu li a .menu-chevron {
+    width: auto;
+    min-width: auto;
+    margin-left: auto;
+    font-size: 10px;
+    opacity: 0.65;
+}
+
+/* Hover */
+.sidebar .menu li:not(.menu-section) a:hover {
+    background: rgba(255, 255, 255, 0.13);
+}
+
+/* Active menu */
+.sidebar .menu li.active > a {
+    background: linear-gradient(90deg, #3978F6, #7655E8);
+    color: #fff;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Active icon and chevron */
+.sidebar .menu li.active > a .menu-chevron {
+    opacity: 1;
+}
+
+/* Logout */
+.sidebar .menu li.logout {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Main content alignment */
+.main-content {
+    margin-left: 290px;
+    width: calc(100% - 290px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        width: 290px;
+        min-width: 290px;
+        height: 100vh;
+    }
+
+    .sidebar.show {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}

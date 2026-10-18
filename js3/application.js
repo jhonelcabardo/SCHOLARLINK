@@ -1752,12 +1752,9 @@ async function uploadApplicantPhoto(
 
     checkSupabase();
 
-
     if (!file) {
-
         return null;
     }
-
 
     // -----------------------------------------------------
     // FILE TYPE
@@ -1768,33 +1765,21 @@ async function uploadApplicantPhoto(
         "image/png"
     ];
 
-
-    if (
-        !allowedTypes.includes(
-            file.type
-        )
-    ) {
-
+    if (!allowedTypes.includes(file.type)) {
         throw new Error(
             "Applicant photo must be JPG, JPEG, or PNG."
         );
     }
 
-
     // -----------------------------------------------------
     // FILE SIZE
     // -----------------------------------------------------
 
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
-
+    if (file.size > 10 * 1024 * 1024) {
         throw new Error(
             "Applicant photo must not exceed 10 MB."
         );
     }
-
 
     // -----------------------------------------------------
     // EXTENSION
@@ -1806,14 +1791,9 @@ async function uploadApplicantPhoto(
             .pop()
             .toLowerCase();
 
-
-    if (
-        extension === "jpeg"
-    ) {
-
+    if (extension === "jpeg") {
         extension = "jpg";
     }
-
 
     // -----------------------------------------------------
     // STORAGE PATH
@@ -1822,37 +1802,28 @@ async function uploadApplicantPhoto(
     const storagePath =
         `${uid}/profile.${extension}`;
 
-
     console.log(
         "Uploading applicant photo:",
         storagePath
     );
 
-
     // -----------------------------------------------------
-    // UPLOAD
+    // UPLOAD NEW PHOTO
     // -----------------------------------------------------
 
     const {
         data,
         error
-    } =
-        await supabase.storage
-            .from(
-                "applicant-photos"
-            )
-            .upload(
-                storagePath,
-                file,
-                {
-                    contentType:
-                        file.type,
-
-                    upsert:
-                        false
-                }
-            );
-
+    } = await supabase.storage
+        .from("applicant-photos")
+        .upload(
+            storagePath,
+            file,
+            {
+                contentType: file.type,
+                upsert: true
+            }
+        );
 
     if (error) {
 
@@ -1861,24 +1832,47 @@ async function uploadApplicantPhoto(
             error
         );
 
-
         throw new Error(
             `Applicant photo upload failed: ${error.message}`
         );
     }
 
+    // -----------------------------------------------------
+    // REMOVE OLD OPPOSITE EXTENSION
+    // -----------------------------------------------------
+
+    const oldExtension =
+        extension === "jpg"
+            ? "png"
+            : "jpg";
+
+    const oldStoragePath =
+        `${uid}/profile.${oldExtension}`;
+
+    const {
+        error: deleteError
+    } = await supabase.storage
+        .from("applicant-photos")
+        .remove([
+            oldStoragePath
+        ]);
+
+    if (deleteError) {
+
+        console.warn(
+            "Old applicant photo could not be removed:",
+            deleteError
+        );
+
+    }
 
     console.log(
-        "Applicant photo uploaded:",
-        data
+        "Applicant photo uploaded successfully:",
+        storagePath
     );
 
-
     // -----------------------------------------------------
-    // PRIVATE BUCKET
-    // -----------------------------------------------------
-    // DO NOT USE getPublicUrl()
-    // because applicant-photos is private.
+    // RETURN FILE INFORMATION
     // -----------------------------------------------------
 
     return {
@@ -1908,12 +1902,9 @@ async function uploadRequirement(
 
     checkSupabase();
 
-
     if (!file) {
-
         return null;
     }
-
 
     // -----------------------------------------------------
     // ALLOWED FILE TYPES
@@ -1924,33 +1915,23 @@ async function uploadRequirement(
         "image/png"
     ];
 
-
-    if (
-        !allowedTypes.includes(
-            file.type
-        )
-    ) {
+    if (!allowedTypes.includes(file.type)) {
 
         throw new Error(
             `${documentType} must be JPG, JPEG, or PNG.`
         );
     }
 
-
     // -----------------------------------------------------
     // FILE SIZE
     // -----------------------------------------------------
 
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
+    if (file.size > 10 * 1024 * 1024) {
 
         throw new Error(
             `${documentType} must not exceed 10 MB.`
         );
     }
-
 
     // -----------------------------------------------------
     // EXTENSION
@@ -1962,14 +1943,9 @@ async function uploadRequirement(
             .pop()
             .toLowerCase();
 
-
-    if (
-        extension === "jpeg"
-    ) {
-
+    if (extension === "jpeg") {
         extension = "jpg";
     }
-
 
     // -----------------------------------------------------
     // SAFE DOCUMENT NAME
@@ -1983,7 +1959,6 @@ async function uploadRequirement(
                 "_"
             );
 
-
     // -----------------------------------------------------
     // STORAGE PATH
     // -----------------------------------------------------
@@ -1991,37 +1966,28 @@ async function uploadRequirement(
     const storagePath =
         `${uid}/${safeDocumentType}.${extension}`;
 
-
     console.log(
         `Uploading ${documentType}:`,
         storagePath
     );
 
-
     // -----------------------------------------------------
-    // UPLOAD
+    // UPLOAD NEW FILE
     // -----------------------------------------------------
 
     const {
         data,
         error
-    } =
-        await supabase.storage
-            .from(
-                "requirements"
-            )
-            .upload(
-                storagePath,
-                file,
-                {
-                    contentType:
-                        file.type,
-
-                    upsert:
-                        false
-                }
-            );
-
+    } = await supabase.storage
+        .from("requirements")
+        .upload(
+            storagePath,
+            file,
+            {
+                contentType: file.type,
+                upsert: true
+            }
+        );
 
     if (error) {
 
@@ -2030,22 +1996,47 @@ async function uploadRequirement(
             error
         );
 
-
         throw new Error(
             `${documentType} upload failed: ${error.message}`
         );
     }
 
+    // -----------------------------------------------------
+    // REMOVE OLD OPPOSITE EXTENSION
+    // -----------------------------------------------------
+
+    const oldExtension =
+        extension === "jpg"
+            ? "png"
+            : "jpg";
+
+    const oldStoragePath =
+        `${uid}/${safeDocumentType}.${oldExtension}`;
+
+    const {
+        error: deleteError
+    } = await supabase.storage
+        .from("requirements")
+        .remove([
+            oldStoragePath
+        ]);
+
+    if (deleteError) {
+
+        console.warn(
+            `Old ${documentType} file could not be removed:`,
+            deleteError
+        );
+
+    }
 
     console.log(
-        `${documentType} uploaded successfully`
+        `${documentType} uploaded successfully:`,
+        storagePath
     );
 
-
     // -----------------------------------------------------
-    // PRIVATE BUCKET
-    // -----------------------------------------------------
-    // DO NOT USE getPublicUrl()
+    // RETURN FILE INFORMATION
     // -----------------------------------------------------
 
     return {
@@ -2072,18 +2063,69 @@ const birthCertificateInput =
         "birthCertificate"
     );
 
-
-const registrationCertificateInput =
+const goodMoralInput =
     document.getElementById(
-        "registrationCertificate"
+        "goodMoral"
+    );
+
+const birInput =
+    document.getElementById(
+        "bir"
+    );
+
+const reportCardInput =
+    document.getElementById(
+        "reportCard"
+    );
+
+const barangayCertificateInput =
+    document.getElementById(
+        "barangayCertificate"
     );
 
 
-const otherRequirementInput =
-    document.getElementById(
-        "otherRequirement"
-    );
+// =========================================================
+// REQUIREMENT CONFIGURATION
+// =========================================================
 
+const requirementConfig = {
+
+    birthCertificate: {
+        input: birthCertificateInput,
+        name: "Birth Certificate",
+        storageName: "birth_certificate",
+        required: true
+    },
+
+    goodMoral: {
+        input: goodMoralInput,
+        name: "Good Moral Character",
+        storageName: "good_moral",
+        required: true
+    },
+
+    bir: {
+        input: birInput,
+        name: "BIR",
+        storageName: "bir",
+        required: true
+    },
+
+    reportCard: {
+        input: reportCardInput,
+        name: "Report Card",
+        storageName: "report_card",
+        required: true
+    },
+
+    barangayCertificate: {
+        input: barangayCertificateInput,
+        name: "Barangay Certificate of Residency",
+        storageName: "barangay_certificate",
+        required: true
+    }
+
+};
 
 // =========================================================
 // FILE VALIDATION
@@ -2091,10 +2133,21 @@ const otherRequirementInput =
 
 function validateRequirementFile(
     input,
+    requirementName,
     required = false
 ) {
 
     if (!input) {
+
+        if (required) {
+
+            showMessage(
+                `${requirementName} input was not found.`,
+                "error"
+            );
+
+            return false;
+        }
 
         return true;
     }
@@ -2113,28 +2166,25 @@ function validateRequirementFile(
         if (required) {
 
             showMessage(
-                `Please upload ${input.id}.`,
+                `Please upload your ${requirementName}.`,
                 "error"
             );
 
-
             return false;
         }
-
 
         return true;
     }
 
 
     // -----------------------------------------------------
-    // TYPE
+    // ALLOWED FILE TYPES
     // -----------------------------------------------------
 
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png"
-    ];
-
+   const allowedTypes = [
+    "image/jpeg",
+    "image/png"
+];
 
     if (
         !allowedTypes.includes(
@@ -2143,17 +2193,18 @@ function validateRequirementFile(
     ) {
 
         showMessage(
-            `${file.name} is not a supported file type. Please upload JPG, JPEG, or PNG only.`,
+            `${requirementName}: Please upload JPG, PNG, or PDF only.`,
             "error"
         );
 
+        input.value = "";
 
         return false;
     }
 
 
     // -----------------------------------------------------
-    // SIZE
+    // FILE SIZE
     // -----------------------------------------------------
 
     if (
@@ -2162,10 +2213,11 @@ function validateRequirementFile(
     ) {
 
         showMessage(
-            `${file.name} is larger than 10 MB.`,
+            `${requirementName}: File must not exceed 10 MB.`,
             "error"
         );
 
+        input.value = "";
 
         return false;
     }
@@ -2176,60 +2228,234 @@ function validateRequirementFile(
 
 
 // =========================================================
-// REQUIREMENT FILE CHANGE EVENTS
+// REQUIREMENT STATUS
 // =========================================================
 
-if (
-    birthCertificateInput
+function setRequirementStatus(
+    input,
+    statusType = "uploaded"
 ) {
 
-    birthCertificateInput.addEventListener(
-        "change",
-        () => {
+    if (!input) {
+        return;
+    }
 
-            validateRequirementFile(
-                birthCertificateInput,
-                true
-            );
-        }
-    );
+
+    const box =
+        input.closest(
+            ".upload-box"
+        );
+
+
+    if (!box) {
+        return;
+    }
+
+
+    const status =
+        box.querySelector(
+            ".upload-status"
+        );
+
+
+    if (!status) {
+        return;
+    }
+
+
+    // -----------------------------------------------------
+    // FILE UPLOADED
+    // -----------------------------------------------------
+
+    if (
+        statusType === "uploaded"
+    ) {
+
+        status.classList.add(
+            "uploaded"
+        );
+
+        status.classList.remove(
+            "error"
+        );
+
+
+        status.innerHTML = `
+            <i class="fa-solid fa-circle-check"></i>
+            File uploaded
+        `;
+
+
+        box.classList.add(
+            "file-selected"
+        );
+
+        return;
+    }
+
+
+    // -----------------------------------------------------
+    // ERROR
+    // -----------------------------------------------------
+
+    if (
+        statusType === "error"
+    ) {
+
+        status.classList.add(
+            "error"
+        );
+
+        status.classList.remove(
+            "uploaded"
+        );
+
+
+        status.innerHTML = `
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Upload failed
+        `;
+
+
+        box.classList.remove(
+            "file-selected"
+        );
+    }
 }
 
 
-if (
-    registrationCertificateInput
-) {
+// =========================================================
+// REQUIREMENT FILE CHANGE EVENTS
+// UPLOAD IMMEDIATELY AFTER FILE SELECTION
+// =========================================================
 
-    registrationCertificateInput.addEventListener(
-        "change",
-        () => {
+Object.values(
+    requirementConfig
+).forEach(
+    requirement => {
 
-            validateRequirementFile(
-                registrationCertificateInput,
-                true
-            );
+        const input =
+            requirement.input;
+
+        if (!input) {
+            return;
         }
-    );
-}
 
+        input.addEventListener(
+            "change",
+            async () => {
 
-if (
-    otherRequirementInput
-) {
+                // -----------------------------------------
+                // VALIDATE FILE FIRST
+                // -----------------------------------------
 
-    otherRequirementInput.addEventListener(
-        "change",
-        () => {
+                const valid =
+                    validateRequirementFile(
+                        input,
+                        requirement.name,
+                        requirement.required
+                    );
 
-            validateRequirementFile(
-                otherRequirementInput,
-                false
-            );
-        }
-    );
-}
+                if (!valid) {
+                    return;
+                }
 
+                // -----------------------------------------
+                // GET CURRENT FILE
+                // -----------------------------------------
 
+                const file =
+                    input.files?.[0];
+
+                if (!file) {
+                    return;
+                }
+
+                // -----------------------------------------
+                // SHOW UPLOADING STATUS
+                // -----------------------------------------
+
+                const box =
+                    input.closest(".upload-box");
+
+                const status =
+                    box?.querySelector(
+                        ".upload-status"
+                    );
+
+                if (status) {
+
+                    status.innerHTML = `
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        Uploading...
+                    `;
+
+                    status.classList.remove(
+                        "error",
+                        "uploaded"
+                    );
+                }
+
+                try {
+
+                    // -------------------------------------
+                    // REQUIRE LOGIN
+                    // -------------------------------------
+
+                    if (!currentUser) {
+
+                        throw new Error(
+                            "Please login first."
+                        );
+                    }
+
+                    // -------------------------------------
+                    // UPLOAD IMMEDIATELY
+                    // -------------------------------------
+
+                    await uploadRequirement(
+                        file,
+                        currentUser.uid,
+                        requirement.storageName
+                    );
+
+                    // -------------------------------------
+                    // SHOW SUCCESS
+                    // -------------------------------------
+
+                    setRequirementStatus(
+                        input,
+                        "uploaded"
+                    );
+
+                    console.log(
+                        `${requirement.name} uploaded successfully.`
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        `${requirement.name} upload error:`,
+                        error
+                    );
+
+                    setRequirementStatus(
+                        input,
+                        "error"
+                    );
+
+                    showMessage(
+                        error.message ||
+                        `Failed to upload ${requirement.name}.`,
+                        "error"
+                    );
+                }
+
+            }
+        );
+
+    }
+);
 // =========================================================
 // VALIDATE ALL FILES
 // =========================================================
@@ -2253,7 +2479,6 @@ function validateAllFiles() {
                 "error"
             );
 
-
             return false;
         }
 
@@ -2272,7 +2497,6 @@ function validateAllFiles() {
                 "error"
             );
 
-
             return false;
         }
 
@@ -2287,61 +2511,38 @@ function validateAllFiles() {
                 "error"
             );
 
-
             return false;
         }
     }
 
 
     // -----------------------------------------------------
-    // BIRTH CERTIFICATE
+    // ALL 5 REQUIREMENTS
     // -----------------------------------------------------
 
-    if (
-        !validateRequirementFile(
-            birthCertificateInput,
-            true
+    for (
+        const requirement
+        of Object.values(
+            requirementConfig
         )
     ) {
 
-        return false;
-    }
+        if (
+            !validateRequirementFile(
+                requirement.input,
+                requirement.name,
+                requirement.required
+            )
+        ) {
 
+            return false;
+        }
 
-    // -----------------------------------------------------
-    // REGISTRATION CERTIFICATE
-    // -----------------------------------------------------
-
-    if (
-        !validateRequirementFile(
-            registrationCertificateInput,
-            true
-        )
-    ) {
-
-        return false;
-    }
-
-
-    // -----------------------------------------------------
-    // OTHER REQUIREMENT
-    // -----------------------------------------------------
-
-    if (
-        !validateRequirementFile(
-            otherRequirementInput,
-            false
-        )
-    ) {
-
-        return false;
     }
 
 
     return true;
 }
-
-
 // =========================================================
 // GET FORM DATA
 // =========================================================
@@ -2769,7 +2970,7 @@ async function uploadSelectedPhoto(
 
 
 // =========================================================
-// UPLOAD ALL REQUIREMENTS
+// UPLOAD ALL 5 REQUIREMENTS
 // =========================================================
 
 async function uploadAllRequirements(
@@ -2778,64 +2979,132 @@ async function uploadAllRequirements(
 
     const files = {};
 
+    const requirements = [
 
-    // -----------------------------------------------------
-    // BIRTH CERTIFICATE
-    // -----------------------------------------------------
+        {
+            key:
+                "birthCertificate",
 
-    if (
-        birthCertificateInput &&
-        birthCertificateInput.files?.[0]
-    ) {
+            input:
+                birthCertificateInput,
 
-        files.birthCertificate =
-            await uploadRequirement(
-                birthCertificateInput.files[0],
-                uid,
+            storageName:
                 "birth_certificate"
-            );
-    }
+        },
+
+        {
+            key:
+                "goodMoral",
+
+            input:
+                goodMoralInput,
+
+            storageName:
+                "good_moral"
+        },
+
+        {
+            key:
+                "bir",
+
+            input:
+                birInput,
+
+            storageName:
+                "bir"
+        },
+
+        {
+            key:
+                "reportCard",
+
+            input:
+                reportCardInput,
+
+            storageName:
+                "report_card"
+        },
+
+        {
+            key:
+                "barangayCertificate",
+
+            input:
+                barangayCertificateInput,
+
+            storageName:
+                "barangay_certificate"
+        }
+
+    ];
 
 
-    // -----------------------------------------------------
-    // REGISTRATION CERTIFICATE
-    // -----------------------------------------------------
-
-    if (
-        registrationCertificateInput &&
-        registrationCertificateInput.files?.[0]
+    for (
+        const requirement
+        of requirements
     ) {
 
-        files.registrationCertificate =
-            await uploadRequirement(
-                registrationCertificateInput.files[0],
-                uid,
-                "registration_certificate"
+        const file =
+            requirement.input
+                ?.files?.[0];
+
+
+        if (!file) {
+
+            throw new Error(
+                `Please upload your ${requirement.key}.`
             );
-    }
+
+        }
 
 
-    // -----------------------------------------------------
-    // OTHER REQUIREMENT
-    // -----------------------------------------------------
+        try {
 
-    if (
-        otherRequirementInput &&
-        otherRequirementInput.files?.[0]
-    ) {
+            const uploadedFile =
+                await uploadRequirement(
+                    file,
+                    uid,
+                    requirement.storageName
+                );
 
-        files.otherRequirement =
-            await uploadRequirement(
-                otherRequirementInput.files[0],
-                uid,
-                "other_requirement"
+
+            files[
+                requirement.key
+            ] =
+                uploadedFile;
+
+
+            // SHOW GREEN CHECK
+            // ONLY AFTER SUPABASE SUCCESS
+
+            setRequirementStatus(
+                requirement.input,
+                "uploaded"
             );
+
+
+            console.log(
+                `${requirement.storageName} uploaded successfully.`
+            );
+
+
+        } catch (error) {
+
+            setRequirementStatus(
+                requirement.input,
+                "error"
+            );
+
+
+            throw error;
+
+        }
+
     }
 
 
     return files;
 }
-
 
 // =========================================================
 // BUILD FILE INFORMATION
@@ -3023,6 +3292,33 @@ async function submitApplication() {
 
         return;
     }
+
+    console.log("=== FIREBASE AUTH DEBUG ===");
+
+const debugUser = auth.currentUser;
+
+console.log("Firebase user:", debugUser);
+console.log("Firebase UID:", debugUser?.uid || "NO USER");
+
+if (debugUser) {
+    const debugToken =
+        await debugUser.getIdTokenResult(true);
+
+    console.log(
+        "Firebase token claims:",
+        debugToken.claims
+    );
+
+    console.log(
+        "Supabase role:",
+        debugToken.claims.role || "ROLE MISSING"
+    );
+
+    console.log(
+        "ScholarLink appRole:",
+        debugToken.claims.appRole || "APP ROLE MISSING"
+    );
+}
 
 
     // -----------------------------------------------------
